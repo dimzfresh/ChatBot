@@ -6,12 +6,20 @@
 //  Copyright © 2019 di. All rights reserved.
 //
 
-import Foundation
-
-import Foundation
 import RxSwift
 import RxCocoa
-import Alamofire
+import RxDataSources
+
+typealias SectionOfChat = SectionModel<TableViewSection, TableViewItem>
+
+enum TableViewSection {
+    case outgoing
+    case incoming
+}
+
+enum TableViewItem {
+    case message(info: ChatModel)
+}
 
 final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
@@ -22,7 +30,9 @@ final class ChatViewModel: BaseViewModel {
     let question = BehaviorRelay<String>(value: "")
     let password = BehaviorRelay<String>(value: "")
     
-    var chat: BehaviorRelay<[ChatModel]> = BehaviorRelay(value: [])
+    //var chat: BehaviorRelay<[ChatModel]> = BehaviorRelay(value: [])
+    var messages = PublishSubject<[SectionOfChat]>()
+
     
     init(service: Service?) {
         self.service = service
@@ -44,16 +54,25 @@ private extension ChatViewModel {
     func send() {
         service?.sendQuestion(text: question.value)
         .subscribe(onNext: { [weak self] model in
-            print(model)
+            self?.processItems(for: model)
             }, onError: { [weak self] error in
                 print(error)
         })
         .disposed(by: disposeBag)
     }
     
-//    func save(user: Model) {
-//        let info: AuthInfo = (token: user.token, name: user.name ?? "", email: email.value)
-//        Settings.storage.isAuthorized = true
-//        Settings.storage.saveAuth(info)
-//    }
+    func processItems(for chat: [ChatModel]) {
+        let incomingItems: [TableViewItem] = chat
+            .filter { $0.buttons != nil }
+            .map { .message(info: $0) }
+        
+        let outgoingItems: [TableViewItem] = chat
+            .filter { $0.buttons != nil }
+            .map { .message(info: $0) }
+        
+        let sections = [SectionOfChat(model: .incoming, items: incomingItems),
+                        SectionOfChat(model: .outgoing, items: outgoingItems)]
+        
+        messages.onNext(sections)
+    }
 }

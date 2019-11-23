@@ -55,6 +55,9 @@
 		5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */; };
 		5AB705EB234A7DF400C23C3C /* String+SHA256+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */; };
 		5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EC234A7E9D00C23C3C /* Bundle.swift */; };
+		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
+		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
+		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
 		A7D61D9CF88F2FFFBC07F604 /* Pods_VarakushCashierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF85410524B07F82350B71B /* Pods_VarakushCashierTests.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +131,9 @@
 		5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SHA256+Base64.swift"; sourceTree = "<group>"; };
 		5AB705EC234A7E9D00C23C3C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
+		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
 		8DF85410524B07F82350B71B /* Pods_VarakushCashierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VarakushCashierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CF536DF520427F60879EA /* Pods-ChatBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3CC2F5BA9F429165F7D90FF /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.release.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
@@ -238,6 +244,8 @@
 				5A55D8752389660D00318A53 /* OutgoingBubbleTableViewCell.xib */,
 				5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */,
 				5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */,
+				5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */,
+				5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -311,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */,
+				5AC11AA023896F350082B34D /* UITableViewCell.swift */,
 				5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */,
 				5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */,
 				5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */,
@@ -539,6 +548,7 @@
 				5A8F4346234A22B6007FB89F /* Roboto-Light.ttf in Resources */,
 				5A8F4347234A22B6007FB89F /* Roboto-Bold.ttf in Resources */,
 				5A8F4342234A22B6007FB89F /* Roboto-LightItalic.ttf in Resources */,
+				5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */,
 				5A8F4343234A22B6007FB89F /* Roboto-Medium.ttf in Resources */,
 				5A8F434B234A22B6007FB89F /* Roboto-Italic.ttf in Resources */,
 				5AB57EC9231C5E5100A22A8C /* LaunchScreen.storyboard in Resources */,
@@ -617,9 +627,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ChatBot/Pods-ChatBot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
@@ -629,9 +641,11 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
@@ -660,9 +674,11 @@
 				5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */,
 				5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */,
 				5A1C365923532C1300DE587A /* APIRequestErrorInformation.swift in Sources */,
+				5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */,
 				5A8F4361234A4B0A007FB89F /* Settings.swift in Sources */,
 				5A1C365723532A7D00DE587A /* PagingRequest.swift in Sources */,
 				5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */,
+				5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */,
 				5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */,
 				5AB57EE0231C5EF400A22A8C /* Style.swift in Sources */,
 				5AB57EBF231C5E4F00A22A8C /* AppDelegate.swift in Sources */,
@@ -839,6 +855,7 @@
 			baseConfigurationReference = 53A86E5FA450BF55D0EC035F /* Pods-ChatBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 764W7G7Y88;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatNalog/Resources/Info.plist";
@@ -848,6 +865,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = ChatBot;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -858,6 +876,7 @@
 			baseConfigurationReference = A3CC2F5BA9F429165F7D90FF /* Pods-ChatBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 764W7G7Y88;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatNalog/Resources/Info.plist";
@@ -867,6 +886,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = ChatBot;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
