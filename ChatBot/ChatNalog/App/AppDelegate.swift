@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Services
         services.forEach { _ = $0.application?(application, didFinishLaunchingWithOptions: launchOptions) }
         
-        let vc = LoginModule.build()
+        let vc = ChatModule.build()
         let nvc = UINavigationController(rootViewController: vc)
         
         window?.rootViewController = nvc

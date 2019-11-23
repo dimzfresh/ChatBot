@@ -13,7 +13,7 @@ public typealias Resource = (method: HTTPMethod, route: String)
 
 public protocol APIRequest: AlamofireManager {
             
-    var resource: Resource { get }
+    var route: String { get set }
       
     var encoding: Alamofire.ParameterEncoding { get }
     
@@ -29,13 +29,13 @@ public protocol APIRequest: AlamofireManager {
 
 extension APIRequest {
 
-    var url: String { Server.base.description + resource.route }
+    var url: String { Server.base.description + route }
     
     var method: Alamofire.HTTPMethod { .get }
 
     public var encoding: Alamofire.ParameterEncoding { method == .get ? URLEncoding.default : JSONEncoding.default }
     
-    var parameters: [String : Any]? { nil }
+    public var parameters: [String : Any]? { nil }
  
     public var headers: HTTPHeaders { defaultHeaders }
        

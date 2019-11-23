@@ -11,7 +11,7 @@ import UIKit
 public enum Storyboards: String {
     case splash = "LaunchScreen"
     case login = "Login"
-    case main = "Main"
+    case chat = "Chat"
     
     var instance: UIStoryboard {
         return UIStoryboard(name: self.rawValue, bundle: nil)

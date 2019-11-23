@@ -43,15 +43,6 @@ extension UIViewController {
         return presentingViewController != nil
     }
     
-    func setTitleView() {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 21))
-        imageView.image = #imageLiteral(resourceName: "logo_name")
-        imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 21).isActive = true
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
-    }
-    
     //@available(*, deprecated)
     func showAlert(title: String?, message: String, dismiss: Bool = false) {
    

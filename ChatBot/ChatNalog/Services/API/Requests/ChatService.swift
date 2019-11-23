@@ -1,5 +1,5 @@
 //
-//  UserService.swift
+//  ChatService.swift
 //  ChatBot
 //
 //  Created by Dmitrii Ziablikov on 13/10/2019.
@@ -9,18 +9,18 @@
 import RxSwift
 import Foundation
 
-public typealias OservableResult = Observable<ApiResult<ApiErrorMessage, LoginModel>>
+public typealias OservableResult = Observable<ApiResult<ApiErrorMessage, ChatModel>>
 
-public final class UserService {
+public final class ChatService {
     
     private let networkClient: APIClient = APIClient()
 
-    public func login(email: String, password: String) -> Observable<LoginModel> {
-        let request = RequestsFactory.User.login(email: email, password: password).request
+    public func sendQuestion(text: String) -> Observable<ChatModel> {
+        let request = RequestsFactory.Chat.question(text).request
         
         let raw: OservableResult = networkClient.process(request)
         
-        let result = raw.flatMap { result -> Observable<LoginModel> in
+        let result = raw.flatMap { result -> Observable<ChatModel> in
             switch result {
             case .success(let value):
                 return .just(value)
@@ -28,7 +28,7 @@ public final class UserService {
                 return .error(AppError.serverResponseError(error.code ?? 0, error.message ?? ""))
             }
         }
-        .catchError { error -> Observable<LoginModel> in
+        .catchError { error -> Observable<ChatModel> in
             if (error as NSError).code == NSURLErrorNotConnectedToInternet {
                 return .error(AppError.networkError(error))
             } else {

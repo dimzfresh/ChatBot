@@ -10,38 +10,41 @@ import Alamofire
 import RxSwift
 
 public final class RequestsFactory {
-    enum User {
-        case login(email: String, password: String)
-        case logout
-        //case getUser(String)
+    enum Chat {
+        case question(String)
 
         public var request: APIRequest {
             switch self {
-            case .login(let email, let password):
-                return LoginRequest(email: email, password: password)
+
+            case .question(let text):
+                return QuestionRequest(text: text)
+            }
+        }
+    }
+    
+    enum Session {
+        case logout
+
+        public var request: APIRequest {
+            switch self {
             case .logout:
-                return LoginRequest(email: "email", password: "password")
-            //case .getUser(let id):
-                //return (.get, "/user/\(id)")
+                return QuestionRequest(text: "")
             }
         }
     }
 }
 
-public final class LoginRequest: APIRequest {
-            
-    public var resource: Resource { (method: .post, route: "/cashier/login") }
-    public var method: HTTPMethod { resource.method }
+public final class QuestionRequest: APIRequest {
+    public var route: String = "/ChatbotV2"
+    public var method: HTTPMethod { .get }
     
-    private let email: String
-    private let password: String
-    
-    public var parameters: [String : Any]? {
-        return ["email" : "testuser1@varakush.com", "password" : "qwerty123"]
+    private var text: String {
+        didSet {
+            route += "?userQuestion=\(text)"
+        }
     }
     
-    init(email: String, password: String) {
-        self.email = email
-        self.password = password
+    init(text: String) {
+        self.text = text
     }
 }
