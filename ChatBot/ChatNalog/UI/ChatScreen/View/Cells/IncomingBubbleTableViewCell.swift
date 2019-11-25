@@ -9,12 +9,22 @@
 import UIKit
 
 final class IncomingBubbleTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    var message: ChatModel? {
+        didSet {
+            userNameLabel.text = "Чатбот"
+            messageLabel.text = message?.text
+        }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setup()
+    }
 }
 
 private extension IncomingBubbleTableViewCell {
@@ -22,3 +32,4 @@ private extension IncomingBubbleTableViewCell {
         selectionStyle = .blue
     }
 }
+

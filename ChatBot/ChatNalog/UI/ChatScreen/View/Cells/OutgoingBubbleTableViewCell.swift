@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 final class OutgoingBubbleTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    var message: ChatModel? {
+        didSet {
+            userNameLabel.text = "Пользователь"
+            messageLabel.text = message?.text
+        }
     }
     
+    var answers = BehaviorRelay<[AnswerButton]>(value: [])
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        setup()
+    }
 }
 
 private extension OutgoingBubbleTableViewCell {

@@ -14,6 +14,8 @@ import RxDataSources
 final class ChatViewController: UIViewController, BindableType {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var inputTextView: UITextView!
+    @IBOutlet private weak var sendButton: UIButton!
     
     var viewModel: ChatViewModel!
     
@@ -31,61 +33,65 @@ final class ChatViewController: UIViewController, BindableType {
         case .outgoing:
             return self.configOutgoingCell(for: message, atIndex: indexPath)
         case .incoming:
-            return self.configOutgoingCell(for: message, atIndex: indexPath)
+            return self.configIncomingCell(for: message, atIndex: indexPath)
         }
     }
                 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        addFirstMessage()
+        viewModel.addFirstMessage()
     }
-    
 }
 
 extension ChatViewController: UITableViewDelegate {
     func configOutgoingCell(for message: ChatModel, atIndex: IndexPath) -> UITableViewCell {
-        guard let cell = self.tableView.dequeue(OutgoingBubbleTableViewCell.self) else {
+        guard let cell = tableView.dequeue(OutgoingBubbleTableViewCell.self) else {
             return UITableViewCell()
         }
-        //cell.viewModel = student
+        cell.message = message
         return cell
     }
     
     func configIncomingCell(for message: ChatModel, atIndex: IndexPath) -> UITableViewCell {
-        guard let cell = self.tableView.dequeue(IncomingBubbleTableViewCell.self) else {
+        guard let cell = tableView.dequeue(IncomingBubbleTableViewCell.self) else {
             return UITableViewCell()
         }
-        //cell.viewModel = student
+        cell.message = message
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
 
 extension ChatViewController {
     func setup() {
-        setupTableView()
-        bind()
         keyboard()
     }
     
     private func setupTableView() {
+        //tableView.delegate = nil
+        //tableView.dataSource = nil
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        tableView.bounces = false
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
         
-        tableView.register(OutgoingBubbleTableViewCell.self, forCellReuseIdentifier: OutgoingBubbleTableViewCell.identifier)
-        tableView.register(IncomingBubbleTableViewCell.self, forCellReuseIdentifier: IncomingBubbleTableViewCell.identifier)
+        tableView.register(OutgoingBubbleTableViewCell.nib, forCellReuseIdentifier: OutgoingBubbleTableViewCell.identifier)
+        tableView.register(IncomingBubbleTableViewCell.nib, forCellReuseIdentifier: IncomingBubbleTableViewCell.identifier)
     }
     
     // MARK: BindableType
     
     func bindViewModel() {
+        setupTableView()
         bind()
     }
     
@@ -93,8 +99,21 @@ extension ChatViewController {
         guard let viewModel = viewModel else { return }
                 
         viewModel.messages
-        .bind(to: tableView.rx.items(dataSource: dataSource))
-        .disposed(by: disposeBag)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        inputTextView.rx.text
+            .orEmpty
+            .bind(to: viewModel.question)
+            .disposed(by: disposeBag)
+        
+        sendButton.rx.tap
+            //.debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.addMessage()
+                self?.viewModel.request()
+            })
+            .disposed(by: disposeBag)
         
 //        dataSource.titleForHeaderInSection = { dataSource, index in
 //          return dataSource.sectionModels[index].header
@@ -111,35 +130,14 @@ extension ChatViewController {
 //        dataSource.canMoveRowAtIndexPath = { dataSource, indexPath in
 //          return true
 //        }
-                        
-//        viewModel.chat.bind(to: tableView.rx.items(cellIdentifier: "cell")) { row, model, cell in
-//            cell.textLabel?.text = " "
-//            cell.textLabel?.numberOfLines = 0
-//            cell.selectionStyle = .none
-//        }.disposed(by: disposeBag)
-        
-//        emailTextField.rx.text
-//            .orEmpty
-//            .bind(to: viewModel.question)
-//            .disposed(by: disposeBag)
-//
-//        passwordTextField.rx.text
-//            .orEmpty
-//            .bind(to: viewModel.password)
-//            .disposed(by: disposeBag)
-//
+
+
 //        let email = emailTextField.rx.text.orEmpty.asObservable()
 //        let password = passwordTextField.rx.text.orEmpty.asObservable()
 //
 //        viewModel.enterButtonValid(email: email, password: password)
 //            .bind(to: enterButton.rx.isEnabled)
 //            .disposed(by: disposeBag)
-        
-    }
-    
-    private func addFirstMessage() {
-        let firstMessage = ChatModel(dialogID: nil, text: "Добрый день, задайте вопрос!", buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
-        viewModel.messages.onNext([SectionOfChat(model: .incoming, items: [.message(info: firstMessage)])])
     }
     
     private func keyboard() {

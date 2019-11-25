@@ -7,12 +7,29 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class AnswerCollectionViewCell: UICollectionViewCell {
-
+final class AnswerCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet private weak var answerButton: UIButton!
+    
+    private let disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        setup()
     }
 
+}
+
+private extension AnswerCollectionViewCell {
+    func setup() {
+        answerButton.rx.tap.subscribe(onNext: { _ in
+            
+        })
+        .disposed(by: disposeBag)
+        
+    }
 }

@@ -16,8 +16,87 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="336" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RIU-2g-2gh">
+                        <rect key="frame" x="16" y="16" width="304" height="74"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="War-ZD-fVe">
+                                <rect key="frame" x="137.5" y="0.0" width="166.5" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-wg-s0a">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пользователь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBV-B7-lFF">
+                                        <rect key="frame" x="38" y="5.5" width="108.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-je-sXA">
+                                        <rect key="frame" x="154.5" y="9" width="12" height="12"/>
+                                        <color key="backgroundColor" red="0.36862745099999999" green="0.52941176469999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="FE9-Ou-XfB"/>
+                                            <constraint firstAttribute="height" constant="12" id="HfQ-CY-gXd"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-8H-YD3">
+                                <rect key="frame" x="198.5" y="38" width="105.5" height="36"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-jv-3sK">
+                                        <rect key="frame" x="0.0" y="0.0" width="105.5" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сообщение" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHw-JN-kOc">
+                                                <rect key="frame" x="8" y="8" width="89.5" height="24"/>
+                                                <color key="backgroundColor" red="0.36862745098039218" green="0.52941176470588236" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.36862745099999999" green="0.52941176469999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="BHw-JN-kOc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iFg-jv-3sK" secondAttribute="leading" constant="8" id="B1B-6g-e9m"/>
+                                            <constraint firstAttribute="bottom" secondItem="BHw-JN-kOc" secondAttribute="bottom" constant="4" id="GDs-Nu-x4Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="BHw-JN-kOc" secondAttribute="trailing" constant="8" id="HdL-gJ-TEN"/>
+                                            <constraint firstItem="BHw-JN-kOc" firstAttribute="top" secondItem="iFg-jv-3sK" secondAttribute="top" constant="8" id="NC5-mP-QQ2"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="iOI-tF-O1E"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RIU-2g-2gh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="UPc-Yc-pBH"/>
+                    <constraint firstAttribute="trailing" secondItem="RIU-2g-2gh" secondAttribute="trailing" constant="16" id="grJ-yl-yku"/>
+                    <constraint firstItem="RIU-2g-2gh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="sH2-5U-q48"/>
+                    <constraint firstAttribute="bottom" secondItem="RIU-2g-2gh" secondAttribute="bottom" constant="16" id="ydu-Ds-HI9"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="messageLabel" destination="BHw-JN-kOc" id="N5F-eS-bOZ"/>
+                <outlet property="userNameLabel" destination="eBV-B7-lFF" id="WyE-tV-gKe"/>
+            </connections>
             <point key="canvasLocation" x="126.08695652173914" y="154.6875"/>
         </tableViewCell>
     </objects>
