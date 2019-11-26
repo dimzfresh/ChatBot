@@ -26,56 +26,79 @@ final class ChatViewModel: BaseViewModel {
     
     private let service: Service?
     private let disposeBag = DisposeBag()
-    
-    let question = BehaviorRelay<String>(value: "")
+        
+    let questionInput = BehaviorRelay<String>(value: "")
+    let answerInput = BehaviorSubject<AnswerRequestInput?>(value: nil)
     var messages = BehaviorRelay<[SectionOfChat]>(value: [])
     
+    var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
+
     init(service: Service?) {
         self.service = service
     }
     
     func addFirstMessage() {
         let firstMessage = ChatModel(dialogID: nil, text: "Добрый день, задайте вопрос!", buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
-        messages.accept([SectionOfChat(model: .incoming, items: [.message(info: firstMessage)])])
+        let new = [SectionOfChat(model: .incoming, items: [.message(info: firstMessage)])]
+        messages.accept(new)
+        scrollPosition.on(.next(.bottom))
     }
     
-    func addMessage() {
-        guard !question.value.isEmpty else { return }
-        
-        let text = question.value
-        let message = ChatModel(dialogID: nil, text: text, buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
-        let new = [SectionOfChat(model: .outgoing, items: [.message(info: message)])]
-        messages.accept(messages.value + new)            
+    func sendQuestion() {
+        guard !questionInput.value.isEmpty else { return }
+
+        addMessage()
+        question()
     }
     
-    func request() {
-        //send()
+    func sendAnswer() {
+        answer()
     }
 }
 
 private extension ChatViewModel {
-    func send() {
-        service?.sendQuestion(text: question.value)
+    func question() {
+        let text = questionInput.value
+        questionInput.accept("")
+        
+        service?.sendQuestion(text: text)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
-            }, onError: { [weak self] error in
+            self?.scrollPosition.on(.next(.bottom))
+            }, onError: { error in
                 print(error)
         })
         .disposed(by: disposeBag)
     }
     
-    func processItems(for chat: [ChatModel]) {
+    func answer() {
+        service?.sendAnswer(input: AnswerRequestInput(text: ""))
+        .subscribe(onNext: { [weak self] model in
+            self?.processItems(for: model)
+            self?.scrollPosition.on(.next(.bottom))
+            }, onError: { error in
+                print(error)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func processItems(for chat: ChatModel) {
 //        let incomingItems: [TableViewItem] = chat
 //            .filter { $0.buttons != nil }
 //            .map { .message(info: $0) }
-//
-//        let outgoingItems: [TableViewItem] = chat
-//            .filter { $0.buttons != nil }
-//            .map { .message(info: $0) }
-//
-//        let sections = [SectionOfChat(model: .incoming, items: incomingItems),
-//                        SectionOfChat(model: .outgoing, items: outgoingItems)]
-//
-//        messages.onNext(sections)
+
+        let outgoingItems: [TableViewItem] = [.message(info: chat)]
+        let new = [SectionOfChat(model: .incoming, items: outgoingItems)]
+
+        messages.accept(messages.value + new)
+    }
+    
+    func addMessage() {
+        let text = questionInput.value
+        let message = ChatModel(dialogID: nil, text: text, buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
+        let new = [SectionOfChat(model: .outgoing, items: [.message(info: message)])]
+        messages.accept(messages.value + new)
+        
+        scrollPosition.on(.next(.bottom))
     }
 }

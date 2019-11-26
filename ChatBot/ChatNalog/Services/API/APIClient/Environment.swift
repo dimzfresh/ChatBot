@@ -9,7 +9,7 @@
 import Foundation
 
 public enum Server: String {
-    case base = "https://chatbotfnsapi.azurewebsites.net/api/"
+    case base = "https://chatbotfnsapi.azurewebsites.net/api"
     
     var description: String {
         switch self {

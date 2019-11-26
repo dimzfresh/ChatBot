@@ -16,6 +16,12 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
     
     private let disposeBag = DisposeBag()
     
+    var answer: AnswerButton? {
+        didSet {
+            answerButton.setTitle(answer?.name, for: .normal)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -26,10 +32,10 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
 
 private extension AnswerCollectionViewCell {
     func setup() {
-        answerButton.rx.tap.subscribe(onNext: { _ in
-            
-        })
-        .disposed(by: disposeBag)
-        
+        answerButton.layer.cornerRadius = 4
+//        answerButton.rx.tap.subscribe(onNext: { _ in
+//            
+//        })
+//        .disposed(by: disposeBag)
     }
 }

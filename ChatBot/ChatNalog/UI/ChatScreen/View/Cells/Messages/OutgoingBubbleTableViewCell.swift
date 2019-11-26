@@ -12,13 +12,12 @@ import RxSwift
 
 final class OutgoingBubbleTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var messageLabel: UILabel!
     
     var message: ChatModel? {
         didSet {
-            userNameLabel.text = "Пользователь"
-            messageLabel.text = message?.text
+            process()
         }
     }
     
@@ -33,6 +32,11 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
 
 private extension OutgoingBubbleTableViewCell {
     func setup() {
-        selectionStyle = .blue
+        selectionStyle = .none
+    }
+    
+    func process() {
+        userNameLabel.text = "Пользователь"
+        messageLabel.text = message?.text
     }
 }

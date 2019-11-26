@@ -35,9 +35,9 @@ extension APIClient {
         let parameters = request.parameters
         let headers = request.headers
         
-        let observable = RxAlamofire.requestData(method, url, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        let observable = RxAlamofire.requestData(method, url, parameters: parameters, encoding: request.encoding, headers: headers)
             .debug()
-            .observeOn(scheduler)
+            //.observeOn(scheduler)
             .asObservable()
             .expectingObject(ofType: Model.self)
         
@@ -91,6 +91,7 @@ extension Observable where Element == (HTTPURLResponse, Data) {
             switch httpURLResponse.statusCode {
             case 200...299:
                 let object = try JSONDecoder().decode(type, from: data)
+                print(String(data: data, encoding: .utf8))
                 return .success(object)
             default:
                 // otherwise try

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BCACF0589E69A5CDB24F3A5 /* Pods_ChatBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8841AB92BA2CFBF650EAA9 /* Pods_ChatBotTests.framework */; };
+		5A00896E238D491200F26C66 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A00896D238D491200F26C66 /* InputView.swift */; };
 		5A1C364C23531CB700DE587A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364B23531CB700DE587A /* APIClient.swift */; };
 		5A1C364E23531D2000DE587A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364D23531D2000DE587A /* Environment.swift */; };
 		5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364F23531EB700DE587A /* RequestsFactory.swift */; };
@@ -55,6 +56,7 @@
 		5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */; };
 		5AB705EB234A7DF400C23C3C /* String+SHA256+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */; };
 		5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EC234A7E9D00C23C3C /* Bundle.swift */; };
+		5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */; };
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
 		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
 		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
@@ -80,6 +82,7 @@
 		23E05EB620EF780FCD23FF4A /* Pods-VarakushCashier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashier.debug.xcconfig"; path = "Target Support Files/Pods-VarakushCashier/Pods-VarakushCashier.debug.xcconfig"; sourceTree = "<group>"; };
 		3AAB4D817B158786017D06E2 /* Pods-VarakushCashierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashierTests.debug.xcconfig"; path = "Target Support Files/Pods-VarakushCashierTests/Pods-VarakushCashierTests.debug.xcconfig"; sourceTree = "<group>"; };
 		53A86E5FA450BF55D0EC035F /* Pods-ChatBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.debug.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.debug.xcconfig"; sourceTree = "<group>"; };
+		5A00896D238D491200F26C66 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		5A1C364B23531CB700DE587A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		5A1C364D23531D2000DE587A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		5A1C364F23531EB700DE587A /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
@@ -116,7 +119,7 @@
 		5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelType.swift"; sourceTree = "<group>"; };
 		5A8F4360234A4B0A007FB89F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5A8F4365234A4DFA007FB89F /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		5AB57EBB231C5E4F00A22A8C /* ChatBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Чатналог.рф.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB57EBE231C5E4F00A22A8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AB57EC0231C5E4F00A22A8C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5AB57EC3231C5E4F00A22A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 		5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SHA256+Base64.swift"; sourceTree = "<group>"; };
 		5AB705EC234A7E9D00C23C3C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -162,6 +166,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A00896A238C8F0C00F26C66 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				5A55D8742389660D00318A53 /* OutgoingBubbleTableViewCell.swift */,
+				5A55D8752389660D00318A53 /* OutgoingBubbleTableViewCell.xib */,
+				5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */,
+				5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		5A00896B238C8F1600F26C66 /* Answers */ = {
+			isa = PBXGroup;
+			children = (
+				5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */,
+				5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */,
+			);
+			path = Answers;
+			sourceTree = "<group>";
+		};
+		5A00896C238D490300F26C66 /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				5A00896D238D491200F26C66 /* InputView.swift */,
+			);
+			path = InputView;
+			sourceTree = "<group>";
+		};
 		5A1C36512353208900DE587A /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +223,7 @@
 		5A1C366123538ADC00DE587A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5A00896C238D490300F26C66 /* InputView */,
 				5A1C366623538B0400DE587A /* Activity */,
 			);
 			path = CustomViews;
@@ -240,12 +273,8 @@
 		5A55D8722389659D00318A53 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5A55D8742389660D00318A53 /* OutgoingBubbleTableViewCell.swift */,
-				5A55D8752389660D00318A53 /* OutgoingBubbleTableViewCell.xib */,
-				5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */,
-				5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */,
-				5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */,
-				5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */,
+				5A00896A238C8F0C00F26C66 /* Messages */,
+				5A00896B238C8F1600F26C66 /* Answers */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -320,6 +349,7 @@
 			children = (
 				5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */,
 				5AC11AA023896F350082B34D /* UITableViewCell.swift */,
+				5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */,
 				5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */,
 				5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */,
 				5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */,
@@ -360,7 +390,7 @@
 		5AB57EBC231C5E4F00A22A8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AB57EBB231C5E4F00A22A8C /* ChatBot.app */,
+				5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */,
 				5AB57ECF231C5E5100A22A8C /* ChatBotTests.xctest */,
 			);
 			name = Products;
@@ -477,7 +507,7 @@
 			);
 			name = ChatBot;
 			productName = VarakushCashier;
-			productReference = 5AB57EBB231C5E4F00A22A8C /* ChatBot.app */;
+			productReference = 5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5AB57ECE231C5E5100A22A8C /* ChatBotTests */ = {
@@ -679,10 +709,12 @@
 				5A1C365723532A7D00DE587A /* PagingRequest.swift in Sources */,
 				5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */,
 				5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */,
+				5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */,
 				5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */,
 				5AB57EE0231C5EF400A22A8C /* Style.swift in Sources */,
 				5AB57EBF231C5E4F00A22A8C /* AppDelegate.swift in Sources */,
 				5A1C366523538AFD00DE587A /* ActivityView.swift in Sources */,
+				5A00896E238D491200F26C66 /* InputView.swift in Sources */,
 				5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */,
 				5AB705E3234A780500C23C3C /* UIView+LayoutAnchor.swift in Sources */,
 				5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */,
@@ -864,7 +896,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
-				PRODUCT_NAME = ChatBot;
+				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -885,7 +917,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
-				PRODUCT_NAME = ChatBot;
+				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

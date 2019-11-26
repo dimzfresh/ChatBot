@@ -3,18 +3,76 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
+         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "question.value">
+               value = "self.inputStackViewConstraint.constant">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "frame">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.scrollToBottom(animated:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView.numberOfSections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message?.buttons">
+            </PersistentString>
+            <PersistentString
+               value = "collectionStackView.isHidden">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.isHidden">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "dataSource.sectionModels">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "question.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

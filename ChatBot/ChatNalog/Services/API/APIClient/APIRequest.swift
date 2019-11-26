@@ -33,7 +33,7 @@ extension APIRequest {
     
     var method: Alamofire.HTTPMethod { .get }
 
-    public var encoding: Alamofire.ParameterEncoding { method == .get ? URLEncoding.default : JSONEncoding.default }
+    public var encoding: Alamofire.ParameterEncoding { method == .get ? URLEncoding.queryString : JSONEncoding.default }
     
     public var parameters: [String : Any]? { nil }
  
