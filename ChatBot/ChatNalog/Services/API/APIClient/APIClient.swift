@@ -91,7 +91,6 @@ extension Observable where Element == (HTTPURLResponse, Data) {
             switch httpURLResponse.statusCode {
             case 200...299:
                 let object = try JSONDecoder().decode(type, from: data)
-                print(String(data: data, encoding: .utf8))
                 return .success(object)
             default:
                 // otherwise try

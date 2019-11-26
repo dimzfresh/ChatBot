@@ -15,8 +15,8 @@ public final class ChatService {
     
     private let networkClient: APIClient = APIClient()
 
-    public func sendQuestion(text: String) -> Observable<ChatModel> {
-        let request = RequestsFactory.Chat.question(text).request
+    public func sendQuestion(text: String, id: String) -> Observable<ChatModel> {
+        let request = RequestsFactory.Chat.question(text, id: id).request
         
         let raw: OservableResult = networkClient.process(request)
         

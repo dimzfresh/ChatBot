@@ -30,10 +30,10 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var collectionStackView: UIStackView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private var items = BehaviorRelay<[AnswerSectionModel]>(value: [])
     var selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
-    
+
     private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<AnswerSectionModel>(configureCell: configureCell)
 
     private lazy var configureCell: RxCollectionViewSectionedReloadDataSource<AnswerSectionModel>.ConfigureCell = { [weak self] (_, tableView, indexPath, item) in
@@ -56,6 +56,12 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         setup()
         bind()
     }
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//
+//        disposeBag = DisposeBag()
+//    }
 }
 
 private extension IncomingBubbleTableViewCell {
@@ -75,11 +81,11 @@ private extension IncomingBubbleTableViewCell {
             .subscribe(onNext: { [weak self] item in
                 guard let item = item else { return }
                 switch item {
-                case .button(let answer): break
-                    //self?.presentArticleDetailViewController(article: article)
+                case .button(let answer):
+                    self?.selectedItem.on(.next(answer))
                 }
             })
-            .disposed(by: disposeBag)        
+            .disposed(by: disposeBag)
     }
     
     func buttonCell(indexPath: IndexPath, answer: AnswerButton) -> UICollectionViewCell {
@@ -97,8 +103,10 @@ private extension IncomingBubbleTableViewCell {
     }
     
     func process() {
-        userNameLabel.text = "Чатбот"
+        selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
         
+        userNameLabel.text = "Чатбот"
+                
         guard message?.buttons?.isEmpty == false else {
             collectionStackView.isHidden = true
             collectionView.isHidden = true
@@ -120,7 +128,7 @@ private extension IncomingBubbleTableViewCell {
             
             newAnswers.append(AnswerSectionModel(model: .main, items: [.button(answer: $0)]))
             
-            if current != message?.buttons?.count {
+            if current != message?.buttons?.count, !description.isEmpty  {
                 text += "\n"
             }
             current += 1
@@ -159,5 +167,14 @@ extension IncomingBubbleTableViewCell: UICollectionViewDelegate, UICollectionVie
             return CGSize(width: width, height: 40)
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        
+//        let item = items.value[indexPath.section].items[indexPath.row]
+//        switch item {
+//        case .button(let answer):
+//            selectedItem.on(.next(answer))
+//        }
+//    }
 }
 

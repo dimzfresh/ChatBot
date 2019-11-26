@@ -25,23 +25,9 @@ extension AlamofireManager {
         return auth
     }
     
-    private var salt: String {
-        return "q1w9e2r8t3y7"
-    }
-    
     var defaultHeaders: HTTPHeaders {
-        let uuid = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        let uuidBase64 = uuid.toBase64()
-        
-        let hashStr = uuid + salt
-        let data = hashStr.data(using: .utf8) ?? Data()
-        let raw = hashStr.digest(input: data as NSData)
-        let hash = raw.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-
-        var headers: HTTPHeaders = ["Accept": "application/vnd.varakush.v1+json",
-                                    "Content-Type": "application/json",
-                                    "X-Varakush-Identity": uuidBase64 + " " + hash,
-                                    "User-Agent":  "Varakush-Cashier-iOS/\(Bundle.main.releaseVersionNumber)/ \(UIDevice.current.type)"]
+        var headers: HTTPHeaders = ["Content-Type": "application/json",
+                                    "User-Agent":  "ChatNalog-iOS/\(Bundle.main.releaseVersionNumber)/ \(UIDevice.current.type)"]
         if !auth.token.isEmpty {
             headers["Authorization"] = "Bearer \(auth.token)"
         }

@@ -12,13 +12,13 @@ import Foundation
 
 public final class RequestsFactory {
     enum Chat {
-        case question(String)
+        case question(String, id: String)
         case answer(AnswerRequestInput)
 
         public var request: APIRequest {
             switch self {
-            case .question(let text):
-                return QuestionRequest(text: text)
+            case .question(let text, let id):
+                return QuestionRequest(text: text, id: id)
             case .answer(let input):
                 return AnswerRequest(input: input)
             }
@@ -31,7 +31,7 @@ public final class RequestsFactory {
         public var request: APIRequest {
             switch self {
             case .logout:
-                return QuestionRequest(text: "")
+                return QuestionRequest(text: "", id: "")
             }
         }
     }
@@ -42,10 +42,19 @@ public final class QuestionRequest: APIRequest {
     public var route: String = "/ChatbotV2?userQuestion="
     public var method: HTTPMethod { .get }
     
-    private var text: String
+    public var headers: HTTPHeaders {
+        var h = defaultHeaders
+        h["dialogid"] = dialogid
+        return h
+    }
     
-    init(text: String) {
+    private var text: String
+    private var dialogid = ""
+    
+    init(text: String, id: String) {
         self.text = text
+        self.dialogid = id
+
         let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
         route = route + encoded
     }
@@ -77,6 +86,17 @@ public final class AnswerRequest: APIRequest {
         self.text = input.text
         let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
         route = route + encoded
+    }
+}
+
+public struct QuestionRequestInput {
+    var content: String = ""
+    var type: String = ""
+    var id: String = ""
+    var text: String
+    
+    init(text: String) {
+        self.text = text
     }
 }
 

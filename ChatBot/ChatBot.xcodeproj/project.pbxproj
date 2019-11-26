@@ -19,6 +19,7 @@
 		5A1C365D235333A000DE587A /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C365C2353339F00DE587A /* MultipartRequest.swift */; };
 		5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C365F2353872300DE587A /* BaseViewModel.swift */; };
 		5A1C366523538AFD00DE587A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C366423538AFD00DE587A /* ActivityView.swift */; };
+		5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */; };
 		5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D869238956CF00318A53 /* ChatModule.swift */; };
 		5A55D86D238957A300318A53 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D86C238957A300318A53 /* ChatModel.swift */; };
 		5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D87023895BA900318A53 /* ChatViewModel.swift */; };
@@ -93,6 +94,7 @@
 		5A1C365C2353339F00DE587A /* MultipartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		5A1C365F2353872300DE587A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5A1C366423538AFD00DE587A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		5A55D869238956CF00318A53 /* ChatModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModule.swift; sourceTree = "<group>"; };
 		5A55D86C238957A300318A53 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		5A55D87023895BA900318A53 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		5A1C366123538ADC00DE587A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5A3D0BEF238DB15800C60EB5 /* AnimatedButton */,
 				5A00896C238D490300F26C66 /* InputView */,
 				5A1C366623538B0400DE587A /* Activity */,
 			);
@@ -235,6 +238,14 @@
 				5A1C366423538AFD00DE587A /* ActivityView.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		5A3D0BEF238DB15800C60EB5 /* AnimatedButton */ = {
+			isa = PBXGroup;
+			children = (
+				5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */,
+			);
+			path = AnimatedButton;
 			sourceTree = "<group>";
 		};
 		5A55D868238956B700318A53 /* ChatModule */ = {
@@ -702,6 +713,7 @@
 				5AB57EC1231C5E4F00A22A8C /* ChatViewController.swift in Sources */,
 				5A1C365D235333A000DE587A /* MultipartRequest.swift in Sources */,
 				5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */,
+				5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */,
 				5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */,
 				5A1C365923532C1300DE587A /* APIRequestErrorInformation.swift in Sources */,
 				5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */,

@@ -3,21 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.inputStackViewConstraint.constant">
+               value = "message">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
+         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "frame">
-            </PersistentString>
-            <PersistentString
-               value = "collectionView.frame">
+               value = "self.inputStackViewConstraint.constant">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -47,13 +44,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "frame">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "message">
+               value = "self.viewModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -30,7 +30,8 @@ final class ChatViewController: UIViewController, BindableType {
     private let disposeBag = DisposeBag()
             
     private lazy var dataSource = RxTableViewSectionedReloadDataSource<SectionOfChat>(configureCell: configureCell)
-    private lazy var configureCell: RxTableViewSectionedReloadDataSource<SectionOfChat>.ConfigureCell = { [unowned self] (dataSource, tableView, indexPath, item) in
+    private lazy var configureCell: RxTableViewSectionedReloadDataSource<SectionOfChat>.ConfigureCell = { [weak self] (dataSource, tableView, indexPath, item) in
+        guard let self = self else { return UITableViewCell() }
         
         let section = dataSource.sectionModels[indexPath.section]
         guard case let TableViewItem.message(message) = item else {
@@ -65,7 +66,6 @@ final class ChatViewController: UIViewController, BindableType {
 
         setup()
     }
-
 }
 
 extension ChatViewController: UITableViewDelegate {
@@ -83,8 +83,17 @@ extension ChatViewController: UITableViewDelegate {
         }
         cell.message = message
         cell.selectedItem
-            .subscribe(onNext: { [weak self] position in
-                self?.viewModel.sendQuestion()
+            .subscribe(onNext: { [weak self, atIndex] answer in
+                guard let self = self, let answer = answer else { return }
+                var input = AnswerRequestInput(text: "")
+                input.content = answer.content ?? ""
+                let section = self.dataSource.sectionModels[atIndex.section]
+                if case let TableViewItem.message(message) = section.items[atIndex.row] {
+                    input.id = "\(message.dialogID ?? 0)"
+                }
+                input.type = "\(answer.type ?? 0)"
+
+                self.viewModel.answerOutput.on(.next(input))
             }).disposed(by: disposeBag)
         return cell
     }
@@ -92,22 +101,27 @@ extension ChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
 }
 
 extension ChatViewController {
     private func setup() {
-        setupTitle()
+        bindTitle()
         keyboard()
     }
     
-    private func setupTitle() {
-        let partOne = NSAttributedString(string: "Налоговый помощник Жора",
+    private func bindTitle() {
+        viewModel.title
+            .subscribe(onNext: { [weak self] title in
+                guard let self = self else { return }
+                self.setupTitle(title: title)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupTitle(title: ChatTitle) {
+        let partOne = NSAttributedString(string: title.main,
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .semibold)])
-        let partTwo = NSAttributedString(string: "\nОнлайн",
+        let partTwo = NSAttributedString(string: title.sub,
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14, weight: .regular)])
         let buttonTitle = NSMutableAttributedString()
         buttonTitle.append(partOne)
@@ -116,14 +130,11 @@ extension ChatViewController {
         titleButton.titleLabel?.numberOfLines = 0
         titleButton.titleLabel?.lineBreakMode = .byWordWrapping
         titleButton.setAttributedTitle(buttonTitle, for: .normal)
-        //("Налоговый помощник Жора\nОнлайн", for: .normal)
         titleButton.titleLabel?.textAlignment = .left
         titleButton.sizeToFit()
     }
         
     private func setupTableView() {
-        //tableView.delegate = nil
-        //tableView.dataSource = nil
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
@@ -157,20 +168,15 @@ extension ChatViewController {
         inputTextView.rx.text
             .orEmpty
             .do(onNext: { [weak self] text in
-                guard let self = self else { return }
-                self.sendButton.isEnabled = !text.isEmpty
-                let image: UIImage = text.isEmpty ? #imageLiteral(resourceName: "send_button_empty") : #imageLiteral(resourceName: "send_button_ok")
-                UIView.transition(with: self.sendButton, duration: 0.15, options: .transitionCrossDissolve, animations: {
-                    self.sendButton.setImage(image, for: .normal)
-                })
+                self?.updateControls(empty: text.isEmpty)
             })
             .bind(to: viewModel.questionInput)
             .disposed(by: disposeBag)
         
         viewModel.questionInput
             .asObservable()
-            .bind { text in
-                self.inputTextView.text = text
+            .bind { [weak self] text in
+                self?.inputTextView.text = text
         }
         .disposed(by: disposeBag)
         
@@ -180,7 +186,6 @@ extension ChatViewController {
                 self?.viewModel.sendQuestion()
             })
             .disposed(by: disposeBag)
-                
 //        dataSource.titleForHeaderInSection = { dataSource, index in
 //          return dataSource.sectionModels[index].header
 //        }
@@ -198,6 +203,7 @@ extension ChatViewController {
 //        }
     }
     
+    // MARK: - Keyboard
     private func keyboard() {
         inputTextView.autocorrectionType = .no
         keyboardHeight
@@ -216,6 +222,7 @@ extension ChatViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Scroll
     private func scrollToPosition(position: ScorllPosition) {
         switch position {
         case .top:
@@ -242,5 +249,20 @@ extension ChatViewController {
         DispatchQueue.main.asyncAfter(deadline: t) {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
         }
+    }
+    
+    // MARK: -
+    func updateControls(empty: Bool) {
+        self.sendButton.isEnabled = !empty
+        let image: UIImage = empty ? #imageLiteral(resourceName: "send_button_empty") : #imageLiteral(resourceName: "send_button_ok")
+        UIView.transition(with: self.sendButton, duration: 0.15, options: .transitionCrossDissolve, animations: {
+            self.sendButton.setImage(image, for: .normal)
+        })
+    }
+    
+    // MARK: - Prepare answer
+    func sendAnswer() {
+        
+        
     }
 }

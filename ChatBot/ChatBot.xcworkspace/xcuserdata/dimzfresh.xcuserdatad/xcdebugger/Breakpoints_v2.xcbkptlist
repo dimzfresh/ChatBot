@@ -62,8 +62,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,10 +94,10 @@
             filePath = "ChatNalog/UI/ChatScreen/ViewModel/ChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "ChatViewModel"
-            landmarkType = "21">
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "bind()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -146,22 +146,6 @@
                   offsetFromSymbolStart = "52">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85E0099B-F43C-451B-A097-0EF29A6FD918"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/ViewModel/ChatViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "ChatViewModel"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,8 +239,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
-            landmarkName = "init(text:)"
-            landmarkType = "7">
+            landmarkName = "QuestionRequest"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -269,9 +253,9 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
-            landmarkName = "scrollToBottom(animated:)"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "updateControls(empty:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -285,9 +269,9 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "scrollToPosition(position:)"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "updateControls(empty:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -301,8 +285,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -317,8 +301,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "process()"
             landmarkType = "7">
          </BreakpointContent>
@@ -351,8 +335,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
             endingLineNumber = "39"
-            landmarkName = "IncomingBubbleTableViewCell"
-            landmarkType = "3">
+            landmarkName = "configureCell"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -443,8 +427,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -459,8 +443,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -475,8 +459,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -484,31 +468,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F312F186-8CDB-4BA8-A42D-25BDB85C0B90"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "setupCollectionView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BA741253-3F08-42D5-A9DF-EAEDB9AFC382"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "setupCollectionView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -525,15 +493,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "setup()"
-            landmarkType = "7">
+            landmarkName = "AnswerCollectionViewCell"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4E131778-321F-406E-A115-A79ED1FE8F60"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
@@ -542,6 +510,134 @@
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "message"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "531E65D7-D7EB-47A8-ACC9-530E9F7F2C3C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "configIncomingCell(for:atIndex:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A35EE73-969A-45BC-A574-5927EADC189C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/ViewModel/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "answer(input:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9010EC6-0F79-4C03-AA51-03F18A0AC3F0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/ViewModel/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "answer(input:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "70E050DB-86F1-48FD-8518-7AA4A7863115"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "setupCollectionView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4AF24CD-0537-4871-94B9-661F2E878909"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "configIncomingCell(for:atIndex:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2ADB0BE4-09FC-4B20-8759-7C8DFC09B82A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "IncomingBubbleTableViewCell"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E8769265-47C1-4084-AF6B-E51C51C3E1BD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Cells/Messages/IncomingBubbleTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "IncomingBubbleTableViewCell"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3577B5AB-4C96-4222-A779-90FCADC8A37E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/Services/API/Requests/RequestsFactory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "headers"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

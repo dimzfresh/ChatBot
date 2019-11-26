@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 
 typealias SectionOfChat = SectionModel<TableViewSection, TableViewItem>
+typealias ChatTitle = (main:String, sub:String)
 
 enum TableViewSection {
     case outgoing
@@ -27,14 +28,18 @@ final class ChatViewModel: BaseViewModel {
     private let service: Service?
     private let disposeBag = DisposeBag()
         
+    let title = BehaviorSubject<ChatTitle>(value: (main: "Налоговый помощник Жора",
+                                                   sub: "\nОнлайн"))
+
     let questionInput = BehaviorRelay<String>(value: "")
-    let answerInput = BehaviorSubject<AnswerRequestInput?>(value: nil)
-    var messages = BehaviorRelay<[SectionOfChat]>(value: [])
+    let answerOutput = BehaviorSubject<AnswerRequestInput?>(value: nil)
+    let messages = BehaviorRelay<[SectionOfChat]>(value: [])
     
     var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
 
     init(service: Service?) {
         self.service = service
+        bind()
     }
     
     func addFirstMessage() {
@@ -50,20 +55,37 @@ final class ChatViewModel: BaseViewModel {
         addMessage()
         question()
     }
-    
-    func sendAnswer() {
-        answer()
-    }
 }
 
 private extension ChatViewModel {
+    func bind() {
+        answerOutput.subscribe(onNext: { [weak self] input in
+            guard let input = input, !input.id.isEmpty else { return }
+            self?.answer(input: input)
+        })
+        .disposed(by: disposeBag)
+    }
+    
     func question() {
         let text = questionInput.value
         questionInput.accept("")
         
-        service?.sendQuestion(text: text)
+        var id = ""
+        let _ = messages.value.last?.items.last(where: {
+            switch $0 {
+            case .message(let info):
+                if let i = info.dialogID {
+                   id = "\(i)"
+                }
+            }
+            return false
+        })
+        
+        service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
+            self?.title.on(.next((main: "Налоговый помощник Жора",
+            sub: "\nОнлайн")))
             self?.scrollPosition.on(.next(.bottom))
             }, onError: { error in
                 print(error)
@@ -71,10 +93,12 @@ private extension ChatViewModel {
         .disposed(by: disposeBag)
     }
     
-    func answer() {
-        service?.sendAnswer(input: AnswerRequestInput(text: ""))
+    func answer(input: AnswerRequestInput) {
+        service?.sendAnswer(input: input)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
+            self?.title.on(.next((main: "Налоговый помощник Жора",
+            sub: "\nОнлайн")))
             self?.scrollPosition.on(.next(.bottom))
             }, onError: { error in
                 print(error)
@@ -94,6 +118,9 @@ private extension ChatViewModel {
     }
     
     func addMessage() {
+        title.on(.next((main: "Налоговый помощник Жора",
+        sub: "\nпечатает...")))
+        
         let text = questionInput.value
         let message = ChatModel(dialogID: nil, text: text, buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
         let new = [SectionOfChat(model: .outgoing, items: [.message(info: message)])]

@@ -12,9 +12,9 @@ import RxCocoa
 
 final class AnswerCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var answerButton: UIButton!
+    @IBOutlet private weak var answerButton: AnimatedButton!
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var answer: AnswerButton? {
         didSet {
@@ -27,7 +27,11 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
 
         setup()
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
 }
 
 private extension AnswerCollectionViewCell {
