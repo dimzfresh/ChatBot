@@ -10,7 +10,7 @@ import UIKit
 
 final class CustomInputView: UITextView {
 
-    //   MARK: - public
+    // MARK: - public
 
     public var placeHolderText: String? = "Введите вопрос"
 
@@ -23,8 +23,7 @@ final class CustomInputView: UITextView {
         return placeHolderLabel
     }()
 
-    //   MARK: - Init
-
+    // MARK: - Init
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         enableNotifications()
@@ -35,20 +34,14 @@ final class CustomInputView: UITextView {
         enableNotifications()
     }
 
-    func setup() {
-        placeHolderLabel.frame = CGRect(x: 8, y: 8, width: self.bounds.size.width - 16, height: 15)
-        placeHolderLabel.sizeToFit()
-    }
-
-    //   MARK: - Cycle
-
+    // MARK: - Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
 
         textContainerInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 8)
         returnKeyType = .done
         addSubview(placeHolderLabel)
-        placeHolderLabel.frame = CGRect(x: 8, y: 8, width: self.bounds.size.width - 16, height: 15)
+        placeHolderLabel.frame = CGRect(x: 8, y: 8, width: bounds.size.width - 16, height: 15)
         placeHolderLabel.textColor = textColor
         placeHolderLabel.font = font
         placeHolderLabel.text = placeHolderText
@@ -59,14 +52,22 @@ final class CustomInputView: UITextView {
         super.layoutSubviews()
         setup()
     }
+}
 
-    //   MARK: - Notifications
-
-    private func enableNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextView.textDidChangeNotification , object: nil)
+private extension CustomInputView {
+    func setup() {
+        placeHolderLabel.frame = CGRect(x: 8, y: 8, width: bounds.size.width - 16, height: 15)
+        placeHolderLabel.sizeToFit()
     }
 
-    @objc func textDidChangeNotification(_ notify: Notification) {
+    // MARK: - Notifications
+    func enableNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextView.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextView.textDidEndEditingNotification, object: nil)
+    }
+
+    @objc
+    func textDidChangeNotification(_ notify: Notification) {
         guard self == notify.object as? UITextView else { return }
         guard placeHolderText != nil else { return }
 
@@ -74,5 +75,4 @@ final class CustomInputView: UITextView {
             self.placeHolderLabel.alpha = (self.text.count == 0) ? 0.5 : 0
         }, completion: nil)
     }
-
 }

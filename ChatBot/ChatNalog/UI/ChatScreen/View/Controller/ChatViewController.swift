@@ -25,6 +25,8 @@ final class ChatViewController: UIViewController, BindableType {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var inputStackViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var searchTableView: UITableView!
+    
     var viewModel: ChatViewModel!
     
     private let disposeBag = DisposeBag()
@@ -105,8 +107,32 @@ extension ChatViewController: UITableViewDelegate {
 
 extension ChatViewController {
     private func setup() {
+        searchTableView.tableFooterView = UIView(frame: .zero)
         bindTitle()
         keyboard()
+    }
+    
+    private func setupSearch() {
+//        let results = inputTextView.rx.text
+//            .orEmpty
+//            .debounce(.milliseconds(250), scheduler: MainScheduler.instance)
+//            .distinctUntilChanged()
+//            .flatMapLatest { query -> Observable<NflPlayerStats> in
+//            if query.isEmpty {
+//              return .just([])
+//            }
+//            return ApiController.shared.search(search: query)
+//              .catchErrorJustReturn([])
+//          }
+//          .observeOn(MainScheduler.instance)
+
+//        results
+//          .bind(to: tableView.rx.items(cellIdentifier: "PlayerCell",
+//                                       cellType: PlayerCell.self)) {
+//            (index, nflPlayerStats: NflPlayerStats, cell) in
+//            cell.setup(for: nflPlayerStats)
+//          }
+//          .disposed(by: disposeBag)
     }
     
     private func bindTitle() {
@@ -167,7 +193,17 @@ extension ChatViewController {
 
         inputTextView.rx.text
             .orEmpty
+            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+//            .flatMapLatest({ query -> BehaviorRelay<String> in
+//                if query.isEmpty {
+//                    return .init(value: "")
+//                } else {
+//                    return
+//                }
+//            })
             .do(onNext: { [weak self] text in
+                self?.viewModel.searchSuggestions()
                 self?.updateControls(empty: text.isEmpty)
             })
             .bind(to: viewModel.questionInput)
@@ -178,6 +214,36 @@ extension ChatViewController {
             .bind { [weak self] text in
                 self?.inputTextView.text = text
         }
+        .disposed(by: disposeBag)
+        
+        viewModel.searchResult
+            .asObservable()
+            .do(onNext: { items in
+                let alpha: CGFloat = items.isEmpty ? 0 : 0.9
+                UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve, animations: {
+                    self.searchTableView.alpha = alpha
+                })
+            })
+            .bind(to: searchTableView.rx.items) { (tv, index, text) -> UITableViewCell in
+                let cell = UITableViewCell(style: .default, reuseIdentifier: "SuggestionCell")
+                cell.textLabel?.numberOfLines = 0
+                cell.textLabel?.text = text
+                return cell
+            }
+        .disposed(by: disposeBag)
+        
+        searchTableView.rx.itemSelected
+            .map({ index -> String in
+                do {
+                    return try self.viewModel.searchResult.value()[index.row]
+                } catch {
+                    return ""
+                }
+            })
+        .subscribe(onNext: { [weak self] text in
+            self?.viewModel.questionInput.accept(text)
+            self?.viewModel.sendQuestion()
+        })
         .disposed(by: disposeBag)
         
         sendButton.rx.tap
@@ -253,6 +319,14 @@ extension ChatViewController {
     
     // MARK: -
     func updateControls(empty: Bool) {
+        if empty {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.inputTextView.placeHolderLabel.alpha = 0.5
+            }, completion: nil)
+            UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.searchTableView.alpha = 0
+            })
+        }
         self.sendButton.isEnabled = !empty
         let image: UIImage = empty ? #imageLiteral(resourceName: "send_button_empty") : #imageLiteral(resourceName: "send_button_ok")
         UIView.transition(with: self.sendButton, duration: 0.15, options: .transitionCrossDissolve, animations: {

@@ -11,7 +11,7 @@
         <!--Chat View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" id="BYZ-38-t0r" customClass="ChatViewController" customModule="ChatBot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="BYZ-38-t0r" customClass="ChatViewController" customModule="Чатналог_рф" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-5t-OlV" customClass="CustomInputView" customModule="ChatBot" customModuleProvider="target">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-5t-OlV" customClass="CustomInputView" customModule="Чатналог_рф" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="8" width="326" height="39"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -90,13 +90,23 @@
                                     <constraint firstAttribute="height" constant="50" id="GS7-0Y-s0T"/>
                                 </constraints>
                             </stackView>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SOc-J8-njL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PTZ-W0-kyY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1Er-da-GO6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SOc-J8-njL" secondAttribute="trailing" id="1HU-yD-3v7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PTZ-W0-kyY" secondAttribute="trailing" constant="16" id="3t5-zG-rO6"/>
                             <constraint firstItem="HOL-Ur-SU6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="82n-6x-0Az"/>
+                            <constraint firstItem="PTZ-W0-kyY" firstAttribute="top" secondItem="SOc-J8-njL" secondAttribute="bottom" id="Jej-T5-jN1"/>
+                            <constraint firstItem="SOc-J8-njL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PD5-80-hyh"/>
                             <constraint firstItem="PTZ-W0-kyY" firstAttribute="top" secondItem="HOL-Ur-SU6" secondAttribute="bottom" id="kZV-Jx-Uwd"/>
+                            <constraint firstItem="SOc-J8-njL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lD6-wx-DY3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HOL-Ur-SU6" secondAttribute="trailing" id="v86-Rc-axP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="PTZ-W0-kyY" secondAttribute="bottom" constant="24" id="x15-Un-dDn"/>
                             <constraint firstItem="HOL-Ur-SU6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="x7c-2o-Tgn"/>
@@ -119,6 +129,7 @@
                     <connections>
                         <outlet property="inputStackViewConstraint" destination="x15-Un-dDn" id="Ruj-OY-7cH"/>
                         <outlet property="inputTextView" destination="kkw-5t-OlV" id="4IU-hM-sEp"/>
+                        <outlet property="searchTableView" destination="SOc-J8-njL" id="HvW-Ne-gA0"/>
                         <outlet property="sendButton" destination="wiQ-AI-c95" id="G4C-sI-jls"/>
                         <outlet property="tableView" destination="HOL-Ur-SU6" id="ljo-N4-jbf"/>
                         <outlet property="titleButton" destination="jEa-sa-iFA" id="m22-iy-XrS"/>

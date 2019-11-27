@@ -20,6 +20,7 @@
 		5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C365F2353872300DE587A /* BaseViewModel.swift */; };
 		5A1C366523538AFD00DE587A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C366423538AFD00DE587A /* ActivityView.swift */; };
 		5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */; };
+		5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BF0238E838800C60EB5 /* SearchModel.swift */; };
 		5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D869238956CF00318A53 /* ChatModule.swift */; };
 		5A55D86D238957A300318A53 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D86C238957A300318A53 /* ChatModel.swift */; };
 		5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D87023895BA900318A53 /* ChatViewModel.swift */; };
@@ -55,7 +56,7 @@
 		5AB57EE0231C5EF400A22A8C /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB57EDF231C5EF400A22A8C /* Style.swift */; };
 		5AB705E3234A780500C23C3C /* UIView+LayoutAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */; };
 		5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */; };
-		5AB705EB234A7DF400C23C3C /* String+SHA256+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */; };
+		5AB705EB234A7DF400C23C3C /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EA234A7DF400C23C3C /* String+Base64.swift */; };
 		5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB705EC234A7E9D00C23C3C /* Bundle.swift */; };
 		5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */; };
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		5A1C365F2353872300DE587A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5A1C366423538AFD00DE587A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
+		5A3D0BF0238E838800C60EB5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		5A55D869238956CF00318A53 /* ChatModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModule.swift; sourceTree = "<group>"; };
 		5A55D86C238957A300318A53 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		5A55D87023895BA900318A53 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 		5AB57EDF231C5EF400A22A8C /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutAnchor.swift"; sourceTree = "<group>"; };
 		5AB705E8234A7DCE00C23C3C /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
-		5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SHA256+Base64.swift"; sourceTree = "<group>"; };
+		5AB705EA234A7DF400C23C3C /* String+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
 		5AB705EC234A7E9D00C23C3C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				5A55D86C238957A300318A53 /* ChatModel.swift */,
+				5A3D0BF0238E838800C60EB5 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,7 +367,7 @@
 				5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */,
 				5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */,
 				5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */,
-				5AB705EA234A7DF400C23C3C /* String+SHA256+Base64.swift */,
+				5AB705EA234A7DF400C23C3C /* String+Base64.swift */,
 				5AB705EC234A7E9D00C23C3C /* Bundle.swift */,
 			);
 			path = Extensions;
@@ -721,6 +724,7 @@
 				5A1C365723532A7D00DE587A /* PagingRequest.swift in Sources */,
 				5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */,
 				5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */,
+				5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */,
 				5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */,
 				5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */,
 				5AB57EE0231C5EF400A22A8C /* Style.swift in Sources */,
@@ -732,7 +736,7 @@
 				5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */,
 				5A1C3655235320B600DE587A /* ChatService.swift in Sources */,
 				5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */,
-				5AB705EB234A7DF400C23C3C /* String+SHA256+Base64.swift in Sources */,
+				5AB705EB234A7DF400C23C3C /* String+Base64.swift in Sources */,
 				5A1C364E23531D2000DE587A /* Environment.swift in Sources */,
 				5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */,
 				5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */,

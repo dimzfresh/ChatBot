@@ -3,18 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.question():ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "message">
+               value = "messages.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
+         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.inputStackViewConstraint.constant">
+               value = "self.viewModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -27,7 +30,42 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewModel.searchResult.value()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.inputStackViewConstraint.constant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataSource.sectionModels">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
@@ -44,6 +82,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
          contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -51,28 +92,6 @@
             </PersistentString>
             <PersistentString
                value = "collectionView.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dataSource.sectionModels">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

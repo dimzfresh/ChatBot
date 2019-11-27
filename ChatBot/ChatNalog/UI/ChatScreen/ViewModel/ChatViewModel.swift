@@ -34,6 +34,7 @@ final class ChatViewModel: BaseViewModel {
     let questionInput = BehaviorRelay<String>(value: "")
     let answerOutput = BehaviorSubject<AnswerRequestInput?>(value: nil)
     let messages = BehaviorRelay<[SectionOfChat]>(value: [])
+    let searchResult = BehaviorSubject<[String]>(value: [])
     
     var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
 
@@ -55,6 +56,12 @@ final class ChatViewModel: BaseViewModel {
         addMessage()
         question()
     }
+    
+    func searchSuggestions() {
+        guard !questionInput.value.isEmpty else { return }
+
+        search()
+    }
 }
 
 private extension ChatViewModel {
@@ -67,19 +74,22 @@ private extension ChatViewModel {
     }
     
     func question() {
+        searchResult.onNext([])
         let text = questionInput.value
         questionInput.accept("")
         
         var id = ""
-        let _ = messages.value.last?.items.last(where: {
-            switch $0 {
-            case .message(let info):
-                if let i = info.dialogID {
-                   id = "\(i)"
+        //don't ask me why I do this
+        let _ = messages.value.last { model -> Bool in
+            let _ = model.items.last {
+                guard case let TableViewItem.message(message) = $0, let i = message.dialogID else {
+                    return false
                 }
+                id = "\(i)"
+                return true
             }
             return false
-        })
+        }
         
         service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
@@ -100,6 +110,22 @@ private extension ChatViewModel {
             self?.title.on(.next((main: "Налоговый помощник Жора",
             sub: "\nОнлайн")))
             self?.scrollPosition.on(.next(.bottom))
+            }, onError: { error in
+                print(error)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func search() {
+        let text = questionInput.value
+        
+        service?.search(text: text)
+        .subscribe(onNext: { [weak self] model in
+            guard let items = model.suggestions, !items.isEmpty else {
+                self?.searchResult.onNext([])
+                return }
+            let new = items.map({ $0.text ?? "" })
+            self?.searchResult.onNext(new)
             }, onError: { error in
                 print(error)
         })

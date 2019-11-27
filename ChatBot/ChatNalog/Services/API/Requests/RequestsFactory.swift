@@ -14,6 +14,7 @@ public final class RequestsFactory {
     enum Chat {
         case question(String, id: String)
         case answer(AnswerRequestInput)
+        case search(String)
 
         public var request: APIRequest {
             switch self {
@@ -21,6 +22,8 @@ public final class RequestsFactory {
                 return QuestionRequest(text: text, id: id)
             case .answer(let input):
                 return AnswerRequest(input: input)
+            case .search(let text):
+                return SearchRequest(text: text)
             }
         }
     }
@@ -44,7 +47,9 @@ public final class QuestionRequest: APIRequest {
     
     public var headers: HTTPHeaders {
         var h = defaultHeaders
-        h["dialogid"] = dialogid
+        if !dialogid.isEmpty {
+            h["dialogid"] = dialogid
+        }
         return h
     }
     
@@ -84,6 +89,20 @@ public final class AnswerRequest: APIRequest {
         dialogid = input.id
         buttontype = input.type
         self.text = input.text
+        let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
+        route = route + encoded
+    }
+}
+
+// MARK: - Search
+public final class SearchRequest: APIRequest {
+    public var route: String = "/Suggest/suggest?search="
+    public var method: HTTPMethod { .post }
+
+    private var text: String
+    
+    init(text: String) {
+        self.text = text
         let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
         route = route + encoded
     }
