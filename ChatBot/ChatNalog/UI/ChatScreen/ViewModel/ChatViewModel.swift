@@ -22,32 +22,46 @@ enum TableViewItem {
     case message(info: ChatModel)
 }
 
+enum MicrophoneState {
+    case recording
+    case stopped
+    
+    var opposite: MicrophoneState {
+        return self == .recording ? .stopped : .recording
+    }
+}
+
+enum SpeakerState {
+    case loading
+    case playing
+    case stopped
+}
+
 final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
     
     private let service: Service?
+    private let voiceManager = VoiceManager()
     private let disposeBag = DisposeBag()
         
     let title = BehaviorSubject<ChatTitle>(value: (main: "Налоговый помощник Жора",
                                                    sub: "\nОнлайн"))
-
+   
+    let messages = BehaviorRelay<[SectionOfChat]>(value: [])
+    
     let questionInput = BehaviorRelay<String>(value: "")
     let answerOutput = BehaviorSubject<AnswerRequestInput?>(value: nil)
-    let messages = BehaviorRelay<[SectionOfChat]>(value: [])
     let searchResult = BehaviorSubject<[String]>(value: [])
+    
+    let microphoneState = BehaviorRelay<MicrophoneState>(value: .stopped)
+    let speakerState = BehaviorRelay<SpeakerState>(value: .stopped)
     
     var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
 
     init(service: Service?) {
         self.service = service
         bind()
-    }
-    
-    func addFirstMessage() {
-        let firstMessage = ChatModel(dialogID: nil, text: "Добрый день, задайте вопрос!", buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
-        let new = [SectionOfChat(model: .incoming, items: [.message(info: firstMessage)])]
-        messages.accept(new)
-        scrollPosition.on(.next(.bottom))
+        addFirstMessage()
     }
     
     func sendQuestion() {
@@ -58,9 +72,19 @@ final class ChatViewModel: BaseViewModel {
     }
     
     func searchSuggestions() {
-        guard !questionInput.value.isEmpty else { return }
+        guard !questionInput.value.isEmpty else {
+            return }
 
         search()
+    }
+    
+    // MARK: - Microphone
+    func record(for state: MicrophoneState) {
+        if state == .recording {
+            voiceManager.startRecording()
+        } else {
+            voiceManager.stopRecording()
+        }
     }
 }
 
@@ -72,6 +96,43 @@ private extension ChatViewModel {
         })
         .disposed(by: disposeBag)
     }
+    
+    
+    // MARK: - Messages
+    
+    func addFirstMessage() {
+        var message = ChatModel()
+        message.text = "Добрый день, задайте вопрос!"
+       
+        let new = [SectionOfChat(model: .incoming, items: [.message(info: message)])]
+        messages.accept(new)
+        
+        moveScroll()
+    }
+    
+    func addMessage() {
+        changeTitle()
+        
+        var message = ChatModel()
+        message.text = questionInput.value
+        
+        let new = [SectionOfChat(model: .outgoing, items: [.message(info: message)])]
+        messages.accept(messages.value + new)
+        
+        moveScroll()
+    }
+    
+    func changeTitle() {
+        title.on(.next((main: "Налоговый помощник Жора",
+        sub: "\nпечатает...")))
+    }
+    
+    func moveScroll() {
+         scrollPosition.on(.next(.bottom))
+    }
+    
+    
+    // MARK: - Network
     
     func question() {
         searchResult.onNext([])
@@ -132,26 +193,12 @@ private extension ChatViewModel {
         .disposed(by: disposeBag)
     }
     
+    
+    // MARK: - Funcs
     func processItems(for chat: ChatModel) {
-//        let incomingItems: [TableViewItem] = chat
-//            .filter { $0.buttons != nil }
-//            .map { .message(info: $0) }
-
         let outgoingItems: [TableViewItem] = [.message(info: chat)]
         let new = [SectionOfChat(model: .incoming, items: outgoingItems)]
 
         messages.accept(messages.value + new)
-    }
-    
-    func addMessage() {
-        title.on(.next((main: "Налоговый помощник Жора",
-        sub: "\nпечатает...")))
-        
-        let text = questionInput.value
-        let message = ChatModel(dialogID: nil, text: text, buttonsDescription: nil, buttons: nil, buttonContent: nil, buttonType: nil)
-        let new = [SectionOfChat(model: .outgoing, items: [.message(info: message)])]
-        messages.accept(messages.value + new)
-        
-        scrollPosition.on(.next(.bottom))
     }
 }

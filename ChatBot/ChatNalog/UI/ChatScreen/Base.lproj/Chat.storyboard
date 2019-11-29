@@ -38,14 +38,29 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UOA-3y-4f6">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="UOA-3y-4f6">
                                         <rect key="frame" x="0.0" y="3" width="382" height="47"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7z-1B-cX7">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="47"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="G4y-jX-ftX"/>
+                                                </constraints>
+                                                <state key="normal" image="send_mic">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Qh-Zd-6oQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="326" height="47"/>
+                                                <rect key="frame" x="52" y="0.0" width="278" height="47"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyn-Pc-YRv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="326" height="8"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="278" height="8"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="8" id="eme-x1-3pF"/>
@@ -55,7 +70,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-5t-OlV" customClass="CustomInputView" customModule="Чатналог_рф" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="8" width="326" height="39"/>
+                                                        <rect key="frame" x="0.0" y="8" width="278" height="39"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -129,6 +144,7 @@
                     <connections>
                         <outlet property="inputStackViewConstraint" destination="x15-Un-dDn" id="Ruj-OY-7cH"/>
                         <outlet property="inputTextView" destination="kkw-5t-OlV" id="4IU-hM-sEp"/>
+                        <outlet property="micButton" destination="u7z-1B-cX7" id="udb-6k-54c"/>
                         <outlet property="searchTableView" destination="SOc-J8-njL" id="HvW-Ne-gA0"/>
                         <outlet property="sendButton" destination="wiQ-AI-c95" id="G4C-sI-jls"/>
                         <outlet property="tableView" destination="HOL-Ur-SU6" id="ljo-N4-jbf"/>
@@ -160,5 +176,6 @@
     </scenes>
     <resources>
         <image name="send_button_empty" width="40" height="40"/>
+        <image name="send_mic" width="40" height="40"/>
     </resources>
 </document>

@@ -19,6 +19,10 @@
 		5A1C365D235333A000DE587A /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C365C2353339F00DE587A /* MultipartRequest.swift */; };
 		5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C365F2353872300DE587A /* BaseViewModel.swift */; };
 		5A1C366523538AFD00DE587A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C366423538AFD00DE587A /* ActivityView.swift */; };
+		5A249B44239124B200044D94 /* VoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B43239124B200044D94 /* VoiceManager.swift */; };
+		5A249B4623912D8100044D94 /* AVConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4523912D8100044D94 /* AVConverter.swift */; };
+		5A249B4823917A5500044D94 /* VoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4723917A5500044D94 /* VoiceModel.swift */; };
+		5A249B4F2391D12400044D94 /* AnimationsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4E2391D12400044D94 /* AnimationsFactory.swift */; };
 		5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */; };
 		5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BF0238E838800C60EB5 /* SearchModel.swift */; };
 		5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D869238956CF00318A53 /* ChatModule.swift */; };
@@ -76,6 +80,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5A249B4C2391C46B00044D94 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0C3483F2614FBAA293598A37 /* Pods-ChatBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.release.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		0DA014246DFDF2D312907C57 /* Pods-VarakushCashier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashier.release.xcconfig"; path = "Target Support Files/Pods-VarakushCashier/Pods-VarakushCashier.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +112,10 @@
 		5A1C365C2353339F00DE587A /* MultipartRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		5A1C365F2353872300DE587A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		5A1C366423538AFD00DE587A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5A249B43239124B200044D94 /* VoiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceManager.swift; sourceTree = "<group>"; };
+		5A249B4523912D8100044D94 /* AVConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVConverter.swift; sourceTree = "<group>"; };
+		5A249B4723917A5500044D94 /* VoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceModel.swift; sourceTree = "<group>"; };
+		5A249B4E2391D12400044D94 /* AnimationsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsFactory.swift; sourceTree = "<group>"; };
 		5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		5A3D0BF0238E838800C60EB5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		5A55D869238956CF00318A53 /* ChatModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModule.swift; sourceTree = "<group>"; };
@@ -242,6 +263,23 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
+		5A249B422391238C00044D94 /* VoiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				5A249B43239124B200044D94 /* VoiceManager.swift */,
+				5A249B4523912D8100044D94 /* AVConverter.swift */,
+			);
+			path = VoiceManager;
+			sourceTree = "<group>";
+		};
+		5A249B4D2391D10F00044D94 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				5A249B4E2391D12400044D94 /* AnimationsFactory.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		5A3D0BEF238DB15800C60EB5 /* AnimatedButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				5A55D86C238957A300318A53 /* ChatModel.swift */,
+				5A249B4723917A5500044D94 /* VoiceModel.swift */,
 				5A3D0BF0238E838800C60EB5 /* SearchModel.swift */,
 			);
 			path = Model;
@@ -457,7 +496,9 @@
 		5AB705E4234A7AB800C23C3C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5A249B4D2391D10F00044D94 /* Animations */,
 				5A1C36512353208900DE587A /* API */,
+				5A249B422391238C00044D94 /* VoiceManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -514,6 +555,7 @@
 				5AB57EB8231C5E4F00A22A8C /* Frameworks */,
 				5AB57EB9231C5E4F00A22A8C /* Resources */,
 				F5159188322EA84AFBAD3135 /* [CP] Embed Pods Frameworks */,
+				5A249B4C2391C46B00044D94 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -710,9 +752,12 @@
 				5A55D8762389660D00318A53 /* OutgoingBubbleTableViewCell.swift in Sources */,
 				5A1C365B2353303F00DE587A /* APIRequest.swift in Sources */,
 				5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */,
+				5A249B4623912D8100044D94 /* AVConverter.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
+				5A249B44239124B200044D94 /* VoiceManager.swift in Sources */,
 				5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */,
+				5A249B4F2391D12400044D94 /* AnimationsFactory.swift in Sources */,
 				5AB57EC1231C5E4F00A22A8C /* ChatViewController.swift in Sources */,
 				5A1C365D235333A000DE587A /* MultipartRequest.swift in Sources */,
 				5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */,
@@ -738,6 +783,7 @@
 				5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */,
 				5AB705EB234A7DF400C23C3C /* String+Base64.swift in Sources */,
 				5A1C364E23531D2000DE587A /* Environment.swift in Sources */,
+				5A249B4823917A5500044D94 /* VoiceModel.swift in Sources */,
 				5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */,
 				5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */,
 				5A1C364C23531CB700DE587A /* APIClient.swift in Sources */,

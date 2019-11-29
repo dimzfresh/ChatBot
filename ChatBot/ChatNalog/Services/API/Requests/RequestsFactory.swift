@@ -15,6 +15,8 @@ public final class RequestsFactory {
         case question(String, id: String)
         case answer(AnswerRequestInput)
         case search(String)
+        case synthesize(String)
+        case recognize(String)
 
         public var request: APIRequest {
             switch self {
@@ -24,6 +26,10 @@ public final class RequestsFactory {
                 return AnswerRequest(input: input)
             case .search(let text):
                 return SearchRequest(text: text)
+            case .synthesize(let text):
+                return SynthesizeRequest(text: text)
+            case .recognize(let text):
+                return RecognizeRequest(text: text)
             }
         }
     }
@@ -124,6 +130,42 @@ public struct AnswerRequestInput {
     var type: String = ""
     var id: String = ""
     var text: String
+    
+    init(text: String) {
+        self.text = text
+    }
+}
+
+// MARK: - Recognize
+public final class SynthesizeRequest: APIRequest {
+    public var route: String = "/Speech/synthesize/wav"
+    public var method: HTTPMethod { .post }
+
+    private var text: String
+    
+    init(text: String) {
+        self.text = text
+        let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
+        route = route + encoded
+    }
+}
+
+// MARK: - Recognize
+public final class RecognizeRequest: APIRequest {
+    public var route: String = "/Speech/recognize"
+    public var method: HTTPMethod { .post }
+    
+    public var headers: HTTPHeaders {
+        var h = defaultHeaders
+        h["Content-Type"] = "application/json-patch+json"
+        return h
+    }
+    
+    public var parameters: [String : Any]? {
+        return ["speechText" : text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text]
+    }
+
+    private var text: String
     
     init(text: String) {
         self.text = text

@@ -118,7 +118,7 @@ private extension IncomingBubbleTableViewCell {
         collectionStackView.isHidden = false
         collectionView.isHidden = false
 
-        messageLabel.text = (message?.text ?? "") + (message?.buttonsDescription ?? "") + "\n"
+        messageLabel.text = (message?.text ?? "") + "\n" + (message?.buttonsDescription ?? "") + "\n"
         var text = messageLabel.text ?? ""
         var current = 1
         var newAnswers = [AnswerSectionModel]()

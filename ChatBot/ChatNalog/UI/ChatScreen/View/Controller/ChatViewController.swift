@@ -23,9 +23,14 @@ final class ChatViewController: UIViewController, BindableType {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var inputTextView: CustomInputView!
     @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet private weak var micButton: UIButton!
     @IBOutlet private weak var inputStackViewConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var searchTableView: UITableView!
+    
+    private let voiceManager = VoiceManager()
+    
+    private var pulseLayers = [CAShapeLayer]()
     
     var viewModel: ChatViewModel!
     
@@ -47,22 +52,7 @@ final class ChatViewController: UIViewController, BindableType {
             return self.configIncomingCell(for: message, atIndex: indexPath)
         }
     }
-    
-    private var keyboardHeight: Observable<CGFloat> {
-        return Observable
-            .from([
-                NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-                    .map { notification -> CGFloat in
-                        return (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
-                },
-                NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-                    .map { _ -> CGFloat in
-                        return 0
-                }
-            ])
-            .merge()
-    }
-                
+                    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -144,7 +134,7 @@ extension ChatViewController {
             .disposed(by: disposeBag)
     }
     
-    func setupTitle(title: ChatTitle) {
+    private func setupTitle(title: ChatTitle) {
         let partOne = NSAttributedString(string: title.main,
                                          attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .semibold)])
         let partTwo = NSAttributedString(string: title.sub,
@@ -174,7 +164,6 @@ extension ChatViewController {
     
     func bindViewModel() {
         setupTableView()
-        viewModel.addFirstMessage()
         bind()
     }
     
@@ -203,6 +192,7 @@ extension ChatViewController {
 //                }
 //            })
             .do(onNext: { [weak self] text in
+                self?.viewModel.questionInput.accept(text)
                 self?.viewModel.searchSuggestions()
                 self?.updateControls(empty: text.isEmpty)
             })
@@ -252,21 +242,19 @@ extension ChatViewController {
                 self?.viewModel.sendQuestion()
             })
             .disposed(by: disposeBag)
-//        dataSource.titleForHeaderInSection = { dataSource, index in
-//          return dataSource.sectionModels[index].header
-//        }
-//
-//        dataSource.titleForFooterInSection = { dataSource, indexPath in
-//          return dataSource.sectionModels[index].footer
-//        }
-//
-//        dataSource.canEditRowAtIndexPath = { dataSource, indexPath in
-//          return true
-//        }
-//
-//        dataSource.canMoveRowAtIndexPath = { dataSource, indexPath in
-//          return true
-//        }
+        
+        micButton.rx.tap
+            .subscribe({ [weak self] _ in
+                self?.viewModel.microphoneState.accept(viewModel.microphoneState.value.opposite)
+                  //self?.viewModel.beginRecording()
+              })
+              .disposed(by: disposeBag)
+        
+        viewModel.microphoneState.subscribe(onNext: { [weak self] state in
+            self?.animateMicrophone(state: state)
+            self?.viewModel.record(for: state)
+        }).disposed(by: disposeBag)
+
     }
     
     // MARK: - Keyboard
@@ -310,14 +298,14 @@ extension ChatViewController {
         let row = tableView.numberOfRows(inSection: section) - 1
         let indexPath = IndexPath(row: row, section: section)
         let _ = dataSource.tableView(self.tableView, cellForRowAt: indexPath)
-        let t = DispatchTime.now() + TimeInterval(0.001)// magic
+        let t: DispatchTime = .now() + TimeInterval(0.001)// magic
         
         DispatchQueue.main.asyncAfter(deadline: t) {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
         }
     }
     
-    // MARK: -
+    // MARK: - Controls
     func updateControls(empty: Bool) {
         if empty {
             UIView.animate(withDuration: 0.25, animations: {
@@ -334,9 +322,77 @@ extension ChatViewController {
         })
     }
     
-    // MARK: - Prepare answer
-    func sendAnswer() {
+    // MARK: - Microphone animation
+    
+    func animateMicrophone(state: MicrophoneState) {
+        UIView.transition(with: micButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            let image: UIImage = state == .recording ? #imageLiteral(resourceName: "send_mic_tapped") : #imageLiteral(resourceName: "send_mic")
+            self.micButton.setImage(image, for: .normal)
+        }) { _ in
+            guard state == .recording else {
+                self.micButton.layer.removeAllAnimations()
+                self.pulseLayers.forEach { $0.removeFromSuperlayer() }
+                self.pulseLayers.removeAll()
+                return
+            }
+            
+            self.micButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.createPulse()
+
+
+            UIView.animate(withDuration: 1.0,
+                                       delay: 0,
+                                       usingSpringWithDamping: 0.2,
+                                       initialSpringVelocity: 5,
+                                       options: [.autoreverse, .curveLinear,
+                                                 .repeat, .allowUserInteraction],
+                                       animations: {
+                                        self.micButton.transform = .identity
+                })
+        }
+    }
+    
+    func createPulse() {
+        for _ in 0...2 {
+            let circularPath = UIBezierPath(arcCenter: .zero, radius: 44, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+            let pulseLayer = CAShapeLayer()
+            pulseLayer.path = circularPath.cgPath
+            pulseLayer.lineWidth = 3.0
+            pulseLayer.fillColor = UIColor.clear.cgColor
+            pulseLayer.lineCap = .round
+            pulseLayer.position = CGPoint(x: 20, y: 24)
+            micButton.layer.addSublayer(pulseLayer)
+            pulseLayers.append(pulseLayer)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.animatePulse(index: 0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.animatePulse(index: 1)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.animatePulse(index: 2)
+                }
+            }
+        }
+    }
+    
+    func animatePulse(index: Int) {
+        guard !pulseLayers.isEmpty else { return }
+        pulseLayers[index].strokeColor = UIColor.brandColor.cgColor
+
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.duration = 2.3
+        scaleAnimation.fromValue = 0.0
+        scaleAnimation.toValue = 0.9
+        scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        scaleAnimation.repeatCount = .greatestFiniteMagnitude
+        pulseLayers[index].add(scaleAnimation, forKey: "scale")
         
-        
+        let opacityAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        opacityAnimation.duration = 2.3
+        opacityAnimation.fromValue = 0.9
+        opacityAnimation.toValue = 0.05
+        opacityAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        opacityAnimation.repeatCount = .greatestFiniteMagnitude
+        pulseLayers[index].add(opacityAnimation, forKey: "opacity")
     }
 }

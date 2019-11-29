@@ -9,12 +9,14 @@
 import Foundation
 
 public struct ChatModel: Codable {
-    let dialogID: Int?
-    let text: String?
-    let buttonsDescription: String?
-    let buttons: [AnswerButton]?
-    let buttonContent: String?
-    let buttonType: Int?
+    var dialogID: Int?
+    var text: String?
+    var buttonsDescription: String?
+    var buttons: [AnswerButton]?
+    var buttonContent: String?
+    var buttonType: Int?
+    
+    init() {}
 
     enum CodingKeys: String, CodingKey {
         case dialogID = "dialogId"

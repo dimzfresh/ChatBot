@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import RxSwift
 
 extension NSObject {
     static var nameOfClass: String {
@@ -22,6 +23,21 @@ extension UIViewController {
 }
 
 extension UIViewController {
+    
+    var keyboardHeight: Observable<CGFloat> {
+        return Observable
+            .from([
+                NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+                    .map { notification -> CGFloat in
+                        return (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height ?? 0
+                },
+                NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+                    .map { _ -> CGFloat in
+                        return 0
+                }
+            ])
+            .merge()
+    }
     
     private var bigScreens: [Model] {
         return [.iPhoneX, .iPhone11, .iPhoneXR,

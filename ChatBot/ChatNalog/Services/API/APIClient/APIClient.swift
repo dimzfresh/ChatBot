@@ -12,6 +12,10 @@ import RxAlamofire
 import RxSwift
 import RxCocoa
 
+protocol RawValue: Codable {
+    var text: String { get set }
+}
+
 enum AppError: Error {
     case noInternet
     case networkError(Error?)
@@ -90,8 +94,15 @@ extension Observable where Element == (HTTPURLResponse, Data) {
         return self.map { (httpURLResponse, data) -> ApiResult<ApiErrorMessage, T> in
             switch httpURLResponse.statusCode {
             case 200...299:
-                let object = try JSONDecoder().decode(type, from: data)
-                return .success(object)
+                if type is RawValue.Type {
+                    let str = String(data: data, encoding: .utf8) ?? ""
+                    let data = "{\"text\" : \"\(str)\"}".data(using: .utf8) ?? Data()
+                    let object = try JSONDecoder().decode(type, from: data)
+                    return .success(object)
+                } else {
+                    let object = try JSONDecoder().decode(type, from: data)
+                    return .success(object)
+                }
             default:
                 // otherwise try
                 let apiErrorMessage: ApiErrorMessage

@@ -14,10 +14,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
+         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.viewModel">
+               value = "self.viewModel.searchResult.value()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,10 +30,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
+         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.viewModel.searchResult.value()">
+               value = "self.viewModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "questionInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -57,6 +65,14 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
       </ContextState>
       <ContextState
+         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "audioRecorder">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -71,13 +87,19 @@
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "message?.buttons">
+               value = "message?.text">
+            </PersistentString>
+            <PersistentString
+               value = "message">
             </PersistentString>
             <PersistentString
                value = "collectionStackView.isHidden">
             </PersistentString>
             <PersistentString
                value = "collectionView.isHidden">
+            </PersistentString>
+            <PersistentString
+               value = "message?.buttons">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -102,6 +124,17 @@
                value = "question.value">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;&quot;&quot;data.base64EncodedString()&quot;&quot;&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
