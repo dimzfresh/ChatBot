@@ -21,24 +21,30 @@
                         <rect key="frame" x="16" y="16" width="302" height="90"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="War-ZD-fVe">
-                                <rect key="frame" x="139.5" y="0.0" width="162.5" height="32"/>
+                                <rect key="frame" x="127" y="0.0" width="175" height="32"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-iK-mHY">
+                                        <rect key="frame" x="0.0" y="6.5" width="4.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-wg-s0a">
-                                        <rect key="frame" x="0.0" y="5" width="26" height="22"/>
+                                        <rect key="frame" x="12.5" y="5" width="26" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="26" id="d98-8k-Udg"/>
                                             <constraint firstAttribute="height" constant="22" id="vzu-tr-2yR"/>
                                         </constraints>
                                         <state key="normal" image="play_sound"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пользователь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBV-B7-lFF">
-                                        <rect key="frame" x="34" y="6.5" width="108.5" height="19.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Пользователь" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBV-B7-lFF">
+                                        <rect key="frame" x="46.5" y="6.5" width="108.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-je-sXA">
-                                        <rect key="frame" x="150.5" y="10" width="12" height="12"/>
+                                        <rect key="frame" x="163" y="10" width="12" height="12"/>
                                         <color key="backgroundColor" red="0.36862745099999999" green="0.52941176469999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="FE9-Ou-XfB"/>
