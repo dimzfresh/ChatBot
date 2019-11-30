@@ -239,6 +239,7 @@ extension ChatViewController {
         sendButton.rx.tap
             //.debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.cancelAllRequests()
                 self?.viewModel.sendQuestion()
             })
             .disposed(by: disposeBag)

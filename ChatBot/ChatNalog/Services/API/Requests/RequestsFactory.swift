@@ -140,13 +140,21 @@ public struct AnswerRequestInput {
 public final class SynthesizeRequest: APIRequest {
     public var route: String = "/Speech/synthesize/wav"
     public var method: HTTPMethod { .post }
+    
+    public var headers: HTTPHeaders {
+         var h = defaultHeaders
+         h["Content-Type"] = "application/json"
+         return h
+     }
+    
+    public var data: Data? {
+        return text.data(using: .utf8)
+    }
 
     private var text: String
     
     init(text: String) {
-        self.text = text
-        let encoded = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text
-        route = route + encoded
+        self.text = "\"\(text)\""
     }
 }
 

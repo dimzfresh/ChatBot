@@ -10,12 +10,12 @@ import UIKit
 import CommonCrypto
 
 extension String {
-    func fromBase64() -> String? {
+    func fromBase64(encoding: String.Encoding = .utf8) -> String? {
         guard let data = Data(base64Encoded: self) else {
             return nil
         }
         
-        return String(data: data, encoding: .utf8)
+        return String(data: data, encoding: encoding)
     }
     
     func toBase64() -> String {

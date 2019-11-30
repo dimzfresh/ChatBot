@@ -20,6 +20,10 @@ public protocol APIRequest: AlamofireManager {
     var method: Alamofire.HTTPMethod { get }
     
     var parameters: [String : Any]? { get }
+    
+    var parametersData: Data? { get }
+    
+    var data: Data? { get }
   
     var headers: HTTPHeaders { get }
     
@@ -36,6 +40,16 @@ extension APIRequest {
     public var encoding: Alamofire.ParameterEncoding { method == .get ? URLEncoding.queryString : JSONEncoding.default }
     
     public var parameters: [String : Any]? { nil }
+    
+    public var data: Data? { nil }
+    
+    public var parametersData: Data? {
+        if let p = parameters {
+            return try? JSONSerialization.data(withJSONObject: p, options: .prettyPrinted) as Data
+        } else {
+            return nil
+        }
+    }
  
     public var headers: HTTPHeaders { defaultHeaders }
        

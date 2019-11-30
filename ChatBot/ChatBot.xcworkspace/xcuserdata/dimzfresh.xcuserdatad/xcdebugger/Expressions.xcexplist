@@ -3,23 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.question():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "messages.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel.searchResult.value()">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "ChatViewController.scrollToBottom(animated:):ChatViewController.swift">
@@ -30,47 +14,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "questionInput.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.inputStackViewConstraint.constant">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dataSource.sectionModels">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "audioRecorder">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
@@ -79,9 +23,6 @@
                value = "message">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
@@ -104,7 +45,82 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+         contextName = "closure #1 in VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;&quot;&quot;data.base64EncodedString()&quot;&quot;&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.question():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "messages.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "question.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getFileURL() ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in OutgoingBubbleTableViewCell.load():OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "model.someString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataSource.sectionModels">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "audioRecorder">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "OutgoingBubbleTableViewCell.convertAndPlay(text:):OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "player">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.inputStackViewConstraint.constant">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
@@ -118,23 +134,53 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
+         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "question.value">
+               value = "request.data">
+            </PersistentString>
+            <PersistentString
+               value = "String(data: request.data!, encoding: .utf8)">
+            </PersistentString>
+            <PersistentString
+               value = "request.parametersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in VoiceManager.stopRecording():VoiceManager.swift">
+         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "&quot;&quot;&quot;data.base64EncodedString()&quot;&quot;&quot;">
+               value = "self.viewModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
+         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewModel.searchResult.value()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "questionInput.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "audioPlayer">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

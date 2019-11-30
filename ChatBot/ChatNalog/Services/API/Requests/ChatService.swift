@@ -113,4 +113,28 @@ public final class ChatService {
         
         return result
     }
+    
+    public func synthesize(text: String) -> Observable<VoiceModel> {
+        let request = RequestsFactory.Chat.synthesize(text).request
+        
+        let raw: OservableVoiceResult = networkClient.process(request)
+        
+        let result = raw.flatMap { result -> Observable<VoiceModel> in
+            switch result {
+            case .success(let value):
+                return .just(value)
+            case .failure(let error):
+                return .error(AppError.serverResponseError(error.code ?? 0, error.message ?? ""))
+            }
+        }
+        .catchError { error -> Observable<VoiceModel> in
+            if (error as NSError).code == NSURLErrorNotConnectedToInternet {
+                return .error(AppError.networkError(error))
+            } else {
+                return .error(error)
+            }
+        }
+        
+        return result
+    }
 }

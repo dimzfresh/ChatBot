@@ -13,7 +13,9 @@ import RxSwift
 import RxCocoa
 
 protocol RawValue: Codable {
-    var text: String { get set }
+    var someBaseEncodedString: Data { get set }
+
+    //var text: String { get set }
 }
 
 enum AppError: Error {
@@ -36,10 +38,15 @@ extension APIClient {
         
         let method = request.method
         let url = request.url
-        let parameters = request.parameters
+        //let parameters = request.parameters
         let headers = request.headers
         
-        let observable = RxAlamofire.requestData(method, url, parameters: parameters, encoding: request.encoding, headers: headers)
+        var r = URLRequest(url: URL(string: url)!)
+        r.httpMethod = method.rawValue
+        r.allHTTPHeaderFields = headers
+        r.httpBody = request.parametersData != nil ? request.parametersData : request.data
+        
+        let observable = RxAlamofire.requestData(r)
             .debug()
             //.observeOn(scheduler)
             .asObservable()
@@ -95,9 +102,10 @@ extension Observable where Element == (HTTPURLResponse, Data) {
             switch httpURLResponse.statusCode {
             case 200...299:
                 if type is RawValue.Type {
-                    let str = String(data: data, encoding: .utf8) ?? ""
-                    let data = "{\"text\" : \"\(str)\"}".data(using: .utf8) ?? Data()
-                    let object = try JSONDecoder().decode(type, from: data)
+
+                    guard let object = VoiceModel(someBaseEncodedString: data) as? T else {
+                        return .failure(ApiErrorMessage(code: -1, message: "Ошибка. Повторите позже"))
+                    }
                     return .success(object)
                 } else {
                     let object = try JSONDecoder().decode(type, from: data)

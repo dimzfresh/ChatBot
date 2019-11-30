@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Alamofire
 
 typealias SectionOfChat = SectionModel<TableViewSection, TableViewItem>
 typealias ChatTitle = (main:String, sub:String)
@@ -72,10 +73,17 @@ final class ChatViewModel: BaseViewModel {
     }
     
     func searchSuggestions() {
-        guard !questionInput.value.isEmpty else {
-            return }
+        guard !questionInput.value.isEmpty else { return }
 
         search()
+    }
+    
+    func cancelAllRequests() {
+        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
+            dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() }
+        }
     }
     
     // MARK: - Microphone

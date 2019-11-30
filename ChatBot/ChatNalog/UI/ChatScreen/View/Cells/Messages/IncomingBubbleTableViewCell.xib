@@ -45,14 +45,32 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIl-58-e9o">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rz5-TS-gHT">
                                                 <rect key="frame" x="82.5" y="5" width="26" height="22"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="BM2-bX-iYV">
+                                                        <rect key="frame" x="3" y="1" width="20" height="20"/>
+                                                        <color key="color" red="0.36862745099999999" green="0.52941176469999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </activityIndicatorView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIl-58-e9o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="26" id="TuY-x8-aHu"/>
+                                                            <constraint firstAttribute="height" constant="22" id="yt7-ot-y6P"/>
+                                                        </constraints>
+                                                        <state key="normal" image="play_sound"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="26" id="TuY-x8-aHu"/>
-                                                    <constraint firstAttribute="height" constant="22" id="yt7-ot-y6P"/>
+                                                    <constraint firstItem="cIl-58-e9o" firstAttribute="centerY" secondItem="Rz5-TS-gHT" secondAttribute="centerY" id="4iR-Tu-o6Y"/>
+                                                    <constraint firstItem="BM2-bX-iYV" firstAttribute="centerY" secondItem="Rz5-TS-gHT" secondAttribute="centerY" id="C8O-0N-I2S"/>
+                                                    <constraint firstAttribute="width" constant="26" id="I44-Ly-eHr"/>
+                                                    <constraint firstItem="BM2-bX-iYV" firstAttribute="centerX" secondItem="Rz5-TS-gHT" secondAttribute="centerX" id="N4m-H1-gXP"/>
+                                                    <constraint firstAttribute="height" constant="22" id="kdj-em-9cs"/>
+                                                    <constraint firstItem="cIl-58-e9o" firstAttribute="centerX" secondItem="Rz5-TS-gHT" secondAttribute="centerX" id="w2X-zc-Owd"/>
                                                 </constraints>
-                                                <state key="normal" image="play_sound"/>
-                                            </button>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ok-Ea-YsG">
                                                 <rect key="frame" x="116.5" y="6.5" width="4.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -137,10 +155,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="TiA-TH-0CD"/>
             <connections>
+                <outlet property="activity" destination="BM2-bX-iYV" id="X6q-Se-1Rb"/>
                 <outlet property="collectionStackView" destination="cPH-9R-9Lx" id="5wL-RG-0JZ"/>
                 <outlet property="collectionView" destination="NAH-hl-fDz" id="SrV-2r-sUl"/>
                 <outlet property="messageLabel" destination="Fpn-DF-2Ze" id="n6T-eU-Ion"/>
                 <outlet property="messageStackView" destination="GCs-3h-ABT" id="Aoj-wQ-IkO"/>
+                <outlet property="speakerButton" destination="cIl-58-e9o" id="KZx-bH-cg4"/>
                 <outlet property="userNameLabel" destination="NEI-Wh-thz" id="0Is-j3-M6m"/>
             </connections>
             <point key="canvasLocation" x="126.08695652173914" y="155.35714285714286"/>

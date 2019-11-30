@@ -14,10 +14,11 @@ final class VoiceManager: NSObject {
     private let recordingSession: AVAudioSession! = .sharedInstance()
     private var audioRecorder: AVAudioRecorder?
     private var audioPlayer: AVAudioPlayer?
-    
+
+    var audioPlayerDidFinished: (() -> Void)?
+        
     override init() {
         super.init()
-        
     }
     
     func startRecording() {
@@ -90,30 +91,30 @@ final class VoiceManager: NSObject {
             //recordButton.setTitle("Tap to Record", for: .normal)
             // recording failed :(
         }
-        
-        //playButton.isEnabled = true
-        //recordButton.isEnabled = true
     }
     
-//    @IBAction func playAudioButtonTapped(_ sender: UIButton) {
-//        if (sender.titleLabel?.text == "Play" {
-//            recordButton.isEnabled = false
-//            sender.setTitle("Stop", for: .normal)
-//            preparePlayer()
-//            audioPlayer.play()
-//        } else {
-//            audioPlayer.stop()
-//            sender.setTitle("Play", for: .normal)
-//        }
-//    }
+    func startPlaying() {
+        preparePlayer()
+        audioPlayer?.play()
+    }
     
-    func preparePlayer() {
+    func stopPlaying() {
+        audioPlayer?.stop()
+    }
+    
+    private func preparePlayer() {
+
         var error: NSError?
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: getFileURL() as URL)
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let data = try Data(contentsOf: getFileURL() as URL)
+            audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.mp3.rawValue)
         } catch let error1 as NSError {
             error = error1
             audioPlayer = nil
+            audioPlayerDidFinished?()
         }
         
         if let err = error {
@@ -173,7 +174,7 @@ private extension VoiceManager {
         return paths[0]
     }
     
-    func getFileURL(name: String = "input.wav") -> URL {
+    func getFileURL(name: String = "input.mp3") -> URL {
         let path = getDocumentsDirectory().appendingPathComponent(name)
         return path as URL
     }
@@ -192,8 +193,7 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        //recordButton.isEnabled = true
-        //playButton.setTitle("Play", for: .normal)
+        audioPlayerDidFinished?()
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
