@@ -14,17 +14,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "message">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -45,10 +34,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in VoiceManager.stopRecording():VoiceManager.swift">
          <PersistentStrings>
             <PersistentString
                value = "&quot;&quot;&quot;data.base64EncodedString()&quot;&quot;&quot;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getFileURL() ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -69,12 +74,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "getFileURL() ">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in OutgoingBubbleTableViewCell.load():OutgoingBubbleTableViewCell.swift">
@@ -83,6 +83,9 @@
                value = "model.someString">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
@@ -101,7 +104,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
+         contextName = "OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel?.input.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "OutgoingBubbleTableViewCell.convertAndPlay(text:):OutgoingBubbleTableViewCell.swift">
@@ -140,13 +154,13 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "request.data">
-            </PersistentString>
-            <PersistentString
                value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
             <PersistentString
                value = "request.parametersData">
+            </PersistentString>
+            <PersistentString
+               value = "request.data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

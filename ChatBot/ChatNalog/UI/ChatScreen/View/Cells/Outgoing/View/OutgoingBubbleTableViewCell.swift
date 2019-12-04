@@ -9,9 +9,10 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import Alamofire
 
-final class OutgoingBubbleTableViewCell: UITableViewCell {
+final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
+    typealias ViewModelType = OutgoingViewModel
+    var viewModel: ViewModelType!
     
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: UIActivityIndicatorView!
@@ -22,13 +23,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
 
     private let service = ChatService()
     private var isPlaying = BehaviorRelay<Bool>(value: false)
-    private var player: VoiceManager? = VoiceManager()
-            
-    var message: ChatModel? {
-        didSet {
-            process()
-        }
-    }
+    private var player: VoiceManager? = VoiceManager.shared
     
     var answers = BehaviorRelay<[AnswerButton]>(value: [])
     
@@ -36,7 +31,6 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         setup()
-        bind()
     }
     
     override func prepareForReuse() {
@@ -44,14 +38,18 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
         
         activity.stopAnimating()
         player?.stopPlaying()
-        player = VoiceManager()
         isPlaying.accept(false)
+    }
+    
+    func bindViewModel() {
+        bind()
     }
 }
 
 private extension OutgoingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
+        userNameLabel.text = "Пользователь"
     }
     
     func bind() {
@@ -62,15 +60,16 @@ private extension OutgoingBubbleTableViewCell {
         }).disposed(by: disposeBag)
         
         isPlaying.subscribe(onNext: { [weak self] flag in
-            self?.load()
+            self?.viewModel?.load()
             self?.animate()
         })
         .disposed(by: disposeBag)
-    }
-    
-    func process() {
-        userNameLabel.text = "Пользователь"
-        messageLabel.text = message?.text
+        
+        viewModel?.input
+            .subscribe(onNext: { [weak self] message in
+                self?.messageLabel.text = message?.text
+            })
+            .disposed(by: disposeBag)
     }
     
     func animate() {
@@ -102,54 +101,5 @@ private extension OutgoingBubbleTableViewCell {
                         self.speakerButton.alpha = 0.75
         })
     }
-    
-    func load() {
-        guard let text = message?.text, isPlaying.value else {
-            activity.stopAnimating()
-            speakerButton.isHidden = false
-            return }
-        
-        activity.startAnimating()
-        speakerButton.isHidden = true
-        
-        cancelAllRequests()
-        
-        service.synthesize(text: text)
-        .subscribe(onNext: { [weak self] model in
-            self?.activity.stopAnimating()
-            self?.speakerButton.isHidden = false
-            self?.convertAndPlay(text: model.someString)
-            })
-        .disposed(by: disposeBag)
-    }
-    
-    func cancelAllRequests() {
-        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
-            dataTasks.forEach { $0.cancel() }
-            uploadTasks.forEach { $0.cancel() }
-            downloadTasks.forEach { $0.cancel() }
-        }
-    }
-    
-    func convertAndPlay(text : String?) {
-        guard let audioData = Data(base64Encoded: text ?? "", options: .ignoreUnknownCharacters) else { return }
-        
-        let filename = getDocumentsDirectory().appendingPathComponent("input.mp3")
-        do {
-            try audioData.write(to: filename, options: .atomicWrite)
-        } catch (let error) {
-            print(error)
-        }
-        player?.startPlaying()
-        player?.audioPlayerDidFinished = { [weak self] in
-            self?.isPlaying.accept(false)
-        }
-    }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
 }
 

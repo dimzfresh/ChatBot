@@ -62,8 +62,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -237,8 +237,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "updateControls(empty:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -253,8 +253,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "scrollToBottom(animated:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -271,7 +271,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "267"
             endingLineNumber = "267"
-            landmarkName = "animate()"
+            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,8 +303,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "IncomingBubbleTableViewCell"
-            landmarkType = "3">
+            landmarkName = "configureCell"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
             endingLineNumber = "47"
-            landmarkName = "IncomingBubbleTableViewCell"
-            landmarkType = "3">
+            landmarkName = "configureCell"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -413,7 +413,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
             endingLineNumber = "110"
-            landmarkName = "setupCollectionView()"
+            landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -429,7 +429,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "257"
             endingLineNumber = "257"
-            landmarkName = "process()"
+            landmarkName = "collectionView(_:layout:insetForSectionAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -445,7 +445,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
             endingLineNumber = "265"
-            landmarkName = "animate()"
+            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -493,7 +493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "configureCell"
+            landmarkName = "message"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -507,8 +507,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "configIncomingCell(for:atIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -539,8 +539,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "configIncomingCell(for:atIndex:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -557,8 +557,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "275"
             endingLineNumber = "275"
-            landmarkName = "animate()"
-            landmarkType = "7">
+            landmarkName = "IncomingBubbleTableViewCell"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -573,8 +573,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
             endingLineNumber = "278"
-            landmarkName = "animate()"
-            landmarkType = "7">
+            landmarkName = "IncomingBubbleTableViewCell"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -619,8 +619,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -651,8 +651,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -667,8 +667,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -683,8 +683,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -699,8 +699,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "bind()"
             landmarkType = "7">
             <Locations>
@@ -747,8 +747,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "animateMicrophone(state:)"
             landmarkType = "7">
             <Locations>
@@ -813,8 +813,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "startRecording()"
-            landmarkType = "7">
+            landmarkName = "VoiceManager"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "5D30FB02-B45F-4A68-9D7F-5BE28B504F3F - 8d45e62c090d2822"
@@ -957,8 +957,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
             endingLineNumber = "173"
-            landmarkName = "getDocumentsDirectory()"
-            landmarkType = "7">
+            landmarkName = "VoiceManager"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1037,8 +1037,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "stopRecording()"
-            landmarkType = "7">
+            landmarkName = "VoiceManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1215,6 +1215,38 @@
             endingLineNumber = "51"
             landmarkName = "startRecording()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0ED1DEBD-55C2-4676-80BA-CEE4562F6F9D - 8d45e62c090d2822"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.VoiceManager.startRecording() -&gt; ()"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/Services/VoiceManager/VoiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "2273">
+               </Location>
+               <Location
+                  uuid = "0ED1DEBD-55C2-4676-80BA-CEE4562F6F9D - 8d45e62c090d2822"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.VoiceManager.startRecording() -&gt; ()"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/Services/VoiceManager/VoiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "2522">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1291,8 +1323,8 @@
             filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1661,8 +1693,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "convertAndPlay(text:)"
-            landmarkType = "7">
+            landmarkName = "OutgoingBubbleTableViewCell"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1725,8 +1757,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "startPlaying()"
-            landmarkType = "7">
+            landmarkName = "VoiceManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1765,7 +1797,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C8352062-0692-48EF-A6EE-A08E5D4E3BDD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/Services/VoiceManager/VoiceManager.swift"
@@ -1791,38 +1823,6 @@
             endingLineNumber = "119"
             landmarkName = "load()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "55623EC4-147D-4B37-BB80-4D7294B5F497 - 3da19f89b4b7254b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;__C.NSURLSessionDataTask&gt;, Swift.Array&lt;__C.NSURLSessionUploadTask&gt;, Swift.Array&lt;__C.NSURLSessionDownloadTask&gt;) -&gt; () in &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell.(cancelAllRequests in _F035069A43CDBB4F204B197EC352FD68)() -&gt; ()"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/View/Cells/Messages/OutgoingBubbleTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "55623EC4-147D-4B37-BB80-4D7294B5F497 - 603b5efd0e7cc369"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSURLSessionDataTask) -&gt; () in closure #1 (Swift.Array&lt;__C.NSURLSessionDataTask&gt;, Swift.Array&lt;__C.NSURLSessionUploadTask&gt;, Swift.Array&lt;__C.NSURLSessionDownloadTask&gt;) -&gt; () in &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell.(cancelAllRequests in _F035069A43CDBB4F204B197EC352FD68)() -&gt; ()"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/View/Cells/Messages/OutgoingBubbleTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1838,6 +1838,38 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "bind()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD1663A5-DA19-46DC-9588-DB7E826F00D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Controller/ChatViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "configOutgoingCell(for:atIndex:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22EA9948-D37D-4967-BA6D-5F2020A124EA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/View/Cells/Outgoing/ViewModel/OutgoingViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "load()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

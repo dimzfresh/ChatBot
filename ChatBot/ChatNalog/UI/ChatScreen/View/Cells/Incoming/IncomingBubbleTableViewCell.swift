@@ -37,7 +37,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
 
     private let service = ChatService()
     private var isPlaying = BehaviorRelay<Bool>(value: false)
-    private var player: VoiceManager? = VoiceManager()
+    private var player: VoiceManager? = VoiceManager.shared
 
     private var items = BehaviorRelay<[AnswerSectionModel]>(value: [])
     var selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
@@ -70,7 +70,6 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         
         activity.stopAnimating()
         player?.stopPlaying()
-        player = VoiceManager()
         isPlaying.accept(false)
     }
 }

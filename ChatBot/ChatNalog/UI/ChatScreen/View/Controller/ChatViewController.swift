@@ -28,7 +28,7 @@ final class ChatViewController: UIViewController, BindableType {
     
     @IBOutlet private weak var searchTableView: UITableView!
     
-    private let voiceManager = VoiceManager()
+    private let voiceManager = VoiceManager.shared
     
     private var pulseLayers = [CAShapeLayer]()
     
@@ -65,7 +65,10 @@ extension ChatViewController: UITableViewDelegate {
         guard let cell = tableView.dequeue(OutgoingBubbleTableViewCell.self) else {
             return UITableViewCell()
         }
-        cell.message = message
+        let vm = OutgoingViewModel()
+        vm.message = message
+        cell.bind(to: vm)
+    
         return cell
     }
     

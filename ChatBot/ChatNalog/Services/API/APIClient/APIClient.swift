@@ -36,6 +36,8 @@ public class APIClient: APIClientProtocol {
 extension APIClient {
     public func process<Model: Decodable>(_ request: APIRequest) -> Observable<ApiResult<ApiErrorMessage, Model>> {
         
+        cancelAllRequests()
+        
         let method = request.method
         let url = request.url
         //let parameters = request.parameters
@@ -53,7 +55,6 @@ extension APIClient {
             .expectingObject(ofType: Model.self)
         
         return observable
-
     }
 }
 

@@ -16,8 +16,10 @@ final class VoiceManager: NSObject {
     private var audioPlayer: AVAudioPlayer?
 
     var audioPlayerDidFinished: (() -> Void)?
+    
+    static let shared = VoiceManager()
         
-    override init() {
+    override private init() {
         super.init()
     }
     
@@ -34,7 +36,7 @@ final class VoiceManager: NSObject {
             AVFormatIDKey: Int(kAudioFileWAVEType),
             AVSampleRateKey: 16000,
             AVNumberOfChannelsKey: 1,
-            //AVLinearPCMBitDepthKey: 32,
+            AVLinearPCMBitDepthKey: 32,
             AVLinearPCMIsBigEndianKey: false,
             AVLinearPCMIsNonInterleaved: true,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
@@ -71,7 +73,7 @@ final class VoiceManager: NSObject {
             if FileManager.default.fileExists(atPath: input.path) {
                 do {
                     let data = try Data(contentsOf: input)
-                    let str = data.base64EncodedString()
+                    _ = data.base64EncodedString()
                     //completion(.success(data))
                 } catch {
                     //completion(.failure(.doesntExist))

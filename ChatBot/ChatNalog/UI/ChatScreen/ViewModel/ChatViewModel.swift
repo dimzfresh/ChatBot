@@ -42,7 +42,7 @@ final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
     
     private let service: Service?
-    private let voiceManager = VoiceManager()
+    private let voiceManager = VoiceManager.shared
     private let disposeBag = DisposeBag()
         
     let title = BehaviorSubject<ChatTitle>(value: (main: "Налоговый помощник Жора",

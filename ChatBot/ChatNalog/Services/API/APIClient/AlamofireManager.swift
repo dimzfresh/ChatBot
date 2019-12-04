@@ -10,6 +10,8 @@ import Alamofire
 
 public protocol AlamofireManager {
     var manager: SessionManager { get }
+    
+    func cancelAllRequests()
 }
 
 extension AlamofireManager {
@@ -32,5 +34,13 @@ extension AlamofireManager {
             headers["Authorization"] = "Bearer \(auth.token)"
         }
         return headers
+    }
+    
+    public func cancelAllRequests() {
+        manager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
+            dataTasks.forEach { $0.cancel() }
+            uploadTasks.forEach { $0.cancel() }
+            downloadTasks.forEach { $0.cancel() }
+        }
     }
 }
