@@ -239,8 +239,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "333"
             endingLineNumber = "333"
-            landmarkName = "updateControls(empty:)"
-            landmarkType = "7">
+            landmarkName = "ChatViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -255,7 +255,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
             endingLineNumber = "319"
-            landmarkName = "scrollToBottom(animated:)"
+            landmarkName = "scrollToPosition(position:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -749,8 +749,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "351"
             endingLineNumber = "351"
-            landmarkName = "animateMicrophone(state:)"
-            landmarkType = "7">
+            landmarkName = "ChatViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "E8714741-4582-40C4-8FF6-C0B6E30651B1 - b76c0ebb83203365"

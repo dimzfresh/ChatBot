@@ -39,7 +39,7 @@ extension UIViewController {
             .merge()
     }
     
-    private var bigScreens: [Model] {
+    var bigScreens: [Model] {
         return [.iPhoneX, .iPhone11, .iPhoneXR,
                 .iPhoneXS, .iPhoneXSMax, .iPhone11Pro,
                 .iPhone11ProMax]

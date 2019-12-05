@@ -288,7 +288,11 @@ extension ChatViewController {
                 if keyboardHeight == 0 {
                     self.inputStackViewConstraint.constant = 20
                 } else {
-                    self.inputStackViewConstraint.constant = 8 + keyboardHeight
+                    if self.bigScreens.contains(UIDevice.current.type) {
+                        self.inputStackViewConstraint.constant = 18 + keyboardHeight
+                    } else {
+                        self.inputStackViewConstraint.constant = 8 + keyboardHeight
+                    }
                 }
                 UIView.animate(withDuration: 0.3) {
                     self.view.layoutIfNeeded()
