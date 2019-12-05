@@ -17,7 +17,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: UIActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var messageLabel: CopyableLabel!
 
     private var disposeBag = DisposeBag()
         
@@ -46,7 +46,7 @@ private extension OutgoingBubbleTableViewCell {
         selectionStyle = .none
         userNameLabel.text = "Пользователь"
         
-        addLongPressRecognizer()
+        //addLongPressRecognizer()
     }
     
     func addLongPressRecognizer() {

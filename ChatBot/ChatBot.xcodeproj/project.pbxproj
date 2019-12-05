@@ -34,6 +34,7 @@
 		5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */; };
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
+		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
 		5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */; };
 		5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */; };
@@ -119,6 +120,7 @@
 		5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingBubbleTableViewCell.xib; sourceTree = "<group>"; };
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
+		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cashe.swift"; sourceTree = "<group>"; };
 		5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSettings.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				5A3D0BEF238DB15800C60EB5 /* AnimatedButton */,
 				5A00896C238D490300F26C66 /* InputView */,
 				5A1C366623538B0400DE587A /* Activity */,
+				5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				5A1C365B2353303F00DE587A /* APIRequest.swift in Sources */,
 				5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */,
 				5A249B4623912D8100044D94 /* AVConverter.swift in Sources */,
+				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
@@ -981,7 +985,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1003,7 +1007,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";

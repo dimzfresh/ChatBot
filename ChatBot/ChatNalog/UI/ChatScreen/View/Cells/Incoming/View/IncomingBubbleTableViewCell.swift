@@ -27,7 +27,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: UIActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var messageLabel: UILabel!
+    @IBOutlet private weak var messageLabel: CopyableLabel!
     @IBOutlet private weak var messageStackView: UIStackView!
     
     @IBOutlet private weak var collectionStackView: UIStackView!
@@ -79,7 +79,7 @@ private extension IncomingBubbleTableViewCell {
         selectionStyle = .none
         setupCollectionView()
         
-        addLongPressRecognizer()
+        //addLongPressRecognizer()
     }
     
     func addLongPressRecognizer() {

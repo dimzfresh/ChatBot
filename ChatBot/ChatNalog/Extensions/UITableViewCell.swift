@@ -31,6 +31,8 @@ extension UITableView {
 
 extension UITableViewCell {
     func copyToClipboard(text: String) {
+        UIPasteboard.general
+        
         let alert = UIAlertController(title: "Скопировать сообщение?", message: "", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Скопировать", style: .default, handler: { _ in
