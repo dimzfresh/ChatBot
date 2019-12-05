@@ -24,7 +24,8 @@ final class OutgoingViewModel: BaseViewModel {
     private let voiceManager = VoiceManager.shared
     private let disposeBag = DisposeBag()
     
-    private var isPlaying = BehaviorRelay<Bool>(value: false)
+    var isLoading = BehaviorRelay<Bool>(value: false)
+    var isPlaying = BehaviorRelay<Bool>(value: false)
     private var player: VoiceManager? = VoiceManager.shared
     
     init(service: Service? = ChatService()) {
@@ -36,35 +37,44 @@ final class OutgoingViewModel: BaseViewModel {
 
 extension OutgoingViewModel {
     func bind() {
-        
-        
-    }
-    
-    func load() {
-        guard let text = input.value?.text, isPlaying.value else {
-            //activity.stopAnimating()
-            //speakerButton.isHidden = false
-            return }
-
-        //activity.startAnimating()
-        //speakerButton.isHidden = true
-
-        service?.synthesize(text: text)
-        .subscribe(onNext: { [weak self] model in
-            //self?.activity.stopAnimating()
-            //self?.speakerButton.isHidden = false
-            self?.convertAndPlay(text: model.someString)
-            })
+        isLoading
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] flag in
+            guard flag else { return }
+            self?.load()
+        })
         .disposed(by: disposeBag)
     }
     
+    func load() {
+        guard let text = input.value?.text, isLoading.value else {
+            isLoading.accept(false)
+            return }
+
+        isLoading.accept(true)
+
+        service?.synthesize(text: text)
+            .subscribe(onNext: { [weak self] model in
+                self?.isLoading.accept(false)
+                self?.convertAndPlay(text: model.someString)
+                }, onError: { [weak self] _ in
+                    self?.isLoading.accept(false)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func convertAndPlay(text : String?) {
-        guard let audioData = Data(base64Encoded: text ?? "", options: .ignoreUnknownCharacters) else { return }
+        isPlaying.accept(true)
+
+        guard let audioData = Data(base64Encoded: text ?? "", options: .ignoreUnknownCharacters) else {
+            isPlaying.accept(false)
+            return }
         
         let filename = getDocumentsDirectory().appendingPathComponent("input.mp3")
         do {
             try audioData.write(to: filename, options: .atomicWrite)
         } catch (let error) {
+            isPlaying.accept(false)
             print(error)
         }
         player?.startPlaying()

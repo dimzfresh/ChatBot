@@ -14,6 +14,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "OutgoingViewModel.load():OutgoingViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "input.value">
+            </PersistentString>
+            <PersistentString
+               value = "isPlaying.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -154,13 +165,13 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "String(data: request.data!, encoding: .utf8)">
-            </PersistentString>
-            <PersistentString
                value = "request.parametersData">
             </PersistentString>
             <PersistentString
                value = "request.data">
+            </PersistentString>
+            <PersistentString
+               value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

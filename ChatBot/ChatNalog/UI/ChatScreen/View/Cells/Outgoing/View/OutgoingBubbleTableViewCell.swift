@@ -20,13 +20,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
     @IBOutlet private weak var messageLabel: UILabel!
 
     private var disposeBag = DisposeBag()
-
-    private let service = ChatService()
-    private var isPlaying = BehaviorRelay<Bool>(value: false)
-    private var player: VoiceManager? = VoiceManager.shared
-    
-    var answers = BehaviorRelay<[AnswerButton]>(value: [])
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -37,8 +31,9 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
         super.prepareForReuse()
         
         activity.stopAnimating()
-        player?.stopPlaying()
-        isPlaying.accept(false)
+        speakerButton.layer.removeAllAnimations()
+        viewModel = nil
+        disposeBag = DisposeBag()
     }
     
     func bindViewModel() {
@@ -55,15 +50,25 @@ private extension OutgoingBubbleTableViewCell {
     func bind() {
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
-            let flag = self.isPlaying.value
-            self.isPlaying.accept(!flag)
+            let flag = self.viewModel.isLoading.value
+            self.viewModel.isLoading.accept(!flag)
         }).disposed(by: disposeBag)
         
-        isPlaying.subscribe(onNext: { [weak self] flag in
-            self?.viewModel?.load()
-            self?.animate()
+        viewModel?.isLoading
+            .subscribe(onNext: { [weak self] flag in
+            if flag {
+                self?.activity.startAnimating()
+                self?.speakerButton.isHidden = true
+            }
         })
         .disposed(by: disposeBag)
+        
+        viewModel?.isPlaying.subscribe(onNext: { [weak self] flag in
+            self?.activity.stopAnimating()
+            self?.speakerButton.isHidden = false
+              self?.animate()
+          })
+          .disposed(by: disposeBag)
         
         viewModel?.input
             .subscribe(onNext: { [weak self] message in
@@ -74,7 +79,7 @@ private extension OutgoingBubbleTableViewCell {
     
     func animate() {
         // Image
-        let image: UIImage = isPlaying.value ? #imageLiteral(resourceName: "play_sound_tapped") : #imageLiteral(resourceName: "play_sound")
+        let image: UIImage = self.viewModel.isPlaying.value ? #imageLiteral(resourceName: "play_sound_tapped") : #imageLiteral(resourceName: "play_sound")
 
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.speakerButton.setImage(image, for: .normal)
@@ -82,7 +87,7 @@ private extension OutgoingBubbleTableViewCell {
         
         speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
-        guard isPlaying.value else {
+        guard viewModel.isPlaying.value else {
             speakerButton.transform = .identity
             speakerButton.alpha = 1
             speakerButton.layer.removeAllAnimations()
