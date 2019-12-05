@@ -45,6 +45,23 @@ private extension OutgoingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
         userNameLabel.text = "Пользователь"
+        
+        addLongPressRecognizer()
+    }
+    
+    func addLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        addGestureRecognizer(longPressRecognizer)
+    }
+
+    @objc
+    func longPressed() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let date = formatter.string(from: Date())
+        let message = viewModel?.input.value?.text ?? ""
+        let text = "\(date) Пользователь: \(message)"
+        copyToClipboard(text: text)
     }
     
     func bind() {

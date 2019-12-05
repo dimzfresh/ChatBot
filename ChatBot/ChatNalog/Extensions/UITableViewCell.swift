@@ -27,26 +27,21 @@ extension UITableView {
     func dequeue<Cell>(_ reusableCell: Cell.Type) -> Cell? where Cell: UITableViewCell {
         return dequeueReusableCell(withIdentifier: reusableCell.identifier) as? Cell
     }
-    
-//    func registerCellClass(_ cellClass: AnyClass) {
-//        let identifier = String.className(cellClass)
-//        self.register(cellClass, forCellReuseIdentifier: identifier)
-//    }
-//
-//    func registerCellNib(_ cellClass: AnyClass) {
-//        let identifier = String.className(cellClass)
-//        let nib = UINib(nibName: identifier, bundle: nil)
-//        self.register(nib, forCellReuseIdentifier: identifier)
-//    }
-//
-//    func registerHeaderFooterViewClass(_ viewClass: AnyClass) {
-//        let identifier = String.className(viewClass)
-//        self.register(viewClass, forHeaderFooterViewReuseIdentifier: identifier)
-//    }
-//
-//    func registerHeaderFooterViewNib(_ viewClass: AnyClass) {
-//        let identifier = String.className(viewClass)
-//        let nib = UINib(nibName: identifier, bundle: nil)
-//        self.register(nib, forHeaderFooterViewReuseIdentifier: identifier)
-//    }
 }
+
+extension UITableViewCell {
+    func copyToClipboard(text: String) {
+        let alert = UIAlertController(title: "Скопировать сообщение?", message: "", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Скопировать", style: .default, handler: { _ in
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = text
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .destructive))
+        
+        (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController?.present(alert, animated: true)
+    }
+}
+

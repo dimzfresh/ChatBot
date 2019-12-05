@@ -78,6 +78,23 @@ private extension IncomingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
         setupCollectionView()
+        
+        addLongPressRecognizer()
+    }
+    
+    func addLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        addGestureRecognizer(longPressRecognizer)
+    }
+
+    @objc
+    func longPressed() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let date = formatter.string(from: Date())
+        let mess = message?.text ?? ""
+        let text = "\(date) Чатбот: \(mess)"
+        copyToClipboard(text: text)
     }
     
     func setupCollectionView() {
