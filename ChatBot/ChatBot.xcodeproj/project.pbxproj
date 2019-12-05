@@ -32,6 +32,8 @@
 		5A55D8772389660D00318A53 /* OutgoingBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55D8752389660D00318A53 /* OutgoingBubbleTableViewCell.xib */; };
 		5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */; };
 		5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */; };
+		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
+		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
 		5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */; };
 		5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */; };
@@ -115,6 +117,8 @@
 		5A55D8752389660D00318A53 /* OutgoingBubbleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutgoingBubbleTableViewCell.xib; sourceTree = "<group>"; };
 		5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingBubbleTableViewCell.swift; sourceTree = "<group>"; };
 		5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomingBubbleTableViewCell.xib; sourceTree = "<group>"; };
+		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
+		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cashe.swift"; sourceTree = "<group>"; };
 		5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSettings.swift; sourceTree = "<group>"; };
@@ -320,6 +324,31 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		5A796D372399452A0094A2AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A796D3A239945590094A2AD /* IncomingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A796D38239945380094A2AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */,
+				5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5A796D392399453F0094A2AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A796D3C239945740094A2AD /* IncomingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5A8F432B234A1BED007FB89F /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,8 +429,9 @@
 		5AA8791D23986836001564F6 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
-				5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */,
-				5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */,
+				5A796D372399452A0094A2AD /* Model */,
+				5A796D38239945380094A2AD /* View */,
+				5A796D392399453F0094A2AD /* ViewModel */,
 			);
 			path = Incoming;
 			sourceTree = "<group>";
@@ -743,6 +773,7 @@
 				5A1C365B2353303F00DE587A /* APIRequest.swift in Sources */,
 				5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */,
 				5A249B4623912D8100044D94 /* AVConverter.swift in Sources */,
+				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
 				5A249B44239124B200044D94 /* VoiceManager.swift in Sources */,
@@ -765,6 +796,7 @@
 				5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */,
 				5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */,
 				5AB57EE0231C5EF400A22A8C /* Style.swift in Sources */,
+				5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */,
 				5AB57EBF231C5E4F00A22A8C /* AppDelegate.swift in Sources */,
 				5A1C366523538AFD00DE587A /* ActivityView.swift in Sources */,
 				5A00896E238D491200F26C66 /* InputView.swift in Sources */,

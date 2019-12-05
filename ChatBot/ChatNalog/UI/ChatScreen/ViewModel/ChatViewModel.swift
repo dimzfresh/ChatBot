@@ -26,7 +26,8 @@ enum TableViewItem {
 enum MicrophoneState {
     case recording
     case stopped
-    
+    case none
+
     var opposite: MicrophoneState {
         return self == .recording ? .stopped : .recording
     }
@@ -53,8 +54,9 @@ final class ChatViewModel: BaseViewModel {
     let questionInput = BehaviorRelay<String>(value: "")
     let answerOutput = BehaviorSubject<AnswerRequestInput?>(value: nil)
     let searchResult = BehaviorSubject<[String]>(value: [])
-    
-    let microphoneState = BehaviorRelay<MicrophoneState>(value: .stopped)
+    let voice = BehaviorRelay<String?>(value: nil)
+
+    let microphoneState = BehaviorRelay<MicrophoneState>(value: .none)
     let speakerState = BehaviorRelay<SpeakerState>(value: .stopped)
     
     var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
@@ -78,14 +80,6 @@ final class ChatViewModel: BaseViewModel {
         search()
     }
     
-    func cancelAllRequests() {
-        Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
-            dataTasks.forEach { $0.cancel() }
-            uploadTasks.forEach { $0.cancel() }
-            downloadTasks.forEach { $0.cancel() }
-        }
-    }
-    
     // MARK: - Microphone
     func record(for state: MicrophoneState) {
         if state == .recording {
@@ -101,6 +95,12 @@ private extension ChatViewModel {
         answerOutput.subscribe(onNext: { [weak self] input in
             guard let input = input, !input.id.isEmpty else { return }
             self?.answer(input: input)
+        })
+        .disposed(by: disposeBag)
+        
+        voice.subscribe(onNext: { [weak self] text in
+            guard let text = text else { return }
+            self?.recognize(text: text)
         })
         .disposed(by: disposeBag)
     }
@@ -178,6 +178,19 @@ private extension ChatViewModel {
             self?.processItems(for: model)
             self?.title.on(.next((main: "Налоговый помощник Жора",
             sub: "\nОнлайн")))
+            self?.scrollPosition.on(.next(.bottom))
+            }, onError: { error in
+                print(error)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func recognize(text: String) {
+        service?.recognize(text: text)
+        .subscribe(onNext: { [weak self] model in
+            let text = model.someString ?? ""
+            self?.questionInput.accept(text)
+            self?.sendQuestion()
             self?.scrollPosition.on(.next(.bottom))
             }, onError: { error in
                 print(error)

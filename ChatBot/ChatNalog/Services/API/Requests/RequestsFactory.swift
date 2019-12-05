@@ -169,13 +169,13 @@ public final class RecognizeRequest: APIRequest {
         return h
     }
     
-    public var parameters: [String : Any]? {
-        return ["speechText" : text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? text]
+    public var data: Data? {
+        return text.data(using: .utf8)
     }
 
     private var text: String
     
     init(text: String) {
-        self.text = text
+        self.text = "\"\(text)\""
     }
 }

@@ -26,10 +26,17 @@ final class ChatViewController: UIViewController, BindableType {
     @IBOutlet private weak var micButton: UIButton!
     @IBOutlet private weak var inputStackViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var recordingView: UIView!
+    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var recordingStackView: UIStackView!
+    @IBOutlet private weak var emptyStackView: UIStackView!
+    
     @IBOutlet private weak var searchTableView: UITableView!
     
+    private var timer: Observable<NSInteger>?
+    private var timerBag = DisposeBag()
+
     private let voiceManager = VoiceManager.shared
-    
     private var pulseLayers = [CAShapeLayer]()
     
     var viewModel: ChatViewModel!
@@ -100,32 +107,36 @@ extension ChatViewController: UITableViewDelegate {
 
 extension ChatViewController {
     private func setup() {
-        searchTableView.tableFooterView = UIView(frame: .zero)
+        setupViews()
         bindTitle()
         keyboard()
     }
     
-    private func setupSearch() {
-//        let results = inputTextView.rx.text
-//            .orEmpty
-//            .debounce(.milliseconds(250), scheduler: MainScheduler.instance)
-//            .distinctUntilChanged()
-//            .flatMapLatest { query -> Observable<NflPlayerStats> in
-//            if query.isEmpty {
-//              return .just([])
-//            }
-//            return ApiController.shared.search(search: query)
-//              .catchErrorJustReturn([])
-//          }
-//          .observeOn(MainScheduler.instance)
-
-//        results
-//          .bind(to: tableView.rx.items(cellIdentifier: "PlayerCell",
-//                                       cellType: PlayerCell.self)) {
-//            (index, nflPlayerStats: NflPlayerStats, cell) in
-//            cell.setup(for: nflPlayerStats)
-//          }
-//          .disposed(by: disposeBag)
+    private func setupViews() {
+        recordingStackView.alpha = 0
+        searchTableView.tableFooterView = UIView(frame: .zero)
+    }
+    
+    func stringFromTimeInterval(ms: NSInteger) -> String {
+        return String(format: "%0.2d:%0.2d,%0.2d",
+            arguments: [(ms / 600) % 600, (ms % 600) / 20, ms % 20])
+    }
+    
+    func startTimer() {
+        timer = Observable<NSInteger>.interval(.milliseconds(50), scheduler: MainScheduler.instance)
+//        timer?.subscribe(onNext: { [weak self] ms in
+//            print(ms)
+//        })
+//        .disposed(by: timerBag)
+        
+        timer?.map(stringFromTimeInterval)
+            .bind(to: timeLabel.rx.text)
+            .disposed(by: timerBag)
+    }
+    
+    func stopTimer() {
+        timerBag = DisposeBag()
+        timer = nil
     }
     
     private func bindTitle() {
@@ -242,23 +253,29 @@ extension ChatViewController {
         sendButton.rx.tap
             //.debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.cancelAllRequests()
                 self?.viewModel.sendQuestion()
             })
             .disposed(by: disposeBag)
         
         micButton.rx.tap
             .subscribe({ [weak self] _ in
-                self?.viewModel.microphoneState.accept(viewModel.microphoneState.value.opposite)
+                let state = viewModel.microphoneState.value
+                self?.viewModel.microphoneState.accept(state.opposite)
                   //self?.viewModel.beginRecording()
               })
               .disposed(by: disposeBag)
         
         viewModel.microphoneState.subscribe(onNext: { [weak self] state in
+            guard state != .none else { return }
             self?.animateMicrophone(state: state)
+            self?.animateRecordingTime(state: state)
             self?.viewModel.record(for: state)
         }).disposed(by: disposeBag)
-
+        
+        voiceManager.audioRecordingDidFinished = { [weak self] text in
+            guard let text = text else { return }
+            self?.viewModel.voice.accept(text)
+        }
     }
     
     // MARK: - Keyboard
@@ -268,9 +285,9 @@ extension ChatViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { keyboardHeight in
                 if keyboardHeight == 0 {
-                    self.inputStackViewConstraint.constant = 24
+                    self.inputStackViewConstraint.constant = 20
                 } else {
-                    self.inputStackViewConstraint.constant = 24 + keyboardHeight
+                    self.inputStackViewConstraint.constant = 8 + keyboardHeight
                 }
                 UIView.animate(withDuration: 0.3) {
                     self.view.layoutIfNeeded()
@@ -343,7 +360,6 @@ extension ChatViewController {
             self.micButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self.createPulse()
 
-
             UIView.animate(withDuration: 1.0,
                                        delay: 0,
                                        usingSpringWithDamping: 0.2,
@@ -364,7 +380,7 @@ extension ChatViewController {
             pulseLayer.lineWidth = 3.0
             pulseLayer.fillColor = UIColor.clear.cgColor
             pulseLayer.lineCap = .round
-            pulseLayer.position = CGPoint(x: 20, y: 24)
+            pulseLayer.position = micButton.center
             micButton.layer.addSublayer(pulseLayer)
             pulseLayers.append(pulseLayer)
         }
@@ -398,5 +414,19 @@ extension ChatViewController {
         opacityAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         opacityAnimation.repeatCount = .greatestFiniteMagnitude
         pulseLayers[index].add(opacityAnimation, forKey: "opacity")
+    }
+    
+    func animateRecordingTime(state: MicrophoneState) {
+        if state == .recording {
+            recordingStackView.alpha = 1
+            startTimer()
+        } else {
+            recordingStackView.alpha = 0
+            stopTimer()
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .autoreverse, .repeat], animations: {
+            self.recordingView.alpha = 0.25
+        })
     }
 }

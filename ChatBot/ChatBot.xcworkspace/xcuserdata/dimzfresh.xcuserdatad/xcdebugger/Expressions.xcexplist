@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "VoiceManager.startRecording():VoiceManager.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
@@ -10,6 +13,14 @@
          <PersistentStrings>
             <PersistentString
                value = "tableView.numberOfSections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.updateTime():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timer">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -53,10 +64,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in VoiceManager.stopRecording():VoiceManager.swift">
+         contextName = "closure #1 in ChatViewModel.recognize(text:):ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "&quot;&quot;&quot;data.base64EncodedString()&quot;&quot;&quot;">
+               value = "model.someString">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -140,6 +151,14 @@
          contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
       </ContextState>
       <ContextState
+         contextName = "ChatViewController.createPulse():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "micButton.center">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -165,13 +184,13 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "request.parametersData">
-            </PersistentString>
-            <PersistentString
                value = "request.data">
             </PersistentString>
             <PersistentString
                value = "String(data: request.data!, encoding: .utf8)">
+            </PersistentString>
+            <PersistentString
+               value = "request.parametersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

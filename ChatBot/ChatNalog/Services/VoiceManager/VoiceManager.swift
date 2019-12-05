@@ -14,9 +14,10 @@ final class VoiceManager: NSObject {
     private let recordingSession: AVAudioSession! = .sharedInstance()
     private var audioRecorder: AVAudioRecorder?
     private var audioPlayer: AVAudioPlayer?
-
-    var audioPlayerDidFinished: (() -> Void)?
     
+    var audioPlayerDidFinished: (() -> Void)?
+    var audioRecordingDidFinished: ((String?) -> Void)?
+
     static let shared = VoiceManager()
         
     override private init() {
@@ -30,25 +31,23 @@ final class VoiceManager: NSObject {
         }
         guard allowed else { return }
         
-        let audioFilename = getFileURL()
+        let audioFilename = getFileURL(name: "input.m4a")
         
         let settings = [
-            AVFormatIDKey: Int(kAudioFileWAVEType),
-            AVSampleRateKey: 16000,
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
             AVNumberOfChannelsKey: 1,
-            AVLinearPCMBitDepthKey: 32,
-            AVLinearPCMIsBigEndianKey: false,
-            AVLinearPCMIsNonInterleaved: true,
+            //AVLinearPCMBitDepthKey: 32,
+            //AVLinearPCMIsBigEndianKey: false,
+            //AVLinearPCMIsNonInterleaved: true,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
             ] as [String : Any]
         
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder?.delegate = self
+            audioRecorder?.isMeteringEnabled = true
             audioRecorder?.record()
-            
-            //recordButton.setTitle("Tap to Stop", for: .normal)
-            //playButton.isEnabled = false
         } catch (let error) {
             print(error)
             finishRecording(success: false)
@@ -60,27 +59,28 @@ final class VoiceManager: NSObject {
         audioRecorder?.stop()
         audioRecorder = nil
         
-        let input = getFileURL() as URL
-        //let output = getFileURL(name: "ouput.wav") as URL
+        let input = getFileURL(name: "input.m4a") as URL
+        let output = getFileURL(name: "ouput.wav") as URL
         
-//        var options = AKConverter.Options()
-//        options.format = "wav"
-//        let converter = AKConverter(inputURL: input, outputURL: output, options: options)
-//
-//        converter.start { error in
-//            guard error == nil else { return }
+        var options = AKConverter.Options()
+        options.format = "wav"
+        let converter = AKConverter(inputURL: input, outputURL: output, options: options)
+
+        converter.start { error in
+            guard error == nil else { return }
 
             if FileManager.default.fileExists(atPath: input.path) {
                 do {
                     let data = try Data(contentsOf: input)
-                    _ = data.base64EncodedString()
+                    let text = data.base64EncodedString()
+                    self.audioRecordingDidFinished?(text)
                     //completion(.success(data))
                 } catch {
+                    self.audioRecordingDidFinished?(nil)
                     //completion(.failure(.doesntExist))
                 }
             }
-            
-        //}
+        }
     }
     
     func finishRecording(success: Bool) {
@@ -105,7 +105,6 @@ final class VoiceManager: NSObject {
     }
     
     private func preparePlayer() {
-
         var error: NSError?
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
@@ -128,25 +127,8 @@ final class VoiceManager: NSObject {
         }
     }
     
-    //MARK: To upload video on server
-    
-    func uploadAudioToServer() {
-        /*Alamofire.upload(
-         multipartFormData: { multipartFormData in
-         multipartFormData.append(getFileURL(), withName: "audio.m4a")
-         },
-         to: "https://yourServerLink",
-         encodingCompletion: { encodingResult in
-         switch encodingResult {
-         case .success(let upload, _, _):
-         upload.responseJSON { response in
-         Print(response)
-         }
-         case .failure(let encodingError):
-         print(encodingError)
-         }
-         })*/
-    }
+    //MARK: To upload audio on server
+    func uploadAudio(text: String) {}
 }
 
 private extension VoiceManager {
@@ -187,6 +169,8 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
             finishRecording(success: false)
+        } else {
+            stopRecording()
         }
     }
     
