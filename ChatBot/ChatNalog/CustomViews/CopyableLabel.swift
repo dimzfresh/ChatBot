@@ -44,6 +44,7 @@ final class CopyableLabel: UILabel {
     
     override func copy(_ sender: Any?) {
         let board = UIPasteboard.general
+        board.string = ""
         board.string = prepareText()
         let menu = UIMenuController.shared
         menu.setMenuVisible(false, animated: true)
@@ -55,10 +56,12 @@ final class CopyableLabel: UILabel {
     
     private func prepareText() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        //formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
         let date = formatter.string(from: Date())
         let message = text ?? ""
-        let text = "\(date) Пользователь: \(message)"
+        let name = isUser ? "Пользователь" : "Бот"
+        let text = "[\(date)] \(name): \(message)"
         return text
     }
 }
