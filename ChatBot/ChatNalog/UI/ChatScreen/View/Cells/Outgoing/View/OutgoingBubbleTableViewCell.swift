@@ -12,12 +12,18 @@ import RxSwift
 
 final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
     typealias ViewModelType = OutgoingViewModel
-    var viewModel: ViewModelType!
+    var viewModel: ViewModelType! {
+        didSet {
+            selectedMic = BehaviorRelay<Bool?>(value: nil)
+        }
+    }
     
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: UIActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var messageLabel: CopyableLabel!
+    
+    var selectedMic = BehaviorRelay<Bool?>(value: nil)
 
     private var disposeBag = DisposeBag()
         
@@ -30,10 +36,15 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        clear()
+        disposeBag = DisposeBag()
+    }
+    
+    func clear() {
         activity.stopAnimating()
         speakerButton.layer.removeAllAnimations()
+        speakerButton.setImage(#imageLiteral(resourceName: "play_sound"), for: .normal)
         viewModel = nil
-        disposeBag = DisposeBag()
     }
     
     func bindViewModel() {
@@ -45,28 +56,12 @@ private extension OutgoingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
         userNameLabel.text = "Пользователь"
-        
-        //addLongPressRecognizer()
-    }
-    
-    func addLongPressRecognizer() {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-        addGestureRecognizer(longPressRecognizer)
-    }
-
-    @objc
-    func longPressed() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let date = formatter.string(from: Date())
-        let message = viewModel?.input.value?.text ?? ""
-        let text = "\(date) Пользователь: \(message)"
-        copyToClipboard(text: text)
     }
     
     func bind() {
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
+            self.selectedMic.accept(true)
             let flag = self.viewModel.isLoading.value
             self.viewModel.isLoading.accept(!flag)
         }).disposed(by: disposeBag)

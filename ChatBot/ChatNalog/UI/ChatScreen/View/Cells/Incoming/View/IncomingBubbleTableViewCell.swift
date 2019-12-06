@@ -41,6 +41,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
 
     private var items = BehaviorRelay<[AnswerSectionModel]>(value: [])
     var selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
+    var selectedMic = BehaviorRelay<Bool?>(value: nil)
 
     private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<AnswerSectionModel>(configureCell: configureCell)
 
@@ -68,6 +69,12 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        clear()
+    }
+    
+    func clear() {
+        speakerButton.layer.removeAllAnimations()
+        speakerButton.setImage(#imageLiteral(resourceName: "play_sound"), for: .normal)
         activity.stopAnimating()
         player?.stopPlaying()
         isPlaying.accept(false)
@@ -78,23 +85,6 @@ private extension IncomingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
         setupCollectionView()
-        
-        //addLongPressRecognizer()
-    }
-    
-    func addLongPressRecognizer() {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
-        addGestureRecognizer(longPressRecognizer)
-    }
-
-    @objc
-    func longPressed() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        let date = formatter.string(from: Date())
-        let mess = message?.text ?? ""
-        let text = "\(date) Чатбот: \(mess)"
-        copyToClipboard(text: text)
     }
     
     func setupCollectionView() {
@@ -130,6 +120,7 @@ private extension IncomingBubbleTableViewCell {
         
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
+            self.selectedMic.accept(true)
             let flag = self.isPlaying.value
             self.isPlaying.accept(!flag)
         }).disposed(by: disposeBag)
@@ -143,7 +134,8 @@ private extension IncomingBubbleTableViewCell {
     
     func process() {
         selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
-        
+        selectedMic = BehaviorRelay<Bool?>(value: nil)
+
         userNameLabel.text = "Чатбот"
                 
         guard message?.buttons?.isEmpty == false else {

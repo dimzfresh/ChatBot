@@ -39,14 +39,16 @@ enum SpeakerState {
     case stopped
 }
 
+fileprivate let chatName = "Помощник по Самозанятым"
+
 final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
     
     private let service: Service?
     private let voiceManager = VoiceManager.shared
     private let disposeBag = DisposeBag()
-        
-    let title = BehaviorSubject<ChatTitle>(value: (main: "Налоговый помощник Жора",
+      
+    let title = BehaviorSubject<ChatTitle>(value: (main: chatName,
                                                    sub: "\nОнлайн"))
    
     let messages = BehaviorRelay<[SectionOfChat]>(value: [])
@@ -131,7 +133,7 @@ private extension ChatViewModel {
     }
     
     func changeTitle() {
-        title.on(.next((main: "Налоговый помощник Жора",
+        title.on(.next((main: chatName,
         sub: "\nпечатает...")))
     }
     
@@ -163,7 +165,7 @@ private extension ChatViewModel {
         service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
-            self?.title.on(.next((main: "Налоговый помощник Жора",
+            self?.title.on(.next((main: chatName,
             sub: "\nОнлайн")))
             self?.scrollPosition.on(.next(.bottom))
             }, onError: { error in
@@ -176,7 +178,7 @@ private extension ChatViewModel {
         service?.sendAnswer(input: input)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
-            self?.title.on(.next((main: "Налоговый помощник Жора",
+            self?.title.on(.next((main: chatName,
             sub: "\nОнлайн")))
             self?.scrollPosition.on(.next(.bottom))
             }, onError: { error in

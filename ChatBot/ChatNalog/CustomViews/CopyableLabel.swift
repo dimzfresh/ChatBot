@@ -19,15 +19,29 @@ final class CopyableLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sharedInit()
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        sharedInit()
+        setup()
     }
     
-    func sharedInit() {
+    override func copy(_ sender: Any?) {
+        let board = UIPasteboard.general
+        board.string = ""
+        board.string = prepareText()
+        let menu = UIMenuController.shared
+        menu.setMenuVisible(false, animated: true)
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return action == #selector(UIResponderStandardEditActions.copy)
+    }
+}
+
+private extension CopyableLabel {
+    func setup() {
         isUserInteractionEnabled = true
         addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(showMenu)))
     }
@@ -42,19 +56,7 @@ final class CopyableLabel: UILabel {
         }
     }
     
-    override func copy(_ sender: Any?) {
-        let board = UIPasteboard.general
-        board.string = ""
-        board.string = prepareText()
-        let menu = UIMenuController.shared
-        menu.setMenuVisible(false, animated: true)
-    }
-    
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(UIResponderStandardEditActions.copy)
-    }
-    
-    private func prepareText() -> String {
+    func prepareText() -> String {
         let formatter = DateFormatter()
         //formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
         formatter.dateFormat = "HH:mm, dd.MM.yyyy"

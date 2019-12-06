@@ -48,7 +48,7 @@ public final class RequestsFactory {
 
 // MARK: - Question
 public final class QuestionRequest: APIRequest {
-    public var route: String = "/ChatbotV2?userQuestion="
+    public var route: String = "/ChatbotV2?system=faqsamozanyatie&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
@@ -73,7 +73,7 @@ public final class QuestionRequest: APIRequest {
 
 // MARK: - Answer
 public final class AnswerRequest: APIRequest {
-    public var route: String = "/ChatbotV2?userQuestion="
+    public var route: String = "/ChatbotV2?system=faqsamozanyatie&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
@@ -102,7 +102,7 @@ public final class AnswerRequest: APIRequest {
 
 // MARK: - Search
 public final class SearchRequest: APIRequest {
-    public var route: String = "/Suggest/suggest?search="
+    public var route: String = "/Suggest/suggest?system=faqsamozanyatie&search="
     public var method: HTTPMethod { .post }
 
     private var text: String
@@ -138,7 +138,7 @@ public struct AnswerRequestInput {
 
 // MARK: - Recognize
 public final class SynthesizeRequest: APIRequest {
-    public var route: String = "/Speech/synthesize/wav"
+    public var route: String = "/Speech/synthesize/wav?system=faqsamozanyatie"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
@@ -160,7 +160,7 @@ public final class SynthesizeRequest: APIRequest {
 
 // MARK: - Recognize
 public final class RecognizeRequest: APIRequest {
-    public var route: String = "/Speech/recognize"
+    public var route: String = "/Speech/recognize?system=faqsamozanyatie"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {

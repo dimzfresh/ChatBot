@@ -75,6 +75,10 @@ extension ChatViewController: UITableViewDelegate {
         let vm = OutgoingViewModel()
         vm.message = message
         cell.bind(to: vm)
+        cell.selectedMic
+            .subscribe(onNext: { [weak self, atIndex] _ in
+                self?.removeCellAnimations(without: atIndex)
+             }).disposed(by: disposeBag)
     
         return cell
     }
@@ -97,6 +101,10 @@ extension ChatViewController: UITableViewDelegate {
 
                 self.viewModel.answerOutput.on(.next(input))
             }).disposed(by: disposeBag)
+        cell.selectedMic
+            .subscribe(onNext: { [weak self, atIndex] _ in
+                self?.removeCellAnimations(without: atIndex)
+             }).disposed(by: disposeBag)
         return cell
     }
     
@@ -196,7 +204,7 @@ extension ChatViewController {
 
         inputTextView.rx.text
             .orEmpty
-            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
 //            .flatMapLatest({ query -> BehaviorRelay<String> in
 //                if query.isEmpty {
@@ -316,6 +324,14 @@ extension ChatViewController {
         case .bottom:
             scrollToBottom(animated: true)
             break
+        }
+    }
+    
+    private func removeCellAnimations(without indexPath: IndexPath) {
+        let indexPaths = tableView.indexPathsForVisibleRows?.filter { indexPath != $0 }
+        indexPaths?.forEach {
+            (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()
+            (tableView.cellForRow(at: $0) as? OutgoingBubbleTableViewCell)?.clear()
         }
     }
     
