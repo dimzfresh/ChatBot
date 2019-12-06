@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BCACF0589E69A5CDB24F3A5 /* Pods_ChatBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C8841AB92BA2CFBF650EAA9 /* Pods_ChatBotTests.framework */; };
 		5A00896E238D491200F26C66 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A00896D238D491200F26C66 /* InputView.swift */; };
 		5A1C364C23531CB700DE587A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364B23531CB700DE587A /* APIClient.swift */; };
 		5A1C364E23531D2000DE587A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364D23531D2000DE587A /* Environment.swift */; };
@@ -60,7 +59,6 @@
 		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
 		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
-		A7D61D9CF88F2FFFBC07F604 /* Pods_VarakushCashierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF85410524B07F82350B71B /* Pods_VarakushCashierTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +88,6 @@
 		0C3483F2614FBAA293598A37 /* Pods-ChatBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.release.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		0DA014246DFDF2D312907C57 /* Pods-VarakushCashier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashier.release.xcconfig"; path = "Target Support Files/Pods-VarakushCashier/Pods-VarakushCashier.release.xcconfig"; sourceTree = "<group>"; };
 		0ECCCFB87935A0FD96E2527A /* Pods-VarakushCashierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashierTests.release.xcconfig"; path = "Target Support Files/Pods-VarakushCashierTests/Pods-VarakushCashierTests.release.xcconfig"; sourceTree = "<group>"; };
-		1C8841AB92BA2CFBF650EAA9 /* Pods_ChatBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E05EB620EF780FCD23FF4A /* Pods-VarakushCashier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashier.debug.xcconfig"; path = "Target Support Files/Pods-VarakushCashier/Pods-VarakushCashier.debug.xcconfig"; sourceTree = "<group>"; };
 		3AAB4D817B158786017D06E2 /* Pods-VarakushCashierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashierTests.debug.xcconfig"; path = "Target Support Files/Pods-VarakushCashierTests/Pods-VarakushCashierTests.debug.xcconfig"; sourceTree = "<group>"; };
 		53A86E5FA450BF55D0EC035F /* Pods-ChatBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.debug.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,11 +146,9 @@
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
-		8DF85410524B07F82350B71B /* Pods_VarakushCashierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VarakushCashierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CF536DF520427F60879EA /* Pods-ChatBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3CC2F5BA9F429165F7D90FF /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.release.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
 		D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F82BBEDC81FA47F1186CCF60 /* Pods_VarakushCashier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VarakushCashier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +164,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7D61D9CF88F2FFFBC07F604 /* Pods_VarakushCashierTests.framework in Frameworks */,
-				2BCACF0589E69A5CDB24F3A5 /* Pods_ChatBotTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,10 +563,7 @@
 		FEBE36BA5592040F308B13F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F82BBEDC81FA47F1186CCF60 /* Pods_VarakushCashier.framework */,
-				8DF85410524B07F82350B71B /* Pods_VarakushCashierTests.framework */,
 				D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */,
-				1C8841AB92BA2CFBF650EAA9 /* Pods_ChatBotTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

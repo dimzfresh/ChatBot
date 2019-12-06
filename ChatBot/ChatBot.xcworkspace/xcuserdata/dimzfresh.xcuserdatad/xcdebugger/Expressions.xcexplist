@@ -6,7 +6,12 @@
          contextName = "VoiceManager.startRecording():VoiceManager.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
+         contextName = "ChatViewController.updateTime():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timer">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ChatViewController.scrollToBottom(animated:):ChatViewController.swift">
@@ -17,12 +22,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewController.updateTime():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "timer">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "OutgoingViewModel.load():OutgoingViewModel.swift">
@@ -32,6 +32,14 @@
             </PersistentString>
             <PersistentString
                value = "isPlaying.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewModel.isLoading">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -56,18 +64,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "message">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "closure #1 in ChatViewModel.recognize(text:):ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
                value = "model.someString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -184,13 +192,13 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "request.data">
-            </PersistentString>
-            <PersistentString
                value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
             <PersistentString
                value = "request.parametersData">
+            </PersistentString>
+            <PersistentString
+               value = "request.data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

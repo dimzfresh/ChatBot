@@ -44,7 +44,6 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
         activity.stopAnimating()
         speakerButton.layer.removeAllAnimations()
         speakerButton.setImage(#imageLiteral(resourceName: "play_sound"), for: .normal)
-        viewModel = nil
     }
     
     func bindViewModel() {
@@ -60,10 +59,10 @@ private extension OutgoingBubbleTableViewCell {
     
     func bind() {
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let self = self else { return }
+            guard let self = self, let vm = self.viewModel else { return }
             self.selectedMic.accept(true)
-            let flag = self.viewModel.isLoading.value
-            self.viewModel.isLoading.accept(!flag)
+            let flag = vm.isLoading.value
+            vm.isLoading.accept(!flag)
         }).disposed(by: disposeBag)
         
         viewModel?.isLoading
