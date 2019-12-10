@@ -39,6 +39,8 @@ final class ChatViewController: UIViewController, BindableType {
     private let voiceManager = VoiceManager.shared
     private var pulseLayers = [CAShapeLayer]()
     
+    private var isShownSearchResult = BehaviorRelay<Bool>(value: false)
+    
     var viewModel: ChatViewModel!
     
     private let disposeBag = DisposeBag()
@@ -121,7 +123,9 @@ extension ChatViewController {
     }
     
     private func setupViews() {
+        //inputTextView.addDoneButtonOnKeyboard()
         recordingStackView.alpha = 0
+        searchTableView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         searchTableView.tableFooterView = UIView(frame: .zero)
     }
     
@@ -231,9 +235,10 @@ extension ChatViewController {
         viewModel.searchResult
             .asObservable()
             .do(onNext: { items in
-                let alpha: CGFloat = items.isEmpty ? 0 : 0.9
+                let alpha: CGFloat = items.isEmpty ? 0 : 0.99
                 UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve, animations: {
                     self.searchTableView.alpha = alpha
+                    self.searchTableView.isHidden = items.isEmpty
                 })
             })
             .bind(to: searchTableView.rx.items) { (tv, index, text) -> UITableViewCell in
@@ -244,6 +249,14 @@ extension ChatViewController {
             }
         .disposed(by: disposeBag)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.cancelsTouchesInView = true
+        tableView.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
+            guard recognizer.state == .ended else { return }
+            self?.view.endEditing(true)
+        }).disposed(by: disposeBag)
+                
         searchTableView.rx.itemSelected
             .map({ index -> String in
                 do {
@@ -355,6 +368,7 @@ extension ChatViewController {
             }, completion: nil)
             UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve, animations: {
                 self.searchTableView.alpha = 0
+                self.searchTableView.isHidden = true
             })
         }
         self.sendButton.isEnabled = !empty

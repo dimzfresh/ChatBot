@@ -12,7 +12,7 @@ import RxCocoa
 
 final class AnswerCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var answerButton: AnimatedButton!
+    @IBOutlet weak var answerButton: AnimatedButton!
         
     var answer: AnswerButton? {
         didSet {
@@ -24,6 +24,12 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         setup()
+    }
+    
+    func animate(_ callback: @escaping () -> Void) {
+        answerButton.animate {
+            callback()
+        }
     }
 }
 

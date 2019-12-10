@@ -109,7 +109,15 @@ private extension IncomingBubbleTableViewCell {
         guard let cell = collectionView.dequeue(AnswerCollectionViewCell.self, indexPath: indexPath) else {
             return UICollectionViewCell()
         }
-        cell.answer = message?.buttons?[indexPath.section]
+        let answer = message?.buttons?[indexPath.section]
+        cell.answer = answer
+        cell.answerButton.rx.tap
+            .subscribe({ [weak self, answer, cell] _ in
+                cell.animate {
+                    self?.selectedItem.on(.next(answer))
+                }
+            })
+            .disposed(by: disposeBag)
         return cell
     }
     

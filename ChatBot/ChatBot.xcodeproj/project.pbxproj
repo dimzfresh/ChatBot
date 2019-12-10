@@ -22,6 +22,7 @@
 		5A249B4623912D8100044D94 /* AVConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4523912D8100044D94 /* AVConverter.swift */; };
 		5A249B4823917A5500044D94 /* VoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4723917A5500044D94 /* VoiceModel.swift */; };
 		5A249B4F2391D12400044D94 /* AnimationsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4E2391D12400044D94 /* AnimationsFactory.swift */; };
+		5A27BAD6239FB3450073BC16 /* UITextField+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */; };
 		5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */; };
 		5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BF0238E838800C60EB5 /* SearchModel.swift */; };
 		5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D869238956CF00318A53 /* ChatModule.swift */; };
@@ -106,6 +107,7 @@
 		5A249B4523912D8100044D94 /* AVConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVConverter.swift; sourceTree = "<group>"; };
 		5A249B4723917A5500044D94 /* VoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceModel.swift; sourceTree = "<group>"; };
 		5A249B4E2391D12400044D94 /* AnimationsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsFactory.swift; sourceTree = "<group>"; };
+		5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Keyboard.swift"; sourceTree = "<group>"; };
 		5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		5A3D0BF0238E838800C60EB5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		5A55D869238956CF00318A53 /* ChatModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModule.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				5AB705E2234A780500C23C3C /* UIView+LayoutAnchor.swift */,
 				5AB705EA234A7DF400C23C3C /* String+Base64.swift */,
 				5AB705EC234A7E9D00C23C3C /* Bundle.swift */,
+				5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
+				5A27BAD6239FB3450073BC16 /* UITextField+Keyboard.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
 				5A249B44239124B200044D94 /* VoiceManager.swift in Sources */,
 				5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */,
@@ -975,7 +979,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -997,7 +1001,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
