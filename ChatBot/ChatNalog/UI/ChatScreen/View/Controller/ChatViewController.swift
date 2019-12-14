@@ -89,7 +89,9 @@ extension ChatViewController: UITableViewDelegate {
         guard let cell = tableView.dequeue(IncomingBubbleTableViewCell.self) else {
             return UITableViewCell()
         }
-        cell.message = message
+        let vm = IncomingViewModel()
+        vm.message = message
+        cell.bind(to: vm)
         cell.selectedItem
             .subscribe(onNext: { [weak self, atIndex] answer in
                 guard let self = self, let answer = answer else { return }

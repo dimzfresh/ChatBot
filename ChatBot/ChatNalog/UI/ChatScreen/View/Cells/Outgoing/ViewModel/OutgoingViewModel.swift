@@ -26,7 +26,7 @@ final class OutgoingViewModel: BaseViewModel {
     
     var isLoading = BehaviorRelay<Bool>(value: false)
     var isPlaying = BehaviorRelay<Bool>(value: false)
-    private var player: VoiceManager? = VoiceManager.shared
+    private var player: VoiceManager? = .shared
     
     init(service: Service? = ChatService()) {
         self.service = service
@@ -40,20 +40,23 @@ extension OutgoingViewModel {
         isLoading
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] flag in
-            guard flag else { return }
             self?.load()
         })
         .disposed(by: disposeBag)
     }
-    
+}
+
+private extension OutgoingViewModel {
     func load() {
         guard let text = input.value?.text, isLoading.value else {
             isLoading.accept(false)
             return }
 
         isLoading.accept(true)
+        
+        let clearText = removeSpecialCharsFromString(text: text)
 
-        service?.synthesize(text: text)
+        service?.synthesize(text: clearText)
             .subscribe(onNext: { [weak self] model in
                 self?.isLoading.accept(false)
                 self?.convertAndPlay(text: model.someString)
@@ -61,6 +64,12 @@ extension OutgoingViewModel {
                     self?.isLoading.accept(false)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars: Set<Character> = Set("\"")
+            //Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_".characters)
+        return String(text.filter { !okayChars.contains($0) })
     }
     
     func convertAndPlay(text : String?) {

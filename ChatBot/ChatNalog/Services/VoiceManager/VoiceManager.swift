@@ -25,6 +25,8 @@ final class VoiceManager: NSObject {
     }
     
     func startRecording() {
+        stopPlaying()
+
         var allowed = false
         requestPermission { ok in
             allowed = ok

@@ -10,18 +10,15 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
-    typealias ViewModelType = OutgoingViewModel
-    var viewModel: ViewModelType! {
-        didSet {
-            selectedMic = BehaviorRelay<Bool?>(value: nil)
-        }
-    }
+final class OutgoingBubbleTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: UIActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var messageLabel: CopyableLabel!
+    
+    typealias ViewModelType = OutgoingViewModel
+    var viewModel: ViewModelType!
     
     var selectedMic = BehaviorRelay<Bool?>(value: nil)
 
@@ -42,10 +39,14 @@ final class OutgoingBubbleTableViewCell: UITableViewCell, BindableType {
     
     func clear() {
         activity.stopAnimating()
+        speakerButton.isHidden = false
         speakerButton.layer.removeAllAnimations()
         speakerButton.setImage(#imageLiteral(resourceName: "play_sound"), for: .normal)
     }
-    
+}
+
+// MARK: - BindableType
+extension OutgoingBubbleTableViewCell: BindableType {
     func bindViewModel() {
         bind()
     }
@@ -77,7 +78,7 @@ private extension OutgoingBubbleTableViewCell {
         viewModel?.isPlaying.subscribe(onNext: { [weak self] flag in
             self?.activity.stopAnimating()
             self?.speakerButton.isHidden = false
-              self?.animate()
+            self?.animate()
           })
           .disposed(by: disposeBag)
         
@@ -90,7 +91,7 @@ private extension OutgoingBubbleTableViewCell {
     
     func animate() {
         // Image
-        let image: UIImage = self.viewModel.isPlaying.value ? #imageLiteral(resourceName: "play_sound_tapped") : #imageLiteral(resourceName: "play_sound")
+        let image: UIImage = viewModel.isPlaying.value ? #imageLiteral(resourceName: "play_sound_tapped") : #imageLiteral(resourceName: "play_sound")
 
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.speakerButton.setImage(image, for: .normal)
