@@ -71,9 +71,9 @@ final class VoiceManager: NSObject {
         converter.start { error in
             guard error == nil else { return }
 
-            if FileManager.default.fileExists(atPath: input.path) {
+            if FileManager.default.fileExists(atPath: output.path) {
                 do {
-                    let data = try Data(contentsOf: input)
+                    let data = try Data(contentsOf: output)
                     let text = data.base64EncodedString()
                     self.audioRecordingDidFinished?(text)
                     //completion(.success(data))

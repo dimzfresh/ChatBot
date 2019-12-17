@@ -36,8 +36,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     typealias ViewModelType = IncomingViewModel
     var viewModel: ViewModelType! {
         didSet {
-            selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
-            setupCollectionView()
+            selectedAnswerSubject = BehaviorSubject<AnswerButton?>(value: nil)
         }
     }
     
@@ -47,21 +46,20 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     private var isPlaying = BehaviorRelay<Bool>(value: false)
     private var player: VoiceManager? = .shared
 
-    var selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
-    private var incomingText = BehaviorRelay<String?>(value: nil)
-    private var items = BehaviorRelay<[AnswerSectionModel]>(value: [])
-
-    private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<AnswerSectionModel>(configureCell: configureCell)
-
-    private lazy var configureCell: RxCollectionViewSectionedReloadDataSource<AnswerSectionModel>.ConfigureCell = { [weak self] (_, tableView, indexPath, item) in
-        guard let self = self else { return UICollectionViewCell() }
-        switch item {
-        case .button(let answer):
-            return self.buttonCell(indexPath: indexPath, answer: answer)
+    private var selectedAnswerSubject = BehaviorSubject<AnswerButton?>(value: nil)
+    var selectedItem: Observable<AnswerButton?> { selectedAnswerSubject.asObservable() }
+    
+    private var selectedMicSubject = BehaviorSubject<Bool?>(value: nil)
+    var selectedMic: Observable<Bool?> { selectedMicSubject.asObservable() }
+    
+    private var incomingText = BehaviorSubject<String?>(value: nil)
+    private var items: [AnswerSectionModel] = [] {
+        didSet {
+            UIView.performWithoutAnimation {
+                self.collectionView.reloadData()
+            }
         }
     }
-    
-    var selectedMic = BehaviorRelay<Bool?>(value: nil)
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -95,22 +93,20 @@ private extension IncomingBubbleTableViewCell {
     func setup() {
         selectionStyle = .none
         userNameLabel.text = "Чатбот"
+        setupCollectionView()
     }
     
     func bind() {
-        items
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
         incomingText
-            .subscribe(onNext: { [weak self] text in
-                self?.messageLabel.text = text
-            })
+            .map { $0 }
+            .bind(to: messageLabel.rx.text)
             .disposed(by: disposeBag)
         
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self, let vm = self.viewModel else { return }
-            self.selectedMic.accept(true)
+            self.selectedMicSubject.onNext(true)
+            self.selectedMicSubject.onCompleted()
+            
             let flag = vm.isLoading.value
             vm.isLoading.accept(!flag)
         }).disposed(by: disposeBag)
@@ -133,10 +129,34 @@ private extension IncomingBubbleTableViewCell {
         
         viewModel?.input
             .subscribe(onNext: { [weak self] answer in
-                self?.incomingText.accept(answer?.text)
+                self?.incomingText.onNext(answer?.text)
                 self?.process(answer: answer)
             })
             .disposed(by: disposeBag)
+        
+        
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.cancelsTouchesInView = true
+        tapGesture.delaysTouchesBegan = true
+
+        collectionView.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
+            guard recognizer.state == .ended else { return }
+            let location = recognizer.location(in: self?.collectionView)
+            guard let tapIndexPath = self?.collectionView.indexPathForItem(at: location)
+                else { return }
+            
+            let cell = self?.collectionView.cellForItem(at: tapIndexPath) as? AnswerCollectionViewCell
+            cell?.animate { [weak self] in
+                guard let self = self else { return }
+                let item = self.items[tapIndexPath.section].items[tapIndexPath.row]
+                guard case let AnswerItem.button(answer) = item else { return }
+                
+                self.selectedAnswerSubject.on(.next(answer))
+                self.selectedAnswerSubject.onCompleted()
+            }
+            
+        }).disposed(by: disposeBag)
     }
     
     func process(answer: InputAnswer?) {
@@ -146,8 +166,7 @@ private extension IncomingBubbleTableViewCell {
             collectionStackView.isHidden = true
             collectionView.isHidden = true
             messageStackView.alignment = .leading
-            layoutIfNeeded()
-            items.accept([])
+            //items.accept([])
             return }
 
         collectionStackView.isHidden = false
@@ -163,7 +182,8 @@ private extension IncomingBubbleTableViewCell {
         collectionStackView.alignment = .fill
         messageStackView.alignment = .fill
         
-        items.accept(answer?.items ?? [])
+        //items.accept(answer?.items ?? [])
+        items = answer?.items ?? []
     }
     
     func animate() {
@@ -202,65 +222,60 @@ private extension IncomingBubbleTableViewCell {
 private extension IncomingBubbleTableViewCell {
     func setupCollectionView() {
         collectionView.register(AnswerCollectionViewCell.nib, forCellWithReuseIdentifier: AnswerCollectionViewCell.identifier)
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
-//        collectionView.rx.itemSelected
-//            .map { [weak self] indexPath -> AnswerItem? in
-//                return self?.dataSource[indexPath]
-//            }
-//            .subscribe(onNext: { [weak self] item in
-//                guard let item = item else { return }
-//                switch item {
-//                case .button(let answer):
-//                    self?.selectedItem.on(.next(answer))
-//                }
-//            })
-        //.disposed(by: disposeBag)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.allowsSelection = true
+        collectionView.isUserInteractionEnabled = true
+        collectionView.isScrollEnabled = false
     }
     
     func buttonCell(indexPath: IndexPath, answer: AnswerButton) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeue(AnswerCollectionViewCell.self, indexPath: indexPath) else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnswerCollectionViewCell.identifier, for: indexPath) as? AnswerCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        let item = dataSource[indexPath]
-        guard case let AnswerItem.button(answer) = item else {
-            return UICollectionViewCell()
-        }
-        
         cell.answer = answer
-        cell.selectedItem?.subscribe({ [weak self] answer in
-            self?.selectedItem.on(answer.event)
-        }).disposed(by: disposeBag)
-        
         return cell
     }
 }
 
-extension IncomingBubbleTableViewCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let item = dataSource[section]
-        switch item.model {
-        case .main:
-            return UIEdgeInsets(top: 0.0, left: 2, bottom: 0.0, right: 2)
+extension IncomingBubbleTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items[section].items.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let item = items[indexPath.section].items[indexPath.row]
+        guard case let AnswerItem.button(answer) = item else {
+            return UICollectionViewCell()
         }
+
+        return buttonCell(indexPath: indexPath, answer: answer)
+    }
+}
+
+extension IncomingBubbleTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0.0, left: 2, bottom: 0.0, right: 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = dataSource[indexPath]
-        switch item {
-        case .button(_):
-            let count = CGFloat(dataSource.sectionModels.count)
-            let width = (UIScreen.main.bounds.width - 28 - 4*count) / count
-            return CGSize(width: width, height: 40)
-        }
+        let count = CGFloat(items.count)
+        let width = (UIScreen.main.bounds.width - 28 - 4*count) / count
+        return CGSize(width: width, height: 40)
     }
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        let item = items.value[indexPath.section].items[indexPath.row]
-//        switch item {
-//        case .button(let answer):
-//            selectedItem.on(.next(answer))
+//
+//        let cell = collectionView.cellForItem(at: indexPath) as? AnswerCollectionViewCell
+//        cell?.animate { [weak self] in
+//            guard let self = self else { return }
+//            let item = self.items[indexPath.section].items[indexPath.row]
+//            guard case let AnswerItem.button(answer) = item else { return }
+//
+//            self.selectedAnswerSubject.on(.next(answer))
 //        }
 //    }
 }
-

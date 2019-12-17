@@ -29,6 +29,7 @@ extension AlamofireManager {
     
     var defaultHeaders: HTTPHeaders {
         var headers: HTTPHeaders = ["Content-Type": "application/json",
+                                    "source":  "3",
                                     "User-Agent":  "ChatNalog-iOS/\(Bundle.main.releaseVersionNumber)/ \(UIDevice.current.type)"]
         if !auth.token.isEmpty {
             headers["Authorization"] = "Bearer \(auth.token)"

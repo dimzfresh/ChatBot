@@ -80,6 +80,8 @@ extension ChatViewController: UITableViewDelegate {
         cell.selectedMic
             .subscribe(onNext: { [weak self, atIndex] _ in
                 self?.removeCellAnimations(without: atIndex)
+             }, onDisposed: {
+                print("Outgoing Mic disposed!")
              }).disposed(by: disposeBag)
     
         return cell
@@ -103,12 +105,16 @@ extension ChatViewController: UITableViewDelegate {
                 }
                 input.type = "\(answer.type ?? 0)"
 
-                self.viewModel.answerOutput.on(.next(input))
+                self.viewModel.answerOutput.onNext(input)
+            }, onDisposed: {
+                    print("Selection disposed!")
             }).disposed(by: disposeBag)
         cell.selectedMic
             .subscribe(onNext: { [weak self, atIndex] _ in
                 self?.removeCellAnimations(without: atIndex)
-             }).disposed(by: disposeBag)
+                }, onDisposed: {
+                    print("Incoming Mic disposed!")
+            }).disposed(by: disposeBag)
         return cell
     }
     
@@ -183,6 +189,7 @@ extension ChatViewController {
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.keyboardDismissMode = .interactive
+        tableView.allowsSelection = true
         
         tableView.register(OutgoingBubbleTableViewCell.nib, forCellReuseIdentifier: OutgoingBubbleTableViewCell.identifier)
         tableView.register(IncomingBubbleTableViewCell.nib, forCellReuseIdentifier: IncomingBubbleTableViewCell.identifier)
@@ -228,14 +235,13 @@ extension ChatViewController {
             .disposed(by: disposeBag)
         
         viewModel.questionInput
-            .asObservable()
+            .map { $0 }
             .bind { [weak self] text in
                 self?.inputTextView.text = text
         }
         .disposed(by: disposeBag)
         
         viewModel.searchResult
-            .asObservable()
             .do(onNext: { items in
                 let alpha: CGFloat = items.isEmpty ? 0 : 0.99
                 UIView.animate(withDuration: 0.2, delay: 0, options: .transitionCrossDissolve, animations: {
@@ -251,8 +257,10 @@ extension ChatViewController {
             }
         .disposed(by: disposeBag)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        let tapGesture = UITapGestureRecognizer()
         tapGesture.cancelsTouchesInView = true
+        tapGesture.delaysTouchesBegan = true
+
         tableView.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
             guard recognizer.state == .ended else { return }
@@ -260,13 +268,13 @@ extension ChatViewController {
         }).disposed(by: disposeBag)
                 
         searchTableView.rx.itemSelected
-            .map({ index -> String in
+            .map { index -> String in
                 do {
                     return try self.viewModel.searchResult.value()[index.row]
                 } catch {
                     return ""
                 }
-            })
+            }
         .subscribe(onNext: { [weak self] text in
             self?.viewModel.questionInput.accept(text)
             self?.viewModel.sendQuestion()
@@ -285,6 +293,7 @@ extension ChatViewController {
             .subscribe({ [weak self] _ in
                 let state = viewModel.microphoneState.value
                 self?.viewModel.microphoneState.accept(state.opposite)
+                  self?.viewModel.microphoneState.accept(state.opposite)
                   //self?.viewModel.beginRecording()
               })
               .disposed(by: disposeBag)

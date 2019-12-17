@@ -7,22 +7,16 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 final class AnswerCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var answerButton: AnimatedButton!
-    
-    private var disposeBag = DisposeBag()
-            
+                
     var answer: AnswerButton? {
         didSet {
             setupTitle()
-            bind()
         }
     }
-    var selectedItem: BehaviorSubject<AnswerButton?>?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +24,10 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
         setup()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        disposeBag = DisposeBag()
+    func animate(_ callback: @escaping () -> Void) {
+        answerButton.animate {
+            callback()
+        }
     }
 }
 
@@ -41,19 +35,10 @@ private extension AnswerCollectionViewCell {
     func setup() {
         answerButton.titleLabel?.textAlignment = .center
         answerButton.layer.cornerRadius = 4
-    }
-    
-    func bind() {
-        answerButton.rx.tap.subscribe({ [weak self] _ in
-            self?.animate {
-                self?.selectedItem?.on(.next(self?.answer))
-            }
-        }).disposed(by: disposeBag)
+        answerButton.isUserInteractionEnabled = false
     }
     
     func setupTitle() {
-        selectedItem = BehaviorSubject<AnswerButton?>(value: nil)
-
         let name = answer?.name ?? ""
         var result = name.split(separator: " ")
         if result.count <= 1 {
@@ -66,12 +51,6 @@ private extension AnswerCollectionViewCell {
             answerButton.titleLabel?.numberOfLines = 0
             answerButton.titleLabel?.lineBreakMode = .byWordWrapping
             answerButton.setTitle(first + "\n" + second, for: .normal)
-        }
-    }
-    
-    func animate(_ callback: @escaping () -> Void) {
-        answerButton.animate {
-            callback()
         }
     }
 }

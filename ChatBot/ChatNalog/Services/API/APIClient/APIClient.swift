@@ -52,6 +52,7 @@ extension APIClient {
             .debug()
             //.observeOn(scheduler)
             .asObservable()
+            .share(replay: 1)
             .expectingObject(ofType: Model.self)
         
         return observable

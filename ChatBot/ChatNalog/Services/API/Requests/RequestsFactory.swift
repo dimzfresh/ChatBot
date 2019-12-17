@@ -138,7 +138,7 @@ public struct AnswerRequestInput {
 
 // MARK: - Recognize
 public final class SynthesizeRequest: APIRequest {
-    public var route: String = "/Speech/synthesize/wav?system=faqsamozanyatie"
+    public var route: String = "/Speech/synthesize/wav"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
@@ -160,7 +160,8 @@ public final class SynthesizeRequest: APIRequest {
 
 // MARK: - Recognize
 public final class RecognizeRequest: APIRequest {
-    public var route: String = "/Speech/recognize?system=faqsamozanyatie"
+    //public var route: String = "/Speech/recognize?system=faqsamozanyatie"
+    public var route: String = "/Speech/recognize/wav"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {

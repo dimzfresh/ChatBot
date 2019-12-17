@@ -20,8 +20,9 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
     typealias ViewModelType = OutgoingViewModel
     var viewModel: ViewModelType!
     
-    var selectedMic = BehaviorRelay<Bool?>(value: nil)
-
+    private var selectedMicSubject = BehaviorSubject<Bool?>(value: nil)
+    var selectedMic: Observable<Bool?> { selectedMicSubject.asObservable() }
+    
     private var disposeBag = DisposeBag()
         
     override func awakeFromNib() {
@@ -61,7 +62,9 @@ private extension OutgoingBubbleTableViewCell {
     func bind() {
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self, let vm = self.viewModel else { return }
-            self.selectedMic.accept(true)
+            self.selectedMicSubject.onNext(true)
+            self.selectedMicSubject.onCompleted()
+            
             let flag = vm.isLoading.value
             vm.isLoading.accept(!flag)
         }).disposed(by: disposeBag)
@@ -97,7 +100,7 @@ private extension OutgoingBubbleTableViewCell {
             self.speakerButton.setImage(image, for: .normal)
         })
         
-        speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        speakerButton.transform = .init(scaleX: 0.9, y: 0.9)
         
         guard viewModel.isPlaying.value else {
             speakerButton.transform = .identity

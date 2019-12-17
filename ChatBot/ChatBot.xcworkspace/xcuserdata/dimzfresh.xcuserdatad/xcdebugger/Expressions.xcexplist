@@ -3,12 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "questionInput.value">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
       </ContextState>
       <ContextState
          contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
@@ -21,6 +16,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.viewModel.isLoading">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "questionInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -82,13 +85,19 @@
          contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
          <PersistentStrings>
             <PersistentString
-               value = "request.parametersData">
-            </PersistentString>
-            <PersistentString
                value = "request.data">
             </PersistentString>
             <PersistentString
+               value = "r.allHTTPHeaderFields">
+            </PersistentString>
+            <PersistentString
+               value = "r.httpBody">
+            </PersistentString>
+            <PersistentString
                value = "String(data: request.data!, encoding: .utf8)">
+            </PersistentString>
+            <PersistentString
+               value = "request.parametersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -129,10 +138,10 @@
          contextName = "IncomingBubbleTableViewCell.buttonCell(indexPath:answer:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "indexPath.section">
+               value = "collectionView.numberOfSections">
             </PersistentString>
             <PersistentString
-               value = "collectionView.numberOfSections">
+               value = "indexPath.section">
             </PersistentString>
             <PersistentString
                value = "viewModel.message?.buttons">
@@ -206,6 +215,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ChatService.recognize(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #11 in ChatViewController.bind():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "state.opposite">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -220,10 +240,10 @@
          contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.frame">
+               value = "collectionStackView.frame">
             </PersistentString>
             <PersistentString
-               value = "collectionStackView.frame">
+               value = "collectionView.frame">
             </PersistentString>
             <PersistentString
                value = "answer?.items">
@@ -266,6 +286,9 @@
             <PersistentString
                value = "audioRecorder">
             </PersistentString>
+            <PersistentString
+               value = "Data(contentsOf: input).base64EncodedString()">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -277,7 +300,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "items">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ChatViewController.createPulse():ChatViewController.swift">
