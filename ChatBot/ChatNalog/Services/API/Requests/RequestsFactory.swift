@@ -2,8 +2,8 @@
 //  RequestsFactory.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 13/10/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 13/10/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import Alamofire
@@ -138,7 +138,7 @@ public struct AnswerRequestInput {
 
 // MARK: - Recognize
 public final class SynthesizeRequest: APIRequest {
-    public var route: String = "/Speech/synthesize/wav"
+    public var route: String = "/Speech/synthesize/wav?system=faqsamozanyatie"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
@@ -160,13 +160,13 @@ public final class SynthesizeRequest: APIRequest {
 
 // MARK: - Recognize
 public final class RecognizeRequest: APIRequest {
-    //public var route: String = "/Speech/recognize?system=faqsamozanyatie"
-    public var route: String = "/Speech/recognize/wav"
+    public var route: String = "/Speech/recognize/wav?system=faqsamozanyatie"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
         var h = defaultHeaders
         h["Content-Type"] = "application/json-patch+json"
+        h["Accept"] = "application/json"
         return h
     }
     

@@ -2,8 +2,8 @@
 //  IncomingBubbleTableViewCell.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 23/11/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 23/11/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import UIKit
@@ -120,12 +120,13 @@ private extension IncomingBubbleTableViewCell {
         })
         .disposed(by: disposeBag)
         
-        viewModel?.isPlaying.subscribe(onNext: { [weak self] flag in
-            self?.activity.stopAnimating()
-            self?.speakerButton.isHidden = false
-            self?.animate()
-          })
-          .disposed(by: disposeBag)
+        viewModel?.isPlaying
+            .subscribe(onNext: { [weak self] flag in
+                self?.activity.stopAnimating()
+                self?.speakerButton.isHidden = false
+                self?.animate()
+            })
+            .disposed(by: disposeBag)
         
         viewModel?.input
             .subscribe(onNext: { [weak self] answer in

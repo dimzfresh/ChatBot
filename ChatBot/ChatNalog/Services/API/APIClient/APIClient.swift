@@ -2,8 +2,8 @@
 //  APIClient.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 13/10/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 13/10/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import Foundation
@@ -14,8 +14,6 @@ import RxCocoa
 
 protocol RawValue: Codable {
     var someBaseEncodedString: Data { get set }
-
-    //var text: String { get set }
 }
 
 enum AppError: Error {
@@ -51,6 +49,7 @@ extension APIClient {
         let observable = RxAlamofire.requestData(r)
             .debug()
             //.observeOn(scheduler)
+            .observeOn(MainScheduler.instance)
             .asObservable()
             .share(replay: 1)
             .expectingObject(ofType: Model.self)

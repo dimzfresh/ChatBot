@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 20/11/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 20/11/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import UIKit
@@ -210,7 +210,7 @@ extension ChatViewController {
             .disposed(by: disposeBag)
         
         viewModel.scrollPosition
-            .observeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] position in
                     self?.scrollToPosition(position: position)
                }).disposed(by: disposeBag)
@@ -293,7 +293,6 @@ extension ChatViewController {
             .subscribe({ [weak self] _ in
                 let state = viewModel.microphoneState.value
                 self?.viewModel.microphoneState.accept(state.opposite)
-                  self?.viewModel.microphoneState.accept(state.opposite)
                   //self?.viewModel.beginRecording()
               })
               .disposed(by: disposeBag)
@@ -315,7 +314,7 @@ extension ChatViewController {
     private func keyboard() {
         inputTextView.autocorrectionType = .no
         keyboardHeight
-            .observeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { keyboardHeight in
                 if keyboardHeight == 0 {
                     self.inputStackViewConstraint.constant = 20

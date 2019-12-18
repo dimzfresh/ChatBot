@@ -2,8 +2,8 @@
 //  UITableViewCellExtension.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 06/10/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 06/10/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import UIKit

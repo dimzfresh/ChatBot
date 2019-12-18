@@ -2,8 +2,8 @@
 //  KeychainService.swift
 //  Markirovka
 //
-//  Created by Dmitrii Ziablikov on 11/04/2019.
-//  Copyright © 2019 Dmitrii Ziablikov. All rights reserved.
+//  Created by iOS dev on 11/04/2019.
+//  Copyright © 2019 iOS dev. All rights reserved.
 //
 
 import Foundation

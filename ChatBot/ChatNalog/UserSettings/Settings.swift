@@ -2,7 +2,7 @@
 //  Settings.swift
 //  Varakush
 //
-//  Created by Dmitrii Ziablikov on 02/06/2019.
+//  Created by iOS dev on 02/06/2019.
 //  Copyright © 2019 dimzfresh. All rights reserved.
 //
 

@@ -35,6 +35,7 @@
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
 		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
+		5A7EFF8623AA5A77001D8B70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
 		5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */; };
 		5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */; };
@@ -120,6 +121,7 @@
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
 		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cashe.swift"; sourceTree = "<group>"; };
 		5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSettings.swift; sourceTree = "<group>"; };
@@ -244,13 +246,13 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		5A249B422391238C00044D94 /* VoiceManager */ = {
+		5A249B422391238C00044D94 /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				5A249B43239124B200044D94 /* VoiceManager.swift */,
 				5A249B4523912D8100044D94 /* AVConverter.swift */,
 			);
-			path = VoiceManager;
+			path = Player;
 			sourceTree = "<group>";
 		};
 		5A249B4D2391D10F00044D94 /* Animations */ = {
@@ -267,6 +269,14 @@
 				5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */,
 			);
 			path = AnimatedButton;
+			sourceTree = "<group>";
+		};
+		5A51CEE123A97220000FABFC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		5A55D868238956B700318A53 /* ChatModule */ = {
@@ -529,7 +539,8 @@
 			children = (
 				5A249B4D2391D10F00044D94 /* Animations */,
 				5A1C36512353208900DE587A /* API */,
-				5A249B422391238C00044D94 /* VoiceManager */,
+				5A249B422391238C00044D94 /* Player */,
+				5A51CEE123A97220000FABFC /* CoreData */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -621,7 +632,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
-				ORGANIZATIONNAME = di;
+				ORGANIZATIONNAME = kvantsoft;
 				TargetAttributes = {
 					5AB57EBA231C5E4F00A22A8C = {
 						CreatedOnToolsVersion = 10.3;
@@ -772,6 +783,7 @@
 				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
+				5A7EFF8623AA5A77001D8B70 /* CoreDataManager.swift in Sources */,
 				5A27BAD6239FB3450073BC16 /* UITextField+Keyboard.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
 				5A249B44239124B200044D94 /* VoiceManager.swift in Sources */,
@@ -979,7 +991,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1001,7 +1013,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";

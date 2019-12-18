@@ -2,8 +2,8 @@
 //  ChatBotTests.swift
 //  ChatBotTests
 //
-//  Created by Dmitrii Ziablikov on 20/11/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 20/11/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import XCTest

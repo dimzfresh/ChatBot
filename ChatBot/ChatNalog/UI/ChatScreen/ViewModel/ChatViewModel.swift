@@ -2,8 +2,8 @@
 //  ChatViewModel.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 23/11/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 23/11/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import RxSwift
@@ -133,12 +133,12 @@ private extension ChatViewModel {
     }
     
     func changeTitle() {
-        title.on(.next((main: chatName,
-        sub: "\nпечатает...")))
+        title.onNext((main: chatName,
+        sub: "\nпечатает..."))
     }
     
     func moveScroll() {
-         scrollPosition.on(.next(.bottom))
+         scrollPosition.onNext(.bottom)
     }
     
     
@@ -165,9 +165,9 @@ private extension ChatViewModel {
         service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
-            self?.title.on(.next((main: chatName,
-            sub: "\nОнлайн")))
-            self?.scrollPosition.on(.next(.bottom))
+            self?.title.onNext((main: chatName,
+            sub: "\nОнлайн"))
+            self?.scrollPosition.onNext(.bottom)
             }, onError: { error in
                 print(error)
         })
@@ -178,9 +178,9 @@ private extension ChatViewModel {
         service?.sendAnswer(input: input)
         .subscribe(onNext: { [weak self] model in
             self?.processItems(for: model)
-            self?.title.on(.next((main: chatName,
-            sub: "\nОнлайн")))
-            self?.scrollPosition.on(.next(.bottom))
+            self?.title.onNext((main: chatName,
+            sub: "\nОнлайн"))
+            self?.scrollPosition.onNext(.bottom)
             }, onError: { error in
                 print(error)
         })
@@ -193,7 +193,7 @@ private extension ChatViewModel {
             let text = model.someString ?? ""
             self?.questionInput.accept(text)
             self?.sendQuestion()
-            self?.scrollPosition.on(.next(.bottom))
+            self?.scrollPosition.onNext(.bottom)
             }, onError: { error in
                 print(error)
         })
@@ -208,7 +208,7 @@ private extension ChatViewModel {
             guard let items = model.suggestions, !items.isEmpty else {
                 self?.searchResult.onNext([])
                 return }
-            let new = items.map({ $0.text ?? "" })
+            let new = items.map { $0.text ?? "" }
             self?.searchResult.onNext(new)
             }, onError: { error in
                 print(error)

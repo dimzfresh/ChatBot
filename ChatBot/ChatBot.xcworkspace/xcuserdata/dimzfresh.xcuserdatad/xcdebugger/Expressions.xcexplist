@@ -3,7 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "audioRecorder">
+            </PersistentString>
+            <PersistentString
+               value = "data.base64EncodedString()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
@@ -20,10 +28,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
+         contextName = "IncomingBubbleTableViewCell.viewModel.didset:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "questionInput.value">
+               value = "viewModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -240,10 +248,10 @@
          contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionStackView.frame">
+               value = "collectionView.frame">
             </PersistentString>
             <PersistentString
-               value = "collectionView.frame">
+               value = "collectionStackView.frame">
             </PersistentString>
             <PersistentString
                value = "answer?.items">
@@ -252,6 +260,11 @@
       </ContextState>
       <ContextState
          contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object.someString">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
@@ -281,21 +294,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "audioRecorder">
-            </PersistentString>
-            <PersistentString
-               value = "Data(contentsOf: input).base64EncodedString()">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
       </ContextState>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.viewModel.didset:IncomingBubbleTableViewCell.swift">
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewModel">
+               value = "questionInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

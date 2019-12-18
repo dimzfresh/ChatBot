@@ -2,8 +2,8 @@
 //  VoiceManager.swift
 //  ChatBot
 //
-//  Created by Dmitrii Ziablikov on 29/11/2019.
-//  Copyright © 2019 di. All rights reserved.
+//  Created by iOS dev on 29/11/2019.
+//  Copyright © 2019 kvantsoft All rights reserved.
 //
 
 import Foundation
@@ -33,16 +33,16 @@ final class VoiceManager: NSObject {
         }
         guard allowed else { return }
         
-        let audioFilename = getFileURL(name: "input.m4a")
+        let audioFilename = getFileURL(name: "input.wav")
         
         let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
+            AVFormatIDKey: Int(kAudioFormatLinearPCM),
+            AVSampleRateKey: 48000,
             AVNumberOfChannelsKey: 1,
-            //AVLinearPCMBitDepthKey: 32,
-            //AVLinearPCMIsBigEndianKey: false,
-            //AVLinearPCMIsNonInterleaved: true,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            AVLinearPCMBitDepthKey: 16,
+//            AVLinearPCMIsFloatKey: false,
+//            AVLinearPCMIsBigEndianKey: true,
+            AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
             ] as [String : Any]
         
         do {
@@ -61,28 +61,32 @@ final class VoiceManager: NSObject {
         audioRecorder?.stop()
         audioRecorder = nil
         
-        let input = getFileURL(name: "input.m4a") as URL
-        let output = getFileURL(name: "ouput.wav") as URL
-        
-        var options = AKConverter.Options()
-        options.format = "wav"
-        let converter = AKConverter(inputURL: input, outputURL: output, options: options)
+        let input = getFileURL(name: "input.wav") as URL
+//        let output = getFileURL(name: "ouput.wav") as URL
+//
+//        var options = AKConverter.Options()
+//        options.format = "wav"
+//        let converter = AKConverter(inputURL: input, outputURL: output, options: options)
+//
+//        converter.start { error in
+//            guard error == nil else { return }
 
-        converter.start { error in
-            guard error == nil else { return }
-
-            if FileManager.default.fileExists(atPath: output.path) {
-                do {
-                    let data = try Data(contentsOf: output)
-                    let text = data.base64EncodedString()
-                    self.audioRecordingDidFinished?(text)
-                    //completion(.success(data))
-                } catch {
-                    self.audioRecordingDidFinished?(nil)
-                    //completion(.failure(.doesntExist))
-                }
-            }
+        guard FileManager.default.fileExists(atPath: input.path) else {
+            self.audioRecordingDidFinished?(nil)
+            return
         }
+        
+        do {
+            let data = try Data(contentsOf: input)
+            let text = data.base64EncodedString()
+            print(text)
+            self.audioRecordingDidFinished?(text)
+            //completion(.success(data))
+        } catch {
+            self.audioRecordingDidFinished?(nil)
+            //completion(.failure(.doesntExist))
+        }
+        //}
     }
     
     func finishRecording(success: Bool) {
