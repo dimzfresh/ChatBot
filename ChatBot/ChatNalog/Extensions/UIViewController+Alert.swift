@@ -12,7 +12,7 @@ import RxSwift
 
 extension NSObject {
     static var nameOfClass: String {
-        return NSStringFromClass(self).components(separatedBy: ".").last!
+        return NSStringFromClass(self).components(separatedBy: ".").last ?? ""
     }
 }
 

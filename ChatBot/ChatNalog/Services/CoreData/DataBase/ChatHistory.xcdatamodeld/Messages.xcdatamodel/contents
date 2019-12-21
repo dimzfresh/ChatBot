@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Answers" representedClassName="Answers" syncable="YES" codeGenerationType="class">
+        <attribute name="answerDescription" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Messages" representedClassName="Messages" syncable="YES" codeGenerationType="class">
+        <attribute name="buttonContent" optional="YES" attributeType="String"/>
+        <attribute name="buttonDescription" optional="YES" attributeType="String"/>
+        <attribute name="buttonType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Answers" positionX="-66.734375" positionY="-57.5390625" width="128" height="103"/>
+        <element name="Messages" positionX="-304.4296875" positionY="-130.70703125" width="128" height="118"/>
+    </elements>
+</model>

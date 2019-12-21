@@ -53,7 +53,7 @@ public final class QuestionRequest: APIRequest {
     
     public var headers: HTTPHeaders {
         var h = defaultHeaders
-        if !dialogid.isEmpty {
+        if !dialogid.isEmpty, dialogid != "0" {
             h["dialogid"] = dialogid
         }
         return h

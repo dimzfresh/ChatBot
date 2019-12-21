@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A00896E238D491200F26C66 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A00896D238D491200F26C66 /* InputView.swift */; };
+		5A18068D23AC013800ED314E /* ChatMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A18068B23AC013800ED314E /* ChatMessages.xcdatamodeld */; };
 		5A1C364C23531CB700DE587A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364B23531CB700DE587A /* APIClient.swift */; };
 		5A1C364E23531D2000DE587A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364D23531D2000DE587A /* Environment.swift */; };
 		5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364F23531EB700DE587A /* RequestsFactory.swift */; };
@@ -23,8 +24,14 @@
 		5A249B4823917A5500044D94 /* VoiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4723917A5500044D94 /* VoiceModel.swift */; };
 		5A249B4F2391D12400044D94 /* AnimationsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A249B4E2391D12400044D94 /* AnimationsFactory.swift */; };
 		5A27BAD6239FB3450073BC16 /* UITextField+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */; };
+		5A2E224E23AE2D0E00B9741F /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E224923AE2D0D00B9741F /* Roboto-Bold.ttf */; };
+		5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E224A23AE2D0D00B9741F /* Roboto-Regular.ttf */; };
+		5A2E225023AE2D0E00B9741F /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E224B23AE2D0D00B9741F /* Roboto-Thin.ttf */; };
+		5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E224C23AE2D0D00B9741F /* Roboto-Light.ttf */; };
+		5A2E225223AE2D0E00B9741F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E224D23AE2D0D00B9741F /* Roboto-Medium.ttf */; };
 		5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */; };
 		5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3D0BF0238E838800C60EB5 /* SearchModel.swift */; };
+		5A42C7AA23AC36E40033911F /* CoreData+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A42C7A923AC36E40033911F /* CoreData+Messages.swift */; };
 		5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D869238956CF00318A53 /* ChatModule.swift */; };
 		5A55D86D238957A300318A53 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D86C238957A300318A53 /* ChatModel.swift */; };
 		5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D87023895BA900318A53 /* ChatViewModel.swift */; };
@@ -35,7 +42,8 @@
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
 		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
-		5A7EFF8623AA5A77001D8B70 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */; };
+		5A7EFF8623AA5A77001D8B70 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */; };
+		5A7EFFB023ABAC86001D8B70 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
 		5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */; };
 		5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */; };
@@ -43,6 +51,7 @@
 		5A8F435D234A4958007FB89F /* UIDevice+ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */; };
 		5A8F4361234A4B0A007FB89F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4360234A4B0A007FB89F /* Settings.swift */; };
 		5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4365234A4DFA007FB89F /* KeychainManager.swift */; };
+		5A96CB6823AC0A3A00193CBE /* ManagedObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */; };
 		5AA8792223986877001564F6 /* OutgoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792123986877001564F6 /* OutgoingViewModel.swift */; };
 		5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792323986891001564F6 /* OutgoingModel.swift */; };
 		5AB57EBF231C5E4F00A22A8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB57EBE231C5E4F00A22A8C /* AppDelegate.swift */; };
@@ -60,6 +69,7 @@
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
 		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
 		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
+		5AF5BC8423ABD4F30006CD13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +104,7 @@
 		3AAB4D817B158786017D06E2 /* Pods-VarakushCashierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VarakushCashierTests.debug.xcconfig"; path = "Target Support Files/Pods-VarakushCashierTests/Pods-VarakushCashierTests.debug.xcconfig"; sourceTree = "<group>"; };
 		53A86E5FA450BF55D0EC035F /* Pods-ChatBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.debug.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.debug.xcconfig"; sourceTree = "<group>"; };
 		5A00896D238D491200F26C66 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		5A18068C23AC013800ED314E /* ChatMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatMessages.xcdatamodel; sourceTree = "<group>"; };
 		5A1C364B23531CB700DE587A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		5A1C364D23531D2000DE587A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		5A1C364F23531EB700DE587A /* RequestsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsFactory.swift; sourceTree = "<group>"; };
@@ -109,8 +120,14 @@
 		5A249B4723917A5500044D94 /* VoiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceModel.swift; sourceTree = "<group>"; };
 		5A249B4E2391D12400044D94 /* AnimationsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsFactory.swift; sourceTree = "<group>"; };
 		5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Keyboard.swift"; sourceTree = "<group>"; };
+		5A2E224923AE2D0D00B9741F /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		5A2E224A23AE2D0D00B9741F /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		5A2E224B23AE2D0D00B9741F /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		5A2E224C23AE2D0D00B9741F /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		5A2E224D23AE2D0D00B9741F /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5A3D0BED238DB14100C60EB5 /* AnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
 		5A3D0BF0238E838800C60EB5 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		5A42C7A923AC36E40033911F /* CoreData+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Messages.swift"; sourceTree = "<group>"; };
 		5A55D869238956CF00318A53 /* ChatModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModule.swift; sourceTree = "<group>"; };
 		5A55D86C238957A300318A53 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		5A55D87023895BA900318A53 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -121,7 +138,8 @@
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
 		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
-		5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		5A8F4350234A24A9007FB89F /* UIImageView+Cashe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Cashe.swift"; sourceTree = "<group>"; };
 		5A8F4357234A37EA007FB89F /* AppDelegateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateSettings.swift; sourceTree = "<group>"; };
@@ -129,6 +147,7 @@
 		5A8F435C234A4958007FB89F /* UIDevice+ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelType.swift"; sourceTree = "<group>"; };
 		5A8F4360234A4B0A007FB89F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5A8F4365234A4DFA007FB89F /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectProtocol.swift; sourceTree = "<group>"; };
 		5AA8792123986877001564F6 /* OutgoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingViewModel.swift; sourceTree = "<group>"; };
 		5AA8792323986891001564F6 /* OutgoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingModel.swift; sourceTree = "<group>"; };
 		5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Чатналог.рф.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +169,7 @@
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
+		5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		915CF536DF520427F60879EA /* Pods-ChatBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3CC2F5BA9F429165F7D90FF /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.release.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
 		D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,7 +294,9 @@
 		5A51CEE123A97220000FABFC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5A7EFF8523AA5A77001D8B70 /* CoreDataManager.swift */,
+				5AF5BC8723ABD6BF0006CD13 /* Base */,
+				5AF5BC8623ABD63D0006CD13 /* Objects */,
+				5AF5BC8523ABD6300006CD13 /* DataBase */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -390,6 +412,11 @@
 		5A8F432F234A21BB007FB89F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				5A2E224923AE2D0D00B9741F /* Roboto-Bold.ttf */,
+				5A2E224C23AE2D0D00B9741F /* Roboto-Light.ttf */,
+				5A2E224D23AE2D0D00B9741F /* Roboto-Medium.ttf */,
+				5A2E224A23AE2D0D00B9741F /* Roboto-Regular.ttf */,
+				5A2E224B23AE2D0D00B9741F /* Roboto-Thin.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -435,6 +462,13 @@
 			path = UserSettings;
 			sourceTree = "<group>";
 		};
+		5A96CB6923AC0A8D00193CBE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5AA8791D23986836001564F6 /* Incoming */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +512,7 @@
 				5AB57EBC231C5E4F00A22A8C /* Products */,
 				5E311BF732BC800B1B5CDB15 /* Pods */,
 				FEBE36BA5592040F308B13F5 /* Frameworks */,
+				5A96CB6923AC0A8D00193CBE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -557,6 +592,33 @@
 				5A1C365623532A7D00DE587A /* PagingRequest.swift */,
 			);
 			path = APIClient;
+			sourceTree = "<group>";
+		};
+		5AF5BC8523ABD6300006CD13 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				5A18068B23AC013800ED314E /* ChatMessages.xcdatamodeld */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		5AF5BC8623ABD63D0006CD13 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */,
+				5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */,
+				5A42C7A923AC36E40033911F /* CoreData+Messages.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		5AF5BC8723ABD6BF0006CD13 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */,
+				5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		5E311BF732BC800B1B5CDB15 /* Pods */ = {
@@ -667,12 +729,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A2E224E23AE2D0E00B9741F /* Roboto-Bold.ttf in Resources */,
 				5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */,
+				5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */,
+				5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */,
 				5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */,
 				5AB57EC9231C5E5100A22A8C /* LaunchScreen.storyboard in Resources */,
 				5AB57EC6231C5E5100A22A8C /* Assets.xcassets in Resources */,
 				5AB57EC4231C5E4F00A22A8C /* Chat.storyboard in Resources */,
+				5A2E225223AE2D0E00B9741F /* Roboto-Medium.ttf in Resources */,
 				5A55D8772389660D00318A53 /* OutgoingBubbleTableViewCell.xib in Resources */,
+				5A2E225023AE2D0E00B9741F /* Roboto-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,17 +847,20 @@
 				5A1C365B2353303F00DE587A /* APIRequest.swift in Sources */,
 				5AB705ED234A7E9D00C23C3C /* Bundle.swift in Sources */,
 				5A249B4623912D8100044D94 /* AVConverter.swift in Sources */,
+				5A18068D23AC013800ED314E /* ChatMessages.xcdatamodeld in Sources */,
 				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,
-				5A7EFF8623AA5A77001D8B70 /* CoreDataManager.swift in Sources */,
+				5A7EFF8623AA5A77001D8B70 /* CoreDataStack.swift in Sources */,
 				5A27BAD6239FB3450073BC16 /* UITextField+Keyboard.swift in Sources */,
+				5A7EFFB023ABAC86001D8B70 /* ManagedObjectConvertible.swift in Sources */,
 				5A55D86D238957A300318A53 /* ChatModel.swift in Sources */,
 				5A249B44239124B200044D94 /* VoiceManager.swift in Sources */,
 				5A55D87123895BA900318A53 /* ChatViewModel.swift in Sources */,
 				5A249B4F2391D12400044D94 /* AnimationsFactory.swift in Sources */,
 				5AA8792223986877001564F6 /* OutgoingViewModel.swift in Sources */,
 				5AB57EC1231C5E4F00A22A8C /* ChatViewController.swift in Sources */,
+				5AF5BC8423ABD4F30006CD13 /* CoreDataManager.swift in Sources */,
 				5A1C365D235333A000DE587A /* MultipartRequest.swift in Sources */,
 				5A1C36602353872300DE587A /* BaseViewModel.swift in Sources */,
 				5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */,
@@ -815,12 +885,14 @@
 				5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */,
 				5A1C3655235320B600DE587A /* ChatService.swift in Sources */,
 				5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */,
+				5A96CB6823AC0A3A00193CBE /* ManagedObjectProtocol.swift in Sources */,
 				5AB705EB234A7DF400C23C3C /* String+Base64.swift in Sources */,
 				5A1C364E23531D2000DE587A /* Environment.swift in Sources */,
 				5A249B4823917A5500044D94 /* VoiceModel.swift in Sources */,
 				5AB705E9234A7DCE00C23C3C /* AlamofireManager.swift in Sources */,
 				5A8F4358234A37EA007FB89F /* AppDelegateSettings.swift in Sources */,
 				5A1C364C23531CB700DE587A /* APIClient.swift in Sources */,
+				5A42C7AA23AC36E40033911F /* CoreData+Messages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,7 +1063,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1013,7 +1085,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1097,6 +1169,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A18068B23AC013800ED314E /* ChatMessages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A18068C23AC013800ED314E /* ChatMessages.xcdatamodel */,
+			);
+			currentVersion = 5A18068C23AC013800ED314E /* ChatMessages.xcdatamodel */;
+			path = ChatMessages.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5AB57EB3231C5E4F00A22A8C /* Project object */;
 }

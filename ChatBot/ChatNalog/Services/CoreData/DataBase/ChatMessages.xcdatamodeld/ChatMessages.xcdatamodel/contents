@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Answers" representedClassName="Answers" syncable="YES" codeGenerationType="class">
+        <attribute name="answerDescription" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Messages" inverseName="answers" inverseEntity="Messages"/>
+    </entity>
+    <entity name="Messages" representedClassName="Messages" syncable="YES" codeGenerationType="class">
+        <attribute name="buttonContent" optional="YES" attributeType="String"/>
+        <attribute name="buttonDescription" optional="YES" attributeType="String"/>
+        <attribute name="buttons" optional="YES" attributeType="String"/>
+        <attribute name="buttonType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dialogID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="isIncoming" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Answers" inverseName="message" inverseEntity="Answers"/>
+    </entity>
+    <elements>
+        <element name="Answers" positionX="2909.68359375" positionY="-55.58203125" width="128" height="118"/>
+        <element name="Messages" positionX="2657.11328125" positionY="-68.578125" width="128" height="193"/>
+    </elements>
+</model>

@@ -46,6 +46,9 @@ final class ChatViewModel: BaseViewModel {
     
     private let service: Service?
     private let voiceManager = VoiceManager.shared
+    private let storage: CoreDataManagerProtocol = CoreDataManager()
+    private var firstOpen = true
+    
     private let disposeBag = DisposeBag()
       
     let title = BehaviorSubject<ChatTitle>(value: (main: chatName,
@@ -66,7 +69,8 @@ final class ChatViewModel: BaseViewModel {
     init(service: Service?) {
         self.service = service
         bind()
-        addFirstMessage()
+        
+        fetchAll()
     }
     
     func sendQuestion() {
@@ -98,11 +102,17 @@ private extension ChatViewModel {
             guard let input = input, !input.id.isEmpty else { return }
             self?.answer(input: input)
         })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
         voice.subscribe(onNext: { [weak self] text in
             guard let text = text else { return }
             self?.recognize(text: text)
+        })
+            .disposed(by: disposeBag)
+        
+        messages.subscribe(onNext: { [weak self] new in
+            guard self?.firstOpen == false else { return }
+            self?.save(new: new)
         })
         .disposed(by: disposeBag)
     }
@@ -112,6 +122,8 @@ private extension ChatViewModel {
     
     func addFirstMessage() {
         var message = ChatModel()
+        message.identifier = UUID().uuidString
+        message.isIncoming = true
         message.text = "Добрый день, задайте вопрос!"
        
         let new = [SectionOfChat(model: .incoming, items: [.message(info: message)])]
@@ -138,7 +150,7 @@ private extension ChatViewModel {
     }
     
     func moveScroll() {
-         scrollPosition.onNext(.bottom)
+        scrollPosition.onNext(.bottom)
     }
     
     
@@ -164,7 +176,9 @@ private extension ChatViewModel {
         
         service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
-            self?.processItems(for: model)
+            var m = model
+            m.isIncoming = true
+            self?.processItems(for: m)
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
             self?.scrollPosition.onNext(.bottom)
@@ -177,7 +191,9 @@ private extension ChatViewModel {
     func answer(input: AnswerRequestInput) {
         service?.sendAnswer(input: input)
         .subscribe(onNext: { [weak self] model in
-            self?.processItems(for: model)
+            var m = model
+            m.isIncoming = true
+            self?.processItems(for: m)
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
             self?.scrollPosition.onNext(.bottom)
@@ -221,7 +237,61 @@ private extension ChatViewModel {
     func processItems(for chat: ChatModel) {
         let outgoingItems: [TableViewItem] = [.message(info: chat)]
         let new = [SectionOfChat(model: .incoming, items: outgoingItems)]
-
         messages.accept(messages.value + new)
     }
+    
+    
+    // MARK: - CoreDataManager
+    func fetchAll() {
+        storage.fetch { [weak self] (result: Result<[ChatModel]>) in
+            switch result {
+            case .success(let items):
+                //completion(users.first)
+                let messages = items
+                    .sorted(by: { m1, m2 -> Bool in
+                        guard let date1 = m1.date, let date2 = m2.date else { return false }
+                        return date1 < date2
+                    })
+                    .map { message -> SectionOfChat in
+                    let item: [TableViewItem] = [.message(info: message)]
+                    let type: TableViewSection = message.isIncoming == true ? .incoming : .outgoing
+                    let new = SectionOfChat(model: type, items: item)
+                    return new
+                }
+                
+                if messages.isEmpty {
+                    self?.addFirstMessage()
+                } else {
+                    self?.messages.accept(messages)
+                }
+                self?.firstOpen = false
+            case .failure(let error):
+                print(error)
+                self?.addFirstMessage()
+                self?.firstOpen = false
+                //completion(nil)
+            }
+        }
+        
+//        let outgoingItems: [TableViewItem] = [.message(info: chat)]
+//        let new = [SectionOfChat(model: .incoming, items: outgoingItems)]
+//        messages.accept(messages.value + new)
+    }
+    
+    func save(new message: [SectionOfChat]) {
+        let items: [ChatModel?] = message
+            .map { $0.items }
+            .flatMap { $0 }
+            .map {
+                guard case let .message(item) = $0 else { return nil }
+                return item
+            }
+        
+        let history: [ChatModel] = items.compactMap { $0 }
+        
+        storage.save(entities: history) { error in
+            guard let error = error else { return }
+            print(error)
+        }
+    }    
 }
