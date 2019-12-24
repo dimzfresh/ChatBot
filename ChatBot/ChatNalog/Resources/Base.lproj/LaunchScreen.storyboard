@@ -21,20 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background" translatesAutoresizingMaskIntoConstraints="NO" id="iEj-39-Z2m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background" translatesAutoresizingMaskIntoConstraints="NO" id="iEj-39-Z2m">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="yhL-cx-CWe">
                                 <rect key="frame" x="64.5" y="303" width="285" height="290"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПОМОЩНИК ПО ЗАМОЗАНЯТЫМ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHZ-L5-Spw">
-                                <rect key="frame" x="83.5" y="208" width="247.5" height="75"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПОМОЩНИК ПО ЗАМОЗАНЯТЫМ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wHZ-L5-Spw">
+                                <rect key="frame" x="16" y="208" width="382" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПРИВЕТ! ЧЕМ МОГУ ПОМОЧЬ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHe-EV-N3M">
-                                <rect key="frame" x="106" y="609" width="202.5" height="47"/>
+                                <rect key="frame" x="16" y="609" width="382" height="47"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -42,12 +43,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rHe-EV-N3M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="D8f-hz-1ir"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rHe-EV-N3M" secondAttribute="trailing" constant="16" id="Hdn-KT-GtO"/>
                             <constraint firstItem="yhL-cx-CWe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MR1-8O-gfd"/>
                             <constraint firstItem="wHZ-L5-Spw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PdN-u9-bp5"/>
                             <constraint firstItem="yhL-cx-CWe" firstAttribute="top" secondItem="wHZ-L5-Spw" secondAttribute="bottom" constant="20" id="QLU-YG-f36"/>
                             <constraint firstItem="rHe-EV-N3M" firstAttribute="top" secondItem="yhL-cx-CWe" secondAttribute="bottom" constant="16" id="R1O-Ok-dWd"/>
                             <constraint firstItem="yhL-cx-CWe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wvg-cW-chY"/>
                             <constraint firstItem="iEj-39-Z2m" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ceB-GK-sR4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wHZ-L5-Spw" secondAttribute="trailing" constant="16" id="dCa-Ka-ojr"/>
+                            <constraint firstItem="wHZ-L5-Spw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="doJ-bQ-or2"/>
                             <constraint firstAttribute="bottom" secondItem="iEj-39-Z2m" secondAttribute="bottom" id="fV7-SO-JeS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iEj-39-Z2m" secondAttribute="trailing" id="pli-4R-p4V"/>
                             <constraint firstItem="iEj-39-Z2m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wZS-Ld-kd1"/>

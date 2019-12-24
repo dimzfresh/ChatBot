@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UcU-dK-Miq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="nox-Uf-MVj">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="UcU-dK-Miq" customClass="SplashViewController" customModule="Чатналог_рф" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kiR-5A-e60">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_background" translatesAutoresizingMaskIntoConstraints="NO" id="d4V-vn-fzX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_logo" translatesAutoresizingMaskIntoConstraints="NO" id="RRz-e6-Ynk">
+                                <rect key="frame" x="64.5" y="303" width="285" height="290"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПОМОЩНИК ПО ЗАМОЗАНЯТЫМ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvt-6N-AAz">
+                                <rect key="frame" x="77" y="208" width="260" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="UBv-bQ-kAF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ПРИВЕТ! ЧЕМ МОГУ ПОМОЧЬ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCq-t8-uBj">
+                                <rect key="frame" x="97" y="609" width="220" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="afN-7G-mIS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d4V-vn-fzX" secondAttribute="bottom" id="0k3-xa-DjC"/>
+                            <constraint firstItem="d4V-vn-fzX" firstAttribute="top" secondItem="kiR-5A-e60" secondAttribute="top" id="24M-Xv-rdo"/>
+                            <constraint firstItem="CCq-t8-uBj" firstAttribute="centerX" secondItem="kiR-5A-e60" secondAttribute="centerX" id="5PX-eW-LUV"/>
+                            <constraint firstItem="CCq-t8-uBj" firstAttribute="top" secondItem="RRz-e6-Ynk" secondAttribute="bottom" constant="16" id="AAg-4P-AdK"/>
+                            <constraint firstItem="d4V-vn-fzX" firstAttribute="leading" secondItem="MKU-Y1-GcN" secondAttribute="leading" id="PlI-F2-xXs"/>
+                            <constraint firstItem="RRz-e6-Ynk" firstAttribute="centerX" secondItem="kiR-5A-e60" secondAttribute="centerX" id="WBk-G5-97l"/>
+                            <constraint firstItem="RRz-e6-Ynk" firstAttribute="centerY" secondItem="kiR-5A-e60" secondAttribute="centerY" id="Y78-Zz-vza"/>
+                            <constraint firstItem="RRz-e6-Ynk" firstAttribute="top" secondItem="gvt-6N-AAz" secondAttribute="bottom" constant="20" id="YSq-4Q-h7Y"/>
+                            <constraint firstItem="MKU-Y1-GcN" firstAttribute="trailing" secondItem="d4V-vn-fzX" secondAttribute="trailing" id="jgr-B4-9fk"/>
+                            <constraint firstItem="gvt-6N-AAz" firstAttribute="centerX" secondItem="kiR-5A-e60" secondAttribute="centerX" id="oeq-dL-xJN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MKU-Y1-GcN"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YkJ-Yi-mzk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_background" width="375" height="812"/>
+        <image name="launch_logo" width="285" height="290"/>
+    </resources>
+</document>

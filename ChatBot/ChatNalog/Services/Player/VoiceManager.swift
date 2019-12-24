@@ -181,7 +181,7 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     }
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        print("Error while recording audio \(error!.localizedDescription)")
+        print("Error while recording audio \(error?.localizedDescription ?? "")")
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -189,6 +189,6 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        print("Error while playing audio \(error!.localizedDescription)")
+        print("Error while playing audio \(error?.localizedDescription ?? "")")
     }
 }

@@ -13,6 +13,8 @@ final class CopyableLabel: UILabel {
     @IBInspectable
     var isUser: Bool = false
     
+    private var isShownPopup: Bool = false
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -27,23 +29,36 @@ final class CopyableLabel: UILabel {
         setup()
     }
     
-    override func copy(_ sender: Any?) {
-        let board = UIPasteboard.general
-        board.string = ""
-        board.string = prepareText()
-        let menu = UIMenuController.shared
-        menu.setMenuVisible(false, animated: true)
-    }
+//    override func copy(_ sender: Any?) {
+//        let board = UIPasteboard.general
+//        board.string = ""
+//        board.string = prepareText()
+//        let menu = UIMenuController.shared
+//        menu.setMenuVisible(false, animated: true)
+//    }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return action == #selector(UIResponderStandardEditActions.copy)
-    }
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        return action == #selector(UIResponderStandardEditActions.copy)
+//    }
 }
+
+extension Notification.Name {
+    static let resetPopupFlag = Notification.Name("resetPopupFlagNotification")
+}
+
 
 private extension CopyableLabel {
     func setup() {
         isUserInteractionEnabled = true
-        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(showMenu)))
+        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(showPopup)))
+        isShownPopup = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(resetPopupFlag), name: .resetPopupFlag, object: nil)
+    }
+    
+    @objc
+    func resetPopupFlag() {
+        isShownPopup = false
     }
     
     @objc
@@ -54,6 +69,7 @@ private extension CopyableLabel {
             menu.setTargetRect(bounds, in: self)
             menu.setMenuVisible(true, animated: true)
         }
+        
     }
     
     func prepareText() -> String {
@@ -65,5 +81,29 @@ private extension CopyableLabel {
         let name = isUser ? "Пользователь" : "Бот"
         let text = "[\(date)] \(name): \(message)"
         return text
+    }
+    
+    @objc
+    func showPopup() {
+        becomeFirstResponder()
+
+        guard !isShownPopup, let parent = UIApplication.shared.windows.first?.rootViewController else { return }
+        isShownPopup = true
+        
+        let popUpVC: ShareViewController = .init()
+        popUpVC.shareText = text
+        popUpVC.view.frame = UIScreen.main.bounds
+        popUpVC.view.translatesAutoresizingMaskIntoConstraints = false
+        popUpVC.willMove(toParent: parent)
+        
+        parent.view.addSubview(popUpVC.view)
+        popUpVC.view
+            .leadingAnchor(to: parent.view.leadingAnchor)
+            .trailingAnchor(to: parent.view.trailingAnchor)
+            .topAnchor(to: parent.view.topAnchor)
+            .bottomAnchor(to: parent.view.bottomAnchor)
+        
+        parent.addChild(popUpVC)
+        popUpVC.didMove(toParent: parent)
     }
 }

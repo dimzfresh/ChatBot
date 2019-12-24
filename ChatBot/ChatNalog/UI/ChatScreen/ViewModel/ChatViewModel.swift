@@ -23,23 +23,13 @@ enum TableViewItem {
     case message(info: ChatModel)
 }
 
-enum MicrophoneState {
-    case recording
-    case stopped
-    case none
-
-    var opposite: MicrophoneState {
-        return self == .recording ? .stopped : .recording
-    }
-}
-
 enum SpeakerState {
     case loading
     case playing
     case stopped
 }
 
-fileprivate let chatName = "Помощник по Самозанятым"
+fileprivate let chatName = "Помощник по Самозанятым".uppercased()
 
 final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
@@ -94,6 +84,29 @@ final class ChatViewModel: BaseViewModel {
             voiceManager.stopRecording()
         }
     }
+    
+    func recognizeVoice() {
+        recognize()
+    }
+    
+    func convertAndPlay() {
+        guard let text: String = voice.value, !text.isEmpty else { return }
+
+        guard let audioData = Data(base64Encoded: text, options: .ignoreUnknownCharacters) else { return }
+        
+        let filename = getDocumentsDirectory().appendingPathComponent("input.mp3")
+        do {
+            try audioData.write(to: filename, options: .atomicWrite)
+        } catch (let error) {
+            print(error)
+        }
+        voiceManager.startPlaying()
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
 }
 
 private extension ChatViewModel {
@@ -104,11 +117,11 @@ private extension ChatViewModel {
         })
             .disposed(by: disposeBag)
         
-        voice.subscribe(onNext: { [weak self] text in
-            guard let text = text else { return }
-            self?.recognize(text: text)
-        })
-            .disposed(by: disposeBag)
+//        voice.subscribe(onNext: { [weak self] text in
+//            guard let text = text else { return }
+//            self?.recognize(text: text)
+//        })
+//            .disposed(by: disposeBag)
         
         messages.subscribe(onNext: { [weak self] new in
             guard self?.firstOpen == false else { return }
@@ -203,11 +216,14 @@ private extension ChatViewModel {
         .disposed(by: disposeBag)
     }
     
-    func recognize(text: String) {
+    func recognize() {
+        guard let text: String = voice.value, !text.isEmpty else { return }
+                
         service?.recognize(text: text)
         .subscribe(onNext: { [weak self] model in
             let text = model.someString ?? ""
-            self?.questionInput.accept(text)
+            let str = text.replacingOccurrences(of: "\"", with: "")
+            self?.questionInput.accept(str)
             self?.sendQuestion()
             self?.scrollPosition.onNext(.bottom)
             }, onError: { error in

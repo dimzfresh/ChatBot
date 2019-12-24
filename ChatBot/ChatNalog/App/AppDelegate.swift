@@ -22,11 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Services
         services.forEach { _ = $0.application?(application, didFinishLaunchingWithOptions: launchOptions) }
         
+        let splash: SplashViewController = .instanceController(storyboard: .splash)
+        let splashnvc = UINavigationController(rootViewController: splash)
+        splashnvc.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = splashnvc
+        window?.makeKeyAndVisible()
+        
         let vc = ChatModule.build()
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.setNavigationBarHidden(true, animated: false)
         
-        window?.rootViewController = nvc
-        window?.makeKeyAndVisible()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.window?.rootViewController = nvc
+        }
                 
         return true
     }
@@ -59,8 +67,4 @@ private extension AppDelegate {
     func setup() {
 
     }
-    
 }
-
-
-

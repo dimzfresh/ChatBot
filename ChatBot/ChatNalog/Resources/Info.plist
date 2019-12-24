@@ -23,7 +23,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Разрешите записать голос для отправки сообщений</string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Splash</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Chat</string>
 	<key>UIRequiredDeviceCapabilities</key>

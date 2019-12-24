@@ -80,6 +80,20 @@ public enum Model : String {
 
 public extension UIDevice {
     
+    var isXScreen: Bool {
+        if type == .iPhoneXR
+            || type == .iPhoneXS
+            || type == .iPhoneXSMax
+            || type == .iPhone11
+            || type == .iPhone11ProMax
+            || type == .iPhone11Pro
+            || type == .iPhoneX  {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var type: Model {
         var systemInfo = utsname()
         uname(&systemInfo)

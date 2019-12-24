@@ -20,7 +20,6 @@ enum RoundType {
 }
 
 extension UIView {
-    
     class func loadNib<T: UIView>(_ viewType: T.Type) -> T {
         let className = String(describing: viewType)
         return Bundle(for: viewType).loadNibNamed(className, owner: nil, options: nil)!.first as! T
@@ -44,6 +43,19 @@ extension UIView {
         layer.shadowRadius = shadowRadius
         layer.shadowColor = shadowColor.cgColor
         layer.masksToBounds = false
+    }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        if #available(iOS 11.0, *) {
+            clipsToBounds = true
+            layer.cornerRadius = radius
+            layer.maskedCorners = CACornerMask(rawValue: corners.rawValue)
+        } else {
+            let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            layer.mask = mask
+        }
     }
     
     func round(with type: RoundType, radius: CGFloat = 5.0) {
