@@ -11,9 +11,6 @@
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
         </array>
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShareViewController" customModule="Чатналог_рф" customModuleProvider="target">
@@ -58,16 +55,23 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC7-IK-jK9">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC7-IK-jK9">
                                             <rect key="frame" x="16" y="0.0" width="350" height="260"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="260" id="5gJ-fe-H7P"/>
                                             </constraints>
-                                            <string key="text">Получение информации о банковских счетах своей организации
+                                            <attributedString key="attributedText">
+                                                <fragment>
+                                                    <string key="content">Получение информации о банковских счетах своей организации
 Получение сведений о банковских счетах своего ЮЛ возможно в любой ИФНС. Поскольку такая информация является конфиденциальной, то и выдается она только по соответствующему запросу. При этом ЮЛ запрос должны оформлять в письменном виде на бланках установленной формы. Эти бланки может разрабатывать каждая ИФНС самостоятельно, поэтому лучше заранее узнать форму бланка…</string>
-                                            <color key="textColor" red="0.22352941176470587" green="0.24705882352941178" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.22352941176470587" green="0.24705882352941178" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="16" name="PTSans-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjU-Vf-y3O">

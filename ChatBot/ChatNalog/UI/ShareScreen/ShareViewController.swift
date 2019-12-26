@@ -41,7 +41,7 @@ final class ShareViewController: UIViewController, ShareViewProtocol {
     }
     
     @IBAction private func copyButtonTapped(_ sender: Any) {
-        UIPasteboard.general.string = shareText ?? ""
+        UIPasteboard.general.string = shareText ?? " "
         moveOut()
     }
     
@@ -90,7 +90,29 @@ private extension ShareViewController {
     func moveIn() {
         view.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
         view.alpha = 0
+        
+        var attributedString = NSMutableAttributedString(string: shareText ?? " ")
+        
+        let sentenses = shareText?.split(separator: "\n")
+        if let sentenses = sentenses, sentenses.count > 1 {
+            let first = String(sentenses.first ?? "")
+            let subtitle = shareText?.replacingOccurrences(of: first, with: "")
+            attributedString = NSMutableAttributedString(string: first)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, attributedString.length))
+            let secondAttributedString = NSMutableAttributedString(string: subtitle ?? "")
+            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, secondAttributedString.length))
+            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, secondAttributedString.length))
+            attributedString.append(secondAttributedString)
+        } else {
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, attributedString.length))
+        }
+        
         textView.text = shareText
+        textView.attributedText = attributedString
+        
+        view.layoutIfNeeded()
         
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)

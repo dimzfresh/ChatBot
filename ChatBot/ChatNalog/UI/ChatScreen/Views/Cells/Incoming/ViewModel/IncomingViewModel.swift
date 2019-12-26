@@ -24,17 +24,14 @@ final class IncomingViewModel: BaseViewModel {
     }
     
     // MARK: - Audio
+    var isPlaying = BehaviorRelay<Bool?>(value: nil)
     var isLoading = BehaviorRelay<Bool>(value: false)
-    var isPlaying = BehaviorRelay<Bool>(value: false)
     
     var input = BehaviorRelay<InputAnswer?>(value: nil)
 
     private let service: Service?
-    private let voiceManager = VoiceManager.shared
     private let disposeBag = DisposeBag()
-    
-    private var player: VoiceManager? = VoiceManager.shared
-    
+        
     init(service: Service? = ChatService()) {
         self.service = service
         
@@ -44,12 +41,18 @@ final class IncomingViewModel: BaseViewModel {
 
 extension IncomingViewModel {
     func bind() {
-        isLoading
+        isPlaying
             .observeOn(MainScheduler.asyncInstance)
+            .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
-                self?.load()
-            })
-            .disposed(by: disposeBag)
+                guard let flag = flag else { return }
+                if !flag {
+                    self?.stop()
+                } else {
+                    self?.load()
+                }
+        })
+        .disposed(by: disposeBag)
     }
 }
 
@@ -83,20 +86,20 @@ private extension IncomingViewModel {
     }
     
     func load() {
-        guard let text = input.value?.text, isLoading.value else {
-            isLoading.accept(false)
-            return }
-
-        isLoading.accept(true)
+        guard let text = input.value?.text,
+            let flag = isPlaying.value,
+            flag else { return }
         
         let clearText = removeSpecialCharsFromString(text: text)
 
+        isLoading.accept(true)
         service?.synthesize(text: clearText)
             .subscribe(onNext: { [weak self] model in
-                self?.isLoading.accept(false)
-                self?.convertAndPlay(text: model.someString)
+                self?.play(text: model.someString)
                 }, onError: { [weak self] _ in
-                    self?.isLoading.accept(false)
+                    self?.isPlaying.accept(false)
+            }, onCompleted: {
+                    self.isLoading.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -107,9 +110,7 @@ private extension IncomingViewModel {
         return String(text.filter { !okayChars.contains($0) })
     }
     
-    func convertAndPlay(text : String?) {
-        isPlaying.accept(true)
-
+    func play(text : String?) {
         guard let audioData = Data(base64Encoded: text ?? "", options: .ignoreUnknownCharacters) else {
             isPlaying.accept(false)
             return }
@@ -121,10 +122,14 @@ private extension IncomingViewModel {
             isPlaying.accept(false)
             print(error)
         }
-        player?.startPlaying()
-        player?.audioPlayerDidFinished = { [weak self] in
+        VoiceManager.shared.startPlaying()
+        VoiceManager.shared.audioPlayerDidFinished = { [weak self] in
             self?.isPlaying.accept(false)
         }
+    }
+    
+    func stop() {
+        VoiceManager.shared.stopPlaying()
     }
     
     func getDocumentsDirectory() -> URL {

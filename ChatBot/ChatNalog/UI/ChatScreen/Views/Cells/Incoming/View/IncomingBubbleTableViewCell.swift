@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import Alamofire
+import NVActivityIndicatorView
 
 typealias AnswerSectionModel = SectionModel<AnswerSection, AnswerItem>
 
@@ -26,13 +27,15 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var bubbleView: BubbleView!
     @IBOutlet private weak var speakerButton: UIButton!
-    @IBOutlet private weak var activity: UIActivityIndicatorView!
+    @IBOutlet private weak var activity: NVActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var messageLabel: CopyableLabel!
     @IBOutlet private weak var messageStackView: UIStackView!
     
     @IBOutlet private weak var collectionStackView: UIStackView!
     @IBOutlet private weak var collectionView: UICollectionView!
+    
+    @IBOutlet private weak var shareButton: UIButton!
         
     typealias ViewModelType = IncomingViewModel
     var viewModel: ViewModelType! {
@@ -44,14 +47,13 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     private var disposeBag = DisposeBag()
 
     private let service = ChatService()
-    private var isPlaying = BehaviorRelay<Bool>(value: false)
     private var player: VoiceManager? = .shared
 
     private var selectedAnswerSubject = BehaviorSubject<AnswerButton?>(value: nil)
     var selectedItem: Observable<AnswerButton?> { selectedAnswerSubject.asObservable() }
     
-    private var selectedMicSubject = BehaviorSubject<Bool?>(value: nil)
-    var selectedMic: Observable<Bool?> { selectedMicSubject.asObservable() }
+    private var selectedMicSubject = BehaviorSubject<Bool>(value: false)
+    var selectedMic: Observable<Bool> { selectedMicSubject.asObservable() }
     
     private var incomingText = BehaviorSubject<String?>(value: nil)
     private var items: [AnswerSectionModel] = [] {
@@ -102,6 +104,8 @@ private extension IncomingBubbleTableViewCell {
         userNameLabel.text = "Чатбот"
         addShadow()
         setupCollectionView()
+        activity.color = #colorLiteral(red: 0.3411764706, green: 0.3019607843, blue: 0.7921568627, alpha: 1).withAlphaComponent(0.6)
+        activity.type = .circleStrokeSpin
     }
     
     func addShadow() {
@@ -125,29 +129,37 @@ private extension IncomingBubbleTableViewCell {
         
         speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
             guard let self = self, let vm = self.viewModel else { return }
-            self.selectedMicSubject.onNext(true)
+            var selected = false
+            do {
+                selected = try self.selectedMicSubject.value()
+            } catch {
+                selected = false
+            }
+            self.selectedMicSubject.onNext(selected)
             self.selectedMicSubject.onCompleted()
             
-            let flag = vm.isLoading.value
-            vm.isLoading.accept(!flag)
+            let flag = vm.isPlaying.value ?? false
+            vm.isPlaying.accept(!flag)
         }).disposed(by: disposeBag)
-        
-        viewModel?.isLoading
-            .subscribe(onNext: { [weak self] flag in
-            if flag {
-                self?.activity.startAnimating()
-                self?.speakerButton.isHidden = true
-            }
-        })
-        .disposed(by: disposeBag)
         
         viewModel?.isPlaying
             .subscribe(onNext: { [weak self] flag in
-                self?.activity.stopAnimating()
-                self?.speakerButton.isHidden = false
                 self?.animate()
-            })
-            .disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+        
+        viewModel?.isLoading
+            .subscribe(onNext: { [weak self] flag in
+                if flag {
+                    self?.activity.startAnimating()
+                    self?.speakerButton.isHidden = true
+                } else {
+                    self?.activity.stopAnimating()
+                    self?.speakerButton.isHidden = false
+                    self?.animate()
+                }
+        })
+        .disposed(by: disposeBag)
         
         viewModel?.input
             .subscribe(onNext: { [weak self] answer in
@@ -179,6 +191,24 @@ private extension IncomingBubbleTableViewCell {
             }
             
         }).disposed(by: disposeBag)
+        
+        shareButton.rx.tap.subscribe(onNext: { [weak self] in
+            self?.share()
+        }).disposed(by: disposeBag)
+    }
+    
+    func share() {
+        let root = UIApplication.shared.windows.first?.rootViewController
+        let activityVC = UIActivityViewController(activityItems: [messageLabel.text ?? ""] as [Any], applicationActivities: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = root?.view
+            popoverController.permittedArrowDirections = .down
+        } else {
+            activityVC.navigationController?.navigationBar.tintColor = .lightGray
+        }
+        root?.present(activityVC, animated: true)
     }
     
     func process(answer: InputAnswer?) {
@@ -221,7 +251,7 @@ private extension IncomingBubbleTableViewCell {
     
     func animate() {
         // Image
-        let image: UIImage = viewModel.isPlaying.value ? #imageLiteral(resourceName: "chat_mic_on") : #imageLiteral(resourceName: "chat_mic_off")
+        let image: UIImage = (viewModel.isPlaying.value ?? false) ? #imageLiteral(resourceName: "chat_mic_on") : #imageLiteral(resourceName: "chat_mic_off")
 
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.speakerButton.setImage(image, for: .normal)
@@ -229,7 +259,7 @@ private extension IncomingBubbleTableViewCell {
         
         speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         
-        guard viewModel.isPlaying.value else {
+        guard let flag = viewModel.isPlaying.value, flag else {
             speakerButton.transform = .identity
             speakerButton.alpha = 1
             speakerButton.layer.removeAllAnimations()

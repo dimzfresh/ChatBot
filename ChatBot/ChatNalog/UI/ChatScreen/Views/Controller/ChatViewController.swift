@@ -153,7 +153,7 @@ extension ChatViewController {
         //inputTextView.addDoneButtonOnKeyboard()
         navigationController?.navigationBar.shadowImage = nil
         tableView.roundCorners([.topLeft, .topRight], radius: 32)
-        searchTableView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9294117647, blue: 0.9450980392, alpha: 1)
+        searchTableView.backgroundColor = #colorLiteral(red: 0.9635888934, green: 0.9744213223, blue: 1, alpha: 1)
         searchTableView.tableFooterView = UIView(frame: .zero)
         
         setupInputView()
@@ -276,7 +276,7 @@ extension ChatViewController {
             })
             .bind(to: searchTableView.rx.items) { (tv, index, text) -> UITableViewCell in
                 let cell = UITableViewCell(style: .default, reuseIdentifier: "SuggestionCell")
-                cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9294117647, blue: 0.9450980392, alpha: 1).withAlphaComponent(0.5)
+                cell.backgroundColor = #colorLiteral(red: 0.9635888934, green: 0.9744213223, blue: 1, alpha: 1)
                 cell.textLabel?.numberOfLines = 0
                 cell.textLabel?.textColor = #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1)
                 cell.textLabel?.text = text

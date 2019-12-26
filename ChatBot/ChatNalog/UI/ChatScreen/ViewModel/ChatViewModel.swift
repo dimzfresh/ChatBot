@@ -174,18 +174,15 @@ private extension ChatViewModel {
         let text = questionInput.value
         questionInput.accept("")
         
-        var id = ""
-        //don't ask me why I do this
-        let _ = messages.value.last { model -> Bool in
-            let _ = model.items.last {
-                guard case let TableViewItem.message(message) = $0, let i = message.dialogID else {
-                    return false
-                }
-                id = "\(i)"
-                return true
+        let items = messages.value.flatMap { $0.items }
+        let identifiers: [String?] = items.map {
+            guard case let TableViewItem.message(message) = $0,
+                let id = message.dialogID else {
+                return nil
             }
-            return false
+            return "\(id)"
         }
+        let id: String = identifiers.last { $0 != nil } as? String ?? ""
         
         service?.sendQuestion(text: text, id: id)
         .subscribe(onNext: { [weak self] model in
@@ -279,6 +276,7 @@ private extension ChatViewModel {
                     self?.addFirstMessage()
                 } else {
                     self?.messages.accept(messages)
+                    self?.moveScroll()
                 }
                 self?.firstOpen = false
             case .failure(let error):

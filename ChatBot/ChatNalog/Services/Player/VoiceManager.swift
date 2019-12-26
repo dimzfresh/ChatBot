@@ -24,6 +24,10 @@ final class VoiceManager: NSObject {
         super.init()
     }
     
+    func permission() {
+        requestPermission {_ in }
+    }
+    
     func startRecording() {
         stopPlaying()
 

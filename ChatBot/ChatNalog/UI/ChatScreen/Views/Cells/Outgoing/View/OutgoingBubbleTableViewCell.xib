@@ -37,10 +37,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-QF-ZdV">
                                         <rect key="frame" x="12.5" y="13" width="25" height="22"/>
                                         <subviews>
-                                            <activityIndicatorView opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="a9a-DQ-iQG">
-                                                <rect key="frame" x="2.5" y="1" width="20" height="20"/>
-                                                <color key="color" red="0.36862745099999999" green="0.52941176469999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </activityIndicatorView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGi-eE-Uhi" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                <rect key="frame" x="2" y="2" width="21" height="18"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-wg-s0a">
                                                 <rect key="frame" x="-0.5" y="0.0" width="26" height="22"/>
                                                 <constraints>
@@ -53,10 +52,12 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="1CU-Mg-QsB"/>
+                                            <constraint firstItem="WGi-eE-Uhi" firstAttribute="leading" secondItem="jyc-QF-ZdV" secondAttribute="leading" constant="2" id="1Jm-4E-GvQ"/>
                                             <constraint firstAttribute="width" constant="25" id="AGH-nz-xdT"/>
-                                            <constraint firstItem="a9a-DQ-iQG" firstAttribute="centerY" secondItem="jyc-QF-ZdV" secondAttribute="centerY" id="CGB-EX-uVA"/>
+                                            <constraint firstAttribute="bottom" secondItem="WGi-eE-Uhi" secondAttribute="bottom" constant="2" id="Ce0-DG-tba"/>
+                                            <constraint firstAttribute="trailing" secondItem="WGi-eE-Uhi" secondAttribute="trailing" constant="2" id="Dk3-g6-E44"/>
                                             <constraint firstItem="tbq-wg-s0a" firstAttribute="centerY" secondItem="jyc-QF-ZdV" secondAttribute="centerY" id="d30-rt-bYN"/>
-                                            <constraint firstItem="a9a-DQ-iQG" firstAttribute="centerX" secondItem="jyc-QF-ZdV" secondAttribute="centerX" id="pfP-TK-LSZ"/>
+                                            <constraint firstItem="WGi-eE-Uhi" firstAttribute="top" secondItem="jyc-QF-ZdV" secondAttribute="top" constant="2" id="tIN-DZ-N71"/>
                                             <constraint firstItem="tbq-wg-s0a" firstAttribute="centerX" secondItem="jyc-QF-ZdV" secondAttribute="centerX" id="wVP-ku-KTz"/>
                                         </constraints>
                                     </view>
@@ -141,7 +142,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="activity" destination="a9a-DQ-iQG" id="bWG-A1-CqJ"/>
+                <outlet property="activity" destination="WGi-eE-Uhi" id="2oq-p2-POI"/>
                 <outlet property="messageLabel" destination="BHw-JN-kOc" id="N5F-eS-bOZ"/>
                 <outlet property="speakerButton" destination="tbq-wg-s0a" id="ncX-dC-UiK"/>
                 <outlet property="userNameLabel" destination="eBV-B7-lFF" id="WyE-tV-gKe"/>

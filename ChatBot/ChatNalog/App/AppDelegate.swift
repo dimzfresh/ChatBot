@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Services
         services.forEach { _ = $0.application?(application, didFinishLaunchingWithOptions: launchOptions) }
         
+        VoiceManager.shared.permission()
+        
         let splash: SplashViewController = .instanceController(storyboard: .splash)
         let splashnvc = UINavigationController(rootViewController: splash)
         splashnvc.setNavigationBarHidden(true, animated: false)
@@ -32,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         nvc.setNavigationBarHidden(true, animated: false)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
             self.window?.rootViewController = nvc
         }
                 

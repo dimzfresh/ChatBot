@@ -51,6 +51,7 @@ private extension AnswerCollectionViewCell {
             }
             answerButton.titleLabel?.numberOfLines = 0
             answerButton.titleLabel?.lineBreakMode = .byWordWrapping
+            answerButton.titleLabel?.font = .fontTo(.brandFontRegular, size: 15, weight: .medium)
             answerButton.setTitle(first + "\n" + second, for: .normal)
         }
     }

@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Разрешите записать голос для отправки сообщений</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Splash</string>
 	<key>UIMainStoryboardFile</key>

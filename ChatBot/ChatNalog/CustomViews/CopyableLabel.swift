@@ -91,7 +91,7 @@ private extension CopyableLabel {
         isShownPopup = true
         
         let popUpVC: ShareViewController = .init()
-        popUpVC.shareText = text
+        popUpVC.shareText = text ?? " "
         popUpVC.view.frame = UIScreen.main.bounds
         popUpVC.view.translatesAutoresizingMaskIntoConstraints = false
         popUpVC.willMove(toParent: parent)

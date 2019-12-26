@@ -41,7 +41,7 @@ private extension ActivityView {
         backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
         isHidden = true
         
-        activityIndicator = NVActivityIndicatorView(frame: .zero, type: .ballSpinFadeLoader, color: UIColor.brandColor.withAlphaComponent(0.7), padding: 0.0)
+        activityIndicator = NVActivityIndicatorView(frame: .zero, type: .circleStrokeSpin, color: UIColor.brandColor.withAlphaComponent(0.7), padding: 0.0)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)
         activityIndicator.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
