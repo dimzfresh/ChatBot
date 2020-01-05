@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum ScorllPosition {
+enum ScrollPosition {
     case top
     case middle(index: Int)
     case bottom
@@ -173,6 +173,7 @@ extension ChatViewController {
         }
         
         inputViewProvider?.onStartRecordingVoice = { [weak self] in
+            self?.viewModel.searchResult.onNext([])
             self?.viewModel.record(for: .recording)
         }
         inputViewProvider?.onStopRecordingVoice = { [weak self] in
@@ -182,10 +183,11 @@ extension ChatViewController {
             self?.viewModel.recognizeVoice()
         }
         inputViewProvider?.onPlayVoice = { [weak self] in
-            self?.viewModel.convertAndPlay()
+            self?.viewModel.play()
         }
         inputViewProvider?.onClearVoice = { [weak self] in
             self?.viewModel.voice.accept(nil)
+            self?.viewModel.stop()
         }
         
 
@@ -342,7 +344,7 @@ extension ChatViewController {
     }
     
     // MARK: - Scroll
-    private func scrollToPosition(position: ScorllPosition) {
+    private func scrollToPosition(position: ScrollPosition) {
         switch position {
         case .top:
             let indexPath = IndexPath.init(row: 0, section: 0)

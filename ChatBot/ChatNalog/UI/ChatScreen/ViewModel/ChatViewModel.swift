@@ -54,7 +54,7 @@ final class ChatViewModel: BaseViewModel {
     let microphoneState = BehaviorRelay<MicrophoneState>(value: .none)
     let speakerState = BehaviorRelay<SpeakerState>(value: .stopped)
     
-    var scrollPosition = BehaviorSubject<ScorllPosition>(value: .bottom)
+    var scrollPosition = BehaviorSubject<ScrollPosition>(value: .bottom)
 
     init(service: Service?) {
         self.service = service
@@ -89,7 +89,7 @@ final class ChatViewModel: BaseViewModel {
         recognize()
     }
     
-    func convertAndPlay() {
+    func play() {
         guard let text: String = voice.value, !text.isEmpty else { return }
 
         guard let audioData = Data(base64Encoded: text, options: .ignoreUnknownCharacters) else { return }
@@ -101,6 +101,10 @@ final class ChatViewModel: BaseViewModel {
             print(error)
         }
         voiceManager.startPlaying()
+    }
+    
+    func stop() {
+        voiceManager.stopPlaying()
     }
     
     func getDocumentsDirectory() -> URL {
