@@ -53,12 +53,12 @@ final class ShareViewController: UIViewController, ShareViewProtocol {
 
 private extension ShareViewController {
     func setup() {
-        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.05)
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.08)
         setupBlurEffectView()
     }
     
     func setupBlurEffectView() {
-        blurEffectView.alpha = 0.6
+        blurEffectView.alpha = 0.65
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let tap = UITapGestureRecognizer(target: self, action: #selector(blurTapped))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55367A51F10EA86EAEF6F6A4 /* Pods_ChatBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6737637CAA1B58C94B9CD034 /* Pods_ChatBotTests.framework */; };
 		5A00896E238D491200F26C66 /* CustomInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A00896D238D491200F26C66 /* CustomInputTextView.swift */; };
 		5A18068D23AC013800ED314E /* ChatMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A18068B23AC013800ED314E /* ChatMessages.xcdatamodeld */; };
 		5A1C364C23531CB700DE587A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C364B23531CB700DE587A /* APIClient.swift */; };
@@ -76,6 +77,7 @@
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
 		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
 		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
+		5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */; };
 		5AF5BC8423ABD4F30006CD13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
 /* End PBXBuildFile section */
@@ -183,7 +185,9 @@
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
+		5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		6737637CAA1B58C94B9CD034 /* Pods_ChatBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		915CF536DF520427F60879EA /* Pods-ChatBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBotTests.debug.xcconfig"; path = "Target Support Files/Pods-ChatBotTests/Pods-ChatBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3CC2F5BA9F429165F7D90FF /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatBot.release.xcconfig"; path = "Target Support Files/Pods-ChatBot/Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
 		D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55367A51F10EA86EAEF6F6A4 /* Pods_ChatBotTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +434,7 @@
 				5AB57EC5231C5E5100A22A8C /* Assets.xcassets */,
 				5AB57EC7231C5E5100A22A8C /* LaunchScreen.storyboard */,
 				5AB57ECA231C5E5100A22A8C /* Info.plist */,
+				5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -693,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */,
+				6737637CAA1B58C94B9CD034 /* Pods_ChatBotTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -784,6 +791,7 @@
 			files = (
 				5A2E224E23AE2D0E00B9741F /* Roboto-Bold.ttf in Resources */,
 				5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */,
+				5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */,
 				5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */,
 				5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */,
 				5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */,
@@ -864,6 +872,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-ChatBot/Pods-ChatBot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -871,6 +880,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -878,6 +888,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -885,6 +896,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
