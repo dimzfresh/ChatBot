@@ -58,12 +58,14 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     private var incomingText = BehaviorSubject<String?>(value: nil)
     private var items: [AnswerSectionModel] = [] {
         didSet {
+            shouldInvalidateLayout = true
             UIView.performWithoutAnimation {
                 self.collectionView.reloadData()
             }
         }
     }
     
+    private var shouldInvalidateLayout = false
     private lazy var cellSize: CGSize = {
         guard let collectionView = collectionView else { return .zero }
 
@@ -89,8 +91,11 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         
         addShadow()
         
-        DispatchQueue.main.async {
-            self.collectionView.collectionViewLayout.invalidateLayout()
+        if shouldInvalidateLayout {
+            shouldInvalidateLayout = false
+            DispatchQueue.main.async {
+                self.collectionView.collectionViewLayout.invalidateLayout()
+            }
         }
     }
     
