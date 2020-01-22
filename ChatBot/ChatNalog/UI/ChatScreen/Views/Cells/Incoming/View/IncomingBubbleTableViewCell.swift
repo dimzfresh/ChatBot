@@ -63,6 +63,20 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    private lazy var cellSize: CGSize = {
+        guard let collectionView = collectionView else { return .zero }
+
+        let count = CGFloat(items.count)
+        let height = collectionView.frame.height
+        //let width = collectionView.frame.width
+        let insets = collectionView.contentInset
+        let width = collectionView.bounds.width - (insets.left + insets.right)
+        let availableWidth = width - 4 * count
+                  
+        return CGSize(width: availableWidth / count, height: height)
+    }()
+
         
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,6 +88,10 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         addShadow()
+        
+        DispatchQueue.main.async {
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
     
     override func prepareForReuse() {
@@ -290,6 +308,9 @@ private extension IncomingBubbleTableViewCell {
         collectionView.allowsSelection = true
         collectionView.isUserInteractionEnabled = true
         collectionView.isScrollEnabled = false
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        //layout?.estimatedItemSize = CGSize(width: 50, height: 50)
+        layout?.itemSize = UICollectionViewFlowLayout.automaticSize
     }
     
     func buttonCell(indexPath: IndexPath, answer: AnswerButton) -> UICollectionViewCell {
@@ -326,10 +347,10 @@ extension IncomingBubbleTableViewCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let count = CGFloat(items.count)
-        let width = (UIScreen.main.bounds.width - 28 - 4*count) / count
-        return CGSize(width: width, height: 40)
+        //cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return cellSize
     }
+    
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //
 //        let cell = collectionView.cellForItem(at: indexPath) as? AnswerCollectionViewCell

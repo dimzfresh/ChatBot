@@ -37,6 +37,15 @@ private extension AnswerCollectionViewCell {
         answerButton.layer.cornerRadius = 8
         answerButton.clipsToBounds = true
         answerButton.isUserInteractionEnabled = false
+        
+        if #available(iOS 12, *) {
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+            let leftConstraint = contentView.leftAnchor.constraint(equalTo: leftAnchor)
+            let rightConstraint = contentView.rightAnchor.constraint(equalTo: rightAnchor)
+            let topConstraint = contentView.topAnchor.constraint(equalTo: topAnchor)
+            let bottomConstraint = contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            NSLayoutConstraint.activate([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
+        }
     }
     
     func setupTitle() {

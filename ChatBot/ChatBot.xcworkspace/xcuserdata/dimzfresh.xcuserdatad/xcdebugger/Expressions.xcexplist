@@ -3,12 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.viewModel.didset:IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "viewModel">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ChatViewModel.answer(input:):ChatViewModel.swift">
       </ContextState>
       <ContextState
          contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
@@ -60,20 +55,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "items">
+               value = "questionInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewController.createPulse():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "micButton.center">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
       </ContextState>
       <ContextState
          contextName = "VoiceManager.startPlaying():VoiceManager.swift">
@@ -117,7 +107,7 @@
                value = "request.data">
             </PersistentString>
             <PersistentString
-               value = "request.parametersData">
+               value = "r.allHTTPHeaderFields">
             </PersistentString>
             <PersistentString
                value = "r.httpBody">
@@ -126,7 +116,7 @@
                value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
             <PersistentString
-               value = "r.allHTTPHeaderFields">
+               value = "request.parametersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -145,7 +135,13 @@
                value = "frame">
             </PersistentString>
             <PersistentString
-               value = "collectionView.frame">
+               value = "UIScreen.main.bounds.height">
+            </PersistentString>
+            <PersistentString
+               value = "cellSize">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds.width ">
             </PersistentString>
             <PersistentString
                value = "collectionStackView.frame">
@@ -189,10 +185,10 @@
                value = "collectionView.numberOfSections">
             </PersistentString>
             <PersistentString
-               value = "viewModel.message?.buttons">
+               value = "indexPath.section">
             </PersistentString>
             <PersistentString
-               value = "indexPath.section">
+               value = "viewModel.message?.buttons">
             </PersistentString>
             <PersistentString
                value = "viewModel.input.value()">
@@ -216,35 +212,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatModel.toManagedObject(in:):ChatModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "toJSON()">
-            </PersistentString>
-            <PersistentString
-               value = "dialogID">
-            </PersistentString>
-            <PersistentString
-               value = "buttons">
-            </PersistentString>
-            <PersistentString
-               value = "isIncoming">
-            </PersistentString>
-            <PersistentString
-               value = "text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "ChatViewController.updateTime():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "timer">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "VoiceManager.startRecording():VoiceManager.swift">
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.process():IncomingBubbleTableViewCell.swift">
@@ -265,6 +238,9 @@
                value = "message?.buttons">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.startRecording():VoiceManager.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in ChatViewModel.recognize(text:):ChatViewModel.swift">
@@ -295,6 +271,26 @@
       </ContextState>
       <ContextState
          contextName = "ChatService.recognize(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatModel.toManagedObject(in:):ChatModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "toJSON()">
+            </PersistentString>
+            <PersistentString
+               value = "dialogID">
+            </PersistentString>
+            <PersistentString
+               value = "buttons">
+            </PersistentString>
+            <PersistentString
+               value = "isIncoming">
+            </PersistentString>
+            <PersistentString
+               value = "text">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ShareViewController.setup():ShareViewController.swift">
@@ -387,13 +383,24 @@
          contextName = "IncomingBubbleTableViewCell.addShadow():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "UIScreen.main.bounds.width">
+               value = "bubbleView.frame">
             </PersistentString>
             <PersistentString
                value = " UIScreen.main.bounds.width - 28">
             </PersistentString>
             <PersistentString
-               value = "bubbleView.frame">
+               value = "UIScreen.main.bounds.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in IncomingBubbleTableViewCell.cellSize.getter:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.bounds.width">
+            </PersistentString>
+            <PersistentString
+               value = "availableWidth / count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -428,18 +435,28 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewModel.answer(input:):ChatViewModel.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
+         contextName = "IncomingBubbleTableViewCell.viewModel.didset:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "questionInput.value">
+               value = "viewModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.createPulse():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "micButton.center">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
