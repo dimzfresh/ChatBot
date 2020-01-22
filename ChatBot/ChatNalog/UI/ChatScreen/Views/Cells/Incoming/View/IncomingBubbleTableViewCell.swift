@@ -32,8 +32,8 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var messageLabel: CopyableLabel!
     @IBOutlet private weak var messageStackView: UIStackView!
     
-    @IBOutlet private weak var collectionStackView: UIStackView!
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var answerButtonsStackView: UIStackView!
+    @IBOutlet private var answerButtons: [AnimatedButton]!
     
     @IBOutlet private weak var shareButton: UIButton!
         
@@ -43,7 +43,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
             selectedAnswerSubject = BehaviorSubject<AnswerButton?>(value: nil)
         }
     }
-    
+        
     private var disposeBag = DisposeBag()
 
     private let service = ChatService()
@@ -56,30 +56,9 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     var selectedMic: Observable<Bool> { selectedMicSubject.asObservable() }
     
     private var incomingText = BehaviorSubject<String?>(value: nil)
-    private var items: [AnswerSectionModel] = [] {
-        didSet {
-            shouldInvalidateLayout = true
-            UIView.performWithoutAnimation {
-                self.collectionView.reloadData()
-            }
-        }
-    }
     
-    private var shouldInvalidateLayout = false
-    private lazy var cellSize: CGSize = {
-        guard let collectionView = collectionView else { return .zero }
+    private var items: [AnswerSectionModel] = []
 
-        let count = CGFloat(items.count)
-        let height = collectionView.frame.height
-        //let width = collectionView.frame.width
-        let insets = collectionView.contentInset
-        let width = collectionView.bounds.width - (insets.left + insets.right)
-        let availableWidth = width - 4 * count
-                  
-        return CGSize(width: availableWidth / count, height: height)
-    }()
-
-        
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -90,13 +69,6 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         addShadow()
-        
-        if shouldInvalidateLayout {
-            shouldInvalidateLayout = false
-            DispatchQueue.main.async {
-                self.collectionView.collectionViewLayout.invalidateLayout()
-            }
-        }
     }
     
     override func prepareForReuse() {
@@ -126,7 +98,6 @@ private extension IncomingBubbleTableViewCell {
         selectionStyle = .none
         userNameLabel.text = "Чатбот"
         addShadow()
-        setupCollectionView()
         activity.color = #colorLiteral(red: 0.3411764706, green: 0.3019607843, blue: 0.7921568627, alpha: 1).withAlphaComponent(0.6)
         activity.type = .circleStrokeSpin
     }
@@ -196,23 +167,29 @@ private extension IncomingBubbleTableViewCell {
         tapGesture.cancelsTouchesInView = true
         tapGesture.delaysTouchesBegan = true
 
-        collectionView.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
+        answerButtonsStackView.addGestureRecognizer(tapGesture)
+        tapGesture.rx.event
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .bind(onNext: { [weak self] recognizer in
             guard recognizer.state == .ended else { return }
-            let location = recognizer.location(in: self?.collectionView)
-            guard let tapIndexPath = self?.collectionView.indexPathForItem(at: location)
-                else { return }
             
-            let cell = self?.collectionView.cellForItem(at: tapIndexPath) as? AnswerCollectionViewCell
-            cell?.animate { [weak self] in
+            let tapLocation = recognizer.location(in: recognizer.view)
+            let filteredSubviews = self?.answerButtonsStackView.subviews.filter {
+                $0.frame.contains(tapLocation)
+            }
+
+            //let button = self?.answerButtonsStackView.hitTest(tapLocation, with: nil)
+            guard let button = filteredSubviews?.first as? AnimatedButton,
+                let index = self?.answerButtons.firstIndex(of: button) else { return }
+            
+            button.animate { [weak self] in
                 guard let self = self else { return }
-                let item = self.items[tapIndexPath.section].items[tapIndexPath.row]
-                guard case let AnswerItem.button(answer) = item else { return }
-                
+                guard let item = self.items[index].items.first,
+                    case let AnswerItem.button(answer) = item else { return }
+
                 self.selectedAnswerSubject.on(.next(answer))
                 self.selectedAnswerSubject.onCompleted()
             }
-            
         }).disposed(by: disposeBag)
         
         shareButton.rx.tap.subscribe(onNext: { [weak self] in
@@ -238,14 +215,11 @@ private extension IncomingBubbleTableViewCell {
         messageLabel.text = answer?.text
 
         guard answer?.items.isEmpty == false else {
-            collectionStackView.isHidden = true
-            collectionView.isHidden = true
-            messageStackView.alignment = .leading
-            //items.accept([])
+            answerButtonsStackView.isHidden = true
+            answerButtons.forEach { $0.isHidden = true }
             return }
 
-        collectionStackView.isHidden = false
-        collectionView.isHidden = false
+        answerButtonsStackView.isHidden = false
         
         var attributedString: NSMutableAttributedString
         let sentenses = answer?.text.split(separator: "\n")
@@ -264,12 +238,42 @@ private extension IncomingBubbleTableViewCell {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
 
         messageLabel.attributedText = attributedString
+                
+        let items = answer?.items ?? []
+        self.items = items
+        processButtons(items: items)
+    }
+    
+    func processButtons(items: [AnswerSectionModel]) {
+        guard items.count <= answerButtons.count else { return }
         
-        collectionStackView.alignment = .fill
-        messageStackView.alignment = .fill
-        
-        //items.accept(answer?.items ?? [])
-        items = answer?.items ?? []
+        for index in 0..<answerButtons.count {
+            let answerButton = answerButtons[index]
+            answerButton.isHidden = false
+            
+            if !items.indices.contains(index) {
+                answerButton.isHidden = true
+                continue
+            }
+            
+            guard let item = items[index].items.first,
+                case let AnswerItem.button(answer) = item else { return }
+
+            let name = answer.name ?? ""
+            var result = name.split(separator: " ")
+            if result.count <= 1 {
+                answerButton.setTitle(name, for: .normal)
+            } else {
+                let first = result.removeFirst()
+                let second = result.reduce("") { res, sub -> String in
+                    return  res + sub + " "
+                }
+                answerButton.titleLabel?.numberOfLines = 0
+                answerButton.titleLabel?.lineBreakMode = .byWordWrapping
+                answerButton.titleLabel?.font = .fontTo(.brandFontRegular, size: 15, weight: .medium)
+                answerButton.setTitle(first + "\n" + second, for: .normal)
+            }
+        }
     }
     
     func animate() {
@@ -303,68 +307,3 @@ private extension IncomingBubbleTableViewCell {
     }
 }
 
-
-// MARK: - CollectionView
-private extension IncomingBubbleTableViewCell {
-    func setupCollectionView() {
-        collectionView.register(AnswerCollectionViewCell.nib, forCellWithReuseIdentifier: AnswerCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.allowsSelection = true
-        collectionView.isUserInteractionEnabled = true
-        collectionView.isScrollEnabled = false
-        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        //layout?.estimatedItemSize = CGSize(width: 50, height: 50)
-        layout?.itemSize = UICollectionViewFlowLayout.automaticSize
-    }
-    
-    func buttonCell(indexPath: IndexPath, answer: AnswerButton) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AnswerCollectionViewCell.identifier, for: indexPath) as? AnswerCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.answer = answer
-        return cell
-    }
-}
-
-extension IncomingBubbleTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items[section].items.count
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = items[indexPath.section].items[indexPath.row]
-        guard case let AnswerItem.button(answer) = item else {
-            return UICollectionViewCell()
-        }
-
-        return buttonCell(indexPath: indexPath, answer: answer)
-    }
-}
-
-extension IncomingBubbleTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0.0, left: 2, bottom: 0.0, right: 2)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        return cellSize
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//
-//        let cell = collectionView.cellForItem(at: indexPath) as? AnswerCollectionViewCell
-//        cell?.animate { [weak self] in
-//            guard let self = self else { return }
-//            let item = self.items[indexPath.section].items[indexPath.row]
-//            guard case let AnswerItem.button(answer) = item else { return }
-//
-//            self.selectedAnswerSubject.on(.next(answer))
-//        }
-//    }
-}

@@ -3,219 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ChatViewModel.answer(input:):ChatViewModel.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel.isLoading">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "InputView.animateRecordingTime(state:):InputView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "recordingView.isHidden">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "message">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "getter of tailPath #1 in BubbleView.drawBubble(rect:):BubbleView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "viewFrame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "OutgoingViewModel.load():OutgoingViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "input.value">
-            </PersistentString>
-            <PersistentString
-               value = "isPlaying.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "questionInput.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
-      </ContextState>
-      <ContextState
-         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "audioPlayer">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel.searchResult.value()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.question():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "messages.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in OutgoingBubbleTableViewCell.load():OutgoingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "model.someString">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "VoiceManager.getDocumentsDirectory():VoiceManager.swift">
       </ContextState>
       <ContextState
-         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
+         contextName = "InputView.animateWaveColor(duration:):InputView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "request.data">
-            </PersistentString>
-            <PersistentString
-               value = "r.allHTTPHeaderFields">
-            </PersistentString>
-            <PersistentString
-               value = "r.httpBody">
-            </PersistentString>
-            <PersistentString
-               value = "String(data: request.data!, encoding: .utf8)">
-            </PersistentString>
-            <PersistentString
-               value = "request.parametersData">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CustomInputTextView.setup():CustomInputTextView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "bounds.size.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "frame">
-            </PersistentString>
-            <PersistentString
-               value = "UIScreen.main.bounds.height">
-            </PersistentString>
-            <PersistentString
-               value = "cellSize">
-            </PersistentString>
-            <PersistentString
-               value = "UIScreen.main.bounds.width ">
-            </PersistentString>
-            <PersistentString
-               value = "collectionStackView.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "message">
-            </PersistentString>
-            <PersistentString
-               value = "viewModel?.input.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.viewModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in ChatViewModel.question():ChatViewModel.swift">
-      </ContextState>
-      <ContextState
-         contextName = "CopyableLabel.showPopup():CopyableLabel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.buttonCell(indexPath:answer:):IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "collectionView.numberOfSections">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.section">
-            </PersistentString>
-            <PersistentString
-               value = "viewModel.message?.buttons">
-            </PersistentString>
-            <PersistentString
-               value = "viewModel.input.value()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewController.scrollToBottom(animated:):ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "tableView.numberOfSections">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "question.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewController.updateTime():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "timer">
+               value = "self.time \ 100">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -240,15 +34,130 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.startRecording():VoiceManager.swift">
+         contextName = "closure #2 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatViewModel.recognize(text:):ChatViewModel.swift">
+         contextName = "ChatService.sendQuestion(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.clear():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "messageStackView.alignment">
+            </PersistentString>
+            <PersistentString
+               value = "collectionStackView.alignment">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object.someString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in OutgoingBubbleTableViewCell.load():OutgoingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
                value = "model.someString">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel?.input.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AnswerCollectionViewManager.collectionView(_:layout:sizeForItemAt:):AnswerCollectionViewManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cellSize">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.question():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "messages.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewModel.isLoading">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #11 in ChatViewController.bind():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "state.opposite">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "OutgoingViewModel.load():OutgoingViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "input.value">
+            </PersistentString>
+            <PersistentString
+               value = "isPlaying.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:layout:sizeForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "frame">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds.height">
+            </PersistentString>
+            <PersistentString
+               value = "cellSize">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds.width ">
+            </PersistentString>
+            <PersistentString
+               value = "collectionStackView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "question.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
       </ContextState>
       <ContextState
          contextName = "Messages.toEntity():CoreData+Messages.swift">
@@ -262,15 +171,78 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "OutgoingBubbleTableViewCell.convertAndPlay(text:):OutgoingBubbleTableViewCell.swift">
+         contextName = "VoiceManager.startRecording():VoiceManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.viewDidLayoutSubviews():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "player">
+               value = "UIDevice.current.isXScreen">
+            </PersistentString>
+            <PersistentString
+               value = "titleLabelConstraint.constant">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatService.recognize(text:):ChatService.swift">
+         contextName = "APIClient.process&lt;A&gt;(_:):APIClient.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "request.data">
+            </PersistentString>
+            <PersistentString
+               value = "request.parametersData">
+            </PersistentString>
+            <PersistentString
+               value = "r.httpBody">
+            </PersistentString>
+            <PersistentString
+               value = "String(data: request.data!, encoding: .utf8)">
+            </PersistentString>
+            <PersistentString
+               value = "r.allHTTPHeaderFields">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "getFileURL() ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.updateTime():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "timer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.processButtons(items:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "answerButtons">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ShareViewController.setup():ShareViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "shareText">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.createPulse():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "micButton.center">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ChatModel.toManagedObject(in:):ChatModel.swift">
@@ -293,10 +265,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ShareViewController.setup():ShareViewController.swift">
+         contextName = "closure #6 in IncomingBubbleTableViewCell.bind():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "shareText">
+               value = "recognizer.view as? UIButton">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "InputView.animateRecordingTime(state:):InputView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recordingView.isHidden">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -309,18 +289,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #11 in ChatViewController.bind():ChatViewController.swift">
+         contextName = "closure #2 in IncomingBubbleTableViewCell.setupCollectionView():IncomingBubbleTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "OutgoingBubbleTableViewCell.convertAndPlay(text:):OutgoingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "state.opposite">
+               value = "player">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "InputView.animateWaveColor(duration:):InputView.swift">
+         contextName = "ChatViewModel.searchSuggestions():ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.time \ 100">
+               value = "questionInput.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -336,15 +319,146 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
+         contextName = "closure #6 in ChatViewController.bind():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.inputStackViewConstraint.constant">
+               value = "self.viewModel.searchResult.value()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #2 in OutgoingBubbleTableViewCell.bind():OutgoingBubbleTableViewCell.swift">
+         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dataSource.sectionModels">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "items">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in ChatViewModel.question():ChatViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.addShadow():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIScreen.main.bounds.width">
+            </PersistentString>
+            <PersistentString
+               value = " UIScreen.main.bounds.width - 28">
+            </PersistentString>
+            <PersistentString
+               value = "bubbleView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "audioRecorder">
+            </PersistentString>
+            <PersistentString
+               value = "data.base64EncodedString()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CopyableLabel.showPopup():CopyableLabel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.buttonCell(indexPath:answer:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.numberOfSections">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel.message?.buttons">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel.input.value()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "getter of tailPath #1 in BubbleView.drawBubble(rect:):BubbleView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewFrame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewModel.recognize(text:):ChatViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "model.someString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatService.recognize(text:):ChatService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in AnswerCollectionViewManager.cellSize.getter:AnswerCollectionViewManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIScreen.main.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.message.didset:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "message">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewModel.answer(input:):ChatViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in IncomingBubbleTableViewCell.cellSize.getter:IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "availableWidth / count">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.bounds.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CustomInputTextView.setup():CustomInputTextView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "bounds.size.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.scrollToBottom(animated:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView.numberOfSections">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
@@ -364,73 +478,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in Observable&lt;A&gt;.expectingObject&lt;A&gt;(ofType:):APIClient.swift">
+         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
          <PersistentStrings>
             <PersistentString
-               value = "object.someString">
+               value = "audioPlayer">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.preparePlayer():VoiceManager.swift">
+         contextName = "closure #1 in ChatViewController.keyboard():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "getFileURL() ">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.addShadow():IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "bubbleView.frame">
-            </PersistentString>
-            <PersistentString
-               value = " UIScreen.main.bounds.width - 28">
-            </PersistentString>
-            <PersistentString
-               value = "UIScreen.main.bounds.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in IncomingBubbleTableViewCell.cellSize.getter:IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "collectionView.bounds.width">
-            </PersistentString>
-            <PersistentString
-               value = "availableWidth / count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.clear():IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "messageStackView.alignment">
-            </PersistentString>
-            <PersistentString
-               value = "collectionStackView.alignment">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ChatViewController.configureCell.getter:ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dataSource.sectionModels">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "VoiceManager.stopRecording():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "audioRecorder">
-            </PersistentString>
-            <PersistentString
-               value = "data.base64EncodedString()">
+               value = "self.inputStackViewConstraint.constant">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -439,22 +498,6 @@
          <PersistentStrings>
             <PersistentString
                value = "viewModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "items">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewController.createPulse():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "micButton.center">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

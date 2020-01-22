@@ -75,8 +75,6 @@
 		5AB7991A23AF65D000447A91 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7991923AF65D000447A91 /* InputView.swift */; };
 		5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */; };
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
-		5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */; };
-		5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */; };
 		5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */; };
 		5AF5BC8423ABD4F30006CD13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
@@ -183,8 +181,6 @@
 		5AB7991923AF65D000447A91 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
-		5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
-		5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCollectionViewCell.xib; sourceTree = "<group>"; };
 		5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6737637CAA1B58C94B9CD034 /* Pods_ChatBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,15 +217,6 @@
 				5AA879202398685D001564F6 /* ViewModel */,
 			);
 			path = Outgoing;
-			sourceTree = "<group>";
-		};
-		5A00896B238C8F1600F26C66 /* Answers */ = {
-			isa = PBXGroup;
-			children = (
-				5AC11AA2238990660082B34D /* AnswerCollectionViewCell.swift */,
-				5AC11AA3238990660082B34D /* AnswerCollectionViewCell.xib */,
-			);
-			path = Answers;
 			sourceTree = "<group>";
 		};
 		5A00896C238D490300F26C66 /* InputView */ = {
@@ -380,7 +367,6 @@
 			children = (
 				5A00896A238C8F0C00F26C66 /* Outgoing */,
 				5AA8791D23986836001564F6 /* Incoming */,
-				5A00896B238C8F1600F26C66 /* Answers */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -794,7 +780,6 @@
 				5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */,
 				5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */,
 				5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */,
-				5AC11AA5238990660082B34D /* AnswerCollectionViewCell.xib in Resources */,
 				5AB7991823AEE9EC00447A91 /* InputView.xib in Resources */,
 				5AB57EC9231C5E5100A22A8C /* LaunchScreen.storyboard in Resources */,
 				5AB57EC6231C5E5100A22A8C /* Assets.xcassets in Resources */,
@@ -938,7 +923,6 @@
 				5A3D0BEE238DB14100C60EB5 /* AnimatedButton.swift in Sources */,
 				5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */,
 				5A1C365923532C1300DE587A /* APIRequestErrorInformation.swift in Sources */,
-				5AC11AA4238990660082B34D /* AnswerCollectionViewCell.swift in Sources */,
 				5A8F4361234A4B0A007FB89F /* Settings.swift in Sources */,
 				5A1C365723532A7D00DE587A /* PagingRequest.swift in Sources */,
 				5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */,

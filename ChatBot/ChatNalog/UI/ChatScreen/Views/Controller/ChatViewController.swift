@@ -22,7 +22,6 @@ final class ChatViewController: UIViewController, BindableType {
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var titleViewOffsetConstraint: NSLayoutConstraint!
     @IBOutlet private weak var titleLabel: CopyableLabel!
-    @IBOutlet private weak var titleLabelConstraint: NSLayoutConstraint!
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchTableView: UITableView!
@@ -55,6 +54,8 @@ final class ChatViewController: UIViewController, BindableType {
             return self.configIncomingCell(for: message, atIndex: indexPath)
         }
     }
+    
+    private var didLayoutTitle: Bool = false
                     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,18 +68,6 @@ final class ChatViewController: UIViewController, BindableType {
         
         setupTitle(title: (main: "ПОМОЩНИК ПО САМОЗАНЯТЫМ",
         sub: "\nОнлайн"))
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if UIDevice.current.isXScreen {
-            titleLabelConstraint.constant = 24
-            titleViewOffsetConstraint.constant = -30
-        } else {
-            titleLabelConstraint.constant = 0
-            titleViewOffsetConstraint.constant = -44
-        }
     }
 }
 

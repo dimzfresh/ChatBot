@@ -31,7 +31,7 @@ extension AnimatedButton {
         
         layer.removeAllAnimations()
         
-        let transform: CGAffineTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        let transform: CGAffineTransform = .init(scaleX: 0.9, y: 0.9)
         
         UIView.animate(
             withDuration: 0.15,
