@@ -34,6 +34,8 @@ fileprivate let chatName = "Помощник по Самозанятым".upperc
 final class ChatViewModel: BaseViewModel {
     typealias Service = ChatService
     
+    private let eventLogger: FirebaseEventManager = .shared
+    
     private let service: Service?
     private let voiceManager = VoiceManager.shared
     private let storage: CoreDataManagerProtocol = CoreDataManager()
@@ -196,6 +198,8 @@ private extension ChatViewModel {
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
             self?.scrollPosition.onNext(.bottom)
+            
+            self?.eventLogger.logEvent(input: .init(.chat(.question)))
             }, onError: { error in
                 print(error)
         })

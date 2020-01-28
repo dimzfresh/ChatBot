@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 
 final class AppDelegateSettings: NSObject, UIApplicationDelegate {
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         setup()

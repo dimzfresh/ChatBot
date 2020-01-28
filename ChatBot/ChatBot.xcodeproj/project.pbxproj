@@ -75,6 +75,8 @@
 		5AB7991A23AF65D000447A91 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7991923AF65D000447A91 /* InputView.swift */; };
 		5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */; };
 		5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC11AA023896F350082B34D /* UITableViewCell.swift */; };
+		5ADD7C7323E0CA0B009468FC /* FirebaseEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD7C7223E0CA0B009468FC /* FirebaseEventManager.swift */; };
+		5ADD7C7523E0D5EF009468FC /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADD7C7423E0D5EF009468FC /* FirebaseEvent.swift */; };
 		5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */; };
 		5AF5BC8423ABD4F30006CD13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */; };
 		6B69CD85ECADD780578BBA3F /* Pods_ChatBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27B5CA8CC39DB16922947AE /* Pods_ChatBot.framework */; };
@@ -181,6 +183,8 @@
 		5AB7991923AF65D000447A91 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		5ADD7C7223E0CA0B009468FC /* FirebaseEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEventManager.swift; sourceTree = "<group>"; };
+		5ADD7C7423E0D5EF009468FC /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
 		5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AF5BC8323ABD4F30006CD13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6737637CAA1B58C94B9CD034 /* Pods_ChatBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -600,6 +604,7 @@
 		5AB705E4234A7AB800C23C3C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5ADD7C7123E0C9E7009468FC /* FirebaseEvents */,
 				5A249B4D2391D10F00044D94 /* Animations */,
 				5A1C36512353208900DE587A /* API */,
 				5A249B422391238C00044D94 /* Player */,
@@ -637,6 +642,15 @@
 				5AB7991923AF65D000447A91 /* InputView.swift */,
 			);
 			path = InputView;
+			sourceTree = "<group>";
+		};
+		5ADD7C7123E0C9E7009468FC /* FirebaseEvents */ = {
+			isa = PBXGroup;
+			children = (
+				5ADD7C7423E0D5EF009468FC /* FirebaseEvent.swift */,
+				5ADD7C7223E0CA0B009468FC /* FirebaseEventManager.swift */,
+			);
+			path = FirebaseEvents;
 			sourceTree = "<group>";
 		};
 		5AF5BC8523ABD6300006CD13 /* DataBase */ = {
@@ -928,6 +942,7 @@
 				5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */,
 				5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */,
 				5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */,
+				5ADD7C7523E0D5EF009468FC /* FirebaseEvent.swift in Sources */,
 				5A3D0BF1238E838900C60EB5 /* SearchModel.swift in Sources */,
 				5AB9FBA6238D53E300B4FE83 /* UICollectionViewCell.swift in Sources */,
 				5A55D86A238956CF00318A53 /* ChatModule.swift in Sources */,
@@ -938,6 +953,7 @@
 				5A00896E238D491200F26C66 /* CustomInputTextView.swift in Sources */,
 				5A8F4351234A24A9007FB89F /* UIImageView+Cashe.swift in Sources */,
 				5AB705E3234A780500C23C3C /* UIView+LayoutAnchor.swift in Sources */,
+				5ADD7C7323E0CA0B009468FC /* FirebaseEventManager.swift in Sources */,
 				5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */,
 				5A1C3655235320B600DE587A /* ChatService.swift in Sources */,
 				5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */,
