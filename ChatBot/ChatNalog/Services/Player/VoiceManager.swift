@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 
 final class VoiceManager: NSObject {
+    private let eventLogger: FirebaseEventManager = .shared
     
     private let recordingSession: AVAudioSession! = .sharedInstance()
     private var audioRecorder: AVAudioRecorder?
@@ -108,6 +109,8 @@ final class VoiceManager: NSObject {
     func startPlaying() {
         preparePlayer()
         audioPlayer?.play()
+        
+        eventLogger.logEvent(input: .init(.voice(.playQuestion)))
     }
     
     func stopPlaying() {
@@ -177,6 +180,9 @@ private extension VoiceManager {
 extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        
+        eventLogger.logEvent(input: .init(.voice(.record)))
+
         if !flag {
             finishRecording(success: false)
         } else {

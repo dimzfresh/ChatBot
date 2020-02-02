@@ -60,14 +60,25 @@ final class ChatViewModel: BaseViewModel {
 
     init(service: Service?) {
         self.service = service
-        bind()
         
+        bind()
         fetchAll()
     }
     
     func sendQuestion() {
         guard !questionInput.value.isEmpty else { return }
 
+        eventLogger.logEvent(input: .init(.chat(.question)))
+
+        addMessage()
+        question()
+    }
+    
+    func sendHintQuestion() {
+        guard !questionInput.value.isEmpty else { return }
+
+        eventLogger.logEvent(input: .init(.chat(.hint)))
+        
         addMessage()
         question()
     }
@@ -88,6 +99,8 @@ final class ChatViewModel: BaseViewModel {
     }
     
     func recognizeVoice() {
+        eventLogger.logEvent(input: .init(.voice(.question)))
+
         recognize()
     }
     
@@ -123,16 +136,10 @@ private extension ChatViewModel {
         })
             .disposed(by: disposeBag)
         
-//        voice.subscribe(onNext: { [weak self] text in
-//            guard let text = text else { return }
-//            self?.recognize(text: text)
-//        })
-//            .disposed(by: disposeBag)
-        
         messages.subscribe(onNext: { [weak self] new in
             guard self?.firstOpen == false else { return }
             self?.save(new: new)
-        })
+            })
         .disposed(by: disposeBag)
     }
     
@@ -197,9 +204,7 @@ private extension ChatViewModel {
             self?.processItems(for: m)
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
-            self?.scrollPosition.onNext(.bottom)
-            
-            self?.eventLogger.logEvent(input: .init(.chat(.question)))
+            self?.moveScroll()
             }, onError: { error in
                 print(error)
         })
@@ -214,7 +219,7 @@ private extension ChatViewModel {
             self?.processItems(for: m)
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
-            self?.scrollPosition.onNext(.bottom)
+            self?.moveScroll()
             }, onError: { error in
                 print(error)
         })
@@ -230,7 +235,7 @@ private extension ChatViewModel {
             let str = text.replacingOccurrences(of: "\"", with: "")
             self?.questionInput.accept(str)
             self?.sendQuestion()
-            self?.scrollPosition.onNext(.bottom)
+            self?.moveScroll()
             }, onError: { error in
                 print(error)
         })
@@ -284,7 +289,6 @@ private extension ChatViewModel {
                     self?.addFirstMessage()
                 } else {
                     self?.messages.accept(messages)
-                    self?.moveScroll()
                 }
                 self?.firstOpen = false
             case .failure(let error):

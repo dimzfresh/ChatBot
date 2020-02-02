@@ -72,16 +72,16 @@ private extension CopyableLabel {
         
     }
     
-    func prepareText() -> String {
-        let formatter = DateFormatter()
-        //formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
-        let date = formatter.string(from: Date())
-        let message = text ?? ""
-        let name = isUser ? "Пользователь" : "Бот"
-        let text = "[\(date)] \(name): \(message)"
-        return text
-    }
+//    func prepareText() -> String {
+//        let formatter = DateFormatter()
+//        //formatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
+//        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
+//        let date = formatter.string(from: Date())
+//        let message = text ?? ""
+//        let name = isUser ? "Пользователь" : "Бот"
+//        let text = "[\(date)] \(name): \(message)"
+//        return text
+//    }
     
     @objc
     func showPopup() {

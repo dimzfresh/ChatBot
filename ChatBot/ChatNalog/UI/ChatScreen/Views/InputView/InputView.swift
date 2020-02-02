@@ -119,18 +119,12 @@ private extension InputView {
     func bind() {
         inputTextView.rx.text
             .orEmpty
-            .debounce(.milliseconds(100), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(150), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] text in
                 self?.updateControls(empty: text.isEmpty)
                 self?.onChangeText?(text)
             })
-//            .do(onNext: { [weak self] text in
-//                //self?.viewModel.questionInput.accept(text)
-//                //self?.viewModel.searchSuggestions()
-//                self?.updateControls(empty: text.isEmpty)
-//            })
-            //.bind(to: viewModel.questionInput)
             .disposed(by: disposeBag)
         
         sendButton.rx.tap

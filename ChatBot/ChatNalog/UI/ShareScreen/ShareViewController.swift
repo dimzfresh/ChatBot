@@ -23,6 +23,8 @@ final class ShareViewController: UIViewController, ShareViewProtocol {
         return blurEffectView
     }()
     
+    private let eventLogger: FirebaseEventManager = .shared
+    
     var shareText: String?
     
     override func viewDidLoad() {
@@ -41,11 +43,17 @@ final class ShareViewController: UIViewController, ShareViewProtocol {
     }
     
     @IBAction private func copyButtonTapped(_ sender: Any) {
-        UIPasteboard.general.string = shareText ?? " "
+        eventLogger.logEvent(input: .init(.share(.copy)))
+
+        UIPasteboard.general.string = prepareText()
         moveOut()
+        
+        showAlert(title: nil, message: "Сообщение скопировано")
     }
     
     @IBAction private func shareButtonTapped(_ sender: Any) {
+        eventLogger.logEvent(input: .init(.share(.share)))
+
         share()
         moveOut()
     }
@@ -55,6 +63,8 @@ private extension ShareViewController {
     func setup() {
         view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.08)
         setupBlurEffectView()
+        
+        eventLogger.logEvent(input: .init(.share(.open)))
     }
     
     func setupBlurEffectView() {
@@ -67,9 +77,21 @@ private extension ShareViewController {
         view.sendSubviewToBack(blurEffectView)
     }
     
+    func prepareText() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
+        let date = formatter.string(from: Date())
+        let message = shareText ?? ""
+        
+        if message.isEmpty {
+            return ""
+        } else {
+            return "[\(date)]: \(message)"
+        }
+    }
+    
     // MARK: - Actions
-    @objc
-    func blurTapped() {
+    @objc func blurTapped() {
         moveOut()
     }
     

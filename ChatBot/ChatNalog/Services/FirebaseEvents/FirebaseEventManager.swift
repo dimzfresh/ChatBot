@@ -16,7 +16,6 @@ final class FirebaseEventManager {
 
 extension FirebaseEventManager {
     func logEvent(input: EventInput) {
-        
         switch input.event {
         case .chat(let event):
             log(name: event.identifier,

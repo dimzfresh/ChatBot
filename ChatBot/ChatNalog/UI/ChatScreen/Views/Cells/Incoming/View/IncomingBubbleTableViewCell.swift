@@ -36,6 +36,8 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private var answerButtons: [AnimatedButton]!
     
     @IBOutlet private weak var shareButton: UIButton!
+    
+    private let eventLogger: FirebaseEventManager = .shared
         
     typealias ViewModelType = IncomingViewModel
     var viewModel: ViewModelType! {
@@ -171,25 +173,28 @@ private extension IncomingBubbleTableViewCell {
         tapGesture.rx.event
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] recognizer in
-            guard recognizer.state == .ended else { return }
-            
-            let tapLocation = recognizer.location(in: recognizer.view)
-            let filteredSubviews = self?.answerButtonsStackView.subviews.filter {
-                $0.frame.contains(tapLocation)
-            }
+                guard recognizer.state == .ended else { return }
+                
+                let tapLocation = recognizer.location(in: recognizer.view)
+                let filteredSubviews = self?.answerButtonsStackView.subviews.filter {
+                    $0.frame.contains(tapLocation)
+                }
+                
+                //let button = self?.answerButtonsStackView.hitTest(tapLocation, with: nil)
+                guard let button = filteredSubviews?.first as? AnimatedButton,
+                    let index = self?.answerButtons.firstIndex(of: button) else { return }
+                
+                self?.eventLogger.logEvent(input: .init(.chat(.answerButton)))
+                //self?.eventLogger.logEvent(input: .init(.chat(.answerButton)))
 
-            //let button = self?.answerButtonsStackView.hitTest(tapLocation, with: nil)
-            guard let button = filteredSubviews?.first as? AnimatedButton,
-                let index = self?.answerButtons.firstIndex(of: button) else { return }
-            
-            button.animate { [weak self] in
-                guard let self = self else { return }
-                guard let item = self.items[index].items.first,
-                    case let AnswerItem.button(answer) = item else { return }
-
-                self.selectedAnswerSubject.on(.next(answer))
-                self.selectedAnswerSubject.onCompleted()
-            }
+                button.animate { [weak self] in
+                    guard let self = self else { return }
+                    guard let item = self.items[index].items.first,
+                        case let AnswerItem.button(answer) = item else { return }
+                    
+                    self.selectedAnswerSubject.on(.next(answer))
+                    self.selectedAnswerSubject.onCompleted()
+                }
         }).disposed(by: disposeBag)
         
         shareButton.rx.tap.subscribe(onNext: { [weak self] in
@@ -198,6 +203,8 @@ private extension IncomingBubbleTableViewCell {
     }
     
     func share() {
+        FirebaseEventManager.shared.logEvent(input: .init(.share(.share)))
+
         let root = UIApplication.shared.windows.first?.rootViewController
         let activityVC = UIActivityViewController(activityItems: [messageLabel.text ?? ""] as [Any], applicationActivities: nil)
         

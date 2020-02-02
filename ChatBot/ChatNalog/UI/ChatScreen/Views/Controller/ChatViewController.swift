@@ -69,6 +69,14 @@ final class ChatViewController: UIViewController, BindableType {
         setupTitle(title: (main: "ПОМОЩНИК ПО САМОЗАНЯТЫМ",
         sub: "\nОнлайн"))
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.scrollToBottom(animated: true)
+        }
+    }
 }
 
 extension ChatViewController: UITableViewDelegate {
@@ -295,7 +303,7 @@ extension ChatViewController {
             }
         .subscribe(onNext: { [weak self] text in
             self?.viewModel.questionInput.accept(text)
-            self?.viewModel.sendQuestion()
+            self?.viewModel.sendHintQuestion()
             self?.view.endEditing(true)
         })
         .disposed(by: disposeBag)
@@ -349,14 +357,6 @@ extension ChatViewController {
         }
     }
     
-    private func removeCellAnimations(without indexPath: IndexPath) {
-        let indexPaths = tableView.indexPathsForVisibleRows?.filter { indexPath != $0 }
-        indexPaths?.forEach {
-            (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()
-            (tableView.cellForRow(at: $0) as? OutgoingBubbleTableViewCell)?.clear()
-        }
-    }
-    
     private func scrollToBottom(animated: Bool) {
         let section = tableView.numberOfSections - 1
         let row = tableView.numberOfRows(inSection: section) - 1
@@ -368,5 +368,12 @@ extension ChatViewController {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
         }
     }
-
+    
+    private func removeCellAnimations(without indexPath: IndexPath) {
+        let indexPaths = tableView.indexPathsForVisibleRows?.filter { indexPath != $0 }
+        indexPaths?.forEach {
+            (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()
+            (tableView.cellForRow(at: $0) as? OutgoingBubbleTableViewCell)?.clear()
+        }
+    }
 }

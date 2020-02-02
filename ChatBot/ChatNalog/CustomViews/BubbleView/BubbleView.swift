@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class BubbleView: UIView {
+final class BubbleView: UIView {
     
     @IBInspectable
     var isOutgoing: Bool = true

@@ -25,8 +25,21 @@ enum ChatEvent: String, EventDescribingProtocol {
     case hint = "Просмотр или выбор подсказок при вводе"
     case answerButton = "Выбран ответ для просмотра (нажали 1,2,3,4,5)"
     case answerNumber = "Номер выбранного ответа"
+    
     var name: String { "chat_event" }
-    var identifier: String { "" }
+    
+    var identifier: String {
+        switch self {
+        case .question:
+            return "text_question"
+        case .hint:
+            return "view_suggestion"
+        case .answerButton:
+            return "button_answer_selected"
+        case .answerNumber:
+            return "selected_answer_number"
+        }
+    }
 }
 
 enum ShareEvent: String, EventDescribingProtocol {
@@ -34,7 +47,17 @@ enum ShareEvent: String, EventDescribingProtocol {
     case share = "Поделиться ответом"
     case copy = "Скопировать ответ"
     var name: String { "share_event" }
-    var identifier: String { "" }
+    
+    var identifier: String {
+        switch self {
+        case .open:
+            return "context_menu_opened"
+        case .share:
+            return "answer_share"
+        case .copy:
+            return "answer_copy"
+        }
+    }
 }
 
 enum VoiceEvent: String, EventDescribingProtocol {
@@ -44,7 +67,21 @@ enum VoiceEvent: String, EventDescribingProtocol {
     case question = "Вопрос задан голосом"
     case playAnswer = "Ответ прослушан голосом"
     var name: String { "voice_event" }
-    var identifier: String { "" }
+    
+    var identifier: String {
+        switch self {
+        case .record:
+            return "voice_question_recorded"
+        case .delete:
+            return "voice_question_deleted"
+        case .playQuestion:
+            return "voice_question_played"
+        case .question:
+            return "voice_question_sended"
+        case .playAnswer:
+            return "voice_answer_played"
+        }
+    }
 }
 
 protocol EventInputProtocol {

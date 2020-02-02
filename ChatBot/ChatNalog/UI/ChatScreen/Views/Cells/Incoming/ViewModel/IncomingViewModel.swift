@@ -45,6 +45,8 @@ extension IncomingViewModel {
             .observeOn(MainScheduler.asyncInstance)
             .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
+                FirebaseEventManager.shared.logEvent(input: .init(.voice(.playAnswer)))
+
                 guard let flag = flag else { return }
                 if !flag {
                     self?.stop()
@@ -57,7 +59,6 @@ extension IncomingViewModel {
 }
 
 private extension IncomingViewModel {
-    
     func process() {
         var inputAnswer = InputAnswer(text: message?.text ?? "", items: [])
         
