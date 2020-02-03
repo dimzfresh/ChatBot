@@ -8,7 +8,6 @@
 
 import Alamofire
 import RxSwift
-import Foundation
 
 public final class RequestsFactory {
     enum Chat {

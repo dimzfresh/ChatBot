@@ -7,15 +7,12 @@
 //
 
 import RxSwift
-import Foundation
 
 public typealias OservableResult = Observable<ApiResult<ApiErrorMessage, ChatModel>>
 public typealias OservableSearchResult = Observable<ApiResult<ApiErrorMessage, SearchModel>>
 public typealias OservableVoiceResult = Observable<ApiResult<ApiErrorMessage, VoiceModel>>
 
-
 public final class ChatService {
-    
     private let networkClient: APIClient = APIClient()
 
     public func sendQuestion(text: String, id: String) -> Observable<ChatModel> {

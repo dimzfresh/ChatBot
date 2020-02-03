@@ -99,6 +99,9 @@
             <PersistentString
                value = "self.viewModel.isLoading">
             </PersistentString>
+            <PersistentString
+               value = "self">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -191,7 +194,7 @@
                value = "request.data">
             </PersistentString>
             <PersistentString
-               value = "request.parametersData">
+               value = "r.allHTTPHeaderFields">
             </PersistentString>
             <PersistentString
                value = "r.httpBody">
@@ -200,7 +203,7 @@
                value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
             <PersistentString
-               value = "r.allHTTPHeaderFields">
+               value = "request.parametersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -213,14 +216,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewController.updateTime():ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "timer">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "IncomingBubbleTableViewCell.processButtons(items:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -229,18 +224,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ShareViewController.setup():ShareViewController.swift">
+         contextName = "ChatViewController.updateTime():ChatViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "shareText">
+               value = "timer">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatViewController.createPulse():ChatViewController.swift">
+         contextName = "ShareViewController.setup():ShareViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "micButton.center">
+               value = "shareText">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -269,6 +264,14 @@
          <PersistentStrings>
             <PersistentString
                value = "recognizer.view as? UIButton">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.createPulse():ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "micButton.center">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -335,6 +338,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "IncomingBubbleTableViewCell.animate():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel.isPlaying.value ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "IncomingBubbleTableViewCell.collectionView(_:cellForItemAt:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -349,13 +360,16 @@
          contextName = "IncomingBubbleTableViewCell.addShadow():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
+               value = "bubbleView.frame">
+            </PersistentString>
+            <PersistentString
                value = "UIScreen.main.bounds.width">
             </PersistentString>
             <PersistentString
                value = " UIScreen.main.bounds.width - 28">
             </PersistentString>
             <PersistentString
-               value = "bubbleView.frame">
+               value = "bubbleView.layer.shadowColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -385,10 +399,10 @@
                value = "collectionView.numberOfSections">
             </PersistentString>
             <PersistentString
-               value = "viewModel.message?.buttons">
+               value = "indexPath.section">
             </PersistentString>
             <PersistentString
-               value = "indexPath.section">
+               value = "viewModel.message?.buttons">
             </PersistentString>
             <PersistentString
                value = "viewModel.input.value()">
@@ -437,10 +451,10 @@
          contextName = "closure #1 in IncomingBubbleTableViewCell.cellSize.getter:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "availableWidth / count">
+               value = "collectionView.bounds.width">
             </PersistentString>
             <PersistentString
-               value = "collectionView.bounds.width">
+               value = "availableWidth / count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -17,7 +17,7 @@ enum ScrollPosition {
     case bottom
 }
 
-final class ChatViewController: UIViewController, BindableType {
+final class ChatViewController: UIViewController {
     
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var titleViewOffsetConstraint: NSLayoutConstraint!
@@ -71,10 +71,10 @@ final class ChatViewController: UIViewController, BindableType {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.scrollToBottom(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            self?.scrollToBottom(animated: true)
         }
     }
 }
@@ -87,13 +87,13 @@ extension ChatViewController: UITableViewDelegate {
         let vm = OutgoingViewModel()
         vm.message = message
         cell.bind(to: vm)
-        cell.selectedMic
-            .subscribe(onNext: { [weak self, atIndex] _ in
-                self?.removeCellAnimations(without: atIndex)
-             }, onDisposed: {
-                print("Outgoing Mic disposed!")
-             }).disposed(by: disposeBag)
-    
+        cell.onSelectMic = { [weak self, atIndex] in
+            self?.removeCellAnimations(without: atIndex)
+        }
+//        cell.selectedMic
+//            .subscribe(onNext: { [weak self, atIndex] _ in
+//                self?.removeCellAnimations(without: atIndex)
+//             }).disposed(by: disposeBag)
         return cell
     }
     
@@ -116,15 +116,16 @@ extension ChatViewController: UITableViewDelegate {
                 input.type = "\(answer.type ?? 0)"
 
                 self.viewModel.answerOutput.onNext(input)
-            }, onDisposed: {
-                    print("Selection disposed!")
             }).disposed(by: disposeBag)
-        cell.selectedMic
-            .subscribe(onNext: { [weak self, atIndex] _ in
-                self?.removeCellAnimations(without: atIndex)
-                }, onDisposed: {
-                    print("Incoming Mic disposed!")
-            }).disposed(by: disposeBag)
+        cell.onSelectMic = { [weak self, atIndex] in
+            self?.removeCellAnimations(without: atIndex)
+        }
+//        cell.selectedMic
+//            .subscribe(onNext: { [weak self, atIndex] _ in
+//                self?.removeCellAnimations(without: atIndex)
+//                }, onDisposed: {
+//                    print("Incoming Mic disposed!")
+//            }).disposed(by: disposeBag)
         return cell
     }
     
@@ -139,14 +140,22 @@ extension ChatViewController: UITableViewDelegate {
 //    }
 }
 
-extension ChatViewController {
-    private func setup() {
+// MARK: -BindableType
+extension ChatViewController: BindableType {
+    func bindViewModel() {
+        setupTableView()
+        bind()
+    }
+}
+
+private extension ChatViewController {
+    func setup() {
         setupViews()
         bindTitle()
         keyboard()
     }
     
-    private func setupViews() {
+    func setupViews() {
         //inputTextView.addDoneButtonOnKeyboard()
         navigationController?.navigationBar.shadowImage = nil
         tableView.roundCorners([.topLeft, .topRight], radius: 32)
@@ -156,7 +165,7 @@ extension ChatViewController {
         setupInputView()
     }
     
-    private func setupInputView() {
+    func setupInputView() {
         let input = InputView.loadNib()
         inputCustomView.addSubview(input)
         inputViewProvider = input
@@ -195,7 +204,7 @@ extension ChatViewController {
             .heightAnchor(constant: 72)
     }
     
-    private func bindTitle() {
+    func bindTitle() {
         viewModel.title
             .subscribe(onNext: { [weak self] title in
                 guard let self = self else { return }
@@ -204,7 +213,7 @@ extension ChatViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setupTitle(title: ChatTitle) {
+    func setupTitle(title: ChatTitle) {
         let partOne = NSAttributedString(string: title.main,
                                          attributes: [NSAttributedString.Key.font : UIFont.fontTo(.brandFontRegular, size: 19, weight: .bold)])
         let partTwo = NSAttributedString(string: title.sub,
@@ -222,7 +231,7 @@ extension ChatViewController {
         titleLabel.sizeToFit()
     }
         
-    private func setupTableView() {
+    func setupTableView() {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
@@ -233,16 +242,9 @@ extension ChatViewController {
         tableView.register(IncomingBubbleTableViewCell.nib, forCellReuseIdentifier: IncomingBubbleTableViewCell.identifier)
     }
     
-    // MARK: BindableType
-    
-    func bindViewModel() {
-        setupTableView()
-        bind()
-    }
-    
-    private func bind() {
+    func bind() {
         guard let viewModel = viewModel else { return }
-                        
+        
         viewModel.messages
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -250,8 +252,8 @@ extension ChatViewController {
         viewModel.scrollPosition
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] position in
-                    self?.scrollToPosition(position: position)
-               }).disposed(by: disposeBag)
+                self?.scrollToPosition(position: position)
+            }).disposed(by: disposeBag)
         
         viewModel.questionInput
             .map { $0 }
@@ -280,19 +282,19 @@ extension ChatViewController {
                 cell.textLabel?.textColor = #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1)
                 cell.textLabel?.text = text
                 return cell
-            }
+        }
         .disposed(by: disposeBag)
         
         let tapGesture = UITapGestureRecognizer()
         tapGesture.cancelsTouchesInView = true
         tapGesture.delaysTouchesBegan = true
-
+        
         tableView.addGestureRecognizer(tapGesture)
         tapGesture.rx.event.bind(onNext: { [weak self] recognizer in
             guard recognizer.state == .ended else { return }
             self?.view.endEditing(true)
         }).disposed(by: disposeBag)
-                
+        
         searchTableView.rx.itemSelected
             .map { index -> String in
                 do {
@@ -300,20 +302,20 @@ extension ChatViewController {
                 } catch {
                     return ""
                 }
-            }
+        }
         .subscribe(onNext: { [weak self] text in
             self?.viewModel.questionInput.accept(text)
             self?.viewModel.sendHintQuestion()
             self?.view.endEditing(true)
         })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
-//        viewModel.microphoneState.subscribe(onNext: { [weak self] state in
-//            guard state != .none else { return }
-//            //self?.animateMicrophone(state: state)
-//            //self?.animateRecordingTime(state: state)
-//            self?.viewModel.record(for: state)
-//        }).disposed(by: disposeBag)
+        //        viewModel.microphoneState.subscribe(onNext: { [weak self] state in
+        //            guard state != .none else { return }
+        //            //self?.animateMicrophone(state: state)
+        //            //self?.animateRecordingTime(state: state)
+        //            self?.viewModel.record(for: state)
+        //        }).disposed(by: disposeBag)
         
         voiceManager.audioRecordingDidFinished = { [weak self] text in
             guard let text = text else { return }
@@ -322,7 +324,7 @@ extension ChatViewController {
     }
     
     // MARK: - Keyboard
-    private func keyboard() {
+    func keyboard() {
         keyboardHeight
             .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { keyboardHeight in
@@ -341,7 +343,7 @@ extension ChatViewController {
     }
     
     // MARK: - Scroll
-    private func scrollToPosition(position: ScrollPosition) {
+    func scrollToPosition(position: ScrollPosition) {
         switch position {
         case .top:
             let indexPath = IndexPath.init(row: 0, section: 0)
@@ -357,7 +359,7 @@ extension ChatViewController {
         }
     }
     
-    private func scrollToBottom(animated: Bool) {
+    func scrollToBottom(animated: Bool) {
         let section = tableView.numberOfSections - 1
         let row = tableView.numberOfRows(inSection: section) - 1
         let indexPath = IndexPath(row: row, section: section)
@@ -369,7 +371,8 @@ extension ChatViewController {
         }
     }
     
-    private func removeCellAnimations(without indexPath: IndexPath) {
+    // MARK: - TableView cells
+    func removeCellAnimations(without indexPath: IndexPath) {
         let indexPaths = tableView.indexPathsForVisibleRows?.filter { indexPath != $0 }
         indexPaths?.forEach {
             (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()
@@ -377,3 +380,4 @@ extension ChatViewController {
         }
     }
 }
+

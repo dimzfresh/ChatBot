@@ -6,16 +6,18 @@
 //  Copyright © 2019 kvantsoft All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 final class VoiceManager: NSObject {
+    // MARK: - Logger
     private let eventLogger: FirebaseEventManager = .shared
     
+    // MARK: - Audio
     private let recordingSession: AVAudioSession! = .sharedInstance()
     private var audioRecorder: AVAudioRecorder?
     private var audioPlayer: AVAudioPlayer?
-    
+        
+    // MARK: - Completions
     var audioPlayerDidFinished: (() -> Void)?
     var audioRecordingDidFinished: ((String?) -> Void)?
 
@@ -67,14 +69,6 @@ final class VoiceManager: NSObject {
         audioRecorder = nil
         
         let input = getFileURL(name: "input.wav") as URL
-//        let output = getFileURL(name: "ouput.wav") as URL
-//
-//        var options = AKConverter.Options()
-//        options.format = "wav"
-//        let converter = AKConverter(inputURL: input, outputURL: output, options: options)
-//
-//        converter.start { error in
-//            guard error == nil else { return }
 
         guard FileManager.default.fileExists(atPath: input.path) else {
             self.audioRecordingDidFinished?(nil)
@@ -97,20 +91,18 @@ final class VoiceManager: NSObject {
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
         audioRecorder = nil
-        
-        if success {
-            //recordButton.setTitle("Tap to Re-record", for: .normal)
-        } else {
-            //recordButton.setTitle("Tap to Record", for: .normal)
-            // recording failed :(
-        }
     }
     
     func startPlaying() {
+        stopPlaying()
         preparePlayer()
         audioPlayer?.play()
         
         eventLogger.logEvent(input: .init(.voice(.playQuestion)))
+    }
+    
+    func pausePlaying() {
+        audioPlayer?.pause()
     }
     
     func stopPlaying() {
@@ -193,7 +185,7 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("Error while recording audio \(error?.localizedDescription ?? "")")
     }
-    
+        
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         audioPlayerDidFinished?()
     }

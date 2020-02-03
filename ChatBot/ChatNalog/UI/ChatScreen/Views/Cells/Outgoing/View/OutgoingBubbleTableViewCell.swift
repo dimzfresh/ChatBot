@@ -22,7 +22,10 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
     var viewModel: ViewModelType!
     
     private var selectedMicSubject = BehaviorSubject<Bool>(value: false)
-    var selectedMic: Observable<Bool> { selectedMicSubject.asObservable() }
+//    var selectedMic: Observable<Bool> {
+//        return selectedMicSubject.asObservable()
+//    }
+    var onSelectMic: (() -> Void)?
     
     private var disposeBag = DisposeBag()
         
@@ -44,6 +47,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
         speakerButton.isHidden = false
         speakerButton.layer.removeAllAnimations()
         speakerButton.setImage(#imageLiteral(resourceName: "chat_mic_off"), for: .normal)
+        viewModel.isPlaying.accept(false)
     }
 }
 
@@ -73,6 +77,7 @@ private extension OutgoingBubbleTableViewCell {
             }
             self.selectedMicSubject.onNext(selected)
             self.selectedMicSubject.onCompleted()
+            self.onSelectMic?()
             
             let flag = vm.isPlaying.value ?? false
             vm.isPlaying.accept(!flag)
@@ -104,23 +109,18 @@ private extension OutgoingBubbleTableViewCell {
     }
     
     func animate() {
-        // Image
         let image: UIImage = (viewModel.isPlaying.value ?? false) ? #imageLiteral(resourceName: "chat_mic_on") : #imageLiteral(resourceName: "chat_mic_off")
-
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
             self.speakerButton.setImage(image, for: .normal)
         })
         
-        speakerButton.transform = .init(scaleX: 0.9, y: 0.9)
-        
         guard let flag = viewModel.isPlaying.value, flag else {
-            speakerButton.transform = .identity
             speakerButton.alpha = 1
             speakerButton.layer.removeAllAnimations()
             return
         }
         
-        // Scale
+        speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         UIView.animate(withDuration: 0.9,
                        delay: 0,
                        usingSpringWithDamping: 0.2,
