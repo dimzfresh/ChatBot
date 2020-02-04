@@ -152,6 +152,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "atIndex.section">
+            </PersistentString>
+            <PersistentString
+               value = "atIndex.section == lastSelectedSection">
+            </PersistentString>
+            <PersistentString
+               value = "lastSelectedSection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChatViewModel.addMessage():ChatViewModel.swift">
          <PersistentStrings>
             <PersistentString
@@ -161,6 +175,14 @@
       </ContextState>
       <ContextState
          contextName = "QuestionRequest.headers.getter:RequestsFactory.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in ChatViewController.configIncomingCell(for:atIndex:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "atIndex.section">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "Messages.toEntity():CoreData+Messages.swift">
@@ -194,7 +216,7 @@
                value = "request.data">
             </PersistentString>
             <PersistentString
-               value = "r.allHTTPHeaderFields">
+               value = "request.parametersData">
             </PersistentString>
             <PersistentString
                value = "r.httpBody">
@@ -203,7 +225,7 @@
                value = "String(data: request.data!, encoding: .utf8)">
             </PersistentString>
             <PersistentString
-               value = "request.parametersData">
+               value = "r.allHTTPHeaderFields">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -228,6 +250,14 @@
          <PersistentStrings>
             <PersistentString
                value = "timer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.cofigure(onPause:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "VoiceManager.shared.isPlaying">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -354,6 +384,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in IncomingViewModel.bind():IncomingViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " !onPause">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in ChatViewModel.question():ChatViewModel.swift">
       </ContextState>
       <ContextState
@@ -399,10 +437,10 @@
                value = "collectionView.numberOfSections">
             </PersistentString>
             <PersistentString
-               value = "indexPath.section">
+               value = "viewModel.message?.buttons">
             </PersistentString>
             <PersistentString
-               value = "viewModel.message?.buttons">
+               value = "indexPath.section">
             </PersistentString>
             <PersistentString
                value = "viewModel.input.value()">
@@ -451,10 +489,10 @@
          contextName = "closure #1 in IncomingBubbleTableViewCell.cellSize.getter:IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.bounds.width">
+               value = "availableWidth / count">
             </PersistentString>
             <PersistentString
-               value = "availableWidth / count">
+               value = "collectionView.bounds.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

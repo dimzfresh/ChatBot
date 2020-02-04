@@ -25,7 +25,8 @@ final class IncomingViewModel: BaseViewModel {
     
     // MARK: - Audio
     var isPlaying = BehaviorRelay<Bool?>(value: nil)
-    var isLoading = BehaviorRelay<Bool>(value: false)
+    var onPause = BehaviorRelay<Bool?>(value: nil)
+    var isLoading = BehaviorRelay<Bool?>(value: nil)
     
     var input = BehaviorRelay<InputAnswer?>(value: nil)
 
@@ -45,13 +46,32 @@ extension IncomingViewModel {
             .observeOn(MainScheduler.asyncInstance)
             .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
+                guard let flag = flag
+                else { return }
+                
                 FirebaseEventManager.shared.logEvent(input: .init(.voice(.playAnswer)))
-
-                guard let flag = flag else { return }
+                
                 if !flag {
                     self?.stop()
                 } else {
                     self?.load()
+                }
+        })
+        .disposed(by: disposeBag)
+        
+        onPause
+            .observeOn(MainScheduler.asyncInstance)
+            .share(replay: 1)
+            .subscribe(onNext: { [weak self] flag in
+                guard let flag = flag,
+                    let isPlaying = self?.isPlaying.value,
+                    VoiceManager.shared.onPause ||
+                    isPlaying else { return }
+                
+                if flag {
+                    self?.pause()
+                } else {
+                    self?.continuePlaying()
                 }
         })
         .disposed(by: disposeBag)
@@ -125,6 +145,19 @@ private extension IncomingViewModel {
         }
         VoiceManager.shared.startPlaying()
         VoiceManager.shared.audioPlayerDidFinished = { [weak self] in
+            self?.onPause.accept(false)
+            self?.isPlaying.accept(false)
+        }
+    }
+    
+    func pause() {
+        VoiceManager.shared.pausePlaying()
+    }
+    
+    func continuePlaying() {
+        VoiceManager.shared.continuePlaying()
+        VoiceManager.shared.audioPlayerDidFinished = { [weak self] in
+            self?.onPause.accept(false)
             self?.isPlaying.accept(false)
         }
     }

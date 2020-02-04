@@ -30,7 +30,12 @@ final class ChatViewController: UIViewController {
     @IBOutlet private weak var inputViewConstraint: NSLayoutConstraint!
 
     private let voiceManager = VoiceManager.shared
-    
+    private var lastSelectedSection: Int? {
+        didSet(section) {
+            removeCellAnimations()
+        }
+    }
+
     private var isShownSearchResult = BehaviorRelay<Bool>(value: false)
     var inputViewProvider: InputViewProtocol!
     
@@ -88,7 +93,7 @@ extension ChatViewController: UITableViewDelegate {
         vm.message = message
         cell.bind(to: vm)
         cell.onSelectMic = { [weak self, atIndex] in
-            self?.removeCellAnimations(without: atIndex)
+            self?.lastSelectedSection = atIndex.section
         }
 //        cell.selectedMic
 //            .subscribe(onNext: { [weak self, atIndex] _ in
@@ -104,6 +109,7 @@ extension ChatViewController: UITableViewDelegate {
         let vm = IncomingViewModel()
         vm.message = message
         cell.bind(to: vm)
+        cell.cofigure(onPause: atIndex.section == lastSelectedSection)
         cell.selectedItem
             .subscribe(onNext: { [weak self, atIndex] answer in
                 guard let self = self, let answer = answer else { return }
@@ -118,7 +124,7 @@ extension ChatViewController: UITableViewDelegate {
                 self.viewModel.answerOutput.onNext(input)
             }).disposed(by: disposeBag)
         cell.onSelectMic = { [weak self, atIndex] in
-            self?.removeCellAnimations(without: atIndex)
+            self?.lastSelectedSection = atIndex.section
         }
 //        cell.selectedMic
 //            .subscribe(onNext: { [weak self, atIndex] _ in
@@ -372,8 +378,9 @@ private extension ChatViewController {
     }
     
     // MARK: - TableView cells
-    func removeCellAnimations(without indexPath: IndexPath) {
-        let indexPaths = tableView.indexPathsForVisibleRows?.filter { indexPath != $0 }
+    func removeCellAnimations() {
+        guard let section = lastSelectedSection else { return }
+        let indexPaths = tableView.indexPathsForVisibleRows?.filter { section != $0.section }
         indexPaths?.forEach {
             (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()
             (tableView.cellForRow(at: $0) as? OutgoingBubbleTableViewCell)?.clear()

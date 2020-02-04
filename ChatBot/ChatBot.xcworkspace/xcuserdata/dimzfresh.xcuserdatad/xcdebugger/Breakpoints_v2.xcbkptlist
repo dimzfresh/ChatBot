@@ -7,192 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D5A51227-E75A-4FBC-8BCA-9EAFCA022B49"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Controller/ChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
-            landmarkName = "removeCellAnimations(without:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D5A51227-E75A-4FBC-8BCA-9EAFCA022B49 - 86169b49dc427580"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.ChatViewController.(removeCellAnimations in _669E7F43444E5B27EE1002F8CE025191)(without: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/Views/Controller/ChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "370"
-                  endingLineNumber = "370"
-                  offsetFromSymbolStart = "53">
-               </Location>
-               <Location
-                  uuid = "D5A51227-E75A-4FBC-8BCA-9EAFCA022B49 - 71f972f421e15f3f"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.IndexPath) -&gt; Swift.Bool in &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.ChatViewController.(removeCellAnimations in _669E7F43444E5B27EE1002F8CE025191)(without: Foundation.IndexPath) -&gt; ()"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/Views/Controller/ChatViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "370"
-                  endingLineNumber = "370"
-                  offsetFromSymbolStart = "42">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0B77F528-860A-4EF4-9407-B87E85EA1390"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Controller/ChatViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "configOutgoingCell(for:atIndex:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3AA66A02-E70E-4BED-9750-6694AA0F828D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Outgoing/View/OutgoingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "bind()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A7403673-4096-4E6F-93A2-C2C3D9C37C3B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Outgoing/View/OutgoingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "OutgoingBubbleTableViewCell"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "A7403673-4096-4E6F-93A2-C2C3D9C37C3B - ee555894a213ad8c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/Views/Cells/Outgoing/View/OutgoingBubbleTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "804">
-               </Location>
-               <Location
-                  uuid = "A7403673-4096-4E6F-93A2-C2C3D9C37C3B - 8dbea75205b960fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.OutgoingBubbleTableViewCell&gt;"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dimzfresh/ChatBot/ChatBot/ChatNalog/UI/ChatScreen/Views/Cells/Outgoing/View/OutgoingBubbleTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "736">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "88886F6D-9722-4478-9A37-4982F01BCFBD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Outgoing/View/OutgoingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "bind()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3B1995C0-2EFD-45E9-BE95-5D57C261CECF"
+            uuid = "FE1C6D2A-3BD3-42C2-B016-971B8AEFC874"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "bind()"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "31F7EE40-804E-413C-832F-77BA00F81D03"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "bind()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5CAFFFD6-D78F-45F0-B6CD-F88E982FE0D9"
+            uuid = "6C12FEA1-C59F-454C-88AD-7BC65E2A7894"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "bind()"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "startAnimation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D6DF1D6-FFC0-4A5D-9C4C-8A58D9E7A649"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "bindAnswerTap()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

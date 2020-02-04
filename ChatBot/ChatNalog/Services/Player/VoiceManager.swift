@@ -16,7 +16,11 @@ final class VoiceManager: NSObject {
     private let recordingSession: AVAudioSession! = .sharedInstance()
     private var audioRecorder: AVAudioRecorder?
     private var audioPlayer: AVAudioPlayer?
-        
+    
+    // MARK: - Properties
+    lazy var isPlaying: Bool = { audioPlayer?.isPlaying ?? false }()
+    private(set) var onPause: Bool = false
+
     // MARK: - Completions
     var audioPlayerDidFinished: (() -> Void)?
     var audioRecordingDidFinished: ((String?) -> Void)?
@@ -102,9 +106,13 @@ final class VoiceManager: NSObject {
     }
     
     func pausePlaying() {
+        onPause = true
         audioPlayer?.pause()
     }
     
+    func continuePlaying() {
+        audioPlayer?.play()
+    }
     func stopPlaying() {
         audioPlayer?.stop()
     }
@@ -112,7 +120,7 @@ final class VoiceManager: NSObject {
     private func preparePlayer() {
         var error: NSError?
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [])
             try AVAudioSession.sharedInstance().setActive(true)
             
             let data = try Data(contentsOf: getFileURL() as URL)
@@ -137,7 +145,7 @@ final class VoiceManager: NSObject {
 }
 
 private extension VoiceManager {
-    func requestPermission(completion: @escaping (Bool)->()) {
+    func requestPermission(completion: @escaping (Bool) -> ()) {
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
@@ -146,7 +154,6 @@ private extension VoiceManager {
                 //DispatchQueue.main.async {
                     //if allowed {
                         //self.loadRecordingUI()
-                        
                     //} else {
                         // failed to record!
                     //}
@@ -170,11 +177,11 @@ private extension VoiceManager {
 }
 
 extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
-    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
         eventLogger.logEvent(input: .init(.voice(.record)))
 
+        onPause = false
         if !flag {
             finishRecording(success: false)
         } else {
@@ -187,6 +194,7 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     }
         
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        onPause = false
         audioPlayerDidFinished?()
     }
     
