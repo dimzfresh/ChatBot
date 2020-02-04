@@ -51,8 +51,8 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
         activity.stopAnimating()
         speakerButton.isHidden = false
         stopAnimation()
-        viewModel.onPause.accept(nil)
-        viewModel.isPlaying.accept(nil)
+        viewModel.onPause.accept(false)
+        viewModel.isPlaying.accept(false)
     }
 }
 

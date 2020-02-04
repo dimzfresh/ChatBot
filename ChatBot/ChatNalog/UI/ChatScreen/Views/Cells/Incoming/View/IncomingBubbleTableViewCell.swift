@@ -90,8 +90,8 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
         activity.stopAnimating()
         speakerButton.isHidden = false
         stopAnimation()
-        viewModel.onPause.accept(nil)
-        viewModel.isPlaying.accept(nil)
+        viewModel.onPause.accept(false)
+        viewModel.isPlaying.accept(false)
     }
 }
 
@@ -247,7 +247,7 @@ private extension IncomingBubbleTableViewCell {
         FirebaseEventManager.shared.logEvent(input: .init(.share(.share)))
 
         let root = UIApplication.shared.windows.first?.rootViewController
-        let activityVC = UIActivityViewController(activityItems: [messageLabel.text ?? ""] as [Any], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [prepareText()] as [Any], applicationActivities: nil)
         
         if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
             popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
@@ -257,6 +257,22 @@ private extension IncomingBubbleTableViewCell {
             activityVC.navigationController?.navigationBar.tintColor = .lightGray
         }
         root?.present(activityVC, animated: true)
+    }
+    
+    func prepareText() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
+        let date = formatter.string(from: Date())
+        let message = messageLabel.text ?? ""
+        
+        // TODO: -Temporary
+        let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Подробнее можно посмотреть на сайте https://asknpd.ru/")
+        
+        if preparedText.isEmpty {
+            return ""
+        } else {
+            return "[\(date)]: \(preparedText)"
+        }
     }
     
     func process(answer: InputAnswer?) {

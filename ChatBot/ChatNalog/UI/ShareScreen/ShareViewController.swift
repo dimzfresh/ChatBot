@@ -83,10 +83,13 @@ private extension ShareViewController {
         let date = formatter.string(from: Date())
         let message = shareText ?? ""
         
-        if message.isEmpty {
+        // TODO: -Temporary
+        let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Подробнее можно посмотреть на сайте https://asknpd.ru/")
+        
+        if preparedText.isEmpty {
             return ""
         } else {
-            return "[\(date)]: \(message)"
+            return "[\(date)]: \(preparedText)"
         }
     }
     
@@ -97,7 +100,7 @@ private extension ShareViewController {
     
     func share() {
         let root = UIApplication.shared.windows.first?.rootViewController
-        let activityVC = UIActivityViewController(activityItems: [shareText ?? ""] as [Any], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [prepareText()] as [Any], applicationActivities: nil)
         
         if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
             popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
