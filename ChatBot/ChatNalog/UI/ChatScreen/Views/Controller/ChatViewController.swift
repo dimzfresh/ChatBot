@@ -92,6 +92,7 @@ extension ChatViewController: UITableViewDelegate {
         let vm = OutgoingViewModel()
         vm.message = message
         cell.bind(to: vm)
+        cell.cofigure(onPause: atIndex.section == lastSelectedSection)
         cell.onSelectMic = { [weak self, atIndex] in
             self?.lastSelectedSection = atIndex.section
         }

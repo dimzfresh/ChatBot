@@ -63,10 +63,11 @@ extension IncomingViewModel {
             .observeOn(MainScheduler.asyncInstance)
             .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
-                guard let flag = flag,
-                    let isPlaying = self?.isPlaying.value,
-                    VoiceManager.shared.onPause ||
-                    isPlaying else { return }
+                guard let flag = flag
+                    //let isPlaying = self?.isPlaying.value,
+                    //VoiceManager.shared.onPause
+                    //isPlaying
+                else { return }
                 
                 if flag {
                     self?.pause()

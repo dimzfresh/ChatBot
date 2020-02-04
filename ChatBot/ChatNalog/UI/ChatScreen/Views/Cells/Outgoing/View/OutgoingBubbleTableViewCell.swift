@@ -12,7 +12,7 @@ import RxSwift
 import NVActivityIndicatorView
 
 final class OutgoingBubbleTableViewCell: UITableViewCell {
-    
+    // MARK: - Outlets
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: NVActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
@@ -31,23 +31,28 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-
         setup()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         clear()
         disposeBag = DisposeBag()
+    }
+    
+    // MARK: - Funcs
+    func cofigure(onPause: Bool) {
+        guard onPause, VoiceManager.shared.onPause else { return }
+        
+        viewModel.onPause.accept(true)
     }
     
     func clear() {
         activity.stopAnimating()
         speakerButton.isHidden = false
-        speakerButton.layer.removeAllAnimations()
-        speakerButton.setImage(#imageLiteral(resourceName: "chat_mic_off"), for: .normal)
-        viewModel.isPlaying.accept(false)
+        stopAnimation()
+        viewModel.onPause.accept(nil)
+        viewModel.isPlaying.accept(nil)
     }
 }
 
@@ -67,37 +72,34 @@ private extension OutgoingBubbleTableViewCell {
     }
     
     func bind() {
-        speakerButton.rx.tap.subscribe(onNext: { [weak self] _ in
-            guard let self = self, let vm = self.viewModel else { return }
-            var selected = false
-            do {
-                selected = try self.selectedMicSubject.value()
-            } catch {
-                selected = false
-            }
-            self.selectedMicSubject.onNext(selected)
-            self.selectedMicSubject.onCompleted()
-            self.onSelectMic?()
-            
-            let flag = vm.isPlaying.value ?? false
-            vm.isPlaying.accept(!flag)
-        }).disposed(by: disposeBag)
-        
         viewModel?.isPlaying
             .subscribe(onNext: { [weak self] flag in
-                self?.animate()
-        })
-        .disposed(by: disposeBag)
+                guard let flag = flag else { return }
+                if flag {
+                    self?.startAnimation()
+                } else {
+                    self?.stopAnimation()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel?.onPause
+            .subscribe(onNext: { [weak self] flag in
+                guard let flag = flag, flag else { return }
+                self?.showPause()
+            })
+            .disposed(by: disposeBag)
         
         viewModel?.isLoading
             .subscribe(onNext: { [weak self] flag in
+                guard let flag = flag else { return }
                 if flag {
                     self?.activity.startAnimating()
                     self?.speakerButton.isHidden = true
                 } else {
                     self?.activity.stopAnimating()
                     self?.speakerButton.isHidden = false
-                    self?.animate()
+                    self?.startAnimation()
                 }
         })
         .disposed(by: disposeBag)
@@ -106,20 +108,54 @@ private extension OutgoingBubbleTableViewCell {
             .map({ NSAttributedString(string: $0?.text ?? "") })
             .bind(to: messageLabel.rx.attributedText)
             .disposed(by: disposeBag)
+        
+        bindSpeakerTap()
     }
     
-    func animate() {
-        let image: UIImage = (viewModel.isPlaying.value ?? false) ? #imageLiteral(resourceName: "chat_mic_on") : #imageLiteral(resourceName: "chat_mic_off")
-        UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.speakerButton.setImage(image, for: .normal)
+    func bindSpeakerTap() {
+        speakerButton.rx.tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] in
+                guard let viewModel = self?.viewModel else { return }
+                
+                var selected = false
+                do {
+                    selected = try self?.selectedMicSubject.value() ?? false
+                } catch {
+                    selected = false
+                }
+                self?.selectedMicSubject.onNext(selected)
+                self?.selectedMicSubject.onCompleted()
+                self?.onSelectMic?()
+                
+                let isPlaying = viewModel.isPlaying.value ?? false
+                let onPause = viewModel.onPause.value ?? false
+                
+                if isPlaying, !onPause {
+                    viewModel.onPause.accept(true)
+                } else if onPause {
+                    viewModel.onPause.accept(false)
+                    self?.startAnimation()
+                } else {
+                    viewModel.isPlaying.accept(!isPlaying)
+                }
         })
-        
-        guard let flag = viewModel.isPlaying.value, flag else {
-            speakerButton.alpha = 1
-            speakerButton.layer.removeAllAnimations()
-            return
-        }
-        
+        .disposed(by: disposeBag)
+    }
+    
+    func showPause() {
+        UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.speakerButton.setImage(#imageLiteral(resourceName: "input_pause"), for: .normal)
+            self.speakerButton.alpha = 1
+            self.speakerButton.layer.removeAllAnimations()
+        })
+    }
+    
+    func startAnimation() {
+        UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.speakerButton.setImage(#imageLiteral(resourceName: "chat_mic_on"), for: .normal)
+        })
+
         speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         UIView.animate(withDuration: 0.9,
                        delay: 0,
@@ -131,6 +167,15 @@ private extension OutgoingBubbleTableViewCell {
                         self.speakerButton.transform = .identity
                         self.speakerButton.alpha = 0.75
         })
+    }
+    
+    func stopAnimation() {
+        UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.speakerButton.setImage(#imageLiteral(resourceName: "chat_mic_off"), for: .normal)
+        })
+        
+        speakerButton.alpha = 1
+        speakerButton.layer.removeAllAnimations()
     }
 }
 

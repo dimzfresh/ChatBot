@@ -10,7 +10,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-import Alamofire
 import NVActivityIndicatorView
 
 typealias AnswerSectionModel = SectionModel<AnswerSection, AnswerItem>
@@ -182,7 +181,7 @@ private extension IncomingBubbleTableViewCell {
     func bindSpeakerTap() {
         speakerButton.rx.tap
             .throttle(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
-            .subscribe { [weak self] in
+            .subscribe(onNext: { [weak self] in
                 guard let viewModel = self?.viewModel else { return }
                 
                 var selected = false
@@ -202,10 +201,11 @@ private extension IncomingBubbleTableViewCell {
                     viewModel.onPause.accept(true)
                 } else if onPause {
                     viewModel.onPause.accept(false)
+                    self?.startAnimation()
                 } else {
                     viewModel.isPlaying.accept(!isPlaying)
                 }
-        }
+        })
         .disposed(by: disposeBag)
     }
     
@@ -325,18 +325,16 @@ private extension IncomingBubbleTableViewCell {
     }
     
     func showPause() {
-        let image: UIImage = (viewModel.onPause.value ?? false) ? #imageLiteral(resourceName: "input_pause") : #imageLiteral(resourceName: "chat_mic_off")
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.speakerButton.setImage(image, for: .normal)
+            self.speakerButton.setImage(#imageLiteral(resourceName: "input_pause"), for: .normal)
             self.speakerButton.alpha = 1
             self.speakerButton.layer.removeAllAnimations()
         })
     }
     
     func startAnimation() {
-        let image: UIImage = (viewModel.isPlaying.value ?? false) ? #imageLiteral(resourceName: "chat_mic_on") : #imageLiteral(resourceName: "chat_mic_off")
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.speakerButton.setImage(image, for: .normal)
+            self.speakerButton.setImage(#imageLiteral(resourceName: "chat_mic_on"), for: .normal)
         })
 
         speakerButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
