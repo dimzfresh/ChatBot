@@ -1,0 +1,26 @@
+//
+//  Production.xcconfig
+//  ChatBot
+//
+//  Created by Dmitrii Ziablikov on 16.02.2020.
+//  Copyright © 2020 kvantsoft. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Development.xcconfig
+// Server URL
+BASE_URL = http:/$()/localhost:3000
+
+// Keys
+//API_KEY = 783u9djd8a_hkzos7jd803001nd
+
+// App Settings
+ENVIRONMENT = prod
+APP_NAME = Чатналог.рф
+APP_BUNDLE_ID = ru.smz.ChatBot
+
+//#include "Pods/Target Support Files/Pods-ChatBot/Pods-ChatBot.debug (Development).xcconfig"
+//
+//#include "Pods/Target Support Files/Pods-ChatBot/Pods-ChatBot.release (Development).xcconfig"

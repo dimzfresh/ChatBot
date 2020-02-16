@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 final class AppDelegateSettings: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,7 +20,6 @@ final class AppDelegateSettings: NSObject, UIApplicationDelegate {
 private extension AppDelegateSettings {
     func setup() {
         setupNavigationBar()
-        setupFirebase()
     }
     
     func setupNavigationBar() {
@@ -45,9 +43,5 @@ private extension AppDelegateSettings {
         }
         barAppearance.tintColor = .white
         barAppearance.shadowImage = UIImage()
-    }
-    
-    func setupFirebase() {
-        FirebaseApp.configure()
     }
 }

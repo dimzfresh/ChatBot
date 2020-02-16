@@ -1,4 +1,4 @@
-framework module RxAlamofire {
+module RxAlamofire {
   umbrella header "RxAlamofire-umbrella.h"
 
   export *

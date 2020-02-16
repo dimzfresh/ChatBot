@@ -1,54 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "09BE6977-CAA9-4311-BBB1-DCC9AE73D2AF"
+   uuid = "A1A50A90-C43A-4A55-BD8F-C47CD67E7ADE"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE1C6D2A-3BD3-42C2-B016-971B8AEFC874"
+            uuid = "829E8B0D-4496-4044-9AFB-9833D72020F2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
+            filePath = "ChatNalog/App/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "cofigure(onPause:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "setupFirebase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6C12FEA1-C59F-454C-88AD-7BC65E2A7894"
-            shouldBeEnabled = "Yes"
+            uuid = "0166AE2A-7C1C-4770-8186-7DB82B51C577"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
+            filePath = "ChatNalog/App/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
-            landmarkName = "processButtons(items:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6D6DF1D6-FFC0-4A5D-9C4C-8A58D9E7A649"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "bindSpeakerTap()"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "setupFirebase()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

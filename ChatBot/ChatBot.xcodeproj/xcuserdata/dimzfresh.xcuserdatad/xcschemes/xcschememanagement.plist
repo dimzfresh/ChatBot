@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ChatBot.xcscheme_^#shared#^_</key>
+		<key>ChatBot (Development).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>1</integer>
+		</dict>
+		<key>ChatBot (Production).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>ChatBot copy.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>VarakushCashier.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,6 +27,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>5A7AE5A123F935B000DC2243</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A7AE5F523F9490F00DC2243</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5AB57EBA231C5E4F00A22A8C</key>
 		<dict>
 			<key>primary</key>
