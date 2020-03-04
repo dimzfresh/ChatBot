@@ -22,7 +22,7 @@ public protocol APIRequest: AlamofireManager {
     var parameters: [String : Any]? { get }
     
     var parametersData: Data? { get }
-    
+     
     var data: Data? { get }
   
     var headers: HTTPHeaders { get }

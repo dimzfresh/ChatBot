@@ -125,7 +125,7 @@ private extension AppDelegate {
     
     func setup(_ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         // Services
-        services.forEach { _ = $0.application?(UIApplication.shared, didFinishLaunchingWithOptions: launchOptions) }
+        services.forEach { _ = $0.application?(.shared, didFinishLaunchingWithOptions: launchOptions) }
         
         setupFirebase()
         registerNotifications()
@@ -138,13 +138,13 @@ private extension AppDelegate {
             print("DEVELOPMENT")
             let filePath = Bundle.main.path(forResource: "GoogleService-DEV-Info", ofType: "plist")
             guard let path = filePath, let fileopts = FirebaseOptions(contentsOfFile: path)
-                else { assert(false, "Couldn't load config file") }
+                else { return }
             FirebaseApp.configure(options: fileopts)
         } else {
             print("PROD")
             let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist")
             guard let path = filePath, let fileopts = FirebaseOptions(contentsOfFile: path)
-                else { assert(false, "Couldn't load config file") }
+                else { return }
             FirebaseApp.configure(options: fileopts)
         }
     }

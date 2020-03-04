@@ -44,10 +44,10 @@
 		5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */; };
 		5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */; };
 		5A73D54923F958E600AABB5F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73D54823F958E600AABB5F /* Environment.swift */; };
+		5A73D54D23F9731600AABB5F /* GoogleService-DEV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */; };
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
 		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
-		5A7DD22E23F88BB000E73FAA /* GoogleService-DEV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A7DD22D23F88BB000E73FAA /* GoogleService-DEV-Info.plist */; };
 		5A7EFF8623AA5A77001D8B70 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */; };
 		5A7EFFB023ABAC86001D8B70 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
@@ -139,11 +139,10 @@
 		5A73D54623F9580200AABB5F /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		5A73D54723F958B100AABB5F /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		5A73D54823F958E600AABB5F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-DEV-Info.plist"; path = "../../../../Downloads/GoogleService-DEV-Info.plist"; sourceTree = "<group>"; };
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
 		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
-		5A7DD1D923F8804300E73FAA /* Чатналог.рфRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Чатналог.рфRelease.entitlements"; sourceTree = "<group>"; };
-		5A7DD22D23F88BB000E73FAA /* GoogleService-DEV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-DEV-Info.plist"; sourceTree = "<group>"; };
 		5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		5AB7991923AF65D000447A91 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		5AB9FBA5238D53E300B4FE83 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC11AA023896F350082B34D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		5ACA4C2123FA70A600AE2979 /* Chatbot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chatbot.entitlements; sourceTree = "<group>"; };
 		5ADD7C7223E0CA0B009468FC /* FirebaseEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEventManager.swift; sourceTree = "<group>"; };
 		5ADD7C7423E0D5EF009468FC /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
 		5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -420,8 +420,8 @@
 				5AB57EC5231C5E5100A22A8C /* Assets.xcassets */,
 				5AB57EC7231C5E5100A22A8C /* LaunchScreen.storyboard */,
 				5AB57ECA231C5E5100A22A8C /* Info.plist */,
+				5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */,
 				5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */,
-				5A7DD22D23F88BB000E73FAA /* GoogleService-DEV-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 		5AB57EB2231C5E4F00A22A8C = {
 			isa = PBXGroup;
 			children = (
-				5A7DD1D923F8804300E73FAA /* Чатналог.рфRelease.entitlements */,
+				5ACA4C2123FA70A600AE2979 /* Chatbot.entitlements */,
 				5AB57EBD231C5E4F00A22A8C /* ChatNalog */,
 				5AB57ED2231C5E5100A22A8C /* ChatNalogTests */,
 				5AB57EBC231C5E4F00A22A8C /* Products */,
@@ -764,7 +764,7 @@
 			files = (
 				5A2E224E23AE2D0E00B9741F /* Roboto-Bold.ttf in Resources */,
 				5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */,
-				5A7DD22E23F88BB000E73FAA /* GoogleService-DEV-Info.plist in Resources */,
+				5A73D54D23F9731600AABB5F /* GoogleService-DEV-Info.plist in Resources */,
 				5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */,
 				5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */,
 				5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */,
@@ -961,6 +961,7 @@
 			baseConfigurationReference = F49472392F3A1374A377D426 /* Pods-ChatBot.debug (development).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chatbot.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HH534N843V;
@@ -969,8 +970,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
+				MARKETING_VERSION = 1.0.23;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot.dev;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1039,7 +1040,7 @@
 			baseConfigurationReference = DA30B4DB82E1DF5F1D201989 /* Pods-ChatBot.release (development).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Чатналог.рфRelease.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Chatbot.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HH534N843V;
@@ -1048,8 +1049,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
+				MARKETING_VERSION = 1.0.23;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot.dev;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1180,6 +1181,7 @@
 			baseConfigurationReference = 02138731ECFED050DF7A5128 /* Pods-ChatBot.debug (production).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chatbot.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HH534N843V;
@@ -1188,7 +1190,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1202,7 +1204,7 @@
 			baseConfigurationReference = AB3879D991C7BE0828EE59D4 /* Pods-ChatBot.release (production).xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Чатналог.рфRelease.entitlements";
+				CODE_SIGN_ENTITLEMENTS = Chatbot.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HH534N843V;
@@ -1211,7 +1213,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
 				PRODUCT_NAME = "Чатналог.рф";
 				PROVISIONING_PROFILE_SPECIFIER = "";
