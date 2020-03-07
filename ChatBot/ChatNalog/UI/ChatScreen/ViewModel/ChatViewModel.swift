@@ -100,7 +100,7 @@ final class ChatViewModel: BaseViewModel {
     
     func recognizeVoice() {
         eventLogger.logEvent(input: .init(.voice(.question)))
-
+        
         recognize()
     }
     
@@ -205,13 +205,17 @@ private extension ChatViewModel {
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
             self?.moveScroll()
-            }, onError: { error in
+            }, onError: { [weak self] error in
+                self?.title.onNext((main: chatName,
+                     sub: "\nОнлайн"))
+                
                 print(error)
         })
         .disposed(by: disposeBag)
     }
     
     func answer(input: AnswerRequestInput) {
+        changeTitle()
         service?.sendAnswer(input: input)
         .subscribe(onNext: { [weak self] model in
             var m = model
@@ -220,7 +224,9 @@ private extension ChatViewModel {
             self?.title.onNext((main: chatName,
             sub: "\nОнлайн"))
             self?.moveScroll()
-            }, onError: { error in
+            }, onError: { [weak self] error in
+                self?.title.onNext((main: chatName,
+                      sub: "\nОнлайн"))
                 print(error)
         })
         .disposed(by: disposeBag)
@@ -228,6 +234,8 @@ private extension ChatViewModel {
     
     func recognize() {
         guard let text: String = voice.value, !text.isEmpty else { return }
+        
+        changeTitle()
                 
         service?.recognize(text: text)
         .subscribe(onNext: { [weak self] model in
@@ -236,7 +244,9 @@ private extension ChatViewModel {
             self?.questionInput.accept(str)
             self?.sendQuestion()
             self?.moveScroll()
-            }, onError: { error in
+            }, onError: { [weak self] error in
+                self?.title.onNext((main: chatName,
+                      sub: "\nОнлайн"))
                 print(error)
         })
         .disposed(by: disposeBag)

@@ -31,8 +31,8 @@ final class ChatViewController: UIViewController {
 
     private let voiceManager = VoiceManager.shared
     private var lastSelectedSection: Int? {
-        didSet(section) {
-            removeCellAnimations()
+        didSet(new) {
+            removeCellAnimations(lastSelectedSection != nil && new != lastSelectedSection)
         }
     }
 
@@ -92,7 +92,7 @@ extension ChatViewController: UITableViewDelegate {
         let vm = OutgoingViewModel()
         vm.message = message
         cell.bind(to: vm)
-        cell.cofigure(onPause: atIndex.section == lastSelectedSection)
+        cell.cofigure(selected: atIndex.section == lastSelectedSection)
         cell.onSelectMic = { [weak self, atIndex] in
             self?.lastSelectedSection = atIndex.section
         }
@@ -110,7 +110,7 @@ extension ChatViewController: UITableViewDelegate {
         let vm = IncomingViewModel()
         vm.message = message
         cell.bind(to: vm)
-        cell.cofigure(onPause: atIndex.section == lastSelectedSection)
+        cell.cofigure(selected: atIndex.section == lastSelectedSection)
         cell.selectedItem
             .subscribe(onNext: { [weak self, atIndex] answer in
                 guard let self = self, let answer = answer else { return }
@@ -176,6 +176,7 @@ private extension ChatViewController {
         let input = InputView.loadNib()
         inputCustomView.addSubview(input)
         inputViewProvider = input
+        
         inputViewProvider?.onChangeText = { [weak self] text in
             self?.viewModel.questionInput.accept(text)
             self?.viewModel.searchSuggestions()
@@ -379,8 +380,13 @@ private extension ChatViewController {
     }
     
     // MARK: - TableView cells
-    func removeCellAnimations() {
+    func removeCellAnimations(_ new: Bool) {
         guard let section = lastSelectedSection else { return }
+        
+        if new {
+            VoiceManager.shared.stopPlaying()
+        }
+        
         let indexPaths = tableView.indexPathsForVisibleRows?.filter { section != $0.section }
         indexPaths?.forEach {
             (tableView.cellForRow(at: $0) as? IncomingBubbleTableViewCell)?.clear()

@@ -27,6 +27,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
 //    }
     var onSelectMic: (() -> Void)?
     
+    private var player: VoiceManager? = .shared
     private var disposeBag = DisposeBag()
         
     override func awakeFromNib() {
@@ -41,18 +42,22 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
     }
     
     // MARK: - Funcs
-    func cofigure(onPause: Bool) {
-        guard onPause, VoiceManager.shared.onPause else { return }
+    func cofigure(selected: Bool) {
+        guard selected else { return }
         
-        viewModel.onPause.accept(true)
+        if player?.isPlaying == true {
+            startAnimation()
+        }
+        
+        viewModel.isPlaying.accept(player?.isPlaying)
+        viewModel.isOnPause.accept(player?.isOnPause)
     }
     
     func clear() {
         activity.stopAnimating()
         speakerButton.isHidden = false
         stopAnimation()
-        viewModel.onPause.accept(false)
-        viewModel.isPlaying.accept(false)
+        viewModel.resetFlags()
     }
 }
 
@@ -83,7 +88,7 @@ private extension OutgoingBubbleTableViewCell {
             })
             .disposed(by: disposeBag)
         
-        viewModel?.onPause
+        viewModel?.isOnPause
             .subscribe(onNext: { [weak self] flag in
                 guard let flag = flag, flag else { return }
                 self?.showPause()
@@ -115,37 +120,29 @@ private extension OutgoingBubbleTableViewCell {
     func bindSpeakerTap() {
         speakerButton.rx.tap
             .throttle(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] in
-                guard let viewModel = self?.viewModel else { return }
+            .subscribe(onNext: { [unowned self] in
+                self.onSelectMic?()
                 
-                var selected = false
-                do {
-                    selected = try self?.selectedMicSubject.value() ?? false
-                } catch {
-                    selected = false
+                let vm = self.viewModel
+                let isLoading = vm?.isLoading.value ?? false
+                let isPlaying = vm?.isPlaying.value ?? false
+                let isOnPause = vm?.isOnPause.value ?? false
+                
+                if !isPlaying, !isOnPause, !isLoading {
+                    vm?.isLoading.accept(true)
+                } else if isPlaying, !isOnPause, !isLoading {
+                    vm?.isOnPause.accept(true)
+                } else if isOnPause {
+                    vm?.isOnPause.accept(false)
+                    vm?.isPlaying.accept(true)
                 }
-                self?.selectedMicSubject.onNext(selected)
-                self?.selectedMicSubject.onCompleted()
-                self?.onSelectMic?()
-                
-                let isPlaying = viewModel.isPlaying.value ?? false
-                let onPause = viewModel.onPause.value ?? false
-                
-                if isPlaying, !onPause {
-                    viewModel.onPause.accept(true)
-                } else if onPause {
-                    viewModel.onPause.accept(false)
-                    self?.startAnimation()
-                } else {
-                    viewModel.isPlaying.accept(!isPlaying)
-                }
-        })
-        .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     func showPause() {
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.speakerButton.setImage(#imageLiteral(resourceName: "input_pause"), for: .normal)
+            self.speakerButton.setImage(#imageLiteral(resourceName: "input_play"), for: .normal)
             self.speakerButton.alpha = 1
             self.speakerButton.layer.removeAllAnimations()
         })
@@ -161,8 +158,7 @@ private extension OutgoingBubbleTableViewCell {
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 5,
-                       options: [.autoreverse, .curveLinear,
-                                 .repeat, .allowUserInteraction],
+                       options: [.curveLinear, .repeat, .allowUserInteraction],
                        animations: {
                         self.speakerButton.transform = .identity
                         self.speakerButton.alpha = 0.75

@@ -100,16 +100,7 @@ private extension ShareViewController {
     
     func share() {
         let root = UIApplication.shared.windows.first?.rootViewController
-        let activityVC = UIActivityViewController(activityItems: [prepareText()] as [Any], applicationActivities: nil)
-        
-        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
-            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
-            popoverController.sourceView = root?.view
-            popoverController.permittedArrowDirections = .down
-        } else {
-            activityVC.navigationController?.navigationBar.tintColor = .lightGray
-        }
-        root?.present(activityVC, animated: true)
+        root?.share(text: prepareText())
     }
     
     func moveIn() {

@@ -18,13 +18,15 @@ final class OutgoingViewModel: BaseViewModel {
         }
     }
     
+    private let player: VoiceManager = .shared
+    
     var input = BehaviorRelay<ChatModel?>(value: nil)
 
     private let service: Service?
     private let disposeBag = DisposeBag()
     
     var isPlaying = BehaviorRelay<Bool?>(value: nil)
-    var onPause = BehaviorRelay<Bool?>(value: nil)
+    var isOnPause = BehaviorRelay<Bool?>(value: nil)
     var isLoading = BehaviorRelay<Bool?>(value: nil)
         
     init(service: Service? = ChatService()) {
@@ -36,59 +38,57 @@ final class OutgoingViewModel: BaseViewModel {
 
 extension OutgoingViewModel {
     func bind() {
+        isLoading
+            .observeOn(MainScheduler.asyncInstance)
+            .share(replay: 1)
+            .subscribe(onNext: { [weak self] flag in
+                guard let flag = flag, flag else { return }
+                self?.load()
+        })
+        .disposed(by: disposeBag)
+        
         isPlaying
             .observeOn(MainScheduler.asyncInstance)
             .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
-                guard let flag = flag
-                else { return }
-                
+                guard let flag = flag, flag else { return }
+                self?.play()
                 FirebaseEventManager.shared.logEvent(input: .init(.voice(.playAnswer)))
-                
-                if !flag {
-                    self?.stop()
-                } else {
-                    self?.load()
-                }
         })
         .disposed(by: disposeBag)
         
-        onPause
+        isOnPause
             .observeOn(MainScheduler.asyncInstance)
             .share(replay: 1)
             .subscribe(onNext: { [weak self] flag in
-                guard let flag = flag
-                    //let isPlaying = self?.isPlaying.value,
-                    //VoiceManager.shared.onPause
-                    //isPlaying
-                else { return }
-                
-                if flag {
-                    self?.pause()
-                } else {
-                    self?.continuePlaying()
-                }
+                guard let flag = flag, flag else { return }
+                self?.pausePlaying()
         })
         .disposed(by: disposeBag)
+    }
+    
+    func resetFlags() {
+        isOnPause.accept(nil)
+        isPlaying.accept(false)
+        isLoading.accept(nil)
     }
 }
 
 private extension OutgoingViewModel {
     func load() {
-        guard let text = input.value?.text,
-            let flag = isPlaying.value,
-            flag else { return }
+        guard let text = input.value?.text else { return }
+        
         let clearText = removeSpecialCharsFromString(text: text)
 
-        isLoading.accept(true)
-        service?.synthesize(text: clearText)
+        service?
+            .synthesize(text: clearText)
             .subscribe(onNext: { [weak self] model in
+                guard self?.isLoading.value == true else { return }
+                
+                self?.isLoading.accept(false)
                 self?.play(text: model.someString)
-                }, onError: { [weak self] error in
-                    print(error)
-                    self?.isPlaying.accept(false)
-                }, onCompleted: {
-                    self.isLoading.accept(false)
+                }, onError: { [weak self] _ in
+                    self?.isLoading.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -111,27 +111,30 @@ private extension OutgoingViewModel {
             isPlaying.accept(false)
             print(error)
         }
-        VoiceManager.shared.startPlaying()
-        VoiceManager.shared.audioPlayerDidFinished = { [weak self] in
-            self?.onPause.accept(false)
-            self?.isPlaying.accept(false)
+        
+        isPlaying.accept(true)
+    }
+    
+    func play() {
+        player.startPlaying()
+        player.audioPlayerDidFinished = { [weak self] in
+            self?.resetFlags()
         }
     }
     
-    func pause() {
-        VoiceManager.shared.pausePlaying()
+    func pausePlaying() {
+        player.pausePlaying()
     }
     
     func continuePlaying() {
-        VoiceManager.shared.continuePlaying()
-        VoiceManager.shared.audioPlayerDidFinished = { [weak self] in
-            self?.onPause.accept(false)
-            self?.isPlaying.accept(false)
+        player.startPlaying()
+        player.audioPlayerDidFinished = { [weak self] in
+            self?.resetFlags()
         }
     }
     
-    func stop() {
-        VoiceManager.shared.stopPlaying()
+    func stopPlaying() {
+        player.stopPlaying()
     }
     
     func getDocumentsDirectory() -> URL {

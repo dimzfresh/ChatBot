@@ -221,7 +221,6 @@ private extension InputView {
     
     
     // MARK: - Timer
-    
     func stringFromTimeInterval(ms: NSInteger) -> String {
         if playerState.value == .play {
             return String(format: "%0.2d:%0.2d",

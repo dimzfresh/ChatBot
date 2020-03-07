@@ -79,19 +79,22 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     }
     
     // MARK: - Funcs
-    func cofigure(onPause: Bool) {
-        guard onPause, VoiceManager.shared.onPause else { return }
+    func cofigure(selected: Bool) {
+        guard selected else { return }
         
-        viewModel.onPause.accept(true)
-        selectedMicSubject.onNext(false)
+        if player?.isPlaying == true {
+            startAnimation()
+        }
+        
+        viewModel.isPlaying.accept(player?.isPlaying)
+        viewModel.isOnPause.accept(player?.isOnPause)
     }
     
     func clear() {
         activity.stopAnimating()
         speakerButton.isHidden = false
         stopAnimation()
-        viewModel.onPause.accept(false)
-        viewModel.isPlaying.accept(false)
+        viewModel.resetFlags()
     }
 }
 
@@ -142,7 +145,7 @@ private extension IncomingBubbleTableViewCell {
             })
             .disposed(by: disposeBag)
         
-        viewModel?.onPause
+        viewModel?.isOnPause
             .subscribe(onNext: { [weak self] flag in
                 guard let flag = flag, flag else { return }
                 self?.showPause()
@@ -170,8 +173,10 @@ private extension IncomingBubbleTableViewCell {
             })
             .disposed(by: disposeBag)
         
-        shareButton.rx.tap.subscribe(onNext: { [weak self] in
-            self?.share()
+        shareButton.rx.tap
+            .throttle(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] in
+                self?.share()
         }).disposed(by: disposeBag)
         
         bindSpeakerTap()
@@ -181,29 +186,21 @@ private extension IncomingBubbleTableViewCell {
     func bindSpeakerTap() {
         speakerButton.rx.tap
             .throttle(.milliseconds(200), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] in
-                guard let viewModel = self?.viewModel else { return }
+            .subscribe(onNext: { [unowned self] in
+                self.onSelectMic?()
                 
-                var selected = false
-                do {
-                    selected = try self?.selectedMicSubject.value() ?? false
-                } catch {
-                    selected = false
-                }
-                self?.selectedMicSubject.onNext(selected)
-                self?.selectedMicSubject.onCompleted()
-                self?.onSelectMic?()
-                
-                let isPlaying = viewModel.isPlaying.value ?? false
-                let onPause = viewModel.onPause.value ?? false
-                
-                if isPlaying, !onPause {
-                    viewModel.onPause.accept(true)
-                } else if onPause {
-                    viewModel.onPause.accept(false)
-                    self?.startAnimation()
-                } else {
-                    viewModel.isPlaying.accept(!isPlaying)
+                let vm = self.viewModel
+                let isLoading = vm?.isLoading.value ?? false
+                let isPlaying = vm?.isPlaying.value ?? false
+                let isOnPause = vm?.isOnPause.value ?? false
+
+                if !isPlaying, !isOnPause, !isLoading {
+                    vm?.isLoading.accept(true)
+                } else if isPlaying, !isOnPause, !isLoading {
+                    vm?.isOnPause.accept(true)
+                } else if isOnPause {
+                    vm?.isOnPause.accept(false)
+                    vm?.isPlaying.accept(true)
                 }
         })
         .disposed(by: disposeBag)
@@ -244,19 +241,8 @@ private extension IncomingBubbleTableViewCell {
     }
     
     func share() {
-        FirebaseEventManager.shared.logEvent(input: .init(.share(.share)))
-
         let root = UIApplication.shared.windows.first?.rootViewController
-        let activityVC = UIActivityViewController(activityItems: [prepareText()] as [Any], applicationActivities: nil)
-        
-        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
-            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
-            popoverController.sourceView = root?.view
-            popoverController.permittedArrowDirections = .down
-        } else {
-            activityVC.navigationController?.navigationBar.tintColor = .lightGray
-        }
-        root?.present(activityVC, animated: true)
+        root?.share(text: prepareText())
     }
     
     func prepareText() -> String {
@@ -300,6 +286,16 @@ private extension IncomingBubbleTableViewCell {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.8
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
+        
+        let links = answer?.text.components(separatedBy: "http")
+        if links?.isEmpty == false {
+            
+            //            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: NSMakeRange(0, attributedString.length))
+            
+        }
+//        if let url = URL(string: "http://www.google.com") {
+//            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: NSMakeRange(0, attributedString.length))
+//        }
 
         messageLabel.attributedText = attributedString
                 
@@ -342,7 +338,7 @@ private extension IncomingBubbleTableViewCell {
     
     func showPause() {
         UIView.transition(with: speakerButton, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.speakerButton.setImage(#imageLiteral(resourceName: "input_pause"), for: .normal)
+            self.speakerButton.setImage(#imageLiteral(resourceName: "input_play"), for: .normal)
             self.speakerButton.alpha = 1
             self.speakerButton.layer.removeAllAnimations()
         })
@@ -358,8 +354,7 @@ private extension IncomingBubbleTableViewCell {
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 5,
-                       options: [.autoreverse, .curveLinear,
-                                 .repeat, .allowUserInteraction],
+                       options: [.curveLinear, .repeat, .allowUserInteraction],
                        animations: {
                         self.speakerButton.transform = .identity
                         self.speakerButton.alpha = 0.75

@@ -18,9 +18,11 @@ final class VoiceManager: NSObject {
     private var audioPlayer: AVAudioPlayer?
     
     // MARK: - Properties
-    lazy var isPlaying: Bool = { audioPlayer?.isPlaying ?? false }()
-    private(set) var onPause: Bool = false
-
+    var isPlaying: Bool? {
+        audioPlayer?.isPlaying
+    }
+    var isOnPause: Bool? = false
+    
     // MARK: - Completions
     var audioPlayerDidFinished: (() -> Void)?
     var audioRecordingDidFinished: ((String?) -> Void)?
@@ -52,7 +54,7 @@ final class VoiceManager: NSObject {
             AVNumberOfChannelsKey: 1,
             AVLinearPCMBitDepthKey: 16,
 //            AVLinearPCMIsFloatKey: false,
-//            AVLinearPCMIsBigEndianKey: true,
+            AVLinearPCMIsBigEndianKey: true,
             AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
             ] as [String : Any]
         
@@ -89,7 +91,6 @@ final class VoiceManager: NSObject {
             self.audioRecordingDidFinished?(nil)
             //completion(.failure(.doesntExist))
         }
-        //}
     }
     
     func finishRecording(success: Bool) {
@@ -98,6 +99,16 @@ final class VoiceManager: NSObject {
     }
     
     func startPlaying() {
+        guard isOnPause == false else {
+            audioPlayer?.play()
+            isOnPause = false
+            return
+        }
+        
+        guard isPlaying == nil || isPlaying == false else {
+            return
+        }
+        
         stopPlaying()
         preparePlayer()
         audioPlayer?.play()
@@ -106,42 +117,14 @@ final class VoiceManager: NSObject {
     }
     
     func pausePlaying() {
-        onPause = true
+        isOnPause = true
         audioPlayer?.pause()
     }
     
-    func continuePlaying() {
-        audioPlayer?.play()
-    }
     func stopPlaying() {
+        isOnPause = false
         audioPlayer?.stop()
     }
-    
-    private func preparePlayer() {
-        var error: NSError?
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [])
-            try AVAudioSession.sharedInstance().setActive(true)
-            
-            let data = try Data(contentsOf: getFileURL() as URL)
-            audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.mp3.rawValue)
-        } catch let error1 as NSError {
-            error = error1
-            audioPlayer = nil
-            audioPlayerDidFinished?()
-        }
-        
-        if let err = error {
-            print("AVAudioPlayer error: \(err.localizedDescription)")
-        } else {
-            audioPlayer?.delegate = self
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.volume = 10.0
-        }
-    }
-    
-    //MARK: To upload audio on server
-    func uploadAudio(text: String) {}
 }
 
 private extension VoiceManager {
@@ -174,14 +157,38 @@ private extension VoiceManager {
         let path = getDocumentsDirectory().appendingPathComponent(name)
         return path as URL
     }
+    
+    func preparePlayer() {
+        var error: NSError?
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            let data = try Data(contentsOf: getFileURL() as URL)
+            audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.mp3.rawValue)
+        } catch let error1 as NSError {
+            error = error1
+            audioPlayer = nil
+            audioPlayerDidFinished?()
+        }
+        
+        if let err = error {
+            print("AVAudioPlayer error: \(err.localizedDescription)")
+        } else {
+            audioPlayer?.delegate = self
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.volume = 10.0
+        }
+    }
+    
+    //MARK: - Load audio from/on server
+    func uploadAudio(text: String) {}
 }
 
 extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
         eventLogger.logEvent(input: .init(.voice(.record)))
 
-        onPause = false
         if !flag {
             finishRecording(success: false)
         } else {
@@ -191,14 +198,16 @@ extension VoiceManager: AVAudioRecorderDelegate, AVAudioPlayerDelegate  {
     
     func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("Error while recording audio \(error?.localizedDescription ?? "")")
+        isOnPause = false
     }
         
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        onPause = false
+        isOnPause = false
         audioPlayerDidFinished?()
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print("Error while playing audio \(error?.localizedDescription ?? "")")
+        isOnPause = false
     }
 }

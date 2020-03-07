@@ -3,10 +3,107 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "onPause">
+            </PersistentString>
+            <PersistentString
+               value = "isPlaying">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.cofigure(selected:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "player?.isOnPause">
+            </PersistentString>
+            <PersistentString
+               value = "player">
+            </PersistentString>
+            <PersistentString
+               value = "VoiceManager.shared">
+            </PersistentString>
+            <PersistentString
+               value = "player?.isPlaying">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.resumeAnimation():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel.isOnPause.value">
+            </PersistentString>
+            <PersistentString
+               value = "player?.isOnPause">
+            </PersistentString>
+            <PersistentString
+               value = "player?.isPlaying">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel.isPlaying.value">
+            </PersistentString>
+            <PersistentString
+               value = "player">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.tableView(_:willDisplay:forRowAt:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lastSelectedSection == indexPath.section">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "answer?.text.components(separatedBy: &quot;http&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "answer?.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CopyableLabel.findLinksAndRange(attributeString:):CopyableLabel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "text">
+            </PersistentString>
+            <PersistentString
+               value = "attributeString.string">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CopyableLabel.point(inside:with:):CopyableLabel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "attributedText.string">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AppDelegate.setupFirebase():AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
                value = "config.environment">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.isOnPause.getter:VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "player">
+            </PersistentString>
+            <PersistentString
+               value = "audioPlayer?.isPlaying">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -23,7 +23,6 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    
     var keyboardHeight: Observable<CGFloat> {
         return Observable
             .from([
@@ -128,6 +127,19 @@ extension UIViewController {
         viewWithTag.removeFromSuperview()
     }
     
+    func share(text: String) {
+        FirebaseEventManager.shared.logEvent(input: .init(.share(.share)))
+
+        let activityVC = UIActivityViewController(activityItems: [text] as [Any], applicationActivities: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = activityVC.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = view
+            popoverController.permittedArrowDirections = .down
+        } else {
+            activityVC.navigationController?.navigationBar.tintColor = .lightGray
+        }
+        present(activityVC, animated: true)
+    }
 }
 
 extension UINavigationController {

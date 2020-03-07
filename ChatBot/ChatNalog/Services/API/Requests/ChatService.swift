@@ -30,9 +30,9 @@ public final class ChatService {
         }
         .catchError { error -> Observable<ChatModel> in
             if (error as NSError).code == NSURLErrorNotConnectedToInternet {
-                return .error(AppError.networkError(error))
+                return .error(AppError.noInternet)
             } else {
-                return .error(error)
+                return .error(AppError.unexpectedError(error))
             }
         }
         
