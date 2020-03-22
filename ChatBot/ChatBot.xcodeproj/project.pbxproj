@@ -44,7 +44,6 @@
 		5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A55D8782389663700318A53 /* IncomingBubbleTableViewCell.swift */; };
 		5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A55D8792389663700318A53 /* IncomingBubbleTableViewCell.xib */; };
 		5A73D54923F958E600AABB5F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73D54823F958E600AABB5F /* Environment.swift */; };
-		5A73D54D23F9731600AABB5F /* GoogleService-DEV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */; };
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
 		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
@@ -58,6 +57,7 @@
 		5A8F4361234A4B0A007FB89F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4360234A4B0A007FB89F /* Settings.swift */; };
 		5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4365234A4DFA007FB89F /* KeychainManager.swift */; };
 		5A96CB6823AC0A3A00193CBE /* ManagedObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */; };
+		5AA29E012427CF40008FBFFA /* GoogleService-DEV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AA29E002427CF40008FBFFA /* GoogleService-DEV-Info.plist */; };
 		5AA8792223986877001564F6 /* OutgoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792123986877001564F6 /* OutgoingViewModel.swift */; };
 		5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792323986891001564F6 /* OutgoingModel.swift */; };
 		5AB57EBF231C5E4F00A22A8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB57EBE231C5E4F00A22A8C /* AppDelegate.swift */; };
@@ -139,7 +139,6 @@
 		5A73D54623F9580200AABB5F /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		5A73D54723F958B100AABB5F /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		5A73D54823F958E600AABB5F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-DEV-Info.plist"; path = "../../../../Downloads/GoogleService-DEV-Info.plist"; sourceTree = "<group>"; };
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
 		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		5A8F4360234A4B0A007FB89F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5A8F4365234A4DFA007FB89F /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectProtocol.swift; sourceTree = "<group>"; };
+		5AA29E002427CF40008FBFFA /* GoogleService-DEV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-DEV-Info.plist"; sourceTree = "<group>"; };
 		5AA8792123986877001564F6 /* OutgoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingViewModel.swift; sourceTree = "<group>"; };
 		5AA8792323986891001564F6 /* OutgoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingModel.swift; sourceTree = "<group>"; };
 		5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Чатналог.рф.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,7 +420,7 @@
 				5AB57EC5231C5E5100A22A8C /* Assets.xcassets */,
 				5AB57EC7231C5E5100A22A8C /* LaunchScreen.storyboard */,
 				5AB57ECA231C5E5100A22A8C /* Info.plist */,
-				5A73D54C23F9731600AABB5F /* GoogleService-DEV-Info.plist */,
+				5AA29E002427CF40008FBFFA /* GoogleService-DEV-Info.plist */,
 				5AE8B10C23CF4BBD00FB755B /* GoogleService-Info.plist */,
 			);
 			path = Resources;
@@ -764,13 +764,13 @@
 			files = (
 				5A2E224E23AE2D0E00B9741F /* Roboto-Bold.ttf in Resources */,
 				5A55D87B2389663700318A53 /* IncomingBubbleTableViewCell.xib in Resources */,
-				5A73D54D23F9731600AABB5F /* GoogleService-DEV-Info.plist in Resources */,
 				5AE8B10D23CF4BBD00FB755B /* GoogleService-Info.plist in Resources */,
 				5A2E225123AE2D0E00B9741F /* Roboto-Light.ttf in Resources */,
 				5A2E224F23AE2D0E00B9741F /* Roboto-Regular.ttf in Resources */,
 				5AB7991823AEE9EC00447A91 /* InputView.xib in Resources */,
 				5AB57EC9231C5E5100A22A8C /* LaunchScreen.storyboard in Resources */,
 				5AB57EC6231C5E5100A22A8C /* Assets.xcassets in Resources */,
+				5AA29E012427CF40008FBFFA /* GoogleService-DEV-Info.plist in Resources */,
 				5A2481B323B12259001CE278 /* ShareViewController.xib in Resources */,
 				5AB57EC4231C5E4F00A22A8C /* Chat.storyboard in Resources */,
 				5A2E225223AE2D0E00B9741F /* Roboto-Medium.ttf in Resources */,

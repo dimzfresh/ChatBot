@@ -130,7 +130,7 @@ final class VoiceManager: NSObject {
 private extension VoiceManager {
     func requestPermission(completion: @escaping (Bool) -> ()) {
         do {
-            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setCategory(.playback, mode: .spokenAudio, options: [.mixWithOthers])
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission() { allowed in
                 completion(allowed)
@@ -161,7 +161,7 @@ private extension VoiceManager {
     func preparePlayer() {
         var error: NSError?
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [])
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.mixWithOthers])
             try AVAudioSession.sharedInstance().setActive(true)
             
             let data = try Data(contentsOf: getFileURL() as URL)
