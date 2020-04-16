@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "onPause">
-            </PersistentString>
-            <PersistentString
-               value = "isPlaying">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "IncomingBubbleTableViewCell.cofigure(selected:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -47,6 +36,37 @@
             </PersistentString>
             <PersistentString
                value = "player">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "onPause">
+            </PersistentString>
+            <PersistentString
+               value = "isPlaying">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "filteredSubview[5].titleLabel?.text">
+            </PersistentString>
+            <PersistentString
+               value = "recognizer.location(in: self.answerButtonsStackView)">
+            </PersistentString>
+            <PersistentString
+               value = "&quot;Ghbdtn&#x2028;&quot;string.stringByReplacingOccurrencesOfString(&quot;*s*&quot;,&#10;    withString: &quot;&quot;, options: .RegularExpressionSearch)">
+            </PersistentString>
+            <PersistentString
+               value = "self.answerButtonsStackView.hitTest(tapLocation, with: nil)">
+            </PersistentString>
+            <PersistentString
+               value = "self?.answerButtons[5].titleLabel?.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -104,6 +124,14 @@
             </PersistentString>
             <PersistentString
                value = "audioPlayer?.isPlaying">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "v.subviews.first(where: { $0.frame.contains(tapLocation) })">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

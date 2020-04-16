@@ -32,6 +32,9 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var messageStackView: UIStackView!
     
     @IBOutlet private weak var answerButtonsStackView: UIStackView!
+    @IBOutlet private weak var firstFiveStackView: UIStackView!
+    @IBOutlet private weak var secondFiveStackView: UIStackView!
+    
     @IBOutlet private var answerButtons: [AnimatedButton]!
     
     @IBOutlet private weak var shareButton: UIButton!
@@ -210,24 +213,21 @@ private extension IncomingBubbleTableViewCell {
         let tapGesture = UITapGestureRecognizer()
         tapGesture.cancelsTouchesInView = true
         tapGesture.delaysTouchesBegan = true
-
+        
         answerButtonsStackView.addGestureRecognizer(tapGesture)
         tapGesture.rx.event
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .bind(onNext: { [weak self] recognizer in
-                guard recognizer.state == .ended else { return }
+                guard let self = self, recognizer.state == .ended else { return }
                 
-                let tapLocation = recognizer.location(in: recognizer.view)
-                let filteredSubviews = self?.answerButtonsStackView.subviews.filter {
-                    $0.frame.contains(tapLocation)
-                }
-                
+                let tapLocation = recognizer.location(in: self.answerButtonsStackView)
+                let filteredSubview = self.getSubviewsOfView(v: self.answerButtonsStackView)
                 //let button = self?.answerButtonsStackView.hitTest(tapLocation, with: nil)
-                guard let button = filteredSubviews?.first as? AnimatedButton,
-                    let index = self?.answerButtons.firstIndex(of: button) else { return }
+                guard let button = filteredSubview.first(where: { $0.frame.contains(tapLocation)
+                }),
+                    let index = self.answerButtons.firstIndex(of: button) else { return }
                 
-                self?.eventLogger.logEvent(input: .init(.chat(.answerButton)))
-                //self?.eventLogger.logEvent(input: .init(.chat(.answerButton)))
+                self.eventLogger.logEvent(input: .init(.chat(.answerButton)))
 
                 button.animate { [weak self] in
                     guard let self = self else { return }
@@ -238,6 +238,20 @@ private extension IncomingBubbleTableViewCell {
                     self.selectedAnswerSubject.onCompleted()
                 }
         }).disposed(by: disposeBag)
+    }
+    
+    func getSubviewsOfView(v: UIView) -> [AnimatedButton] {
+        var buttonArray = [AnimatedButton]()
+        
+        v.subviews.forEach {
+            buttonArray += getSubviewsOfView(v: $0)
+
+              if let button = $0 as? AnimatedButton {
+                  buttonArray.append(button)
+              }
+        }
+
+        return buttonArray
     }
     
     func share() {
@@ -266,25 +280,39 @@ private extension IncomingBubbleTableViewCell {
 
         guard answer?.items.isEmpty == false else {
             answerButtonsStackView.isHidden = true
+            firstFiveStackView.isHidden = true
+            secondFiveStackView.isHidden = true
             answerButtons.forEach { $0.isHidden = true }
             return }
 
+        let count = answer?.items.count ?? 0
         answerButtonsStackView.isHidden = false
+        firstFiveStackView.isHidden = !(count <= 5)
+        secondFiveStackView.isHidden = !(count > 5)
         
         var attributedString: NSMutableAttributedString
         let sentenses = answer?.text.split(separator: "\n")
-        if sentenses?.isEmpty == false {
+        if sentenses?.count ?? 0 >= 2, sentenses?.last != "\n" {
             let first = String(sentenses?.first ?? "")
             let subtitle = answer?.text.replacingOccurrences(of: first, with: "")
             attributedString = NSMutableAttributedString(string: first + "\n")
             attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, attributedString.length))
-            attributedString.append(NSMutableAttributedString(string: subtitle ?? ""))
+            var string = subtitle ?? ""
+            if string.last == "\n" {
+                string.removeLast()
+            }
+            attributedString.append(NSMutableAttributedString(string: string))
         } else {
-            attributedString = NSMutableAttributedString(string: answer?.text ?? "")
+            var string = answer?.text ?? ""
+            if string.last == "\n" {
+                string.removeLast()
+            }
+            attributedString = NSMutableAttributedString(string: string)
         }
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.8
+        //paragraphStyle.alignment = .center
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
         let links = answer?.text.components(separatedBy: "http")
@@ -296,9 +324,9 @@ private extension IncomingBubbleTableViewCell {
 //        if let url = URL(string: "http://www.google.com") {
 //            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: NSMakeRange(0, attributedString.length))
 //        }
-
+        
         messageLabel.attributedText = attributedString
-                
+                        
         let items = answer?.items ?? []
         self.items = items
         processButtons(items: items)
@@ -330,8 +358,13 @@ private extension IncomingBubbleTableViewCell {
                 }
                 answerButton.titleLabel?.numberOfLines = 0
                 answerButton.titleLabel?.lineBreakMode = .byWordWrapping
+                answerButton.titleLabel?.textAlignment = .center
                 answerButton.titleLabel?.font = .fontTo(.brandFontRegular, size: 15, weight: .medium)
-                answerButton.setTitle(first + "\n" + second, for: .normal)
+                if items.count > 1 {
+                    answerButton.setTitle(first + "\n" + second, for: .normal)
+                } else {
+                    answerButton.setTitle(first + " " + second, for: .normal)
+                }
             }
         }
     }
