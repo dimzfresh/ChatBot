@@ -47,7 +47,7 @@ public final class RequestsFactory {
 
 // MARK: - Question
 public final class QuestionRequest: APIRequest {
-    public var route: String = "/ChatbotV2?system=deductions&source=ios&userQuestion="
+    public var route: String = "/ChatbotV2?system=faqsamozanyatie&source=ios&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
@@ -72,7 +72,7 @@ public final class QuestionRequest: APIRequest {
 
 // MARK: - Answer
 public final class AnswerRequest: APIRequest {
-    public var route: String = "/ChatbotV2?system=deductions&source=ios&userQuestion="
+    public var route: String = "/ChatbotV2?system=faqsamozanyatie&source=ios&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
