@@ -46,6 +46,12 @@ final class VoiceManager: NSObject {
         }
         guard allowed else { return }
         
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .spokenAudio, options: [.mixWithOthers])
+        } catch {
+            return
+        }
+        
         let audioFilename = getFileURL(name: "input.wav")
         
         let settings = [
