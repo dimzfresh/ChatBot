@@ -3,6 +3,59 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "CopyableLabel.point(inside:with:):CopyableLabel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "attributedText.string">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "recognizer.location(in: self.answerButtonsStackView)">
+            </PersistentString>
+            <PersistentString
+               value = "&quot;Ghbdtn&#x2028;&quot;string.stringByReplacingOccurrencesOfString(&quot;*s*&quot;,&#10;    withString: &quot;&quot;, options: .RegularExpressionSearch)">
+            </PersistentString>
+            <PersistentString
+               value = "self.answerButtonsStackView.hitTest(tapLocation, with: nil)">
+            </PersistentString>
+            <PersistentString
+               value = "self?.answerButtons[5].titleLabel?.text">
+            </PersistentString>
+            <PersistentString
+               value = "filteredSubview[5].titleLabel?.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "answer?.text">
+            </PersistentString>
+            <PersistentString
+               value = "!(count &lt;= 5)">
+            </PersistentString>
+            <PersistentString
+               value = "answer?.text.components(separatedBy: &quot;http&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "!(count &gt; 5)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexButtons">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "IncomingBubbleTableViewCell.cofigure(selected:):IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -40,79 +93,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
+         contextName = "closure #7 in InputView.bind():InputView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "onPause">
-            </PersistentString>
-            <PersistentString
-               value = "isPlaying">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "filteredSubview[5].titleLabel?.text">
-            </PersistentString>
-            <PersistentString
-               value = "recognizer.location(in: self.answerButtonsStackView)">
-            </PersistentString>
-            <PersistentString
-               value = "&quot;Ghbdtn&#x2028;&quot;string.stringByReplacingOccurrencesOfString(&quot;*s*&quot;,&#10;    withString: &quot;&quot;, options: .RegularExpressionSearch)">
-            </PersistentString>
-            <PersistentString
-               value = "self.answerButtonsStackView.hitTest(tapLocation, with: nil)">
-            </PersistentString>
-            <PersistentString
-               value = "self?.answerButtons[5].titleLabel?.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ChatViewController.tableView(_:willDisplay:forRowAt:):ChatViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "lastSelectedSection == indexPath.section">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "IncomingBubbleTableViewCell.process(answer:):IncomingBubbleTableViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "answer?.text.components(separatedBy: &quot;http&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "answer?.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CopyableLabel.findLinksAndRange(attributeString:):CopyableLabel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "text">
-            </PersistentString>
-            <PersistentString
-               value = "attributeString.string">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CopyableLabel.point(inside:with:):CopyableLabel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "attributedText.string">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AppDelegate.setupFirebase():AppDelegate.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "config.environment">
+               value = "self?.currentTime">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -128,10 +112,48 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "VoiceManager.startPlaying():VoiceManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "onPause">
+            </PersistentString>
+            <PersistentString
+               value = "isPlaying">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.tableView(_:willDisplay:forRowAt:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "lastSelectedSection == indexPath.section">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in IncomingBubbleTableViewCell.bindAnswerTap():IncomingBubbleTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
                value = "v.subviews.first(where: { $0.frame.contains(tapLocation) })">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CopyableLabel.findLinksAndRange(attributeString:):CopyableLabel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "text">
+            </PersistentString>
+            <PersistentString
+               value = "attributeString.string">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.setupFirebase():AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "config.environment">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -36,7 +36,8 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var secondFiveStackView: UIStackView!
     
     @IBOutlet private var answerButtons: [AnimatedButton]!
-    
+    private var indexButtons: Observable<Int>?
+        
     @IBOutlet private weak var shareButton: UIButton!
     
     private let eventLogger: FirebaseEventManager = .shared
@@ -210,25 +211,18 @@ private extension IncomingBubbleTableViewCell {
     }
     
     func bindAnswerTap() {
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.cancelsTouchesInView = true
-        tapGesture.delaysTouchesBegan = true
+        let taps = answerButtons.enumerated().map { ($0.0, $0.1.rx.tap) }
+        let toInts = taps.map { index, obs in obs.map { index } }
+        indexButtons = Observable.merge(toInts)
         
-        answerButtonsStackView.addGestureRecognizer(tapGesture)
-        tapGesture.rx.event
-            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-            .bind(onNext: { [weak self] recognizer in
-                guard let self = self, recognizer.state == .ended else { return }
-                
-                let tapLocation = recognizer.location(in: self.answerButtonsStackView)
-                let filteredSubview = self.getSubviewsOfView(v: self.answerButtonsStackView)
-                //let button = self?.answerButtonsStackView.hitTest(tapLocation, with: nil)
-                guard let button = filteredSubview.first(where: { $0.frame.contains(tapLocation)
-                }),
-                    let index = self.answerButtons.firstIndex(of: button) else { return }
+        indexButtons?
+            .throttle(.milliseconds(250), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] index in
+                guard let self = self else { return }
                 
                 self.eventLogger.logEvent(input: .init(.chat(.answerButton)))
-
+                
+                let button = self.answerButtons[index]
                 button.animate { [weak self] in
                     guard let self = self else { return }
                     guard let item = self.items[index].items.first,
@@ -237,7 +231,7 @@ private extension IncomingBubbleTableViewCell {
                     self.selectedAnswerSubject.on(.next(answer))
                     self.selectedAnswerSubject.onCompleted()
                 }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
     
     func getSubviewsOfView(v: UIView) -> [AnimatedButton] {
@@ -287,8 +281,8 @@ private extension IncomingBubbleTableViewCell {
 
         let count = answer?.items.count ?? 0
         answerButtonsStackView.isHidden = false
-        firstFiveStackView.isHidden = !(count <= 5)
-        secondFiveStackView.isHidden = !(count > 5)
+        firstFiveStackView.isHidden = !(count <= 6)
+        secondFiveStackView.isHidden = !(count > 6)
         
         var attributedString: NSMutableAttributedString
         let sentenses = answer?.text.split(separator: "\n")

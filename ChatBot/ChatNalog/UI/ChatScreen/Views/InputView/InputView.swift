@@ -264,6 +264,11 @@ private extension InputView {
             timer?.map(stringFromTimeInterval)
                 .bind(to: timeLabel.rx.text)
                 .disposed(by: timerBag)
+            
+            timer?.map({String(format: "%0.2d:%0.2d",
+                               arguments: [($0 / 600) % 600, ($0 % 600) / 20]) })
+            .bind(to: resultTimeLabel.rx.text)
+            .disposed(by: timerBag)
         }
     }
     

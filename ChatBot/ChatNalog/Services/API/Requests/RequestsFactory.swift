@@ -9,6 +9,8 @@
 import Alamofire
 import RxSwift
 
+fileprivate var stageParameter: String = { Config(bundle: .main, locale: .current).environment == .prod ? "faqsamozanyatie" : "deductions" }()
+
 public final class RequestsFactory {
     enum Chat {
         case question(String, id: String)
@@ -47,7 +49,7 @@ public final class RequestsFactory {
 
 // MARK: - Question
 public final class QuestionRequest: APIRequest {
-    public var route: String = "/ChatbotV2?system=faqsamozanyatie&source=ios&userQuestion="
+    public var route: String = "/ChatbotV2?system=\(stageParameter)&source=ios&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
@@ -72,7 +74,7 @@ public final class QuestionRequest: APIRequest {
 
 // MARK: - Answer
 public final class AnswerRequest: APIRequest {
-    public var route: String = "/ChatbotV2?system=faqsamozanyatie&source=ios&userQuestion="
+    public var route: String = "/ChatbotV2?system=\(stageParameter))&source=ios&userQuestion="
     public var method: HTTPMethod { .get }
     
     public var headers: HTTPHeaders {
@@ -101,7 +103,7 @@ public final class AnswerRequest: APIRequest {
 
 // MARK: - Search
 public final class SearchRequest: APIRequest {
-    public var route: String = "/Suggest/suggest?system=faqsamozanyatie&search="
+    public var route: String = "/Suggest/suggest?system=\(stageParameter)&search="
     public var method: HTTPMethod { .post }
 
     private var text: String
@@ -137,7 +139,7 @@ public struct AnswerRequestInput {
 
 // MARK: - Recognize
 public final class SynthesizeRequest: APIRequest {
-    public var route: String = "/Speech/synthesize/wav?system=faqsamozanyatie"
+    public var route: String = "/Speech/synthesize/wav?system=\(stageParameter)"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
@@ -159,7 +161,7 @@ public final class SynthesizeRequest: APIRequest {
 
 // MARK: - Recognize
 public final class RecognizeRequest: APIRequest {
-    public var route: String = "/Speech/recognize/wav?system=faqsamozanyatie"
+    public var route: String = "/Speech/recognize/wav?system=\(stageParameter)"
     public var method: HTTPMethod { .post }
     
     public var headers: HTTPHeaders {
