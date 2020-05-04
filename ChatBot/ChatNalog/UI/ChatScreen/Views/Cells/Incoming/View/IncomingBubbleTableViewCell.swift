@@ -260,7 +260,8 @@ private extension IncomingBubbleTableViewCell {
         let message = messageLabel.text ?? ""
         
         // TODO: -Temporary
-        let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Подробнее можно посмотреть на сайте https://asknpd.ru/")
+        //let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Подробнее можно посмотреть на сайте https://asknpd.ru/")
+        let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Попробовать приложение можно:\nAndroid - https://is.gd/jPRbvo\nIOS - https://is.gd/vjkIbf")
         
         if preparedText.isEmpty {
             return ""

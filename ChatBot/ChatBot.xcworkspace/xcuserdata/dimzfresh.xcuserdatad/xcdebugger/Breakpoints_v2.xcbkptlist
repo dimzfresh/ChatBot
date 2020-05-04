@@ -187,8 +187,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -203,8 +203,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -219,8 +219,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -267,8 +267,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "process(answer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -303,6 +303,114 @@
             endingLineNumber = "221"
             landmarkName = "bindAnswerTap()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/Services/API/Requests/RequestsFactory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "request"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "151">
+               </Location>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "433">
+               </Location>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "780">
+               </Location>
+               <Location
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
+                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "968">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -112,6 +112,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RequestsFactory.Chat.request.getter:RequestsFactory.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "stageParameter">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "VoiceManager.startPlaying():VoiceManager.swift">
          <PersistentStrings>
             <PersistentString
