@@ -57,6 +57,9 @@
 		5A8F4361234A4B0A007FB89F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4360234A4B0A007FB89F /* Settings.swift */; };
 		5A8F4366234A4DFA007FB89F /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F4365234A4DFA007FB89F /* KeychainManager.swift */; };
 		5A96CB6823AC0A3A00193CBE /* ManagedObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */; };
+		5A96D7962489705C005BBDB3 /* UITextView+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96D7952489705C005BBDB3 /* UITextView+Hyperlink.swift */; };
+		5A96D7982489782E005BBDB3 /* HyperLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96D7972489782E005BBDB3 /* HyperLinks.swift */; };
+		5A96D79A24897A39005BBDB3 /* CaseItarable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A96D79924897A39005BBDB3 /* CaseItarable.swift */; };
 		5AA29E012427CF40008FBFFA /* GoogleService-DEV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5AA29E002427CF40008FBFFA /* GoogleService-DEV-Info.plist */; };
 		5AA8792223986877001564F6 /* OutgoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792123986877001564F6 /* OutgoingViewModel.swift */; };
 		5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8792323986891001564F6 /* OutgoingModel.swift */; };
@@ -152,10 +155,13 @@
 		5A8F4360234A4B0A007FB89F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		5A8F4365234A4DFA007FB89F /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		5A96CB6723AC0A3A00193CBE /* ManagedObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectProtocol.swift; sourceTree = "<group>"; };
+		5A96D7952489705C005BBDB3 /* UITextView+Hyperlink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Hyperlink.swift"; sourceTree = "<group>"; };
+		5A96D7972489782E005BBDB3 /* HyperLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperLinks.swift; sourceTree = "<group>"; };
+		5A96D79924897A39005BBDB3 /* CaseItarable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseItarable.swift; sourceTree = "<group>"; };
 		5AA29E002427CF40008FBFFA /* GoogleService-DEV-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-DEV-Info.plist"; sourceTree = "<group>"; };
 		5AA8792123986877001564F6 /* OutgoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingViewModel.swift; sourceTree = "<group>"; };
 		5AA8792323986891001564F6 /* OutgoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingModel.swift; sourceTree = "<group>"; };
-		5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Чатналог.рф.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AB57EBB231C5E4F00A22A8C /* Asknpd.ru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Asknpd.ru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB57EBE231C5E4F00A22A8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AB57EC0231C5E4F00A22A8C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5AB57EC3231C5E4F00A22A8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				5A00896C238D490300F26C66 /* InputView */,
 				5A1C366623538B0400DE587A /* Activity */,
 				5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */,
+				5A96D7972489782E005BBDB3 /* HyperLinks.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -470,6 +477,8 @@
 				5AB705EA234A7DF400C23C3C /* String+Base64.swift */,
 				5AB705EC234A7E9D00C23C3C /* Bundle.swift */,
 				5A27BAD5239FB3450073BC16 /* UITextField+Keyboard.swift */,
+				5A96D7952489705C005BBDB3 /* UITextView+Hyperlink.swift */,
+				5A96D79924897A39005BBDB3 /* CaseItarable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -549,7 +558,7 @@
 		5AB57EBC231C5E4F00A22A8C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */,
+				5AB57EBB231C5E4F00A22A8C /* Asknpd.ru.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -721,7 +730,7 @@
 			);
 			name = ChatBot;
 			productName = VarakushCashier;
-			productReference = 5AB57EBB231C5E4F00A22A8C /* Чатналог.рф.app */;
+			productReference = 5AB57EBB231C5E4F00A22A8C /* Asknpd.ru.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -820,6 +829,7 @@
 				5A249B4623912D8100044D94 /* AVConverter.swift in Sources */,
 				5A18068D23AC013800ED314E /* ChatMessages.xcdatamodeld in Sources */,
 				5AB7991523AE6C1300447A91 /* BubbleView.swift in Sources */,
+				5A96D7962489705C005BBDB3 /* UITextView+Hyperlink.swift in Sources */,
 				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5AB7991A23AF65D000447A91 /* InputView.swift in Sources */,
@@ -844,6 +854,7 @@
 				5A1C365723532A7D00DE587A /* PagingRequest.swift in Sources */,
 				5AA8792423986891001564F6 /* OutgoingModel.swift in Sources */,
 				5A55D87A2389663700318A53 /* IncomingBubbleTableViewCell.swift in Sources */,
+				5A96D79A24897A39005BBDB3 /* CaseItarable.swift in Sources */,
 				5AC11AA123896F350082B34D /* UITableViewCell.swift in Sources */,
 				5ADD7C7523E0D5EF009468FC /* FirebaseEvent.swift in Sources */,
 				5A73D54923F958E600AABB5F /* Environment.swift in Sources */,
@@ -859,6 +870,7 @@
 				5AB705E3234A780500C23C3C /* UIView+LayoutAnchor.swift in Sources */,
 				5ADD7C7323E0CA0B009468FC /* FirebaseEventManager.swift in Sources */,
 				5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */,
+				5A96D7982489782E005BBDB3 /* HyperLinks.swift in Sources */,
 				5A1C3655235320B600DE587A /* ChatService.swift in Sources */,
 				5A1C365023531EB700DE587A /* RequestsFactory.swift in Sources */,
 				5A96CB6823AC0A3A00193CBE /* ManagedObjectProtocol.swift in Sources */,
@@ -972,7 +984,7 @@
 				);
 				MARKETING_VERSION = 1.0.33;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot.dev;
-				PRODUCT_NAME = "Чатналог.рф";
+				PRODUCT_NAME = Asknpd.ru;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1051,7 +1063,7 @@
 				);
 				MARKETING_VERSION = 1.0.33;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot.dev;
-				PRODUCT_NAME = "Чатналог.рф";
+				PRODUCT_NAME = Asknpd.ru;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1192,7 +1204,7 @@
 				);
 				MARKETING_VERSION = 1.0.33;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
-				PRODUCT_NAME = "Чатналог.рф";
+				PRODUCT_NAME = Asknpd.ru;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1215,7 +1227,7 @@
 				);
 				MARKETING_VERSION = 1.0.33;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.smz.ChatBot;
-				PRODUCT_NAME = "Чатналог.рф";
+				PRODUCT_NAME = Asknpd.ru;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

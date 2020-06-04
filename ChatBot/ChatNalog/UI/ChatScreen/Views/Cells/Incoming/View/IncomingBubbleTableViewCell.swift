@@ -296,31 +296,42 @@ private extension IncomingBubbleTableViewCell {
             if string.last == "\n" {
                 string.removeLast()
             }
-            attributedString.append(NSMutableAttributedString(string: string))
+            let second = NSMutableAttributedString(string: string)
+            second.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, second.length))
+            attributedString.append(second)
         } else {
             var string = answer?.text ?? ""
             if string.last == "\n" {
                 string.removeLast()
             }
-            attributedString = NSMutableAttributedString(string: string)
+            let second = NSMutableAttributedString(string: string)
+              second.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, second.length))
+            attributedString = second
         }
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 1.8
         //paragraphStyle.alignment = .center
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
-        
-        let links = answer?.text.components(separatedBy: "http")
-        if links?.isEmpty == false {
-            
-            //            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: NSMakeRange(0, attributedString.length))
-            
-        }
-//        if let url = URL(string: "http://www.google.com") {
-//            attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: NSMakeRange(0, attributedString.length))
-//        }
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
         
         messageLabel.attributedText = attributedString
+        
+        if let text = answer?.text {
+            let hyperLinks = HyperLinks.all
+            let links: [String] = text.components(separatedBy: CharacterSet([" ", "\n"]))
+            let combinedResult: [String] = links.filter { hyperLinks.contains(where: $0.contains) }.map {
+                let str = $0
+                if let last = str.last, String(last).range(of: ".*[^A-Za-z0-9].*", options: .regularExpression) != nil {
+                    return String(str.dropLast())
+                } else {
+                   return str
+                }
+            }
+            combinedResult.forEach {
+                messageLabel.hyperLink(attributedOriginalText: attributedString, hyperLink: $0, urlString: $0)
+            }
+        }
                         
         let items = answer?.items ?? []
         self.items = items

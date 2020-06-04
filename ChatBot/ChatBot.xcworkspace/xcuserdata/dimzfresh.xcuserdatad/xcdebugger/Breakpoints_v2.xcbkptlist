@@ -187,8 +187,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -203,8 +203,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -219,8 +219,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "processButtons(items:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -293,7 +293,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BFEEBF57-7779-47B1-A348-9F5932A35AFB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
@@ -309,7 +309,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatNalog/Services/API/Requests/RequestsFactory.swift"
@@ -321,12 +321,12 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -336,12 +336,12 @@
                   offsetFromSymbolStart = "76">
                </Location>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -351,12 +351,12 @@
                   offsetFromSymbolStart = "151">
                </Location>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -366,12 +366,12 @@
                   offsetFromSymbolStart = "433">
                </Location>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -381,12 +381,12 @@
                   offsetFromSymbolStart = "592">
                </Location>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -396,12 +396,12 @@
                   offsetFromSymbolStart = "780">
                </Location>
                <Location
-                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 84e520091324dff4"
+                  uuid = "5A7CC994-0D5E-407D-9D37-F96B54AF9E28 - 3b094027269f15f4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.RequestsFactory.Chat.request.getter : &#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;_&#x440;&#x444;.APIRequest"
-                  moduleName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;"
+                  symbolName = "Asknpd_ru.RequestsFactory.Chat.request.getter : Asknpd_ru.APIRequest"
+                  moduleName = "Asknpd.ru"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dimzfresh/Projects/ChatBot/ChatBot/ChatNalog/Services/API/Requests/RequestsFactory.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -411,6 +411,22 @@
                   offsetFromSymbolStart = "968">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2FDA6A0A-7D8E-4E0A-BDB6-57E11773BAC2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatNalog/UI/ChatScreen/Views/Cells/Incoming/View/IncomingBubbleTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "process(answer:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

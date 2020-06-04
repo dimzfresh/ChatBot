@@ -18,7 +18,7 @@ BASE_URL = http:/$()/localhost:3000
 
 // App Settings
 ENVIRONMENT = dev
-APP_NAME = Чатналог (dev)
+APP_NAME = Asknpd.ru (dev)
 APP_BUNDLE_ID = ru.smz.ChatBot.dev
 
 //#include "Pods/Target Support Files/Pods-ChatBot/Pods-ChatBot.debug (Development).xcconfig"

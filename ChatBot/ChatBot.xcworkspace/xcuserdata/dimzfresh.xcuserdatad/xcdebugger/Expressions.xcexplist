@@ -37,6 +37,9 @@
                value = "answer?.text">
             </PersistentString>
             <PersistentString
+               value = "HyperLinks.all">
+            </PersistentString>
+            <PersistentString
                value = "!(count &lt;= 5)">
             </PersistentString>
             <PersistentString
@@ -93,6 +96,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RequestsFactory.Chat.request.getter:RequestsFactory.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "stageParameter">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #7 in InputView.bind():InputView.swift">
          <PersistentStrings>
             <PersistentString
@@ -108,14 +119,6 @@
             </PersistentString>
             <PersistentString
                value = "audioPlayer?.isPlaying">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RequestsFactory.Chat.request.getter:RequestsFactory.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "stageParameter">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

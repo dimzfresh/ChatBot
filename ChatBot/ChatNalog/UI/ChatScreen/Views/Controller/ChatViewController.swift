@@ -231,8 +231,8 @@ private extension ChatViewController {
         buttonTitle.append(partTwo)
                         
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 0
-        titleLabel.lineBreakMode = .byWordWrapping
+        //titleLabel.numberOfLines = 0
+        //titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.textAlignment = .center
         titleLabel.attributedText = buttonTitle
         //navigationItem.titleView = titleLabel

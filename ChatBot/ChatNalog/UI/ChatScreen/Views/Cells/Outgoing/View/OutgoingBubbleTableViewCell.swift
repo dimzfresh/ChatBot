@@ -108,9 +108,14 @@ private extension OutgoingBubbleTableViewCell {
                 }
         })
         .disposed(by: disposeBag)
-                
+        
         viewModel?.input
-            .map({ NSAttributedString(string: $0?.text ?? "") })
+            .map({
+                let attributedString = NSMutableAttributedString(string: $0?.text ?? "")
+                attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, attributedString.length))
+                attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), range: NSMakeRange(0, attributedString.length))
+                return attributedString
+            })
             .bind(to: messageLabel.rx.attributedText)
             .disposed(by: disposeBag)
         
