@@ -15,7 +15,13 @@ final class CopyableLabel: UITextView {
         
     private var isShownPopup: Bool = false
     
-    override var canBecomeFirstResponder: Bool { true }
+    override var canBecomeFirstResponder: Bool {
+        true
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        false
+    }
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: nil)
@@ -148,6 +154,8 @@ private extension CopyableLabel {
 //    }
     
     @objc func showPopup() {
+        UIMenuController.shared.setMenuVisible(false, animated: false)
+        
         becomeFirstResponder()
 
         guard !isShownPopup, let parent = UIApplication.shared.windows.first?.rootViewController else { return }

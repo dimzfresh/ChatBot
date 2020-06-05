@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5AB57EBA231C5E4F00A22A8C"
-               BuildableName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;.app"
+               BuildableName = "Asknpd.ru.app"
                BlueprintName = "ChatBot"
                ReferencedContainer = "container:ChatBot.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5AB57EBA231C5E4F00A22A8C"
-            BuildableName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;.app"
+            BuildableName = "Asknpd.ru.app"
             BlueprintName = "ChatBot"
             ReferencedContainer = "container:ChatBot.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5AB57EBA231C5E4F00A22A8C"
-            BuildableName = "&#x427;&#x430;&#x442;&#x43d;&#x430;&#x43b;&#x43e;&#x433;.&#x440;&#x444;.app"
+            BuildableName = "Asknpd.ru.app"
             BlueprintName = "ChatBot"
             ReferencedContainer = "container:ChatBot.xcodeproj">
          </BuildableReference>
