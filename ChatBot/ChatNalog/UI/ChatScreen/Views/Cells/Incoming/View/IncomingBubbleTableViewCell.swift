@@ -28,7 +28,7 @@ final class IncomingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: NVActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var messageLabel: CopyableLabel!
+    @IBOutlet private weak var messageLabel: CustomTextView!
     @IBOutlet private weak var messageStackView: UIStackView!
     
     @IBOutlet private weak var answerButtonsStackView: UIStackView!

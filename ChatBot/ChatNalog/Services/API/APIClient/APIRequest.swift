@@ -6,7 +6,6 @@
 //  Copyright © 2019 kvantsoft All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 public typealias Resource = (method: HTTPMethod, route: String)

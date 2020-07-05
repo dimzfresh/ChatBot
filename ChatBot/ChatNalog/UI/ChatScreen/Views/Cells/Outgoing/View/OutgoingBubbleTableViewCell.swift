@@ -16,7 +16,7 @@ final class OutgoingBubbleTableViewCell: UITableViewCell {
     @IBOutlet private weak var speakerButton: UIButton!
     @IBOutlet private weak var activity: NVActivityIndicatorView!
     @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var messageLabel: CopyableLabel!
+    @IBOutlet private weak var messageLabel: CustomTextView!
     
     typealias ViewModelType = OutgoingViewModel
     var viewModel: ViewModelType!

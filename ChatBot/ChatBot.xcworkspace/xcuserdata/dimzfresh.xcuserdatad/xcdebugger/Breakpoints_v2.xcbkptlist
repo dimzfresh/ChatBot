@@ -171,8 +171,8 @@
             filePath = "ChatNalog/UI/ChatScreen/Views/Controller/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "removeCellAnimations(_:)"
             landmarkType = "7">
          </BreakpointContent>

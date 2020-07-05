@@ -6,7 +6,6 @@
 //  Copyright © 2019 kvantsoft All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -21,7 +20,7 @@ final class ChatViewController: UIViewController {
     
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var titleViewOffsetConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var titleLabel: CopyableLabel!
+    @IBOutlet private weak var titleLabel: UILabel!
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchTableView: UITableView!
@@ -71,8 +70,7 @@ final class ChatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupTitle(title: (main: "ПОМОЩНИК ПО САМОЗАНЯТЫМ",
-        sub: "\nОнлайн"))
+        setupTitle(title: (main: "ПОМОЩНИК ПО САМОЗАНЯТЫМ", sub: "\nОнлайн"))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,10 +94,6 @@ extension ChatViewController: UITableViewDelegate {
         cell.onSelectMic = { [weak self, atIndex] in
             self?.lastSelectedSection = atIndex.section
         }
-//        cell.selectedMic
-//            .subscribe(onNext: { [weak self, atIndex] _ in
-//                self?.removeCellAnimations(without: atIndex)
-//             }).disposed(by: disposeBag)
         return cell
     }
     
@@ -127,24 +121,13 @@ extension ChatViewController: UITableViewDelegate {
         cell.onSelectMic = { [weak self, atIndex] in
             self?.lastSelectedSection = atIndex.section
         }
-//        cell.selectedMic
-//            .subscribe(onNext: { [weak self, atIndex] _ in
-//                self?.removeCellAnimations(without: atIndex)
-//                }, onDisposed: {
-//                    print("Incoming Mic disposed!")
-//            }).disposed(by: disposeBag)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-        
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 20))
-//        header.backgroundColor = .clear
-//        return header
-//    }
+    
 }
 
 // MARK: -BindableType
@@ -163,7 +146,6 @@ private extension ChatViewController {
     }
     
     func setupViews() {
-        //inputTextView.addDoneButtonOnKeyboard()
         navigationController?.navigationBar.shadowImage = nil
         tableView.roundCorners([.topLeft, .topRight], radius: 32)
         searchTableView.backgroundColor = #colorLiteral(red: 0.9635888934, green: 0.9744213223, blue: 1, alpha: 1)
@@ -231,11 +213,8 @@ private extension ChatViewController {
         buttonTitle.append(partTwo)
                         
         titleLabel.textColor = .white
-        //titleLabel.numberOfLines = 0
-        //titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.textAlignment = .center
         titleLabel.attributedText = buttonTitle
-        //navigationItem.titleView = titleLabel
         titleLabel.sizeToFit()
     }
         
@@ -317,13 +296,6 @@ private extension ChatViewController {
             self?.view.endEditing(true)
         })
             .disposed(by: disposeBag)
-        
-        //        viewModel.microphoneState.subscribe(onNext: { [weak self] state in
-        //            guard state != .none else { return }
-        //            //self?.animateMicrophone(state: state)
-        //            //self?.animateRecordingTime(state: state)
-        //            self?.viewModel.record(for: state)
-        //        }).disposed(by: disposeBag)
         
         voiceManager.audioRecordingDidFinished = { [weak self] text in
             guard let text = text else { return }

@@ -61,10 +61,14 @@ final class ShareViewController: UIViewController, ShareViewProtocol {
 
 private extension ShareViewController {
     func setup() {
-        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.08)
+        setupViews()
         setupBlurEffectView()
         
         eventLogger.logEvent(input: .init(.share(.open)))
+    }
+    
+    func setupViews() {
+        view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.08)
     }
     
     func setupBlurEffectView() {
@@ -84,7 +88,6 @@ private extension ShareViewController {
         let message = shareText ?? ""
         
         // TODO: -Temporary
-        //let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Подробнее можно посмотреть на сайте https://asknpd.ru/")
         let preparedText = message.replacingOccurrences(of: "Удовлетворены ли вы нашим ответом на Ваш вопрос?", with: "Попробовать приложение можно:\nAndroid - https://is.gd/jPRbvo\nIOS - https://is.gd/vjkIbf")
         
         if preparedText.isEmpty {
@@ -108,26 +111,7 @@ private extension ShareViewController {
         view.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
         view.alpha = 0
         
-        var attributedString = NSMutableAttributedString(string: shareText ?? " ")
-        
-        let sentenses = shareText?.split(separator: "\n")
-        if let sentenses = sentenses, sentenses.count > 1 {
-            let first = String(sentenses.first ?? "")
-            let subtitle = shareText?.replacingOccurrences(of: first, with: "")
-            attributedString = NSMutableAttributedString(string: first)
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, attributedString.length))
-            let secondAttributedString = NSMutableAttributedString(string: subtitle ?? "")
-            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, secondAttributedString.length))
-            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, secondAttributedString.length))
-            attributedString.append(secondAttributedString)
-        } else {
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
-            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, attributedString.length))
-        }
-        
-        textView.text = shareText
-        textView.attributedText = attributedString
+        setAttributedTitle()
         
         view.layoutIfNeeded()
         
@@ -151,5 +135,28 @@ private extension ShareViewController {
     
     func sendResetFlagNotification() {
         NotificationCenter.default.post(name: .resetPopupFlag, object: nil, userInfo: nil)
+    }
+    
+    func setAttributedTitle() {
+        var attributedString = NSMutableAttributedString(string: shareText ?? " ")
+        
+        let sentenses = shareText?.split(separator: "\n")
+        if let sentenses = sentenses, sentenses.count > 1 {
+            let first = String(sentenses.first ?? "")
+            let subtitle = shareText?.replacingOccurrences(of: first, with: "")
+            attributedString = NSMutableAttributedString(string: first)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, attributedString.length))
+            let secondAttributedString = NSMutableAttributedString(string: subtitle ?? "")
+            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .bold), range: NSMakeRange(0, secondAttributedString.length))
+            secondAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, secondAttributedString.length))
+            attributedString.append(secondAttributedString)
+        } else {
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 0.2235294118, green: 0.2470588235, blue: 0.3098039216, alpha: 1), range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.fontTo(.brandFontRegular, size: 16, weight: .regular), range: NSMakeRange(0, attributedString.length))
+        }
+        
+        textView.text = shareText
+        textView.attributedText = attributedString
     }
 }

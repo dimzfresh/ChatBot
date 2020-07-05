@@ -46,7 +46,7 @@
 		5A73D54923F958E600AABB5F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73D54823F958E600AABB5F /* Environment.swift */; };
 		5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3A239945590094A2AD /* IncomingModel.swift */; };
 		5A796D3D239945740094A2AD /* IncomingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3C239945740094A2AD /* IncomingViewModel.swift */; };
-		5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */; };
+		5A796D3F2399B2FB0094A2AD /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A796D3E2399B2FB0094A2AD /* CustomTextView.swift */; };
 		5A7EFF8623AA5A77001D8B70 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */; };
 		5A7EFFB023ABAC86001D8B70 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */; };
 		5A8F434F234A249C007FB89F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */; };
@@ -144,7 +144,7 @@
 		5A73D54823F958E600AABB5F /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		5A796D3A239945590094A2AD /* IncomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingModel.swift; sourceTree = "<group>"; };
 		5A796D3C239945740094A2AD /* IncomingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingViewModel.swift; sourceTree = "<group>"; };
-		5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
+		5A796D3E2399B2FB0094A2AD /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		5A7EFF8523AA5A77001D8B70 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5A7EFFAF23ABAC86001D8B70 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
 		5A8F434E234A249C007FB89F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -256,8 +256,7 @@
 				5A3D0BEF238DB15800C60EB5 /* AnimatedButton */,
 				5A00896C238D490300F26C66 /* InputView */,
 				5A1C366623538B0400DE587A /* Activity */,
-				5A796D3E2399B2FB0094A2AD /* CopyableLabel.swift */,
-				5A96D7972489782E005BBDB3 /* HyperLinks.swift */,
+				5AB5219824B21F1800DB662F /* CustomTextView */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -382,6 +381,7 @@
 				5A73D54723F958B100AABB5F /* Production.xcconfig */,
 				5A73D54623F9580200AABB5F /* Development.xcconfig */,
 				5A73D54823F958E600AABB5F /* Environment.swift */,
+				5A96D7972489782E005BBDB3 /* HyperLinks.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -540,6 +540,14 @@
 				5AA8792123986877001564F6 /* OutgoingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5AB5219824B21F1800DB662F /* CustomTextView */ = {
+			isa = PBXGroup;
+			children = (
+				5A796D3E2399B2FB0094A2AD /* CustomTextView.swift */,
+			);
+			path = CustomTextView;
 			sourceTree = "<group>";
 		};
 		5AB57EB2231C5E4F00A22A8C = {
@@ -830,7 +838,7 @@
 				5A18068D23AC013800ED314E /* ChatMessages.xcdatamodeld in Sources */,
 				5AB7991523AE6C1300447A91 /* BubbleView.swift in Sources */,
 				5A96D7962489705C005BBDB3 /* UITextView+Hyperlink.swift in Sources */,
-				5A796D3F2399B2FB0094A2AD /* CopyableLabel.swift in Sources */,
+				5A796D3F2399B2FB0094A2AD /* CustomTextView.swift in Sources */,
 				5A796D3B239945590094A2AD /* IncomingModel.swift in Sources */,
 				5AB7991A23AF65D000447A91 /* InputView.swift in Sources */,
 				5A8F435B234A3FD1007FB89F /* Storyboards.swift in Sources */,

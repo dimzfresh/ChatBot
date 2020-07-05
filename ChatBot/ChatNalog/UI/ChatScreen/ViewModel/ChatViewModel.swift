@@ -308,10 +308,6 @@ private extension ChatViewModel {
                 //completion(nil)
             }
         }
-        
-//        let outgoingItems: [TableViewItem] = [.message(info: chat)]
-//        let new = [SectionOfChat(model: .incoming, items: outgoingItems)]
-//        messages.accept(messages.value + new)
     }
     
     func save(new message: [SectionOfChat]) {

@@ -80,26 +80,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-jv-3sK" customClass="BubbleView" customModule="Asknpd_ru" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="79"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHw-JN-kOc" customClass="CopyableLabel" customModule="Asknpd_ru" customModuleProvider="target">
-                                                <rect key="frame" x="208.5" y="14" width="94.5" height="57"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Сообщение" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YB-I1-2AO" customClass="CustomTextView" customModule="Asknpd_ru" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="16" width="291" height="55"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Сообщение">
-                                                        <attributes>
-                                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <font key="NSFont" metaFont="system" size="17"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isUser" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:13" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNF-FZ-fSz">
                                                 <rect key="frame" x="285" y="65" width="26" height="12"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFontItalic" family=".AppleSystemUIFont" pointSize="10"/>
@@ -109,12 +96,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="BHw-JN-kOc" firstAttribute="top" secondItem="iFg-jv-3sK" secondAttribute="top" constant="14" id="7H2-cx-d8I"/>
-                                            <constraint firstAttribute="bottom" secondItem="BHw-JN-kOc" secondAttribute="bottom" constant="8" id="Cft-MB-MWL"/>
-                                            <constraint firstAttribute="trailing" secondItem="BHw-JN-kOc" secondAttribute="trailing" constant="12" id="HdL-gJ-TEN"/>
+                                            <constraint firstItem="7YB-I1-2AO" firstAttribute="top" secondItem="iFg-jv-3sK" secondAttribute="top" constant="16" id="Dmj-UT-JzQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="7YB-I1-2AO" secondAttribute="trailing" constant="8" id="HDr-sR-NIF"/>
                                             <constraint firstAttribute="bottom" secondItem="DNF-FZ-fSz" secondAttribute="bottom" constant="2" id="LL0-F1-Miq"/>
                                             <constraint firstAttribute="trailing" secondItem="DNF-FZ-fSz" secondAttribute="trailing" constant="4" id="QZ2-Zd-6gF"/>
-                                            <constraint firstItem="BHw-JN-kOc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iFg-jv-3sK" secondAttribute="leading" constant="16" id="efc-Mj-DU3"/>
+                                            <constraint firstItem="7YB-I1-2AO" firstAttribute="leading" secondItem="iFg-jv-3sK" secondAttribute="leading" constant="16" id="bdj-un-rHG"/>
+                                            <constraint firstAttribute="bottom" secondItem="7YB-I1-2AO" secondAttribute="bottom" constant="8" id="g2L-Dj-XZ7"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="hd8-W2-tyA"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -145,7 +132,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="activity" destination="WGi-eE-Uhi" id="2oq-p2-POI"/>
-                <outlet property="messageLabel" destination="BHw-JN-kOc" id="N5F-eS-bOZ"/>
+                <outlet property="messageLabel" destination="7YB-I1-2AO" id="QZn-6e-WKJ"/>
                 <outlet property="speakerButton" destination="tbq-wg-s0a" id="ncX-dC-UiK"/>
                 <outlet property="userNameLabel" destination="eBV-B7-lFF" id="WyE-tV-gKe"/>
             </connections>
